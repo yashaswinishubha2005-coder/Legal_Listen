@@ -1,0 +1,19 @@
+[project]
+name = "lexvaani"
+version = "0.1.0"
+description = "LexVaani-IN benchmark + LegalListen multilingual legal consultation system"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "eval"]
+pythonpath = ["src"]
+
+[tool.setuptools.package-data]
+legallisten = ["static/*"]

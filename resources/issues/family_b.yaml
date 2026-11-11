@@ -1,0 +1,311 @@
+# Family domain (part B): domestic violence, dowry harassment. Provisions TO_VERIFY.
+issues:
+  # ------------------------------------------------------ domestic violence
+  - issue_id: fam.domestic_violence
+    domain: family
+    title: {en: Domestic violence, kn: ಕೌಟುಂಬಿಕ ದೌರ್ಜನ್ಯ, hi: घरेलू हिंसा}
+    plain_summary:
+      en: Physical, emotional, verbal or economic abuse of a woman by her husband or his relatives in a shared household.
+      kn: ಒಂದೇ ಮನೆಯಲ್ಲಿ ಗಂಡ ಅಥವಾ ಅವರ ಸಂಬಂಧಿಕರು ಮಹಿಳೆಯ ಮೇಲೆ ಮಾಡುವ ದೈಹಿಕ, ಮಾನಸಿಕ, ಮಾತಿನ ಅಥವಾ ಆರ್ಥಿಕ ದೌರ್ಜನ್ಯ.
+      hi: एक ही घर में पति या उसके रिश्तेदारों द्वारा महिला के साथ शारीरिक, भावनात्मक, मौखिक या आर्थिक दुर्व्यवहार।
+    risk_level: high
+    default_triage: lawyer
+    speaker_genders: [female]
+    cast:
+      - {slot: RESP, role: respondent, nouns: [spouse]}
+      - {slot: RESP2, role: respondent, nouns: [mother_in_law], genders: [female]}
+    setup:
+      en: This is about {RESP} and {RESP2}.
+      kn: "ಇದು {RESP} ಮತ್ತು {RESP2} ಬಗ್ಗೆ."
+      kn-en_latn: "Idu {RESP} mattu {RESP2} bagge."
+      kn-en_mixed: "ಇದು {RESP} and {RESP2} ಬಗ್ಗೆ."
+      hi: "यह {RESP} और {RESP2} के बारे में है।"
+      hi-en_latn: "Yeh {RESP} aur {RESP2} ke baare mein hai."
+    elements:
+      - element_id: abuse_occurred
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The respondent physically or emotionally abused the user.
+        event_type: physical_abuse
+        args: {RESP: agent}
+        question:
+          en: What has your husband done to you? Has he hit you or hurt you in any way?
+          kn: ನಿಮ್ಮ ಗಂಡ ನಿಮಗೆ ಏನು ಮಾಡಿದ್ದಾರೆ? ಹೊಡೆದಿದ್ದಾರಾ ಅಥವಾ ಯಾವುದಾದರೂ ರೀತಿ ನೋವು ಕೊಟ್ಟಿದ್ದಾರಾ?
+          hi: आपके पति ने आपके साथ क्या किया है? क्या उन्होंने मारा या किसी तरह चोट पहुँचाई?
+        proposition:
+          satisfied: The respondent beat the speaker and pulled her hair.
+          contradicted: The respondent shouts sometimes but has never hit her.
+        satisfied:
+          en: "{DATE} {RESP} [beat](TRIG) me and pulled my hair."
+          kn: "{DATE} {RESP} ನನಗೆ [ಹೊಡೆದು](TRIG) ಕೂದಲು ಎಳೆದರು."
+          kn-en_latn: "{DATE} {RESP} nange [hodedu](TRIG) kudalu eledru."
+          kn-en_mixed: "{DATE} {RESP} ನನಗೆ [ಹೊಡೆದು](TRIG) hair ಎಳೆದ್ರು."
+          hi: "{DATE} {RESP.erg} मुझे [मारा](TRIG) और बाल खींचे।"
+          hi-en_latn: "{DATE} {RESP.erg} mujhe [maara](TRIG) aur baal kheenche."
+        contradicted:
+          en: "{RESP} shouts sometimes but has [never](NEG) [hit](TRIG) me."
+          kn: "{RESP} ಆಗಾಗ ಕೂಗಾಡ್ತಾರೆ, ಆದರೆ ಯಾವತ್ತೂ [ಹೊಡೆದಿಲ್ಲ](TRIG,NEG)."
+          kn-en_latn: "{RESP} aagaaga koogaadtaare, aadre yaavattu [hodedilla](TRIG,NEG)."
+          kn-en_mixed: "{RESP} sometimes shout ಮಾಡ್ತಾರೆ, ಆದ್ರೆ ಯಾವತ್ತೂ [ಹೊಡೆದಿಲ್ಲ](TRIG,NEG)."
+          hi: "{RESP} कभी-कभी {g:RESP|m:चिल्लाते|f:चिल्लाती|n:चिल्लाते} हैं, लेकिन कभी [मारा](TRIG) [नहीं](NEG)।"
+          hi-en_latn: "{RESP} kabhi-kabhi {g:RESP|m:chillaate|f:chillaati|n:chillaate} hain, lekin kabhi [maara](TRIG) [nahi](NEG)."
+      - element_id: abuse_by_relative
+        critical: false
+        order: 1
+        description: A relative of the husband also subjects the user to emotional or economic abuse.
+        question:
+          en: Do other family members in the house also trouble you?
+          kn: ಮನೆಯಲ್ಲಿ ಬೇರೆ ಯಾರಾದರೂ ಕೂಡ ನಿಮಗೆ ತೊಂದರೆ ಕೊಡ್ತಾರಾ?
+          hi: क्या घर के दूसरे लोग भी आपको परेशान करते हैं?
+        proposition:
+          satisfied: The mother-in-law taunts the speaker and withholds food.
+          contradicted: The mother-in-law treats the speaker well.
+        satisfied:
+          en: "{RESP2} keeps taunting me and does [not](NEG) give me food on time."
+          kn: "{RESP2} ಯಾವಾಗಲೂ ಚುಚ್ಚು ಮಾತಾಡ್ತಾರೆ, ಸರಿಯಾಗಿ ಊಟ [ಕೊಡಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP2} yaavaagalu chuchchu maataadtaare, sariyaagi oota [kodalla](NEG)."
+          kn-en_mixed: "{RESP2} always taunt ಮಾಡ್ತಾರೆ, time ಗೆ food [ಕೊಡಲ್ಲ](NEG)."
+          hi: "{RESP2} हमेशा ताने मारती हैं और समय पर खाना [नहीं](NEG) देतीं।"
+          hi-en_latn: "{RESP2} hamesha taane maarti hain aur time par khaana [nahi](NEG) deti."
+        contradicted:
+          en: "{RESP2} treats me well."
+          kn: "{RESP2} ನನ್ನನ್ನು ಚೆನ್ನಾಗಿ ನೋಡ್ಕೊಳ್ತಾರೆ."
+          kn-en_latn: "{RESP2} nannanna chennaagi nodkoltaare."
+          kn-en_mixed: "{RESP2} ನನ್ನನ್ನು well ಆಗಿ treat ಮಾಡ್ತಾರೆ."
+          hi: "{RESP2} मेरे साथ अच्छा बर्ताव करती हैं।"
+          hi-en_latn: "{RESP2} mere saath achha bartaav karti hain."
+      - element_id: shared_household
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The house is a shared household belonging to the husband's family (needed for residence orders).
+        question:
+          en: Whose name is the house you live in? Is it owned by your husband's family or rented?
+          kn: ನೀವು ಇರೋ ಮನೆ ಯಾರ ಹೆಸರಲ್ಲಿ ಇದೆ? ಗಂಡನ ಮನೆಯವರದ್ದಾ ಅಥವಾ ಬಾಡಿಗೆನಾ?
+          hi: आप जिस घर में रहती हैं वो किसके नाम पर है? पति के परिवार का है या किराए का?
+        proposition:
+          satisfied: The house the family lives in is in the mother-in-law's name.
+          contradicted: They live in a rented house that is not theirs.
+        satisfied:
+          en: The house we live in is in {RESP2.gen} name.
+          kn: "ನಾವು ಇರೋ ಮನೆ {RESP2.gen} ಹೆಸರಲ್ಲಿ ಇದೆ."
+          kn-en_latn: "Naavu iro mane {RESP2.gen} hesaralli ide."
+          kn-en_mixed: "ನಾವು ಇರೋ house {RESP2.gen} name ಅಲ್ಲಿ ಇದೆ."
+          hi: "हम जिस घर में रहते हैं वो {RESP2.gen_pl} नाम पर है।"
+          hi-en_latn: "Hum jis ghar mein rehte hain woh {RESP2.gen_pl} naam par hai."
+        contradicted:
+          en: We live in a rented house; it is [not](NEG) ours.
+          kn: ನಾವು ಬಾಡಿಗೆ ಮನೆಯಲ್ಲಿ ಇದ್ದೀವಿ, ಅದು [ನಮ್ಮದಲ್ಲ](NEG).
+          kn-en_latn: Naavu baadige maneyalli iddivi, adu [nammadalla](NEG).
+          kn-en_mixed: ನಾವು rented house ಅಲ್ಲಿ ಇದ್ದೀವಿ, ಅದು [ನಮ್ಮದಲ್ಲ](NEG).
+          hi: हम किराए के घर में रहते हैं, वो हमारा [नहीं](NEG) है।
+          hi-en_latn: Hum kiraaye ke ghar mein rehte hain, woh hamara [nahi](NEG) hai.
+    evidence:
+      - evidence_id: injury_photos
+        evidence_type: photo_video
+        supports: [abuse_occurred]
+        held:
+          en: I took [photos of my injuries](EVD).
+          kn: ನಾನು [ನನ್ನ ಗಾಯಗಳ ಫೋಟೋ](EVD) ತೆಗೆದಿದ್ದೀನಿ.
+          kn-en_latn: Naanu [nanna gaayagala photo](EVD) tegediddini.
+          kn-en_mixed: ನಾನು [ನನ್ನ injuries photos](EVD) ತೆಗೆದಿದ್ದೀನಿ.
+          hi: मैंने [अपनी चोटों की फ़ोटो](EVD) ली हैं।
+          hi-en_latn: Maine [apni choton ki photos](EVD) li hain.
+        missing:
+          en: I have [no](NEG) [photos or medical papers](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಫೋಟೋ ಅಥವಾ ಮೆಡಿಕಲ್ ಪೇಪರ್](EVD) ಏನೂ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Nanna hatra [photo athava medical paper](EVD) enu [illa](NEG).
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [photos or medical papers](EVD) ಏನೂ [ಇಲ್ಲ](NEG).
+          hi: मेरे पास [कोई फ़ोटो या मेडिकल कागज़](EVD) [नहीं](NEG) है।
+          hi-en_latn: Mere paas [koi photo ya medical papers](EVD) [nahi](NEG) hain.
+    risk_facts:
+      - flag: ongoing_abuse
+        template:
+          en: I am scared to stay at home; {RESP} said {RESP.pron} will beat me again [tonight](TIMEX:tonight).
+          kn: "[ಇವತ್ತು ರಾತ್ರಿ](TIMEX:tonight) ಮತ್ತೆ ಹೊಡೀತೀನಿ ಅಂತ {RESP} ಹೇಳಿದ್ದಾರೆ, ಮನೆಯಲ್ಲಿ ಇರೋಕೆ ಭಯ ಆಗ್ತಿದೆ."
+          kn-en_latn: "[Ivattu raatri](TIMEX:tonight) matte hoditini antha {RESP} heliddare, maneyalli iroke bhaya aagtide."
+          kn-en_mixed: "[Tonight](TIMEX:tonight) ಮತ್ತೆ ಹೊಡೀತೀನಿ ಅಂತ {RESP} ಹೇಳಿದ್ದಾರೆ, house ಅಲ್ಲಿ ಇರೋಕೆ scared ಆಗ್ತಿದೆ."
+          hi: "{RESP.erg} कहा है कि [आज रात](TIMEX:tonight) फिर मारेंगे, मुझे घर में रहने से डर लग रहा है।"
+          hi-en_latn: "{RESP.erg} kaha hai ki [aaj raat](TIMEX:tonight) phir maarenge, mujhe ghar mein rehne se darr lag raha hai."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "for the criminal cruelty provision: incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "PWDV:3", title_hint: Definition of domestic violence}
+      - {provision_id: "PWDV:12", title_hint: Application to Magistrate}
+      - {provision_id: "PWDV:18", title_hint: Protection orders}
+      - {provision_id: "PWDV:19", title_hint: Residence orders}
+      - {provision_id: "BNS:85", when: {law_regime: [new]}, title_hint: Husband or relative of husband of a woman subjecting her to cruelty}
+      - {provision_id: "IPC:498A", when: {law_regime: [old]}, title_hint: Husband or relative of husband of a woman subjecting her to cruelty}
+    limitation_notes: No limitation for a PWDV application; limitation for cognizance of the criminal offence depends on punishment. TO_VERIFY.
+    confusable_with: [fam.dowry_harassment, crim.hurt_assault]
+    co_occurs_with: [fam.dowry_harassment, fam.maintenance]
+
+  # ------------------------------------------------------ dowry harassment
+  - issue_id: fam.dowry_harassment
+    domain: family
+    title: {en: Dowry harassment, kn: ವರದಕ್ಷಿಣೆ ಕಿರುಕುಳ, hi: दहेज उत्पीड़न}
+    plain_summary:
+      en: Demanding dowry, or harassing a married woman to get money or property, is an offence.
+      kn: ವರದಕ್ಷಿಣೆ ಕೇಳುವುದು, ಅಥವಾ ದುಡ್ಡು-ಆಸ್ತಿಗಾಗಿ ಮದುವೆಯಾದ ಮಹಿಳೆಗೆ ಕಿರುಕುಳ ಕೊಡುವುದು ಅಪರಾಧ.
+      hi: दहेज माँगना, या पैसे-संपत्ति के लिए शादीशुदा महिला को परेशान करना अपराध है।
+    risk_level: high
+    default_triage: lawyer
+    speaker_genders: [female]
+    cast:
+      - {slot: RESP, role: respondent, nouns: [spouse]}
+      - {slot: RESP2, role: respondent, nouns: [mother_in_law], genders: [female]}
+    value_slots: {AMOUNT: [large]}
+    setup:
+      en: "{RESP} and {RESP2} are troubling me a lot."
+      kn: "{RESP} ಮತ್ತು {RESP2} ನನಗೆ ತುಂಬಾ ಕಾಟ ಕೊಡ್ತಿದ್ದಾರೆ."
+      kn-en_latn: "{RESP} mattu {RESP2} nange tumba kaata kodtiddare."
+      kn-en_mixed: "{RESP} and {RESP2} ನನಗೆ ತುಂಬಾ trouble ಕೊಡ್ತಿದ್ದಾರೆ."
+      hi: "{RESP} और {RESP2} मुझे बहुत परेशान कर रहे हैं।"
+      hi-en_latn: "{RESP} aur {RESP2} mujhe bahut pareshaan kar rahe hain."
+    elements:
+      - element_id: dowry_given
+        critical: false
+        order: 1
+        description: Dowry was given at the time of marriage.
+        event_type: dowry_given
+        question:
+          en: Was anything given by your family at the time of marriage — gold, cash, gifts?
+          kn: ಮದುವೆ ಟೈಮಲ್ಲಿ ನಿಮ್ಮ ಮನೆಯವರು ಏನಾದರೂ ಕೊಟ್ಟಿದ್ದರಾ — ಚಿನ್ನ, ದುಡ್ಡು, ಉಡುಗೊರೆ?
+          hi: क्या शादी के समय आपके घरवालों ने कुछ दिया था — सोना, पैसा, तोहफ़े?
+        proposition:
+          satisfied: The speaker's family gave gold and cash at the marriage.
+          contradicted: The speaker's family gave nothing at the marriage.
+        satisfied:
+          en: At the time of marriage my family [gave](TRIG) gold and cash.
+          kn: ಮದುವೆ ಟೈಮಲ್ಲಿ ನಮ್ಮ ಮನೆಯವರು ಚಿನ್ನ ಮತ್ತು ದುಡ್ಡು [ಕೊಟ್ಟಿದ್ದರು](TRIG).
+          kn-en_latn: Maduve timealli namma maneyavru chinna mattu duddu [kottiddru](TRIG).
+          kn-en_mixed: Marriage time ಅಲ್ಲಿ ನಮ್ಮ family gold and cash [ಕೊಟ್ಟಿದ್ರು](TRIG).
+          hi: शादी के समय मेरे घरवालों ने सोना और पैसे [दिए](TRIG) थे।
+          hi-en_latn: Shaadi ke time mere gharwalon ne sona aur paise [diye](TRIG) the.
+        contradicted:
+          en: My family did [not](NEG) [give](TRIG) anything at the marriage.
+          kn: ಮದುವೆಯಲ್ಲಿ ನಮ್ಮ ಮನೆಯವರು ಏನೂ [ಕೊಟ್ಟಿರಲಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Maduveyalli namma maneyavru enu [kottiralilla](TRIG,NEG).
+          kn-en_mixed: Marriage ಅಲ್ಲಿ ನಮ್ಮ family ಏನೂ [ಕೊಟ್ಟಿರಲಿಲ್ಲ](TRIG,NEG).
+          hi: शादी में मेरे घरवालों ने कुछ [नहीं](NEG) [दिया](TRIG) था।
+          hi-en_latn: Shaadi mein mere gharwalon ne kuch [nahi](NEG) [diya](TRIG) tha.
+      - element_id: dowry_demand
+        critical: true
+        order: 2
+        date_slot_required: true
+        description: The respondent demanded dowry (money / property) in connection with the marriage.
+        event_type: dowry_demand
+        args: {RESP2: agent}
+        question:
+          en: Has anyone in your husband's family asked for money, gold or property? When?
+          kn: ಗಂಡನ ಮನೆಯವರು ಯಾರಾದರೂ ದುಡ್ಡು, ಚಿನ್ನ ಅಥವಾ ಆಸ್ತಿ ಕೇಳಿದ್ದಾರಾ? ಯಾವಾಗ?
+          hi: क्या पति के परिवार में किसी ने पैसे, सोना या संपत्ति माँगी है? कब?
+        proposition:
+          satisfied: The mother-in-law demanded more money as dowry.
+          contradicted: Nobody has asked for dowry.
+        satisfied:
+          en: "{DATE} {RESP2} [demanded](TRIG) {AMOUNT} more as dowry."
+          kn: "{DATE} {RESP2} ಇನ್ನೂ {AMOUNT} ವರದಕ್ಷಿಣೆ [ಕೇಳಿದರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP2} innu {AMOUNT} varadakshine [kelidru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP2} ಇನ್ನೂ {AMOUNT} dowry [ಕೇಳಿದ್ರು](TRIG)."
+          hi: "{DATE} {RESP2.erg} दहेज में {AMOUNT} और [माँगे](TRIG)।"
+          hi-en_latn: "{DATE} {RESP2.erg} dahej mein {AMOUNT} aur [maange](TRIG)."
+        contradicted:
+          en: "[Nobody](NEG) has [asked](TRIG) us for any dowry."
+          kn: ಯಾರೂ ವರದಕ್ಷಿಣೆ [ಕೇಳಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Yaaru varadakshine [kelilla](TRIG,NEG).
+          kn-en_mixed: ಯಾರೂ dowry [ಕೇಳಿಲ್ಲ](TRIG,NEG).
+          hi: किसी ने दहेज [नहीं](NEG) [माँगा](TRIG)।
+          hi-en_latn: Kisi ne dahej [nahi](NEG) [maanga](TRIG).
+      - element_id: harassment
+        critical: true
+        order: 3
+        description: The user was harassed / subjected to cruelty.
+        event_type: harassment
+        args: {RESP: agent}
+        question:
+          en: What happened after the demand? Did they harass or hurt you?
+          kn: ಬೇಡಿಕೆ ಇಟ್ಟ ಮೇಲೆ ಏನಾಯಿತು? ನಿಮಗೆ ಕಿರುಕುಳ ಅಥವಾ ನೋವು ಕೊಟ್ಟರಾ?
+          hi: माँग के बाद क्या हुआ? क्या आपको परेशान किया या चोट पहुँचाई?
+        proposition:
+          satisfied: The husband locked the speaker in a room and abused her because the money was not paid.
+          contradicted: Nobody troubled the speaker about it.
+        satisfied:
+          en: Because we could [not](NEG) pay, {RESP} [locked](TRIG) me in a room and abused me.
+          kn: "ಕೊಡೋಕೆ [ಆಗಲಿಲ್ಲ](NEG) ಅಂತ {RESP} ನನ್ನನ್ನು ರೂಮಲ್ಲಿ [ಕೂಡಿ ಹಾಕಿ](TRIG) ಬೈದರು."
+          kn-en_latn: "Kodoke [aagalilla](NEG) antha {RESP} nannanna roomalli [koodi haaki](TRIG) baidru."
+          kn-en_mixed: "Pay ಮಾಡೋಕೆ [ಆಗಲಿಲ್ಲ](NEG) ಅಂತ {RESP} ನನ್ನನ್ನು room ಅಲ್ಲಿ [lock ಮಾಡಿ](TRIG) ಬೈದ್ರು."
+          hi: "पैसे [नहीं](NEG) दे पाने पर {RESP.erg} मुझे कमरे में [बंद कर दिया](TRIG) और गालियाँ दीं।"
+          hi-en_latn: "Paise [nahi](NEG) de paane par {RESP.erg} mujhe kamre mein [band kar diya](TRIG) aur gaaliyan di."
+        contradicted:
+          en: Even after that, [nobody](NEG) [troubled](TRIG) me about it.
+          kn: ಅದಾದ ಮೇಲೂ ಯಾರೂ ಅದರ ಬಗ್ಗೆ [ತೊಂದರೆ ಕೊಟ್ಟಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Adaada melu yaaru adara bagge [tondre kottilla](TRIG,NEG).
+          kn-en_mixed: ಅದಾದ ಮೇಲೂ ಯಾರೂ ಅದರ ಬಗ್ಗೆ [trouble ಕೊಟ್ಟಿಲ್ಲ](TRIG,NEG).
+          hi: उसके बाद भी किसी ने इस बात पर [परेशान](TRIG) [नहीं](NEG) किया।
+          hi-en_latn: Uske baad bhi kisi ne is baat par [pareshaan](TRIG) [nahi](NEG) kiya.
+      - element_id: linked_to_dowry
+        critical: true
+        may_be_unknown: true
+        order: 3
+        description: The harassment is connected to the dowry demand.
+        question:
+          en: Do you think the harassment is because of the money or dowry, or for some other reason?
+          kn: ಈ ಕಿರುಕುಳ ದುಡ್ಡು ಅಥವಾ ವರದಕ್ಷಿಣೆಗಾಗಿನಾ, ಅಥವಾ ಬೇರೆ ಕಾರಣಕ್ಕಾ?
+          hi: क्या यह उत्पीड़न पैसे या दहेज की वजह से है, या किसी और वजह से?
+        proposition:
+          satisfied: The husband troubles the speaker only because the dowry was not fully paid.
+          contradicted: The husband's anger has nothing to do with dowry.
+        satisfied:
+          en: "{RESP} troubles me only because the dowry was [not](NEG) fully paid."
+          kn: "ವರದಕ್ಷಿಣೆ ಪೂರ್ತಿ [ಕೊಟ್ಟಿಲ್ಲ](NEG) ಅಂತಾನೇ {RESP} ಕಾಟ ಕೊಡ್ತಾರೆ."
+          kn-en_latn: "Varadakshine poorti [kottilla](NEG) antaane {RESP} kaata kodtaare."
+          kn-en_mixed: "Dowry full [ಕೊಟ್ಟಿಲ್ಲ](NEG) ಅಂತಾನೇ {RESP} trouble ಕೊಡ್ತಾರೆ."
+          hi: "दहेज पूरा [नहीं](NEG) मिला, इसलिए {RESP} मुझे परेशान करते हैं।"
+          hi-en_latn: "Dahej poora [nahi](NEG) mila, isliye {RESP} mujhe pareshaan karte hain."
+        contradicted:
+          en: "{RESP} gets angry about other things; it has [nothing](NEG) to do with dowry."
+          kn: "{RESP} ಬೇರೆ ವಿಷಯಕ್ಕೆ ಸಿಟ್ಟಾಗ್ತಾರೆ, ವರದಕ್ಷಿಣೆಗೂ ಇದಕ್ಕೂ ಸಂಬಂಧ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP} bere vishayakke sittaagtaare, varadakshinegu idakku sambandha [illa](NEG)."
+          kn-en_mixed: "{RESP} other things ಗೆ angry ಆಗ್ತಾರೆ, dowry ಗೂ ಇದಕ್ಕೂ connection [ಇಲ್ಲ](NEG)."
+          hi: "{RESP} दूसरी बातों पर गुस्सा {g:RESP|m:होते|f:होती|n:होते} हैं, इसका दहेज से कोई लेना-देना [नहीं](NEG) है।"
+          hi-en_latn: "{RESP} doosri baaton par gussa {g:RESP|m:hote|f:hoti|n:hote} hain, iska dahej se koi lena-dena [nahi](NEG) hai."
+    evidence:
+      - evidence_id: demand_recording
+        evidence_type: call_recording
+        supports: [dowry_demand]
+        held:
+          en: I recorded the [phone call](EVD) in which {RESP2} asked for the money.
+          kn: "{RESP2} ದುಡ್ಡು ಕೇಳಿದ [ಫೋನ್ ಕಾಲ್ ರೆಕಾರ್ಡಿಂಗ್](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ."
+          kn-en_latn: "{RESP2} duddu kelida [phone call recording](EVD) nanna hatra ide."
+          kn-en_mixed: "{RESP2} money ಕೇಳಿದ [phone call recording](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ."
+          hi: "मेरे पास वो [कॉल रिकॉर्डिंग](EVD) है जिसमें {RESP2.erg} पैसे माँगे।"
+          hi-en_latn: "Mere paas woh [call recording](EVD) hai jismein {RESP2.erg} paise maange."
+        missing:
+          en: It was all said face to face, so I have [no](NEG) [recording](EVD).
+          kn: ಎಲ್ಲಾ ಮುಖಾಮುಖಿ ಹೇಳಿದ್ದು, [ರೆಕಾರ್ಡಿಂಗ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Ella mukhaamukhi heliddu, [recording](EVD) [illa](NEG).
+          kn-en_mixed: ಎಲ್ಲಾ face to face ಹೇಳಿದ್ದು, [recording](EVD) [ಇಲ್ಲ](NEG).
+          hi: सब आमने-सामने कहा गया, कोई [रिकॉर्डिंग](EVD) [नहीं](NEG) है।
+          hi-en_latn: Sab aamne-saamne kaha gaya, koi [recording](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: threat_to_life
+        template:
+          en: "{RESP2} said I will be burnt alive if the money does [not](NEG) come."
+          kn: "ದುಡ್ಡು [ಬರದಿದ್ರೆ](NEG) ಜೀವಂತ ಸುಡ್ತೀವಿ ಅಂತ {RESP2} ಹೇಳಿದ್ದಾರೆ."
+          kn-en_latn: "Duddu [baradidre](NEG) jeevanta sudtivi antha {RESP2} heliddare."
+          kn-en_mixed: "Money [ಬರದಿದ್ರೆ](NEG) alive ಸುಡ್ತೀವಿ ಅಂತ {RESP2} ಹೇಳಿದ್ದಾರೆ."
+          hi: "{RESP2.erg} कहा है कि पैसे [नहीं](NEG) आए तो मुझे ज़िंदा जला देंगे।"
+          hi-en_latn: "{RESP2.erg} kaha hai ki paise [nahi](NEG) aaye to mujhe zinda jala denge."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "DPA:3", title_hint: Penalty for giving or taking dowry}
+      - {provision_id: "DPA:4", title_hint: Penalty for demanding dowry}
+      - {provision_id: "BNS:85", when: {law_regime: [new]}, title_hint: Husband or relative of husband of a woman subjecting her to cruelty}
+      - {provision_id: "BNS:86", when: {law_regime: [new]}, title_hint: Cruelty defined}
+      - {provision_id: "IPC:498A", when: {law_regime: [old]}, title_hint: Husband or relative of husband of a woman subjecting her to cruelty}
+    limitation_notes: Limitation for cognizance depends on punishment; dowry-related offences may have special rules. TO_VERIFY.
+    confusable_with: [fam.domestic_violence]
+    co_occurs_with: [fam.domestic_violence, crim.police_refusal_fir]

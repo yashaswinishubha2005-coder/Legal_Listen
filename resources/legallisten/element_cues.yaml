@@ -1,0 +1,287 @@
+# How clients commonly state each legal element in their own words (offline understanding).
+# sat: cues meaning the element IS met; con: cues meaning it is NOT met.
+# A cue is a string (Latin: whole word; Kannada/Devanagari: start of a word, suffixes allowed)
+# or a list of strings that must ALL appear in the same sentence.
+# A sat cue in a sentence that also has a negation word (not, never, ಇಲ್ಲ, नहीं, nahi, illa …) counts as con,
+# unless the cue itself already contains the negation. TO_VERIFY by native speakers.
+
+crim.hurt_assault|act_of_force:
+  sat: [hit, hits, beat, beaten, attacked, attack, assaulted, slapped, punched, kicked, pushed, stabbed, "iron rod", "with a stick", "with a rod", ಹೊಡೆದ, ಹೊಡೆದರು, ಹೊಡೆದ್ರು, ಹೊಡೀತಾ, ಹೊಡ್ದ, ಹಲ್ಲೆ, ತಳ್ಳಿ, ಒದ್ದ, ಕಪಾಳ, मारा, मारी, पीटा, पीट, थप्पड़, धक्का, हमला, लाठी, डंडे, maara, maari, peeta, thappad, hamla, "hode*", "hodd*", "maar*", "peet*", tallidru]
+  con: ["only shouted", "did not hit", "didn't hit", "never hit", "never touched", ಹೊಡೆದಿಲ್ಲ, ಹೊಡೆಯಲಿಲ್ಲ, "मारा नहीं", "नहीं मारा", "maara nahi", "nahi maara"]
+crim.hurt_assault|injury_caused:
+  sat: [injury, injured, fractured, fracture, bleeding, blood, cut, wound, swelling, bruise, bruises, stitches, "hospital", ಗಾಯ, ರಕ್ತ, ಮುರಿ, ಊತ, ಆಸ್ಪತ್ರೆ, चोट, खून, घाव, सूजन, फ्रैक्चर, टूट, अस्पताल, chot, khoon, gaaya, raktha]
+  con: ["no injury", "not injured", "wasn't injured", "no injuries", ಗಾಯ ಆಗಿಲ್ಲ, "चोट नहीं", "chot nahi"]
+crim.hurt_assault|intentional:
+  sat: ["on purpose", deliberately, intentionally, "came to attack", "planned", ಬೇಕಂತಲೇ, ಉದ್ದೇಶಪೂರ್ವಕ, जानबूझकर, "jaan boojh", "jaanbujhkar"]
+  con: [accident, accidentally, "by mistake", ಆಕಸ್ಮಿಕ, ಗೊತ್ತಿಲ್ಲದೆ, गलती से, ग़लती से, हादसा, "galti se"]
+complaint_filed: &complaint
+  sat: [["police", "complaint"], ["police", "fir"], "gave a complaint", "filed a complaint", "lodged", [ಪೊಲೀಸ್, ದೂರು], [ಠಾಣೆ, ದೂರು], [पुलिस, शिकायत], [थाने, शिकायत], [थाना, शिकायत], "fir darj", ["police", "complaint di"]]
+  con: ["not gone to the police", "not yet gone to the police", "haven't gone to the police", "not complained", ಪೊಲೀಸ್‌ಗೆ ಹೋಗಿಲ್ಲ, "पुलिस के पास नहीं", "police ke paas nahi"]
+crim.hurt_assault|complaint_filed: *complaint
+crim.criminal_intimidation|complaint_filed: *complaint
+crim.theft|complaint_filed: *complaint
+crim.cheating|complaint_filed: *complaint
+
+crim.criminal_intimidation|threat_made:
+  sat: [threat, threatened, threatening, "will kill", "kill me", "break my", "see you", "finish you", "teach you a lesson", ಬೆದರಿಕೆ, ಬೆದರಿಸ, ಸಾಯಿಸ್ತೀನಿ, ಕೊಲ್ತೀನಿ, ಮುರೀತೀನಿ, धमकी, धमका, "जान से मार", "मार दूँगा", "मार देंगे", तोड़ दूँगा, dhamki, dhamkaya, "maar dunga", "jaan se"]
+  con: ["no threat", "didn't threaten", "did not threaten", "never threatened", ಬೆದರಿಕೆ ಹಾಕಿಲ್ಲ, "धमकी नहीं", "dhamki nahi"]
+crim.criminal_intimidation|intent_to_alarm:
+  sat: [scare, frighten, "to make me", "so that i", "unless i", "if i don't", "otherwise", ಹೆದರಿಸ, ಇಲ್ಲದಿದ್ರೆ, ಕೊಡದಿದ್ರೆ, डराने, वरना, "nahi to", "warna", "illandre"]
+  con: [joke, joking, "for fun", ತಮಾಷೆ, मज़ाक, mazaak]
+crim.criminal_intimidation|repeated_threats:
+  sat: ["many times", again, repeatedly, "every day", "several times", ಮತ್ತೆ, ಪದೇ ಪದೇ, ಹಲವು ಸಲ, फिर से, बार-बार, कई बार, "baar baar", "phir se"]
+  con: ["only once", "just once", ಒಂದೇ ಸಲ, एक ही बार, "ek hi baar"]
+
+crim.theft|property_taken:
+  sat: [stole, stolen, theft, snatched, "took my", missing, "broke into", ಕದ್ದ, ಕಳ್ಳತನ, ಕಳುವು, ಕದ್ಕೊಂಡು, ಕಿತ್ತು, चोरी, चुरा, छीन, गायब, chori, chura, "kadd*", "kadid*", "chura*"]
+  con: ["found it", "misplaced", "kept it somewhere", ಸಿಕ್ತು, ಎಲ್ಲೋ ಇಟ್ಟಿದ್ದೆ, मिल गया, "mil gaya"]
+crim.theft|without_consent:
+  sat: ["without asking", "without permission", "without my", "never allowed", "did not allow", ಕೇಳದೆ, ಅನುಮತಿ ಇಲ್ಲದೆ, बिना पूछे, बिना इजाज़त, "bina pooche", yaaro, someone, "unknown person", ಯಾರೋ, किसी ने]
+  con: ["i lent", "i gave it", ನಾನೇ ಕೊಟ್ಟಿದ್ದೆ, "मैंने खुद दिया", "maine diya tha"]
+crim.theft|dishonest_intention:
+  sat: ["not returned", "has not returned", "ran away", "sold it", ವಾಪಸ್ ಕೊಟ್ಟಿಲ್ಲ, ಓಡಿ, वापस नहीं, भाग गया, "wapas nahi"]
+  con: ["gave it back", returned it, ವಾಪಸ್ ಕೊಟ್ಟರು, वापस कर दिया, "wapas kar diya"]
+
+crim.cheating|deception:
+  sat: [promised, promise, "false promise", "lied", "pretended", fake, "job", "visa", "double the money", ಮಾತು ಕೊಟ್ಟ, ಸುಳ್ಳು, ನಂಬಿಸಿ, वादा, झूठ, नौकरी दिलाने, "vaada", "jhooth", "naukri"]
+  con: ["business loss", "honest deal", ಲಾಸ್ ಆದ, घाटा, "ghaata"]
+crim.cheating|property_delivered:
+  sat: [paid, "gave him", "gave her", "gave them", transferred, ಕೊಟ್ಟೆ, ಕೊಟ್ಟಿದ್ದೆ, ಹಾಕಿದೆ, ಕಳಿಸಿದೆ, दिए, दे दिए, भेजे, "de diye", "diye the", kotte]
+  con: ["not paid", "haven't paid", "didn't pay", ಕೊಟ್ಟಿಲ್ಲ, "नहीं दिए", "nahi diye"]
+crim.cheating|dishonest_intent:
+  sat: ["not answering", "stopped answering", "switched off", "absconded", disappeared, "no job", "blocked me", ಫೋನ್ ಎತ್ತ, ಸ್ವಿಚ್ ಆಫ್, ಕಾಣೆ, फ़ोन नहीं उठा, फोन नहीं उठा, गायब, "phone nahi utha", "switch off"]
+  con: ["returned part", "still in touch", ಸ್ವಲ್ಪ ವಾಪಸ್, कुछ पैसे लौटा]
+
+crim.police_refusal_fir|cognizable_offence_reported:
+  sat: [["police", "report"], ["police", "complain"], ["station", "complain"], [ಪೊಲೀಸ್, ದೂರು], [ಠಾಣೆ, ದೂರು], [ಠಾಣೆಗೆ, ಹೋದ], [पुलिस, शिकायत], [थाने, गया], [थाने, गई], "police station gaya", "police station ge hode"]
+  con: ["small money dispute", "civil matter"]
+crim.police_refusal_fir|refusal_to_register:
+  sat: ["refused to register", "refused to write", "not registering", "did not register", "didn't register", "not taking my complaint", "sent me back", "sent me away", "refused to file", ದೂರು ತಗೊಳ್ಳಲಿಲ್ಲ, ದೂರು ತೆಗೆದುಕೊಳ್ಳಲಿಲ್ಲ, ಬರೆಯಲಿಲ್ಲ, ವಾಪಸ್ ಕಳಿಸಿದರು, ನಿರಾಕರಿಸ, रिपोर्ट नहीं लिखी, एफ़आईआर नहीं, "दर्ज नहीं", लौटा दिया, "mana kar diya", "report nahi likhi", "dooru tagolalilla"]
+  con: ["registered my fir", "gave me fir copy", ಎಫ್‌ಐಆರ್ ಮಾಡಿದರು, "एफ़आईआर दर्ज कर ली", "fir darj ho gayi"]
+crim.police_refusal_fir|escalated_to_sp:
+  sat: [" sp ", "superintendent", "commissioner", "sp office", ಎಸ್‌ಪಿ, ಆಯುಕ್ತ, एसपी, पुलिस अधीक्षक, कमिश्नर]
+  con: []
+
+fam.divorce|valid_marriage:
+  sat: [married, marriage, wedding, husband, wife, ಮದುವೆ, ಗಂಡ, ಹೆಂಡತಿ, ಪತ್ನಿ, शादी, विवाह, पति, पत्नी, shaadi, "pati", "patni", maduve, ganda]
+  con: ["not married", "live-in", ಮದುವೆ ಆಗಿಲ್ಲ, "शादी नहीं", "shaadi nahi"]
+fam.divorce|ground_cruelty:
+  sat: [cruel, cruelty, abuse, abuses, insult, humiliate, torture, beats, ಕ್ರೂರ, ಹಿಂಸೆ, ಅವಮಾನ, ಕಿರುಕುಳ, क्रूर, अपमान, गाली, मारपीट, परेशान, "gaali", "pareshaan"]
+  con: ["treats me well", "no cruelty", "just different opinions", ಚೆನ್ನಾಗಿ ನೋಡ್ಕೊಳ್ತಾರೆ, "अच्छा बर्ताव"]
+fam.divorce|living_separately:
+  sat: [separation, separated, "living separately", "left the house", "left me", "living apart", ಬೇರೆ ಇದ್ದೀವಿ, ಬೇರೆಯಾಗಿ, ಮನೆ ಬಿಟ್ಟು, अलग रह, घर छोड़, "alag reh", "chhod ke"]
+  con: ["living together", "same house", ಒಟ್ಟಿಗೆ ಇದ್ದೀವಿ, "साथ रहते", "saath rehte"]
+fam.divorce|mutual_consent:
+  sat: ["both agree", "mutual", "also wants a divorce", ಇಬ್ಬರೂ ಒಪ್ಪಿ, दोनों राज़ी, "aapsi sehmati", आपसी सहमति]
+  con: ["does not want a divorce", "refuses divorce", "won't give divorce", ಡಿವೋರ್ಸ್ ಕೊಡಲ್ಲ, तलाक नहीं देना, "talaak nahi"]
+
+fam.maintenance|neglect_or_refusal:
+  sat: ["not giving money", "stopped giving", "no money", "doesn't give", "does not give", "not paying", "no expenses", ದುಡ್ಡು ಕೊಡ್ತಿಲ್ಲ, ಖರ್ಚಿಗೆ ಕೊಡ್ತಿಲ್ಲ, ಕೊಡೋದು ನಿಲ್ಲಿಸ, ಹಣ ಕೊಡ್ತಿಲ್ಲ, खर्चा नहीं, पैसे नहीं देते, "पैसा नहीं देते", "खर्चा नहीं देते", "kharcha nahi", "paise nahi dete"]
+  con: ["sends me money", "gives money every month", ಪ್ರತಿ ತಿಂಗಳು ದುಡ್ಡು ಕಳಿಸ್ತಾರೆ, "हर महीने पैसे भेजते", "har mahine paise"]
+fam.maintenance|unable_to_maintain_self:
+  sat: ["no job", "no income", "not working", "no earning", housewife, "depend on", ಕೆಲಸ ಇಲ್ಲ, ಆದಾಯ ಇಲ್ಲ, ಸಂಪಾದನೆ ಇಲ್ಲ, "नौकरी नहीं", "कमाई नहीं", "आमदनी नहीं", "naukri nahi", "kamai nahi", "kelsa illa"]
+  con: ["i have a good job", "i earn well", "government job", ಸರ್ಕಾರಿ ಕೆಲಸ ಇದೆ, "मेरी अच्छी नौकरी", "acchi naukri hai"]
+fam.maintenance|respondent_has_means:
+  sat: ["earns well", "good salary", "has a shop", business, "government job", "he earns", ಸಂಪಾದಿಸ್ತಾರೆ, ಅಂಗಡಿ ಇದೆ, ಸಂಬಳ, अच्छा कमाते, दुकान है, तनख्वाह, "achha kamate", "dukaan"]
+  con: ["no work", "earns nothing", "unemployed", ಕೆಲಸ ಇಲ್ಲ ಅವರಿಗೆ, "कोई काम नहीं", "kaam nahi karte"]
+
+fam.custody|child_is_minor:
+  sat: [year-old, "years old", "small child", baby, school, ವರ್ಷದ ಮಗು, ಚಿಕ್ಕ, ಶಾಲೆ, ಸ್ಕೂಲ್, साल का, साल की, छोटा, छोटी, स्कूल, "saal ka", "saal ki", "chhota"]
+  con: ["is an adult", "above 18", "18 years", ಅಪ್ರಾಪ್ತ ಅಲ್ಲ, "बालिग", "baalig"]
+fam.custody|child_with_respondent:
+  sat: ["took our", "took my son", "took my daughter", "took the child", "not letting me see", "won't let me meet", "keeps the child", ಕರೆದುಕೊಂಡು ಹೋದ, ಕರ್ಕೊಂಡು ಹೋದ, ಭೇಟಿ ಮಾಡೋಕೆ ಬಿಡ್ತಿಲ್ಲ, ಇಟ್ಟುಕೊಂಡಿದ್ದಾರೆ, ले गए, ले गई, रख लिया, मिलने नहीं, "le gaye", "milne nahi", "rakh liya"]
+  con: ["child is with me", "living with me", ನನ್ನ ಜೊತೆ ಇದೆ, "मेरे पास है", "mere paas hai"]
+fam.custody|applicant_can_care:
+  sat: ["i can look after", "i can take care", "stable job", "i have a job", ನೋಡ್ಕೊಳ್ಳಬಲ್ಲೆ, ಸ್ಥಿರ ಕೆಲಸ, "देखभाल कर सकता", "देखभाल कर सकती", "dekhbhaal"]
+  con: ["cannot look after", "no place to stay", ನೋಡ್ಕೊಳ್ಳೋಕೆ ಆಗಲ್ಲ, "देखभाल नहीं कर"]
+
+fam.domestic_violence|abuse_occurred:
+  sat: [beats, beat, hits, slapped, abuse, abuses, torture, "pulled my hair", "thappad", "maara", ಹೊಡೀತಾರೆ, ಹೊಡೆದರು, ಹಿಂಸೆ, ಕಿರುಕುಳ, ಬೈತಾರೆ, पीटते, मारते, मारा, थप्पड़, गाली, हिंसा, "peet", "maarte", "gaali"]
+  con: ["never hit", "only shouts", ಎಂದೂ ಹೊಡೆದಿಲ್ಲ, "कभी मारा नहीं", "kabhi maara nahi"]
+fam.domestic_violence|abuse_by_relative:
+  sat: [mother-in-law, father-in-law, "in-laws", sister-in-law, ಅತ್ತೆ, ಮಾವ, ನಾದಿನಿ, ಮೈದುನ, सास, ससुर, ननद, देवर, saas, sasur, nanad, atte]
+  con: ["in-laws are good", "treat me well", ಅತ್ತೆ ಚೆನ್ನಾಗಿ, "सास अच्छी", "saas acchi"]
+fam.domestic_violence|shared_household:
+  sat: ["their house", "his house", "in-laws' house", "we live with", "same house", ಅವರ ಮನೆ, ಅತ್ತೆ ಮನೆ, ಒಟ್ಟಿಗೆ ಇದ್ದೀವಿ, ससुराल, उनके घर, "sasural", "saath rehte"]
+  con: ["rented house", "my own house", "living separately", ಬಾಡಿಗೆ ಮನೆ, किराए, "kiraye"]
+
+fam.dowry_harassment|dowry_given:
+  sat: ["gave gold", "gave cash", "at the time of marriage", "at the wedding", ಮದುವೆ ಸಮಯದಲ್ಲಿ, ಚಿನ್ನ ಕೊಟ್ಟ, शादी के समय, शादी में, "shaadi mein diya"]
+  con: ["nothing was given", ಏನೂ ಕೊಟ್ಟಿಲ್ಲ, "कुछ नहीं दिया"]
+fam.dowry_harassment|dowry_demand:
+  sat: [dowry, "more money", "asking for money", "demand", ವರದಕ್ಷಿಣೆ, ತವರಿನಿಂದ, ತರೋಕೆ, दहेज, मायके से, "और पैसे", "माँग", dahej, varadakshine, "maayke se"]
+  con: ["no dowry", "nobody asked", ವರದಕ್ಷಿಣೆ ಕೇಳಿಲ್ಲ, "दहेज नहीं माँगा", "dahej nahi"]
+fam.dowry_harassment|harassment:
+  sat: [taunt, taunts, harass, harassing, torture, abuse, beat, "locked me", "slapped", ಹಂಗಿಸ, ಕಿರುಕುಳ, ಹಿಂಸೆ, ಹೊಡೀತಾರೆ, ताने, परेशान, मारते, पीटते, थप्पड़, "taane", "pareshaan", "maarte", "thappad"]
+  con: ["nobody troubled", "no harassment", ಯಾರೂ ತೊಂದರೆ ಕೊಟ್ಟಿಲ್ಲ, "किसी ने परेशान नहीं"]
+fam.dowry_harassment|linked_to_dowry:
+  sat: [["dowry", "because"], ["dowry", "for"], [ವರದಕ್ಷಿಣೆ, ಗೋಸ್ಕರ], [ವರದಕ್ಷಿಣೆ, ಅಂತ], [दहेज, लिए], [दहेज, वजह], ["dahej", "liye"], ["dahej", "ke liye"]]
+  con: ["nothing to do with dowry", "not about dowry"]
+
+prop.inheritance_partition|ancestral_property:
+  sat: [ancestral, "family land", "family property", "for generations", "inherited", "grandfather", ಪಿತ್ರಾರ್ಜಿತ, ಕುಟುಂಬದ ಜಮೀನು, ಮನೆತನದ, ತಾತ, ಪೂರ್ವಜ, पुश्तैनी, पैतृक, खानदानी, दादा, "pushtaini", "paitrik"]
+  con: ["bought it with his own money", "self-acquired", "he bought it himself", ಸ್ವಂತ ದುಡ್ಡಲ್ಲಿ ಕೊಂಡ, "अपने पैसों से खरीदी"]
+prop.inheritance_partition|claimant_is_heir:
+  sat: ["my father", "father passed", "father died", heir, "my share", "son of", "daughter of", ಅಪ್ಪ, ತಂದೆ, ವಾರಸು, ನನ್ನ ಪಾಲು, पिता, पिताजी, वारिस, मेरा हिस्सा, "papa", "appa"]
+  con: ["adopted into another family", "gave up my share", ದತ್ತು, गोद, "relinquished"]
+prop.inheritance_partition|share_denied:
+  sat: ["refused to give", "says the land is only his", "says it is his", "not giving my share", "denied", ಪಾಲು ಕೊಡ್ತಿಲ್ಲ, ಕೊಡೋಕೆ ನಿರಾಕರಿಸ, ತಮ್ಮದು ಅಂತ, हिस्सा नहीं दे, मना कर, "सिर्फ़ उसकी", "hissa nahi"]
+  con: ["ready to divide", "agreed to divide", ಹಂಚೋಕೆ ಒಪ್ಪಿ, "बाँटने को तैयार"]
+
+prop.encroachment|claimant_title:
+  sat: ["in my name", "my land", "my plot", "my site", "our land", "registered", "sale deed", ನನ್ನ ಹೆಸರಲ್ಲಿ, ನಮ್ಮ ಜಾಗ, ನಮ್ಮ ಜಮೀನು, ನನ್ನ ಸೈಟ್, मेरे नाम, मेरी ज़मीन, मेरा प्लॉट, हमारी ज़मीन, "mere naam"]
+  con: ["not in my name", "no papers", ನನ್ನ ಹೆಸರಲ್ಲಿ ಇಲ್ಲ, "मेरे नाम नहीं"]
+prop.encroachment|unauthorised_occupation:
+  sat: ["built a wall", "constructed", occupied, encroached, "inside my", "on my land", "grabbed", ಗೋಡೆ ಕಟ್ಟಿ, ಒತ್ತುವರಿ, ಆಕ್ರಮಿಸ, ಒಳಗೆ, कब्ज़ा, दीवार बना, अतिक्रमण, "kabza", "deewar"]
+  con: ["on their own land", "not on my land", ಅವರದೇ ಜಾಗ, "अपनी ज़मीन पर"]
+prop.encroachment|survey_confirms:
+  sat: ["survey shows", "survey sketch", "measured", ಸರ್ವೇ, ಅಳತೆ, सर्वे, नाप, नपाई]
+  con: ["survey shows it is theirs", "not on my side"]
+
+prop.coheir_sale_without_consent|claimant_has_share:
+  sat: ["our family land", "family land", "my share", "joint", "my father", "we are heirs", ನಮ್ಮ ಕುಟುಂಬದ, ನನ್ನ ಪಾಲು, ನಮ್ಮ ಜಮೀನು, ಅಪ್ಪ, हमारी, पुश्तैनी, मेरा हिस्सा, पिता, "hamari zameen"]
+  con: ["gave up my share", "released my share", ಪಾಲು ಬಿಟ್ಟುಕೊಟ್ಟ, "हिस्सा छोड़"]
+prop.coheir_sale_without_consent|transfer_by_coowner:
+  sat: ["sold the land", "sold our land", "already sold", "registered the sale", "sold it", ಮಾರಿಬಿಟ್ಟ, ಮಾರಿದ್ದಾರೆ, ಮಾರಿದರು, ರಿಜಿಸ್ಟರ್ ಮಾಡಿಸಿ, बेच दी, बेच दिया, "बेच चुके", "bech di", "bech diya", "maaridru"]
+  con: ["trying to sell", "planning to sell", "going to sell", "wants to sell", "threatening to sell", "not sold yet", "not yet sold", "not been sold", "only threatening", "only threatened", "only planning", ಇನ್ನೂ ಮಾರಿಲ್ಲ, "अभी नहीं बेची", "अभी बिकी नहीं", "abhi nahi bechi", ಮಾರೋಕೆ, ಮಾರೋದಕ್ಕೆ, ಮಾರ್ತೀನಿ, "बेचने की कोशिश", "बेचने वाले", "बेचना चाहते", "bechne ki", "maaroke"]
+prop.coheir_sale_without_consent|no_consent:
+  sat: ["without asking", "without my consent", "without our consent", "never asked", "never signed", "did not sign", "didn't agree", ಕೇಳದೆ, ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ, ಸಹಿ ಹಾಕಿಲ್ಲ, बिना पूछे, बिना सहमति, दस्तख़त नहीं, "bina pooche", "keladhe"]
+  con: ["i signed", "i agreed", ನಾನು ಸಹಿ ಹಾಕಿದ್ದೆ, "मैंने दस्तख़त किए"]
+
+prop.boundary_dispute|boundary_marks_moved:
+  sat: ["moved the boundary", "boundary stones", "shifted the fence", "moved the fence", ಗಡಿ ಕಲ್ಲು, ಗಡಿ ಸರಿಸ, ಬೇಲಿ ಸರಿಸ, ಕಲ್ಲುಗಳನ್ನು ಸರಿಸಿ, मेड़, "सीमा के पत्थर", "पत्थर खिसका", "boundary stone"]
+  con: ["boundary is the same", "nobody moved", ಯಾರೂ ಸರಿಸಿಲ್ಲ]
+prop.boundary_dispute|land_identified_in_records:
+  sat: ["survey number", "rtc", "pahani", "records show", "extent", ಸರ್ವೇ ನಂಬರ್, ಪಹಣಿ, ದಾಖಲೆ, सर्वे नंबर, खसरा, खतौनी, रिकॉर्ड]
+  con: ["no records", "not in the records", ದಾಖಲೆ ಇಲ್ಲ, "रिकॉर्ड नहीं"]
+prop.boundary_dispute|respondent_claims_strip:
+  sat: ["claims it is his", "says it is theirs", "claims the strip", "says the land is his", ತಮ್ಮದು ಅಂತ, ಅವರದು ಅಂತ, "अपना बता", "उनका है", "apna bata"]
+  con: ["accepts it is mine", ನಮ್ಮದು ಅಂತ ಒಪ್ಪ]
+
+prop.forged_documents|false_document_made:
+  sat: ["fake will", "fake deed", forged, "fake document", "false document", "fake papers", ನಕಲಿ ವಿಲ್, ನಕಲಿ ದಾಖಲೆ, ಖೋಟಾ, नकली वसीयत, जाली, "नकली कागज़", "fake vasiyat", "nakli"]
+  con: ["will is genuine", "document is genuine", ನಿಜವಾದ ವಿಲ್, "असली है"]
+prop.forged_documents|signature_forged:
+  sat: ["fake signature", "forged signature", "signature is not", "forged his signature", "thumb impression", ನಕಲಿ ಸಹಿ, ಸಹಿ ನಕಲಿ, नकली दस्तख़त, नकली हस्ताक्षर, "दस्तख़त करके", "jaali dastakhat", "nakli sign"]
+  con: ["signature looks genuine", "signature is genuine", ಸಹಿ ನಿಜ, "दस्तख़त असली"]
+prop.forged_documents|used_as_genuine:
+  sat: ["changed the khata", "in his name", "in her name", "transferred the", "mutation", "used it to", ಖಾತಾ ಬದಲಾಯಿಸ, ತನ್ನ ಹೆಸರಿಗೆ, ಹೆಸರಿಗೆ ಮಾಡಿಸಿ, अपने नाम करवा, नाम कर, दाखिल-खारिज, "apne naam"]
+  con: ["not used it", "not used anywhere", ಎಲ್ಲೂ ಬಳಸಿಲ್ಲ, "इस्तेमाल नहीं"]
+
+cyb.upi_payment_fraud|deceptive_request:
+  sat: ["pretending", "claiming to be", "said he was from", "said she was from", "from the bank", "customer care", "scan the qr", "qr code", "refund", "courier", ಬ್ಯಾಂಕ್‌ನವರು ಅಂತ, ಕ್ಯೂಆರ್, ನಾಟಕ, "बैंक से होने", "बहाना", "क्यूआर", "बनकर", "bankwala"]
+  con: ["i paid knowingly", "real shop"]
+cyb.upi_payment_fraud|money_debited:
+  sat: ["went from my account", "debited", "deducted", "money went", "lost", ಹೋಯ್ತು, ಕಟ್ ಆಯ್ತು, ಹಣ ಹೋಗಿದೆ, कट गए, कट गया, चले गए, "निकल गए", "kat gaye", "chale gaye", "hoytu"]
+  con: ["no money was debited", "money is safe", ಹಣ ಹೋಗಿಲ್ಲ, "पैसे नहीं कटे"]
+cyb.upi_payment_fraud|payee_traceable:
+  sat: ["upi id", "transaction id", "transaction number", "utr", "reference number", ಯುಪಿಐ ಐಡಿ, ಟ್ರಾನ್ಸಾಕ್ಷನ್, "यूपीआई आईडी", "ट्रांज़ैक्शन"]
+  con: ["no transaction id", "don't know where it went"]
+cyb.upi_payment_fraud|reported_to_cyber:
+  sat: ["1930", "cybercrime", "cyber police", "cyber cell", ಸೈಬರ್, साइबर]
+  con: ["not reported", "haven't reported"]
+
+cyb.phishing_account_takeover|phishing_message:
+  sat: [link, sms, "email", "message saying", kyc, "electricity", "will be blocked", ಲಿಂಕ್, ಎಸ್‌ಎಂಎಸ್, ಮೆಸೇಜ್, ಕೆವೈಸಿ, लिंक, एसएमएस, मैसेज, केवाईसी]
+  con: ["no message", "never clicked", ಯಾವ ಲಿಂಕ್ ಒತ್ತಿಲ್ಲ, "कोई लिंक नहीं"]
+cyb.phishing_account_takeover|credentials_entered:
+  sat: ["entered my", "typed my", "gave the otp", "shared the otp", password, "net banking", otp, ಪಾಸ್‌ವರ್ಡ್, ಒಟಿಪಿ, ಹಾಕಿದೆ, पासवर्ड, ओटीपी, "डाल दिया", "daal diya"]
+  con: ["never entered", "didn't enter", ಏನೂ ಹಾಕಿಲ್ಲ, "कुछ नहीं डाला"]
+cyb.phishing_account_takeover|unauthorised_access:
+  sat: ["logged into", "hacked", "changed my number", "changed the password", "account was taken", "took over", ಹ್ಯಾಕ್, ಲಾಗಿನ್, हैक, लॉगिन, "number badal"]
+  con: ["account is safe", "no one logged in"]
+cyb.phishing_account_takeover|money_lost:
+  sat: ["gone from my account", "money was transferred", "debited", "lost", "rupees are gone", ಹೋಯ್ತು, ಕಟ್ ಆಯ್ತು, कट गए, "निकल गए", "chale gaye"]
+  con: ["no money lost", "money is safe", ಹಣ ಹೋಗಿಲ್ಲ, "पैसा नहीं गया"]
+
+cyb.impersonation|fake_profile_created:
+  sat: ["fake profile", "fake account", "fake id", "with my name", "using my photos", "my photos", ನಕಲಿ ಪ್ರೊಫೈಲ್, ನಕಲಿ ಅಕೌಂಟ್, ನನ್ನ ಹೆಸರಲ್ಲಿ, नकली प्रोफ़ाइल, फ़ेक अकाउंट, "मेरे नाम से", "fake account"]
+  con: ["my own old account", ನನ್ನದೇ ಹಳೆ ಅಕೌಂಟ್]
+cyb.impersonation|used_to_deceive:
+  sat: ["asking my friends", "asked my friends", "asking for money", ದುಡ್ಡು ಕೇಳ್ತಿದ್ದಾರೆ, ಸ್ನೇಹಿತರ ಹತ್ತಿರ, दोस्तों से पैसे, "पैसे माँग", "paise maang"]
+  con: ["not contacted anyone", ಯಾರಿಗೂ ಮೆಸೇಜ್ ಬಂದಿಲ್ಲ]
+cyb.impersonation|reported_to_platform:
+  sat: ["reported it", "reported the profile", "reported to", ರಿಪೋರ್ಟ್ ಮಾಡಿದೆ, "रिपोर्ट की", "report kiya"]
+  con: ["not reported", "haven't reported", ರಿಪೋರ್ಟ್ ಮಾಡಿಲ್ಲ, "रिपोर्ट नहीं"]
+
+cyb.cyberstalking|repeated_contact:
+  sat: ["every day", daily, "keeps messaging", "again and again", "new numbers", "new account", "different numbers", ದಿನಾ, ಪದೇ ಪದೇ, ಹೊಸ ಅಕೌಂಟ್, ಹೊಸ ನಂಬರ್, रोज़, बार-बार, "नए नंबर", "नया अकाउंट", "अलग-अलग नंबर", "roz", "dina"]
+  con: ["only once", ಒಂದೇ ಸಲ, "एक ही बार"]
+cyb.cyberstalking|despite_disinterest:
+  sat: [blocked, "told him to stop", "told them to stop", "asked him to stop", "still", "even after", ಬ್ಲಾಕ್, ಬೇಡ ಅಂದ, ಆದರೂ, ಬಿಡ್ತಿಲ್ಲ, ब्लॉक, "मना किया", "फिर भी", "block kiya", "phir bhi", "bidtilla"]
+  con: ["i reply to him", "we are friends"]
+cyb.cyberstalking|monitoring_online:
+  sat: ["tracking", "knows where i", "my location", "follows me", "comments on every", ಲೊಕೇಷನ್, ಹಿಂಬಾಲಿಸ, ಎಲ್ಲಿಗೆ ಹೋಗ್ತೀನಿ, पीछा, लोकेशन, "kahan jaati", "peecha"]
+  con: ["doesn't know where", "no tracking"]
+
+cyb.morphed_intimate_image|image_morphed:
+  sat: [morphed, morph, obscene, nude, "intimate", "private photos", "edited my photo", ಮಾರ್ಫ್, ಅಶ್ಲೀಲ, ಖಾಸಗಿ ಫೋಟೋ, मॉर्फ़, मॉर्फ, अश्लील, गंदी, "निजी तस्वीर"]
+  con: ["normal photo", "not obscene"]
+cyb.morphed_intimate_image|shared_with_others:
+  sat: ["sent it to", "shared", "posted", "uploaded", "sending it to", "will post", "viral", ಕಳಿಸಿ, ಹಾಕಿದ್ದಾನೆ, ವೈರಲ್, भेज, डाल, वायरल, "bhej", "post kar"]
+  con: ["not shared", "kept it with him", ಯಾರಿಗೂ ಕಳಿಸಿಲ್ಲ, "किसी को नहीं भेजा"]
+cyb.morphed_intimate_image|without_consent:
+  sat: ["without my consent", "never agreed", "without asking", "without permission", "someone", "ex-boyfriend", ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ, ಯಾರೋ, बिना सहमति, किसी ने, "bina poochhe"]
+  con: ["i agreed", "with my consent", ನಾನು ಒಪ್ಪಿದ್ದೆ]
+
+con.defective_product|consumer_purchase:
+  sat: [bought, purchased, "for home", "for my use", ತಗೊಂಡೆ, ಖರೀದಿ, ಕೊಂಡೆ, खरीदा, खरीदी, ली थी, "kharida", "tagonde"]
+  con: ["to resell", "for my shop to sell", ಮಾರೋಕೆ ತಗೊಂಡ, "बेचने के लिए खरीदा"]
+con.defective_product|defect_present:
+  sat: ["stopped working", defect, defective, broken, "not working", damaged, "gives shocks", ಕೆಲಸ ಮಾಡೋದು ನಿಲ್ಲಿಸ, ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ, ಹಾಳಾ, ದೋಷ, खराब, "बंद हो गया", "काम नहीं", "kharab", "band ho gaya"]
+  con: ["no defect", "working fine", "i used it wrongly", ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡ್ತಿದೆ, "ठीक चल रहा"]
+con.defective_product|manufacturing_defect:
+  sat: ["manufacturing defect", "service report", "company fault", ಮ್ಯಾನುಫ್ಯಾಕ್ಚರಿಂಗ್, "मैन्युफ़ैक्चरिंग", "कंपनी की गलती"]
+  con: ["it fell", "dropped it", "physical damage", ಕೆಳಗೆ ಬಿದ್ದ, गिर गया, "gir gaya"]
+con.defective_product|seller_refused_remedy:
+  sat: ["refused to repair", "refuses to repair", "refused to replace", "not replacing", "warranty does not cover", "refuses", ಬದಲಾಯಿಸ್ತಿಲ್ಲ, ರಿಪೇರಿ ಮಾಡ್ತಿಲ್ಲ, ನಿರಾಕರಿಸ, "मना कर", "बदलने से मना", "ठीक करने से मना", "mana kar"]
+  con: ["agreed to replace", "replaced it", ಬದಲಾಯಿಸಿ ಕೊಟ್ಟರು, "बदल दिया"]
+
+con.deficiency_in_service|paid_for_service:
+  sat: [paid, booked, subscribed, "plan", "premium", ಹಣ ಕೊಟ್ಟು, ಬುಕ್ ಮಾಡಿ, ದುಡ್ಡು ಕೊಟ್ಟು, पैसे देकर, बुक, "प्लान", "pay kiya"]
+  con: ["free service", ಉಚಿತ, "मुफ़्त"]
+con.deficiency_in_service|service_failure:
+  sat: ["not working", "lost my parcel", "lost the parcel", "delayed", "cancelled", "down for", "no service", "dead", ಕಳೆದು ಹಾಕಿ, ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ, ಬಂದ್, ಸರಿ ಇಲ್ಲ, बंद, "खो दिया", "नहीं पहुँचा", "band hai", "kharab"]
+  con: ["working fine", "service is ok", ಸರಿಯಾಗಿ ಇದೆ, "ठीक चल रहा"]
+con.deficiency_in_service|service_standard_promised:
+  sat: ["promised", "guaranteed", "within 48 hours", "speed", "delivery in", ಭರವಸೆ, ಗ್ಯಾರಂಟಿ, वादा, गारंटी, "vaada"]
+  con: ["no promise", "no guarantee"]
+con.deficiency_in_service|complained_no_resolution:
+  sat: ["complained", "complaint", "no response", "no reply", "nobody came", "not resolved", ದೂರು ಕೊಟ್ಟರೂ, ಉತ್ತರ ಇಲ್ಲ, ಯಾರೂ ಬಂದಿಲ್ಲ, शिकायत, "कोई जवाब नहीं", "कोई नहीं आया", "complaint ki"]
+  con: ["not complained yet", ದೂರು ಕೊಟ್ಟಿಲ್ಲ, "शिकायत नहीं की"]
+
+fin.unauthorized_bank_txn|txn_not_authorised:
+  sat: ["never made", "did not make", "didn't make", "not done by me", "unauthorised", "unauthorized", "i never", "from another city", ನಾನು ಮಾಡಿಲ್ಲ, ನನಗೆ ಗೊತ್ತಿಲ್ಲದೆ, मैंने नहीं किए, "मेरे बिना", "maine nahi kiya"]
+  con: ["i made them", "my son made", ನಾನೇ ಮಾಡಿದ್ದು, "मैंने ही किए"]
+fin.unauthorized_bank_txn|reported_to_bank:
+  sat: ["informed the bank", "told the bank", "called the bank", "complained to the bank", "blocked the card", ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ, ಬ್ಯಾಂಕ್‌ಗೆ ಕಾಲ್, कार्ड ब्लॉक, बैंक को बता, "bank ko bataya"]
+  con: ["not told the bank", "haven't informed", ಬ್ಯಾಂಕ್‌ಗೆ ಹೇಳಿಲ್ಲ, "बैंक को नहीं बताया"]
+fin.unauthorized_bank_txn|no_customer_negligence:
+  sat: ["never shared", "card is with me", "card was with me", "didn't share", "did not share", "no otp", ಯಾರಿಗೂ ಕೊಟ್ಟಿಲ್ಲ, ಕಾರ್ಡ್ ನನ್ನ ಹತ್ತಿರ, कार्ड मेरे पास, "किसी को नहीं बताया", "share nahi kiya"]
+  con: ["i shared the otp", "gave my pin", "told my otp", ಒಟಿಪಿ ಹೇಳಿದೆ, "ओटीपी बता दिया", "otp bata diya"]
+fin.unauthorized_bank_txn|bank_refused_reversal:
+  sat: ["bank refused", "bank is not returning", "bank says", "not refunded", ಬ್ಯಾಂಕ್ ನಿರಾಕರಿಸ, ವಾಪಸ್ ಹಾಕ್ತಿಲ್ಲ, बैंक ने मना, "वापस नहीं", "bank ne mana"]
+  con: ["bank returned", "bank reversed", ವಾಪಸ್ ಹಾಕಿದರು, "वापस कर दिए"]
+
+con.refund_refusal|paid:
+  sat: [paid, ordered, "bought online", "prepaid", ಆರ್ಡರ್, ದುಡ್ಡು ಕೊಟ್ಟೆ, ऑर्डर, मँगवाए, "मँगवाया", "order kiya"]
+  con: ["cash on delivery and not paid", "did not pay"]
+con.refund_refusal|return_eligible:
+  sat: ["return policy", "return window", "returnable", "within 7 days", "within seven days", "10 days", ರಿಟರ್ನ್ ನೀತಿ, ರಿಟರ್ನ್ ಮಾಡಬಹುದು, रिटर्न पॉलिसी, "वापस कर सकते"]
+  con: ["non-returnable", "no return", ರಿಟರ್ನ್ ಇಲ್ಲ, "वापसी नहीं"]
+con.refund_refusal|returned_in_time:
+  sat: [returned, "pickup was done", "picked up", "sent it back", "in time", ವಾಪಸ್ ಕೊಟ್ಟೆ, ಪಿಕಪ್, वापस कर दिए, "वापस कर दिया", पिकअप, "wapas kar diya"]
+  con: ["not returned", "still with me", ಇನ್ನೂ ನನ್ನ ಹತ್ತಿರ, "अभी मेरे पास"]
+con.refund_refusal|refund_refused:
+  sat: ["refusing to give my refund", "refused to refund", "refund not", "no refund", "not giving refund", ರಿಫಂಡ್ ಕೊಡ್ತಿಲ್ಲ, ರಿಫಂಡ್ ಇಲ್ಲ, रिफ़ंड देने से मना, "रिफ़ंड नहीं", "रिफंड नहीं", "refund nahi"]
+  con: ["got my refund", "refund came", ರಿಫಂಡ್ ಬಂತು, "रिफ़ंड मिल गया"]
+
+fin.loan_recovery_harassment|harassing_calls:
+  sat: ["call me", "calls me", "calling", "abuse me", abusing, "threaten", "twenty times", ಕಾಲ್ ಮಾಡಿ, ಬೈತಾರೆ, ಬೈಯ, कॉल करते, फ़ोन करते, गाली, धमकी, "call karte", "gaali"]
+  con: ["polite reminder", "only once", ಒಂದೇ ಸಲ]
+fin.loan_recovery_harassment|public_shaming:
+  sat: ["my contacts", "contact list", "messaged all", "told my relatives", "my family", "calling me a fraud", ಕಾಂಟ್ಯಾಕ್ಟ್, ಸಂಬಂಧಿಕರಿಗೆ, ಮೋಸಗಾರ, कॉन्टैक्ट, रिश्तेदारों, "धोखेबाज़", "contacts ko"]
+  con: ["not contacted anyone else"]
+fin.loan_recovery_harassment|acting_for_lender:
+  sat: ["loan app", "recovery agent", "on behalf", "from the lender", "bank's agent", ಲೋನ್ ಆಪ್, ವಸೂಲಿ, लोन ऐप, रिकवरी, "recovery wale"]
+  con: ["nothing to do with the loan"]

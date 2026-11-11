@@ -1,0 +1,419 @@
+# Property domain (part A): inheritance/partition, encroachment, co-heir sale. Provisions TO_VERIFY.
+issues:
+  # ------------------------------------------------ inheritance / partition
+  - issue_id: prop.inheritance_partition
+    domain: property
+    title: {en: Inheritance / partition, kn: ಪಿತ್ರಾರ್ಜಿತ ಆಸ್ತಿ / ವಿಭಾಗ, hi: विरासत / बँटवारा}
+    plain_summary:
+      en: Heirs of family property can ask for their legal share and for the property to be divided.
+      kn: ಕುಟುಂಬದ ಆಸ್ತಿಯ ವಾರಸುದಾರರು ತಮ್ಮ ಕಾನೂನುಬದ್ಧ ಪಾಲು ಮತ್ತು ಆಸ್ತಿ ವಿಭಾಗ ಕೇಳಬಹುದು.
+      hi: पारिवारिक संपत्ति के वारिस अपना कानूनी हिस्सा और बँटवारा माँग सकते हैं।
+    risk_level: medium
+    default_triage: lawyer
+    cast:
+      - {slot: RESP, role: respondent, nouns: [brother, paternal_uncle, cousin]}
+    value_slots: {ITEM: [agri_land, family_house]}
+    setup:
+      en: "{ITEM} has been in our family for generations."
+      kn: "{ITEM} ತಲೆತಲಾಂತರದಿಂದ ನಮ್ಮ ಮನೆತನದ್ದು."
+      kn-en_latn: "{ITEM} talatalaantaradinda namma manetanaddu."
+      kn-en_mixed: "{ITEM} generations ಇಂದ ನಮ್ಮ family ದು."
+      hi: "{ITEM} पीढ़ियों से हमारे परिवार {g:ITEM|m:का|f:की} है।"
+      hi-en_latn: "{ITEM} peedhiyon se hamare parivaar {g:ITEM|m:ka|f:ki} hai."
+    elements:
+      - element_id: ancestral_property
+        critical: true
+        order: 1
+        description: The property is ancestral / inherited (not self-acquired by the respondent).
+        question:
+          en: Did the property come down in the family, or did someone buy it with their own money?
+          kn: ಈ ಆಸ್ತಿ ಮನೆತನದಿಂದ ಬಂದಿದ್ದಾ, ಅಥವಾ ಯಾರಾದರೂ ಸ್ವಂತ ದುಡ್ಡಲ್ಲಿ ಕೊಂಡಿದ್ದಾ?
+          hi: क्या यह संपत्ति पुश्तैनी है, या किसी ने अपने पैसों से खरीदी थी?
+        proposition:
+          satisfied: The property is ancestral and was not purchased.
+          contradicted: The respondent bought the property with their own money.
+        satisfied:
+          en: "{ITEM} is ancestral property; [nobody](NEG) bought it."
+          kn: "{ITEM} ಪಿತ್ರಾರ್ಜಿತ ಆಸ್ತಿ, ಯಾರೂ [ಕೊಂಡುಕೊಂಡಿದ್ದಲ್ಲ](NEG)."
+          kn-en_latn: "{ITEM} pitraarjita aasti, yaaru [kondukondiddalla](NEG)."
+          kn-en_mixed: "{ITEM} ancestral property, ಯಾರೂ [buy ಮಾಡಿದ್ದಲ್ಲ](NEG)."
+          hi: "{ITEM} पुश्तैनी जायदाद है, किसी ने खरीदी [नहीं](NEG) थी।"
+          hi-en_latn: "{ITEM} pushtaini jaaydaad hai, kisi ne khareedi [nahi](NEG) thi."
+        contradicted:
+          en: "{RESP} bought {ITEM} with {RESP.pron_gen} own money."
+          kn: "{ITEM} {RESP} ಸ್ವಂತ ದುಡ್ಡಲ್ಲಿ ಕೊಂಡುಕೊಂಡಿದ್ದು."
+          kn-en_latn: "{ITEM} {RESP} swanta duddalli kondukondiddu."
+          kn-en_mixed: "{ITEM} {RESP} own money ಅಲ್ಲಿ buy ಮಾಡಿದ್ದು."
+          hi: "{ITEM} {RESP.erg} अपने पैसों से {g:ITEM|m:खरीदा था|f:खरीदी थी}।"
+          hi-en_latn: "{ITEM} {RESP.erg} apne paison se {g:ITEM|m:khareeda tha|f:khareedi thi}."
+      - element_id: claimant_is_heir
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The user is a legal heir / coparcener entitled to a share.
+        question:
+          en: How are you related to the person who owned the property? Are there other heirs?
+          kn: ಆಸ್ತಿಯ ಮಾಲೀಕರಿಗೆ ನೀವು ಏನಾಗಬೇಕು? ಬೇರೆ ವಾರಸುದಾರರು ಇದ್ದಾರಾ?
+          hi: संपत्ति के मालिक से आपका क्या रिश्ता है? क्या और भी वारिस हैं?
+        proposition:
+          satisfied: The speaker is a legal heir entitled to an equal share.
+          contradicted: The speaker was adopted into another family and is not an heir here.
+        satisfied:
+          en: I am also a legal heir, so I should get an equal share.
+          kn: ನಾನೂ ಕಾನೂನು ಪ್ರಕಾರ ವಾರಸು, ನನಗೂ ಸಮಪಾಲು ಬರಬೇಕು.
+          kn-en_latn: Naanu kaanoonu prakaara vaarasu, nangu samapaalu barabeku.
+          kn-en_mixed: ನಾನೂ legal heir, ನನಗೂ equal share ಬರಬೇಕು.
+          hi: मैं भी कानूनी वारिस हूँ, मुझे भी बराबर हिस्सा मिलना चाहिए।
+          hi-en_latn: Main bhi legal heir hoon, mujhe bhi baraabar hissa milna chahiye.
+        contradicted:
+          en: I was adopted into another family, so I am [not](NEG) an heir here.
+          kn: ನನ್ನನ್ನು ಬೇರೆ ಮನೆಗೆ ದತ್ತು ಕೊಟ್ಟಿದ್ದರು, ಹಾಗಾಗಿ ಇಲ್ಲಿ ನಾನು ವಾರಸು [ಅಲ್ಲ](NEG).
+          kn-en_latn: Nannanna bere mane ge dattu kottiddru, haagaagi illi naanu vaarasu [alla](NEG).
+          kn-en_mixed: ನನ್ನನ್ನು ಬೇರೆ family ಗೆ adopt ಕೊಟ್ಟಿದ್ರು, so ಇಲ್ಲಿ ನಾನು heir [ಅಲ್ಲ](NEG).
+          hi: मुझे दूसरे परिवार में गोद दे दिया गया था, इसलिए यहाँ मैं वारिस [नहीं](NEG) हूँ।
+          hi-en_latn: Mujhe doosre parivaar mein god de diya gaya tha, isliye yahan main heir [nahi](NEG) hoon.
+      - element_id: share_denied
+        critical: true
+        order: 2
+        description: The respondent refuses to give the user's share / to partition.
+        event_type: share_denial
+        args: {RESP: agent}
+        question:
+          en: Has anyone refused to give you your share or to divide the property?
+          kn: ನಿಮ್ಮ ಪಾಲು ಕೊಡೋಕೆ ಅಥವಾ ಆಸ್ತಿ ಹಂಚೋಕೆ ಯಾರಾದರೂ ನಿರಾಕರಿಸಿದ್ದಾರಾ?
+          hi: क्या किसी ने आपका हिस्सा देने या बँटवारा करने से मना किया है?
+        proposition:
+          satisfied: The respondent refused to give the speaker's share and claims the whole property.
+          contradicted: The respondent has not refused and is ready to divide equally.
+        satisfied:
+          en: "{DATE} {RESP} [refused](TRIG) to give me my share and said the whole property is {RESP.pron_gen}."
+          kn: "{DATE} {RESP} ನನ್ನ ಪಾಲು ಕೊಡೋಕೆ [ನಿರಾಕರಿಸಿದರು](TRIG), ಎಲ್ಲಾ ಆಸ್ತಿ ತಮ್ಮದು ಅಂದರು."
+          kn-en_latn: "{DATE} {RESP} nanna paalu kodoke [niraakarisidru](TRIG), ella aasti tammadu andru."
+          kn-en_mixed: "{DATE} {RESP} ನನ್ನ share ಕೊಡೋಕೆ [refuse ಮಾಡಿದ್ರು](TRIG), ಎಲ್ಲಾ property ತಮ್ಮದು ಅಂದ್ರು."
+          hi: "{DATE} {RESP.erg} मेरा हिस्सा देने से [मना कर दिया](TRIG) और कहा कि सारी ज़मीन {RESP.pron_gen_f} है।"
+          hi-en_latn: "{DATE} {RESP.erg} mera hissa dene se [mana kar diya](TRIG) aur kaha ki saari zameen {RESP.pron_gen_f} hai."
+        contradicted:
+          en: "{RESP} has [not](NEG) [refused](TRIG) anything; {RESP.pron} is ready to divide it equally."
+          kn: "{RESP} ಏನೂ [ನಿರಾಕರಿಸಿಲ್ಲ](TRIG,NEG), ಸಮವಾಗಿ ಹಂಚೋಕೆ ಒಪ್ಪಿದ್ದಾರೆ."
+          kn-en_latn: "{RESP} enu [niraakarisilla](TRIG,NEG), samavaagi hanchoke oppiddare."
+          kn-en_mixed: "{RESP} ಏನೂ [refuse ಮಾಡಿಲ್ಲ](TRIG,NEG), equal ಆಗಿ divide ಮಾಡೋಕೆ ready ಇದ್ದಾರೆ."
+          hi: "{RESP.erg} [मना](TRIG) [नहीं](NEG) किया है, {RESP.pron} बराबर बाँटने को तैयार हैं।"
+          hi-en_latn: "{RESP.erg} [mana](TRIG) [nahi](NEG) kiya hai, {RESP.pron} baraabar baantne ko taiyaar hain."
+    evidence:
+      - evidence_id: land_records
+        evidence_type: document
+        supports: [ancestral_property]
+        held:
+          en: I have the old [RTC and mutation records](EVD) of the property.
+          kn: ಆಸ್ತಿಯ ಹಳೆ [ಪಹಣಿ ಮತ್ತು ಮ್ಯುಟೇಷನ್ ದಾಖಲೆ](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          kn-en_latn: Aastiya hale [pahani mattu mutation daakhale](EVD) nanna hatra ide.
+          kn-en_mixed: Property ದು old [RTC and mutation records](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          hi: मेरे पास संपत्ति के पुराने [आरटीसी और म्यूटेशन के कागज़](EVD) हैं।
+          hi-en_latn: Mere paas property ke puraane [RTC aur mutation ke papers](EVD) hain.
+        missing:
+          en: All the [documents](EVD) are with {RESP.acc}; I have [nothing](NEG).
+          kn: "ಎಲ್ಲಾ [ದಾಖಲೆಗಳು](EVD) {RESP.gen} ಹತ್ತಿರ ಇವೆ, ನನ್ನ ಹತ್ತಿರ ಏನೂ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "Ella [daakhalegalu](EVD) {RESP.gen} hatra ive, nanna hatra enu [illa](NEG)."
+          kn-en_mixed: "ಎಲ್ಲಾ [documents](EVD) {RESP.gen} ಹತ್ತಿರ ಇವೆ, ನನ್ನ ಹತ್ತಿರ ಏನೂ [ಇಲ್ಲ](NEG)."
+          hi: "सारे [कागज़](EVD) {RESP.gen_pl} पास हैं, मेरे पास कुछ [नहीं](NEG) है।"
+          hi-en_latn: "Saare [papers](EVD) {RESP.gen_pl} paas hain, mere paas kuch [nahi](NEG) hai."
+    risk_facts:
+      - flag: imminent_property_transfer
+        template:
+          en: "{RESP} is planning to sell {ITEM} [next week](TIMEX:next_week)."
+          kn: "{RESP} [ಮುಂದಿನ ವಾರ](TIMEX:next_week) {ITEM} ಮಾರೋಕೆ ಪ್ಲಾನ್ ಮಾಡಿದ್ದಾರೆ."
+          kn-en_latn: "{RESP} [mundina vaara](TIMEX:next_week) {ITEM} maaroke plan maadiddare."
+          kn-en_mixed: "{RESP} [next week](TIMEX:next_week) {ITEM} sell ಮಾಡೋಕೆ plan ಮಾಡಿದ್ದಾರೆ."
+          hi: "{RESP} [अगले हफ़्ते](TIMEX:next_week) {ITEM} बेचने की तैयारी में हैं।"
+          hi-en_latn: "{RESP} [agle hafte](TIMEX:next_week) {ITEM} bechne ki taiyaari mein hain."
+    routing_variables:
+      - {name: personal_law, values: [hindu, muslim, christian], description: succession law depends on religion}
+    candidate_provisions:
+      - {provision_id: "HSA:6", when: {personal_law: [hindu]}, title_hint: Devolution of interest in coparcenary property}
+      - {provision_id: "HSA:8", when: {personal_law: [hindu]}, title_hint: General rules of succession in the case of males}
+      - {provision_id: "RA:17", title_hint: Documents of which registration is compulsory, note: a partition deed of immovable property generally needs registration; verify}
+      - {provision_id: "LIMA:Art.110", title_hint: "Suit by a person excluded from joint family property to enforce a right to share", note: "Schedule article; numbering to be verified"}
+    limitation_notes: A suit by a person excluded from joint family property generally has a 12-year period from exclusion becoming known (Limitation Act schedule). Muslim and Christian succession law is outside this corpus. TO_VERIFY.
+    confusable_with: [prop.coheir_sale_without_consent, prop.forged_documents]
+    co_occurs_with: [prop.coheir_sale_without_consent, prop.forged_documents]
+
+  # ----------------------------------------------------------- encroachment
+  - issue_id: prop.encroachment
+    domain: property
+    title: {en: Encroachment, kn: ಒತ್ತುವರಿ, hi: अतिक्रमण / कब्ज़ा}
+    plain_summary:
+      en: Someone has occupied or built on part of your land without your permission.
+      kn: ನಿಮ್ಮ ಅನುಮತಿ ಇಲ್ಲದೆ ಯಾರೋ ನಿಮ್ಮ ಜಾಗದ ಭಾಗವನ್ನು ಒತ್ತುವರಿ ಮಾಡಿದ್ದಾರೆ ಅಥವಾ ಕಟ್ಟಡ ಕಟ್ಟಿದ್ದಾರೆ.
+      hi: किसी ने आपकी अनुमति के बिना आपकी ज़मीन के हिस्से पर कब्ज़ा या निर्माण कर लिया है।
+    risk_level: medium
+    default_triage: lawyer
+    cast:
+      - {slot: RESP, role: respondent, nouns: [neighbour]}
+    value_slots: {ITEM: [house_site, agri_land]}
+    setup:
+      en: "{ITEM} is right next to {RESP.gen} property."
+      kn: "{RESP.gen} ಜಾಗದ ಪಕ್ಕದಲ್ಲೇ {ITEM} ಇದೆ."
+      kn-en_latn: "{RESP.gen} jaagada pakkadalle {ITEM} ide."
+      kn-en_mixed: "{RESP.gen} property ಪಕ್ಕದಲ್ಲೇ {ITEM} ಇದೆ."
+      hi: "{RESP.gen_f} ज़मीन के बगल में {ITEM} है।"
+      hi-en_latn: "{RESP.gen_f} zameen ke bagal mein {ITEM} hai."
+    elements:
+      - element_id: claimant_title
+        critical: true
+        order: 1
+        description: The user owns / lawfully possesses the land.
+        question:
+          en: Whose name is the land in? Do you have the sale deed or khata?
+          kn: ಜಾಗ ಯಾರ ಹೆಸರಲ್ಲಿ ಇದೆ? ಸೇಲ್ ಡೀಡ್ ಅಥವಾ ಖಾತಾ ಇದೆಯಾ?
+          hi: ज़मीन किसके नाम पर है? क्या आपके पास सेल डीड या खाता है?
+        proposition:
+          satisfied: The land is registered in the speaker's name.
+          contradicted: The land is government land the family has been using.
+        satisfied:
+          en: "{ITEM} is registered in my name."
+          kn: "{ITEM} ನನ್ನ ಹೆಸರಲ್ಲಿ ರಿಜಿಸ್ಟರ್ ಆಗಿದೆ."
+          kn-en_latn: "{ITEM} nanna hesaralli register aagide."
+          kn-en_mixed: "{ITEM} ನನ್ನ name ಅಲ್ಲಿ register ಆಗಿದೆ."
+          hi: "{ITEM} मेरे नाम पर रजिस्टर्ड है।"
+          hi-en_latn: "{ITEM} mere naam par registered hai."
+        contradicted:
+          en: "{ITEM} is [not](NEG) in my name; it is government land we have been using."
+          kn: "{ITEM} ನನ್ನ ಹೆಸರಲ್ಲಿ [ಇಲ್ಲ](NEG), ಅದು ನಾವು ಬಳಸ್ತಿರೋ ಸರ್ಕಾರಿ ಜಾಗ."
+          kn-en_latn: "{ITEM} nanna hesaralli [illa](NEG), adu naavu balastiro sarkaari jaaga."
+          kn-en_mixed: "{ITEM} ನನ್ನ name ಅಲ್ಲಿ [ಇಲ್ಲ](NEG), ಅದು ನಾವು use ಮಾಡ್ತಿರೋ government land."
+          hi: "{ITEM} मेरे नाम पर [नहीं](NEG) है, वो सरकारी ज़मीन है जिसे हम इस्तेमाल करते हैं।"
+          hi-en_latn: "{ITEM} mere naam par [nahi](NEG) hai, woh sarkari zameen hai jise hum use karte hain."
+      - element_id: unauthorised_occupation
+        critical: true
+        order: 2
+        date_slot_required: true
+        description: The respondent occupied / built on part of the user's land without permission.
+        event_type: encroachment
+        args: {RESP: agent}
+        question:
+          en: What exactly has the neighbour done on your land — built something, fenced it, or started using it?
+          kn: ಪಕ್ಕದವರು ನಿಮ್ಮ ಜಾಗದಲ್ಲಿ ನಿಖರವಾಗಿ ಏನು ಮಾಡಿದ್ದಾರೆ — ಕಟ್ಟಿದ್ದಾರಾ, ಬೇಲಿ ಹಾಕಿದ್ದಾರಾ, ಬಳಸ್ತಿದ್ದಾರಾ?
+          hi: पड़ोसी ने आपकी ज़मीन पर ठीक-ठीक क्या किया है — कुछ बनाया, बाड़ लगाई या इस्तेमाल करने लगे?
+        proposition:
+          satisfied: The respondent built a wall about ten feet inside the speaker's land.
+          contradicted: The respondent built only on their own side.
+        satisfied:
+          en: "{DATE} {RESP} [built](TRIG) a wall about ten feet inside my land."
+          kn: "{DATE} {RESP} ನನ್ನ ಜಾಗದಲ್ಲಿ ಸುಮಾರು ಹತ್ತು ಅಡಿ ಒಳಗೆ ಗೋಡೆ [ಕಟ್ಟಿದರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP} nanna jaagadalli sumaaru hattu adi olage gode [kattidru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} ನನ್ನ land ಅಲ್ಲಿ about ten feet ಒಳಗೆ wall [ಕಟ್ಟಿದ್ರು](TRIG)."
+          hi: "{DATE} {RESP.erg} मेरी ज़मीन में लगभग दस फ़ुट अंदर दीवार [बना दी](TRIG)।"
+          hi-en_latn: "{DATE} {RESP.erg} meri zameen mein lagbhag das foot andar deewar [bana di](TRIG)."
+        contradicted:
+          en: "{RESP} only [built](TRIG) on {RESP.pron_gen} own side; [nothing](NEG) is on my land."
+          kn: "{RESP} ತಮ್ಮ ಜಾಗದಲ್ಲೇ [ಕಟ್ಟಿದ್ದಾರೆ](TRIG), ನನ್ನ ಜಾಗದಲ್ಲಿ ಏನೂ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP} tamma jaagadalle [kattiddare](TRIG), nanna jaagadalli enu [illa](NEG)."
+          kn-en_mixed: "{RESP} ತಮ್ಮ side ಅಲ್ಲೇ [ಕಟ್ಟಿದ್ದಾರೆ](TRIG), ನನ್ನ land ಅಲ್ಲಿ ಏನೂ [ಇಲ್ಲ](NEG)."
+          hi: "{RESP.erg} अपनी ही तरफ़ [बनाया](TRIG) है, मेरी ज़मीन पर कुछ [नहीं](NEG) है।"
+          hi-en_latn: "{RESP.erg} apni hi taraf [banaya](TRIG) hai, meri zameen par kuch [nahi](NEG) hai."
+      - element_id: survey_confirms
+        critical: true
+        may_be_unknown: true
+        order: 3
+        description: An official survey / measurement confirms the encroached strip is the user's.
+        question:
+          en: Has the land been measured by the survey department? What does the sketch show?
+          kn: ಸರ್ವೇ ಇಲಾಖೆಯಿಂದ ಜಾಗ ಅಳತೆ ಆಗಿದೆಯಾ? ನಕ್ಷೆ ಏನು ತೋರಿಸುತ್ತೆ?
+          hi: क्या सर्वे विभाग ने ज़मीन नापी है? नक्शा क्या दिखाता है?
+        proposition:
+          satisfied: The official survey sketch shows the wall is inside the speaker's boundary.
+          contradicted: The survey sketch shows the wall is not on the speaker's side.
+        satisfied:
+          en: The official survey sketch shows the wall is inside my boundary.
+          kn: ಸರ್ಕಾರಿ ಸರ್ವೇ ನಕ್ಷೆ ಪ್ರಕಾರ ಗೋಡೆ ನನ್ನ ಗಡಿಯೊಳಗೆ ಇದೆ.
+          kn-en_latn: Sarkaari survey nakshe prakaara gode nanna gadiyolage ide.
+          kn-en_mixed: Government survey sketch ಪ್ರಕಾರ wall ನನ್ನ boundary ಒಳಗೆ ಇದೆ.
+          hi: सरकारी सर्वे नक्शे के हिसाब से दीवार मेरी सीमा के अंदर है।
+          hi-en_latn: Sarkari survey naqshe ke hisaab se deewar meri seema ke andar hai.
+        contradicted:
+          en: The survey sketch shows the wall is [not](NEG) on my side.
+          kn: ಸರ್ವೇ ನಕ್ಷೆ ಪ್ರಕಾರ ಗೋಡೆ ನನ್ನ ಕಡೆ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Survey nakshe prakaara gode nanna kade [illa](NEG).
+          kn-en_mixed: Survey sketch ಪ್ರಕಾರ wall ನನ್ನ side [ಇಲ್ಲ](NEG).
+          hi: सर्वे नक्शे के हिसाब से दीवार मेरी तरफ़ [नहीं](NEG) है।
+          hi-en_latn: Survey naqshe ke hisaab se deewar meri taraf [nahi](NEG) hai.
+    evidence:
+      - evidence_id: title_documents
+        evidence_type: document
+        supports: [claimant_title]
+        held:
+          en: I have the registered [sale deed and khata](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ ರಿಜಿಸ್ಟರ್ ಆದ [ಸೇಲ್ ಡೀಡ್ ಮತ್ತು ಖಾತಾ](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra register aada [sale deed mattu khata](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ registered [sale deed and khata](EVD) ಇದೆ.
+          hi: मेरे पास रजिस्टर्ड [सेल डीड और खाता](EVD) है।
+          hi-en_latn: Mere paas registered [sale deed aur khata](EVD) hai.
+        missing:
+          en: I have [not](NEG) yet got the [khata](EVD) in my name.
+          kn: ನನ್ನ ಹೆಸರಿಗೆ ಇನ್ನೂ [ಖಾತಾ](EVD) [ಆಗಿಲ್ಲ](NEG).
+          kn-en_latn: Nanna hesarige innu [khata](EVD) [aagilla](NEG).
+          kn-en_mixed: ನನ್ನ name ಗೆ ಇನ್ನೂ [khata](EVD) [ಆಗಿಲ್ಲ](NEG).
+          hi: मेरे नाम पर अभी तक [खाता](EVD) [नहीं](NEG) हुआ है।
+          hi-en_latn: Mere naam par abhi tak [khata](EVD) [nahi](NEG) hua hai.
+    risk_facts:
+      - flag: imminent_property_transfer
+        template:
+          en: "{RESP} is building a room on that part and will finish it by [tomorrow](TIMEX:tomorrow)."
+          kn: "{RESP} ಆ ಜಾಗದಲ್ಲಿ ರೂಮ್ ಕಟ್ತಿದ್ದಾರೆ, [ನಾಳೆ](TIMEX:tomorrow) ಒಳಗೆ ಮುಗಿಸ್ತಾರಂತೆ."
+          kn-en_latn: "{RESP} aa jaagadalli room kattiddare, [naale](TIMEX:tomorrow) olage mugistaarante."
+          kn-en_mixed: "{RESP} ಆ place ಅಲ್ಲಿ room ಕಟ್ತಿದ್ದಾರೆ, [tomorrow](TIMEX:tomorrow) ಒಳಗೆ finish ಮಾಡ್ತಾರಂತೆ."
+          hi: "{RESP} उस हिस्से पर कमरा बना {g:RESP|m:रहे|f:रही|n:रहे} हैं और [कल](TIMEX:tomorrow) तक पूरा कर {g:RESP|m:देंगे|f:देंगी|n:देंगे}।"
+          hi-en_latn: "{RESP} us hisse par kamra bana {g:RESP|m:rahe|f:rahi|n:rahe} hain aur [kal](TIMEX:tomorrow) tak poora kar {g:RESP|m:denge|f:dengi|n:denge}."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "for criminal trespass: incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "SRA:5", title_hint: Recovery of specific immovable property}
+      - {provision_id: "SRA:6", title_hint: Suit by person dispossessed of immovable property, note: summary remedy within six months of dispossession; verify}
+      - {provision_id: "SRA:38", title_hint: Perpetual injunction when granted}
+      - {provision_id: "BNS:329(3)", when: {law_regime: [new]}, title_hint: Criminal trespass (punishment)}
+      - {provision_id: "IPC:447", when: {law_regime: [old]}, title_hint: Punishment for criminal trespass}
+    limitation_notes: SRA s.6 relief must be sought within six months of dispossession; a title-based possession suit generally has a longer period under the Limitation Act. TO_VERIFY.
+    confusable_with: [prop.boundary_dispute]
+    co_occurs_with: [prop.boundary_dispute, crim.criminal_intimidation]
+
+  # ------------------------------------------------------- co-heir sale
+  - issue_id: prop.coheir_sale_without_consent
+    domain: property
+    title: {en: Sale by one co-heir without consent, kn: ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ಸಹ-ವಾರಸುದಾರರಿಂದ ಮಾರಾಟ, hi: बिना सहमति सह-वारिस द्वारा बिक्री}
+    plain_summary:
+      en: One co-owner sold joint family property without the consent of the other co-owners; the buyer gets at most that seller's share.
+      kn: ಒಬ್ಬ ಸಹ-ಮಾಲೀಕರು ಉಳಿದವರ ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ಜಂಟಿ ಆಸ್ತಿ ಮಾರಿದ್ದಾರೆ; ಕೊಂಡವರಿಗೆ ಹೆಚ್ಚೆಂದರೆ ಮಾರಿದವರ ಪಾಲು ಮಾತ್ರ ಸಿಗುತ್ತದೆ.
+      hi: एक सह-मालिक ने बाकी के बिना सहमति के साझा संपत्ति बेच दी; खरीदार को ज़्यादा से ज़्यादा बेचने वाले का हिस्सा ही मिलता है।
+    risk_level: high
+    default_triage: lawyer
+    cast:
+      - {slot: RESP, role: respondent, nouns: [paternal_uncle, brother, cousin]}
+      - {slot: BUYER, role: other, nouns: [buyer]}
+    value_slots: {ITEM: [agri_land, house_site, family_house]}
+    setup:
+      en: "{ITEM} is jointly owned by our family."
+      kn: "{ITEM} ನಮ್ಮ ಕುಟುಂಬದ ಜಂಟಿ ಆಸ್ತಿ."
+      kn-en_latn: "{ITEM} namma kutumbada janti aasti."
+      kn-en_mixed: "{ITEM} ನಮ್ಮ family ದು joint property."
+      hi: "{ITEM} हमारे परिवार की साझा जायदाद है।"
+      hi-en_latn: "{ITEM} hamare parivaar ki joint property hai."
+    elements:
+      - element_id: claimant_has_share
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The user holds a share in the property.
+        question:
+          en: Do you have a share in this property? Have you ever given up your share?
+          kn: ಈ ಆಸ್ತಿಯಲ್ಲಿ ನಿಮಗೆ ಪಾಲು ಇದೆಯಾ? ಯಾವತ್ತಾದರೂ ನಿಮ್ಮ ಪಾಲು ಬಿಟ್ಟುಕೊಟ್ಟಿದ್ದೀರಾ?
+          hi: क्या इस संपत्ति में आपका हिस्सा है? क्या आपने कभी अपना हिस्सा छोड़ा है?
+        proposition:
+          satisfied: The speaker has a share as one of the heirs.
+          contradicted: The speaker gave up their share in writing years ago.
+        satisfied:
+          en: I have a share in it as one of the heirs.
+          kn: ವಾರಸುದಾರರಲ್ಲಿ ಒಬ್ಬರಾಗಿ ನನಗೂ ಅದರಲ್ಲಿ ಪಾಲು ಇದೆ.
+          kn-en_latn: Vaarasudaararalli obbaraagi nangu adaralli paalu ide.
+          kn-en_mixed: Heirs ಅಲ್ಲಿ ಒಬ್ಬರಾಗಿ ನನಗೂ ಅದರಲ್ಲಿ share ಇದೆ.
+          hi: वारिसों में से एक होने के नाते उसमें मेरा भी हिस्सा है।
+          hi-en_latn: Waariso mein se ek hone ke naate usmein mera bhi hissa hai.
+        contradicted:
+          en: "[Years ago](TIMEX:past_ref) I gave up my share in writing."
+          kn: "[ತುಂಬಾ ವರ್ಷಗಳ ಹಿಂದೆ](TIMEX:past_ref) ನಾನು ಬರವಣಿಗೆಯಲ್ಲಿ ನನ್ನ ಪಾಲು ಬಿಟ್ಟುಕೊಟ್ಟಿದ್ದೆ."
+          kn-en_latn: "[Tumba varshagala hinde](TIMEX:past_ref) naanu baravanigeyalli nanna paalu bittukottidde."
+          kn-en_mixed: "[Many years ago](TIMEX:past_ref) ನಾನು writing ಅಲ್ಲಿ ನನ್ನ share ಬಿಟ್ಟುಕೊಟ್ಟಿದ್ದೆ."
+          hi: "[कई साल पहले](TIMEX:past_ref) मैंने लिखकर अपना हिस्सा छोड़ दिया था।"
+          hi-en_latn: "[Kai saal pehle](TIMEX:past_ref) maine likhkar apna hissa chhod diya tha."
+      - element_id: transfer_by_coowner
+        critical: true
+        order: 2
+        date_slot_required: true
+        hypothetical_when_contradicted: true
+        description: A co-owner has actually transferred (sold) the property; contradicted = only threatened.
+        event_type: sale_transfer
+        args: {RESP: agent, ITEM: patient, BUYER: recipient}
+        question:
+          en: Has the property actually been sold and registered, or has the person only threatened to sell?
+          kn: ಆಸ್ತಿ ನಿಜವಾಗಿ ಮಾರಾಟ ಆಗಿ ರಿಜಿಸ್ಟರ್ ಆಗಿದೆಯಾ, ಅಥವಾ ಮಾರ್ತೀನಿ ಅಂತ ಹೆದರಿಸ್ತಿದ್ದಾರಾ ಮಾತ್ರ?
+          hi: क्या संपत्ति सच में बिककर रजिस्टर हो गई है, या सिर्फ़ बेचने की धमकी दी है?
+        proposition:
+          satisfied: The respondent sold the property to the buyer.
+          contradicted: The respondent is threatening to sell but has not sold yet.
+        satisfied:
+          en: "{DATE} {RESP} [sold](TRIG) {ITEM} to {BUYER.dat}."
+          kn: "{DATE} {RESP} {ITEM} {BUYER.dat} [ಮಾರಿಬಿಟ್ಟರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP} {ITEM} {BUYER.dat} [maaribittru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} {ITEM} {BUYER.dat} [sell ಮಾಡಿಬಿಟ್ರು](TRIG)."
+          hi: "{DATE} {RESP.erg} {ITEM} {BUYER.dat} {g:ITEM|m:[बेच दिया](TRIG)|f:[बेच दी](TRIG)}।"
+          hi-en_latn: "{DATE} {RESP.erg} {ITEM} {BUYER.dat} {g:ITEM|m:[bech diya](TRIG)|f:[bech di](TRIG)}."
+        contradicted:
+          en: "{RESP} is threatening to [sell](TRIG) {ITEM}, but has [not](NEG) sold it yet."
+          kn: "{RESP} {ITEM} [ಮಾರ್ತೀನಿ](TRIG) ಅಂತ ಹೆದರಿಸ್ತಿದ್ದಾರೆ, ಆದರೆ ಇನ್ನೂ [ಮಾರಿಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP} {ITEM} [maartini](TRIG) antha hedaristiddare, aadre innu [maarilla](NEG)."
+          kn-en_mixed: "{RESP} {ITEM} [sell ಮಾಡ್ತೀನಿ](TRIG) ಅಂತ threat ಮಾಡ್ತಿದ್ದಾರೆ, ಆದ್ರೆ ಇನ್ನೂ [sell ಮಾಡಿಲ್ಲ](NEG)."
+          hi: "{RESP} {ITEM} [बेचने](TRIG) की धमकी दे {g:RESP|m:रहे|f:रही|n:रहे} हैं, लेकिन अभी तक {g:ITEM|m:बेचा|f:बेची} [नहीं](NEG) है।"
+          hi-en_latn: "{RESP} {ITEM} [bechne](TRIG) ki dhamki de {g:RESP|m:rahe|f:rahi|n:rahe} hain, lekin abhi tak {g:ITEM|m:becha|f:bechi} [nahi](NEG) hai."
+      - element_id: no_consent
+        critical: true
+        order: 1
+        description: The user did not consent to / sign the sale.
+        question:
+          en: Did you sign any paper or agree to this sale in any way?
+          kn: ಈ ಮಾರಾಟಕ್ಕೆ ನೀವು ಯಾವುದಾದರೂ ಪೇಪರ್‌ಗೆ ಸಹಿ ಹಾಕಿದ್ದೀರಾ ಅಥವಾ ಒಪ್ಪಿಗೆ ಕೊಟ್ಟಿದ್ದೀರಾ?
+          hi: क्या आपने इस बिक्री के लिए कोई कागज़ साइन किया या किसी तरह सहमति दी?
+        proposition:
+          satisfied: The speaker never signed or agreed to the sale.
+          contradicted: The speaker signed the papers believing them to be a loan document.
+        satisfied:
+          en: I [never](NEG) signed or agreed to this sale.
+          kn: ಈ ಮಾರಾಟಕ್ಕೆ ನಾನು ಸಹಿ [ಹಾಕಿಲ್ಲ](NEG), ಒಪ್ಪಿಗೆನೂ [ಕೊಟ್ಟಿಲ್ಲ](NEG).
+          kn-en_latn: Ee maaraatakke naanu sahi [haakilla](NEG), oppigenu [kottilla](NEG).
+          kn-en_mixed: ಈ sale ಗೆ ನಾನು sign [ಮಾಡಿಲ್ಲ](NEG), consent ಉ [ಕೊಟ್ಟಿಲ್ಲ](NEG).
+          hi: मैंने इस बिक्री के लिए [न](NEG) दस्तख़त किए, [न](NEG) सहमति दी।
+          hi-en_latn: Maine is sale ke liye [na](NEG) sign kiya, [na](NEG) consent di.
+        contradicted:
+          en: I had signed the papers myself, thinking it was a loan document.
+          kn: ಲೋನ್ ಪೇಪರ್ ಅಂದುಕೊಂಡು ನಾನೇ ಸಹಿ ಹಾಕಿದ್ದೆ.
+          kn-en_latn: Loan paper andukondu naane sahi haakidde.
+          kn-en_mixed: Loan papers ಅಂದುಕೊಂಡು ನಾನೇ sign ಮಾಡಿದ್ದೆ.
+          hi: मैंने खुद उसे लोन का कागज़ समझकर दस्तख़त किए थे।
+          hi-en_latn: Maine khud use loan ka paper samajhkar sign kiya tha.
+    evidence:
+      - evidence_id: sale_deed_copy
+        evidence_type: document
+        supports: [transfer_by_coowner]
+        default_availability: obtainable
+        held:
+          en: I got a [certified copy of the sale deed](EVD).
+          kn: ನಾನು [ಸೇಲ್ ಡೀಡ್‌ನ ದೃಢೀಕೃತ ಪ್ರತಿ](EVD) ತೆಗೆಸಿದ್ದೀನಿ.
+          kn-en_latn: Naanu [sale deed na certified copy](EVD) tegesiddini.
+          kn-en_mixed: ನಾನು [sale deed certified copy](EVD) ತೆಗೆಸಿದ್ದೀನಿ.
+          hi: मैंने [सेल डीड की सर्टिफ़ाइड कॉपी](EVD) निकलवाई है।
+          hi-en_latn: Maine [sale deed ki certified copy](EVD) nikalwaayi hai.
+        missing:
+          en: I have [not](NEG) seen any [documents](EVD) of the sale.
+          kn: ಮಾರಾಟದ ಯಾವ [ದಾಖಲೆನೂ](EVD) ನಾನು [ನೋಡಿಲ್ಲ](NEG).
+          kn-en_latn: Maaraatada yaava [daakhalenu](EVD) naanu [nodilla](NEG).
+          kn-en_mixed: Sale ದು ಯಾವ [documents](EVD) ಉ ನಾನು [ನೋಡಿಲ್ಲ](NEG).
+          hi: मैंने बिक्री का कोई [कागज़](EVD) [नहीं](NEG) देखा।
+          hi-en_latn: Maine sale ka koi [document](EVD) [nahi](NEG) dekha.
+    risk_facts:
+      - flag: imminent_property_transfer
+        template:
+          en: "{BUYER} is coming with some men [tomorrow](TIMEX:tomorrow) to take possession."
+          kn: "{BUYER} [ನಾಳೆ](TIMEX:tomorrow) ಜನರ ಜೊತೆ ಬಂದು ಸ್ವಾಧೀನ ತಗೊಳ್ತಾರಂತೆ."
+          kn-en_latn: "{BUYER} [naale](TIMEX:tomorrow) janara jote bandu swaadheena tagoltaarante."
+          kn-en_mixed: "{BUYER} [tomorrow](TIMEX:tomorrow) people ಜೊತೆ ಬಂದು possession ತಗೊಳ್ತಾರಂತೆ."
+          hi: "{BUYER} [कल](TIMEX:tomorrow) लोगों के साथ आकर कब्ज़ा लेने वाले हैं।"
+          hi-en_latn: "{BUYER} [kal](TIMEX:tomorrow) logon ke saath aakar kabza lene wale hain."
+    routing_variables:
+      - {name: personal_law, values: [hindu, muslim, christian], description: succession law depends on religion}
+    candidate_provisions:
+      - {provision_id: "TPA:44", title_hint: Transfer by one co-owner}
+      - {provision_id: "TPA:54", title_hint: Sale defined}
+      - {provision_id: "SRA:31", title_hint: When cancellation may be ordered}
+      - {provision_id: "HSA:22", when: {personal_law: [hindu]}, title_hint: Preferential right to acquire property in certain cases}
+      - {provision_id: "LIMA:Art.59", title_hint: To cancel or set aside an instrument, note: "Schedule article; numbering to be verified"}
+    limitation_notes: A suit to cancel an instrument generally must be filed within three years of knowing the facts (Limitation Act schedule). TO_VERIFY.
+    confusable_with: [prop.inheritance_partition, prop.forged_documents]
+    co_occurs_with: [prop.inheritance_partition, prop.forged_documents, crim.criminal_intimidation]

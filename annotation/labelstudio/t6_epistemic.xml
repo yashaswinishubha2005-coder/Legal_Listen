@@ -1,0 +1,16 @@
+<View>
+  <Header value="For the highlighted claim, choose its epistemic status (guidelines T6 decision tree)."/>
+  <Text name="text" value="$text"/>
+  <Labels name="claim" toName="text"><Label value="CLAIM"/></Labels>
+    <Choices name="status" toName="text">
+      <Choice value="reported"/>
+      <Choice value="evidence_supported"/>
+      <Choice value="inferred"/>
+      <Choice value="conflicting"/>
+      <Choice value="unknown"/>
+    </Choices>
+    <Choices name="hedged" toName="text">
+      <Choice value="yes"/>
+      <Choice value="no"/>
+    </Choices>
+</View>

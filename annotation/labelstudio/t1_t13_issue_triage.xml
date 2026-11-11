@@ -1,0 +1,52 @@
+<View>
+  <Header value="Read the narrative. Select ALL legal issues raised, then triage."/>
+  <Text name="text" value="$text"/>
+    <Choices name="issues" toName="text" choice="multiple">
+      <Choice value="crim.hurt_assault"/>
+      <Choice value="crim.criminal_intimidation"/>
+      <Choice value="crim.theft"/>
+      <Choice value="crim.cheating"/>
+      <Choice value="crim.police_refusal_fir"/>
+      <Choice value="fam.divorce"/>
+      <Choice value="fam.maintenance"/>
+      <Choice value="fam.custody"/>
+      <Choice value="fam.domestic_violence"/>
+      <Choice value="fam.dowry_harassment"/>
+      <Choice value="prop.inheritance_partition"/>
+      <Choice value="prop.encroachment"/>
+      <Choice value="prop.coheir_sale_without_consent"/>
+      <Choice value="prop.boundary_dispute"/>
+      <Choice value="prop.forged_documents"/>
+      <Choice value="cyb.upi_payment_fraud"/>
+      <Choice value="cyb.phishing_account_takeover"/>
+      <Choice value="cyb.impersonation"/>
+      <Choice value="cyb.cyberstalking"/>
+      <Choice value="cyb.morphed_intimate_image"/>
+      <Choice value="con.defective_product"/>
+      <Choice value="con.deficiency_in_service"/>
+      <Choice value="fin.unauthorized_bank_txn"/>
+      <Choice value="con.refund_refusal"/>
+      <Choice value="fin.loan_recovery_harassment"/>
+      <Choice value="x.out_of_scope"/>
+      <Choice value="x.non_legal"/>
+    </Choices>
+    <Choices name="triage" toName="text">
+      <Choice value="self_help"/>
+      <Choice value="lawyer"/>
+      <Choice value="urgent"/>
+    </Choices>
+    <Choices name="risk_flags" toName="text" choice="multiple">
+      <Choice value="imminent_violence"/>
+      <Choice value="ongoing_abuse"/>
+      <Choice value="threat_to_life"/>
+      <Choice value="self_harm"/>
+      <Choice value="minor_involved"/>
+      <Choice value="image_circulation"/>
+      <Choice value="golden_hour_fraud"/>
+      <Choice value="imminent_property_transfer"/>
+      <Choice value="eviction_imminent"/>
+      <Choice value="limitation_near_expiry"/>
+      <Choice value="evidence_at_risk"/>
+      <Choice value="child_removal_imminent"/>
+    </Choices>
+</View>

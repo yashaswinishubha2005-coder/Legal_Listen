@@ -1,0 +1,382 @@
+# LexVaani-IN rendering lexicon (v0.1).  ALL non-English text here requires
+# native-speaker review (Gate 3).  Variant keys:
+#   en | kn | hi | kn-en_latn (Kanglish romanized) | kn-en_mixed (Kannada script
+#   + Latin English words) | hi-en_latn (Hinglish romanized)
+#
+# Case forms: a value is either "full form" (the whole string is the mention
+# span, used for fused Kannada suffixes) or [span, suffix] (suffix such as a
+# Hindi postposition stays outside the span).  When a noun gives a plain string
+# the renderer appends the default case marker as an outside-span suffix.
+# Cases: nom gen dat acc erg abl  (Hindi also gen_m gen_f gen_pl).
+
+case_markers:
+  en: {nom: "", gen: "'s", dat: "", acc: "", erg: "", abl: ""}
+  kn: {nom: "", gen: " ಅವರ", dat: " ಅವರಿಗೆ", acc: " ಅವರನ್ನು", erg: "", abl: " ಅವರಿಂದ"}
+  kn-en_mixed: {nom: "", gen: " ಅವರ", dat: " ಅವರಿಗೆ", acc: " ಅವರನ್ನು", erg: "", abl: " ಅವರಿಂದ"}
+  kn-en_latn: {nom: "", gen: " avra", dat: " avrige", acc: " avranna", erg: "", abl: " avrinda"}
+  hi: {nom: "", gen_m: " का", gen_f: " की", gen_pl: " के", dat: " को", acc: " को", erg: " ने", abl: " से"}
+  hi-en_latn: {nom: "", gen_m: " ka", gen_f: " ki", gen_pl: " ke", dat: " ko", acc: " ko", erg: " ne", abl: " se"}
+
+# Third-person pronouns. Kannada/Hindi use the honorific plural for adults and
+# organisations (gender-neutral verb agreement in Kannada); see guidelines §2.4.
+pronouns:
+  honorific:
+    en:
+      m: {nom: he, gen: his, dat: him, acc: him, erg: he, abl: him}
+      f: {nom: she, gen: her, dat: her, acc: her, erg: she, abl: her}
+      n: {nom: they, gen: their, dat: them, acc: them, erg: they, abl: them}
+    kn: {nom: ಅವರು, gen: ಅವರ, dat: ಅವರಿಗೆ, acc: ಅವರನ್ನು, erg: ಅವರು, abl: ಅವರಿಂದ}
+    kn-en_mixed: {nom: ಅವರು, gen: ಅವರ, dat: ಅವರಿಗೆ, acc: ಅವರನ್ನು, erg: ಅವರು, abl: ಅವರಿಂದ}
+    kn-en_latn: {nom: avru, gen: avra, dat: avrige, acc: avranna, erg: avru, abl: avrinda}
+    hi: {nom: वो, gen_m: उनका, gen_f: उनकी, gen_pl: उनके, dat: उनको, acc: उनको, erg: उन्होंने, abl: उनसे}
+    hi-en_latn: {nom: woh, gen_m: unka, gen_f: unki, gen_pl: unke, dat: unko, acc: unko, erg: unhone, abl: unse}
+
+role_nouns:
+  # each entry: gender key (any | m | f) -> variant -> [bare, named]
+  #   bare  = nominal mention without a name (used for later mentions)
+  #   named = first mention; "{N}" is the synthetic name (absent for unnamed roles)
+  neighbour:
+    any:
+      en: ["my neighbour", "my neighbour {N}"]
+      kn: [{nom: ಪಕ್ಕದ ಮನೆಯವರು, gen: ಪಕ್ಕದ ಮನೆಯವರ, dat: ಪಕ್ಕದ ಮನೆಯವರಿಗೆ, acc: ಪಕ್ಕದ ಮನೆಯವರನ್ನು, erg: ಪಕ್ಕದ ಮನೆಯವರು, abl: ಪಕ್ಕದ ಮನೆಯವರಿಂದ}, "ಪಕ್ಕದ ಮನೆಯ {N}"]
+      kn-en_mixed: [{nom: ಪಕ್ಕದ ಮನೆಯವರು, gen: ಪಕ್ಕದ ಮನೆಯವರ, dat: ಪಕ್ಕದ ಮನೆಯವರಿಗೆ, acc: ಪಕ್ಕದ ಮನೆಯವರನ್ನು, erg: ಪಕ್ಕದ ಮನೆಯವರು, abl: ಪಕ್ಕದ ಮನೆಯವರಿಂದ}, "ನಮ್ಮ neighbour {N}"]
+      kn-en_latn: [{nom: pakkada maneyavru, gen: pakkada maneyavra, dat: pakkada maneyavrige, acc: pakkada maneyavranna, erg: pakkada maneyavru, abl: pakkada maneyavrinda}, "pakkada maneya {N}"]
+      hi: ["मेरे पड़ोसी", "मेरे पड़ोसी {N}"]
+      hi-en_latn: ["mere padosi", "mere padosi {N}"]
+    f:
+      hi: ["मेरी पड़ोसन", "मेरी पड़ोसन {N}"]
+      hi-en_latn: ["meri padosan", "meri padosan {N}"]
+  colleague:
+    any:
+      en: ["my colleague", "my colleague {N}"]
+      kn: ["ನನ್ನ ಕಲೀಗ್", "ನನ್ನ ಕಲೀಗ್ {N}"]
+      kn-en_mixed: ["ನನ್ನ colleague", "ನನ್ನ colleague {N}"]
+      kn-en_latn: ["nanna colleague", "nanna colleague {N}"]
+      hi: ["मेरे कलीग", "मेरे कलीग {N}"]
+      hi-en_latn: ["mere colleague", "mere colleague {N}"]
+    f:
+      hi: ["मेरी कलीग", "मेरी कलीग {N}"]
+      hi-en_latn: ["meri colleague", "meri colleague {N}"]
+  paternal_uncle:
+    kin: paternal_uncle
+    surface: {kn: ಚಿಕ್ಕಪ್ಪ, kn-en_latn: chikkappa, kn-en_mixed: ಚಿಕ್ಕಪ್ಪ, hi: चाचा, hi-en_latn: chacha, en: paternal uncle}
+    any:
+      en: ["my uncle", "my paternal uncle {N}"]
+      kn: [{nom: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ, gen: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನ, dat: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನಿಗೆ, acc: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನನ್ನು, erg: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ, abl: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನಿಂದ}, "ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ {N}"]
+      kn-en_mixed: [{nom: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ, gen: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನ, dat: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನಿಗೆ, acc: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನನ್ನು, erg: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ, abl: ನಮ್ಮ ಚಿಕ್ಕಪ್ಪನಿಂದ}, "ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ {N}"]
+      kn-en_latn: [{nom: namma chikkappa, gen: namma chikkappana, dat: namma chikkappange, acc: namma chikkappanna, erg: namma chikkappa, abl: namma chikkappaninda}, "namma chikkappa {N}"]
+      hi: ["मेरे चाचा", "मेरे चाचा {N}"]
+      hi-en_latn: ["mere chacha", "mere chacha {N}"]
+  maternal_uncle:
+    kin: maternal_uncle
+    surface: {kn: ಸೋದರಮಾವ, kn-en_latn: sodara maava, kn-en_mixed: ಸೋದರಮಾವ, hi: मामा, hi-en_latn: mama, en: maternal uncle}
+    any:
+      en: ["my uncle", "my maternal uncle {N}"]
+      kn: ["ನಮ್ಮ ಸೋದರಮಾವ", "ನಮ್ಮ ಸೋದರಮಾವ {N}"]
+      kn-en_mixed: ["ನಮ್ಮ ಸೋದರಮಾವ", "ನಮ್ಮ ಸೋದರಮಾವ {N}"]
+      kn-en_latn: ["namma sodara maava", "namma sodara maava {N}"]
+      hi: ["मेरे मामा", "मेरे मामा {N}"]
+      hi-en_latn: ["mere mama", "mere mama {N}"]
+  spouse:
+    m:
+      kin: husband
+      en: ["my husband", "my husband {N}"]
+      kn: [{nom: ನನ್ನ ಗಂಡ, gen: ನನ್ನ ಗಂಡನ, dat: ನನ್ನ ಗಂಡನಿಗೆ, acc: ನನ್ನ ಗಂಡನನ್ನು, erg: ನನ್ನ ಗಂಡ, abl: ನನ್ನ ಗಂಡನಿಂದ}, "ನನ್ನ ಗಂಡ {N}"]
+      kn-en_mixed: [{nom: ನನ್ನ husband, gen: ನನ್ನ husband ಅವರ, dat: ನನ್ನ husband ಗೆ, acc: ನನ್ನ husband ನ, erg: ನನ್ನ husband, abl: ನನ್ನ husband ಇಂದ}, "ನನ್ನ husband {N}"]
+      kn-en_latn: [{nom: nanna ganda, gen: nanna gandana, dat: nanna gandange, acc: nanna gandanna, erg: nanna ganda, abl: nanna gandaninda}, "nanna ganda {N}"]
+      hi: ["मेरे पति", "मेरे पति {N}"]
+      hi-en_latn: ["mere husband", "mere husband {N}"]
+    f:
+      kin: wife
+      en: ["my wife", "my wife {N}"]
+      kn: [{nom: ನನ್ನ ಹೆಂಡತಿ, gen: ನನ್ನ ಹೆಂಡತಿಯ, dat: ನನ್ನ ಹೆಂಡತಿಗೆ, acc: ನನ್ನ ಹೆಂಡತಿಯನ್ನು, erg: ನನ್ನ ಹೆಂಡತಿ, abl: ನನ್ನ ಹೆಂಡತಿಯಿಂದ}, "ನನ್ನ ಹೆಂಡತಿ {N}"]
+      kn-en_mixed: [{nom: ನನ್ನ wife, gen: ನನ್ನ wife ಅವರ, dat: ನನ್ನ wife ಗೆ, acc: ನನ್ನ wife ನ, erg: ನನ್ನ wife, abl: ನನ್ನ wife ಇಂದ}, "ನನ್ನ wife {N}"]
+      kn-en_latn: [{nom: nanna hendathi, gen: nanna hendathiya, dat: nanna hendathige, acc: nanna hendathiyanna, erg: nanna hendathi, abl: nanna hendathiyinda}, "nanna hendathi {N}"]
+      hi: ["मेरी पत्नी", "मेरी पत्नी {N}"]
+      hi-en_latn: ["meri wife", "meri wife {N}"]
+  mother_in_law:
+    kin: mother_in_law
+    surface: {kn: ಅತ್ತೆ, kn-en_latn: atte, kn-en_mixed: ಅತ್ತೆ, hi: सास, hi-en_latn: saas, en: mother-in-law}
+    f:
+      en: ["my mother-in-law", "my mother-in-law {N}"]
+      kn: [{nom: ನಮ್ಮ ಅತ್ತೆ, gen: ನಮ್ಮ ಅತ್ತೆಯ, dat: ನಮ್ಮ ಅತ್ತೆಗೆ, acc: ನಮ್ಮ ಅತ್ತೆಯನ್ನು, erg: ನಮ್ಮ ಅತ್ತೆ, abl: ನಮ್ಮ ಅತ್ತೆಯಿಂದ}, "ನಮ್ಮ ಅತ್ತೆ {N}"]
+      kn-en_mixed: [{nom: ನಮ್ಮ ಅತ್ತೆ, gen: ನಮ್ಮ ಅತ್ತೆಯ, dat: ನಮ್ಮ ಅತ್ತೆಗೆ, acc: ನಮ್ಮ ಅತ್ತೆಯನ್ನು, erg: ನಮ್ಮ ಅತ್ತೆ, abl: ನಮ್ಮ ಅತ್ತೆಯಿಂದ}, "ನಮ್ಮ ಅತ್ತೆ {N}"]
+      kn-en_latn: [{nom: namma atte, gen: namma atteya, dat: namma attege, acc: namma atteyanna, erg: namma atte, abl: namma atteyinda}, "namma atte {N}"]
+      hi: ["मेरी सास", "मेरी सास {N}"]
+      hi-en_latn: ["meri saas", "meri saas {N}"]
+  father_in_law:
+    kin: father_in_law
+    surface: {kn: ಮಾವ, kn-en_latn: maava, kn-en_mixed: ಮಾವ, hi: ससुर, hi-en_latn: sasur, en: father-in-law}
+    m:
+      en: ["my father-in-law", "my father-in-law {N}"]
+      kn: [{nom: ನಮ್ಮ ಮಾವ, gen: ನಮ್ಮ ಮಾವನ, dat: ನಮ್ಮ ಮಾವನಿಗೆ, acc: ನಮ್ಮ ಮಾವನನ್ನು, erg: ನಮ್ಮ ಮಾವ, abl: ನಮ್ಮ ಮಾವನಿಂದ}, "ನಮ್ಮ ಮಾವ {N}"]
+      kn-en_mixed: [{nom: ನಮ್ಮ ಮಾವ, gen: ನಮ್ಮ ಮಾವನ, dat: ನಮ್ಮ ಮಾವನಿಗೆ, acc: ನಮ್ಮ ಮಾವನನ್ನು, erg: ನಮ್ಮ ಮಾವ, abl: ನಮ್ಮ ಮಾವನಿಂದ}, "ನಮ್ಮ ಮಾವ {N}"]
+      kn-en_latn: [{nom: namma maava, gen: namma maavana, dat: namma maavange, acc: namma maavanna, erg: namma maava, abl: namma maavaninda}, "namma maava {N}"]
+      hi: ["मेरे ससुर", "मेरे ससुर {N}"]
+      hi-en_latn: ["mere sasur", "mere sasur {N}"]
+  brother:
+    kin: brother
+    surface: {kn: ಅಣ್ಣ, kn-en_latn: anna, kn-en_mixed: ಅಣ್ಣ, hi: भाई, hi-en_latn: bhai, en: brother}
+    m:
+      en: ["my brother", "my elder brother {N}"]
+      kn: [{nom: ನನ್ನ ಅಣ್ಣ, gen: ನನ್ನ ಅಣ್ಣನ, dat: ನನ್ನ ಅಣ್ಣನಿಗೆ, acc: ನನ್ನ ಅಣ್ಣನನ್ನು, erg: ನನ್ನ ಅಣ್ಣ, abl: ನನ್ನ ಅಣ್ಣನಿಂದ}, "ನನ್ನ ಅಣ್ಣ {N}"]
+      kn-en_mixed: [{nom: ನನ್ನ ಅಣ್ಣ, gen: ನನ್ನ ಅಣ್ಣನ, dat: ನನ್ನ ಅಣ್ಣನಿಗೆ, acc: ನನ್ನ ಅಣ್ಣನನ್ನು, erg: ನನ್ನ ಅಣ್ಣ, abl: ನನ್ನ ಅಣ್ಣನಿಂದ}, "ನನ್ನ ಅಣ್ಣ {N}"]
+      kn-en_latn: [{nom: nanna anna, gen: nanna annana, dat: nanna annange, acc: nanna annanna, erg: nanna anna, abl: nanna annaninda}, "nanna anna {N}"]
+      hi: ["मेरे भाई", "मेरे बड़े भाई {N}"]
+      hi-en_latn: ["mere bhai", "mere bade bhai {N}"]
+  cousin:
+    kin: cousin
+    surface: {kn: ದೊಡ್ಡಪ್ಪನ ಮಗ, kn-en_latn: doddappana maga, kn-en_mixed: ದೊಡ್ಡಪ್ಪನ ಮಗ, hi: चचेरे भाई, hi-en_latn: cousin, en: cousin}
+    m:
+      en: ["my cousin", "my cousin {N}"]
+      kn: [{nom: ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗ, gen: ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗನ, dat: ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗನಿಗೆ, acc: ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗನನ್ನು, erg: ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗ, abl: ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗನಿಂದ}, "ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗ {N}"]
+      kn-en_mixed: [{nom: ನಮ್ಮ cousin, gen: ನಮ್ಮ cousin ಅವರ, dat: ನಮ್ಮ cousin ಗೆ, acc: ನಮ್ಮ cousin ನ, erg: ನಮ್ಮ cousin, abl: ನಮ್ಮ cousin ಇಂದ}, "ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗ {N}"]
+      kn-en_latn: [{nom: namma doddappana maga, gen: namma doddappana magana, dat: namma doddappana maganige, acc: namma doddappana maganna, erg: namma doddappana maga, abl: namma doddappana maganinda}, "namma doddappana maga {N}"]
+      hi: ["मेरे चचेरे भाई", "मेरे चचेरे भाई {N}"]
+      hi-en_latn: ["mere cousin", "mere cousin {N}"]
+  shopkeeper:
+    any:
+      en: ["the shopkeeper", "the shopkeeper {N}"]
+      kn: [{nom: ಅಂಗಡಿಯವರು, gen: ಅಂಗಡಿಯವರ, dat: ಅಂಗಡಿಯವರಿಗೆ, acc: ಅಂಗಡಿಯವರನ್ನು, erg: ಅಂಗಡಿಯವರು, abl: ಅಂಗಡಿಯವರಿಂದ}, "ಅಂಗಡಿಯ {N}"]
+      kn-en_mixed: [{nom: shop ಅವರು, gen: shop ಅವರ, dat: shop ಅವರಿಗೆ, acc: shop ಅವರನ್ನು, erg: shop ಅವರು, abl: shop ಅವರಿಂದ}, "shop ಓನರ್ {N}"]
+      kn-en_latn: [{nom: angadiyavru, gen: angadiyavra, dat: angadiyavrige, acc: angadiyavranna, erg: angadiyavru, abl: angadiyavrinda}, "angadiya {N}"]
+      hi: ["दुकानदार", "दुकानदार {N}"]
+      hi-en_latn: ["dukaandaar", "dukaandaar {N}"]
+  acquaintance:
+    any:
+      en: ["{N}", "{N}, someone I know"]
+      kn: [{nom: ಪರಿಚಯದವರು, gen: ಪರಿಚಯದವರ, dat: ಪರಿಚಯದವರಿಗೆ, acc: ಪರಿಚಯದವರನ್ನು, erg: ಪರಿಚಯದವರು, abl: ಪರಿಚಯದವರಿಂದ}, "ಪರಿಚಯದ {N}"]
+      kn-en_mixed: [{nom: ಪರಿಚಯದವರು, gen: ಪರಿಚಯದವರ, dat: ಪರಿಚಯದವರಿಗೆ, acc: ಪರಿಚಯದವರನ್ನು, erg: ಪರಿಚಯದವರು, abl: ಪರಿಚಯದವರಿಂದ}, "ಪರಿಚಯದ {N}"]
+      kn-en_latn: [{nom: parichayadavru, gen: parichayadavra, dat: parichayadavrige, acc: parichayadavranna, erg: parichayadavru, abl: parichayadavrinda}, "parichayada {N}"]
+      hi: ["जान-पहचान वाले", "जान-पहचान वाले {N}"]
+      hi-en_latn: ["jaan-pehchaan wale", "jaan-pehchaan wale {N}"]
+  ex_partner:
+    m:
+      en: ["my ex-boyfriend", "my ex-boyfriend {N}"]
+      kn: ["ನನ್ನ ಎಕ್ಸ್ ಬಾಯ್‌ಫ್ರೆಂಡ್", "ನನ್ನ ಎಕ್ಸ್ ಬಾಯ್‌ಫ್ರೆಂಡ್ {N}"]
+      kn-en_mixed: ["ನನ್ನ ex-boyfriend", "ನನ್ನ ex-boyfriend {N}"]
+      kn-en_latn: ["nanna ex-boyfriend", "nanna ex-boyfriend {N}"]
+      hi: ["मेरे एक्स-बॉयफ्रेंड", "मेरे एक्स-बॉयफ्रेंड {N}"]
+      hi-en_latn: ["mere ex-boyfriend", "mere ex-boyfriend {N}"]
+    f:
+      en: ["my ex-girlfriend", "my ex-girlfriend {N}"]
+      kn: ["ನನ್ನ ಎಕ್ಸ್ ಗರ್ಲ್‌ಫ್ರೆಂಡ್", "ನನ್ನ ಎಕ್ಸ್ ಗರ್ಲ್‌ಫ್ರೆಂಡ್ {N}"]
+      kn-en_mixed: ["ನನ್ನ ex-girlfriend", "ನನ್ನ ex-girlfriend {N}"]
+      kn-en_latn: ["nanna ex-girlfriend", "nanna ex-girlfriend {N}"]
+      hi: ["मेरी एक्स-गर्लफ्रेंड", "मेरी एक्स-गर्लफ्रेंड {N}"]
+      hi-en_latn: ["meri ex-girlfriend", "meri ex-girlfriend {N}"]
+  friend:
+    any:
+      en: ["my friend", "my friend {N}"]
+      kn: ["ನನ್ನ ಫ್ರೆಂಡ್", "ನನ್ನ ಫ್ರೆಂಡ್ {N}"]
+      kn-en_mixed: ["ನನ್ನ friend", "ನನ್ನ friend {N}"]
+      kn-en_latn: ["nanna friend", "nanna friend {N}"]
+      hi: ["मेरे दोस्त", "मेरे दोस्त {N}"]
+      hi-en_latn: ["mere dost", "mere dost {N}"]
+    f:
+      hi: ["मेरी सहेली", "मेरी सहेली {N}"]
+      hi-en_latn: ["meri friend", "meri friend {N}"]
+  unknown_person:
+    any:
+      en: ["the person", "someone"]
+      kn: [{nom: ಆ ವ್ಯಕ್ತಿ, gen: ಆ ವ್ಯಕ್ತಿಯ, dat: ಆ ವ್ಯಕ್ತಿಗೆ, acc: ಆ ವ್ಯಕ್ತಿಯನ್ನು, erg: ಆ ವ್ಯಕ್ತಿ, abl: ಆ ವ್ಯಕ್ತಿಯಿಂದ}, {nom: ಯಾರೋ, dat: ಯಾರಿಗೋ, erg: ಯಾರೋ}]
+      kn-en_mixed: [{nom: ಆ person, gen: ಆ person ದು, dat: ಆ person ಗೆ, acc: ಆ person ನ, erg: ಆ person, abl: ಆ person ಇಂದ}, {nom: ಯಾರೋ, dat: ಯಾರಿಗೋ, erg: ಯಾರೋ}]
+      kn-en_latn: [{nom: aa vyakti, gen: aa vyaktiya, dat: aa vyaktige, acc: aa vyaktiyanna, erg: aa vyakti, abl: aa vyaktiyinda}, {nom: yaaro, dat: yaarigo, erg: yaaro}]
+      hi: [{nom: वो आदमी, gen_m: [उस आदमी, " का"], gen_f: [उस आदमी, " की"], gen_pl: [उस आदमी, " के"], dat: [उस आदमी, " को"], acc: [उस आदमी, " को"], erg: [उस आदमी, " ने"], abl: [उस आदमी, " से"]}, {nom: कोई, erg: किसी ने, dat: किसी को}]
+      hi-en_latn: [{nom: woh aadmi, gen_m: [us aadmi, " ka"], gen_f: [us aadmi, " ki"], gen_pl: [us aadmi, " ke"], dat: [us aadmi, " ko"], acc: [us aadmi, " ko"], erg: [us aadmi, " ne"], abl: [us aadmi, " se"]}, {nom: koi, erg: kisi ne, dat: kisi ko}]
+  caller:
+    any:
+      en: ["the caller", "a man"]
+      kn: [{nom: ಕಾಲ್ ಮಾಡಿದವರು, gen: ಕಾಲ್ ಮಾಡಿದವರ, dat: ಕಾಲ್ ಮಾಡಿದವರಿಗೆ, acc: ಕಾಲ್ ಮಾಡಿದವರನ್ನು, erg: ಕಾಲ್ ಮಾಡಿದವರು, abl: ಕಾಲ್ ಮಾಡಿದವರಿಂದ}, {nom: ಒಬ್ಬರು, dat: ಒಬ್ಬರಿಗೆ, erg: ಒಬ್ಬರು}]
+      kn-en_mixed: [{nom: call ಮಾಡಿದವರು, gen: call ಮಾಡಿದವರ, dat: call ಮಾಡಿದವರಿಗೆ, acc: call ಮಾಡಿದವರನ್ನು, erg: call ಮಾಡಿದವರು, abl: call ಮಾಡಿದವರಿಂದ}, {nom: ಒಬ್ಬರು, dat: ಒಬ್ಬರಿಗೆ, erg: ಒಬ್ಬರು}]
+      kn-en_latn: [{nom: call maadidavru, gen: call maadidavra, dat: call maadidavrige, acc: call maadidavranna, erg: call maadidavru, abl: call maadidavrinda}, {nom: obbru, dat: obbrige, erg: obbru}]
+      hi: [{nom: कॉल करने वाला, gen_m: [कॉल करने वाले, " का"], gen_f: [कॉल करने वाले, " की"], gen_pl: [कॉल करने वाले, " के"], dat: [कॉल करने वाले, " को"], acc: [कॉल करने वाले, " को"], erg: [कॉल करने वाले, " ने"], abl: [कॉल करने वाले, " से"]}, {nom: एक आदमी, erg: [एक आदमी, " ने"], dat: [एक आदमी, " को"]}]
+      hi-en_latn: [{nom: call karne wala, gen_m: [call karne wale, " ka"], gen_f: [call karne wale, " ki"], gen_pl: [call karne wale, " ke"], dat: [call karne wale, " ko"], acc: [call karne wale, " ko"], erg: [call karne wale, " ne"], abl: [call karne wale, " se"]}, {nom: ek aadmi, erg: [ek aadmi, " ne"], dat: [ek aadmi, " ko"]}]
+  recovery_agent:
+    any:
+      en: ["the recovery agent", "a recovery agent"]
+      kn: ["ರಿಕವರಿ ಏಜೆಂಟ್", "ಒಬ್ಬ ರಿಕವರಿ ಏಜೆಂಟ್"]
+      kn-en_mixed: ["recovery agent", "ಒಬ್ಬ recovery agent"]
+      kn-en_latn: ["recovery agent", "obba recovery agent"]
+      hi: ["रिकवरी एजेंट", "एक रिकवरी एजेंट"]
+      hi-en_latn: ["recovery agent", "ek recovery agent"]
+  buyer:
+    any:
+      en: ["the buyer", "someone named {N}"]
+      kn: [{nom: ಕೊಂಡುಕೊಂಡವರು, gen: ಕೊಂಡುಕೊಂಡವರ, dat: ಕೊಂಡುಕೊಂಡವರಿಗೆ, acc: ಕೊಂಡುಕೊಂಡವರನ್ನು, erg: ಕೊಂಡುಕೊಂಡವರು, abl: ಕೊಂಡುಕೊಂಡವರಿಂದ}, {nom: "{N} ಅನ್ನೋರು", gen: "{N} ಅನ್ನೋರ", dat: "{N} ಅನ್ನೋರಿಗೆ", acc: "{N} ಅನ್ನೋರನ್ನ", erg: "{N} ಅನ್ನೋರು", abl: "{N} ಅನ್ನೋರಿಂದ"}]
+      kn-en_mixed: [{nom: buyer, gen: buyer ಅವರ, dat: buyer ಅವರಿಗೆ, acc: buyer ಅವರನ್ನು, erg: buyer, abl: buyer ಅವರಿಂದ}, {nom: "{N} ಅನ್ನೋರು", gen: "{N} ಅನ್ನೋರ", dat: "{N} ಅನ್ನೋರಿಗೆ", acc: "{N} ಅನ್ನೋರನ್ನ", erg: "{N} ಅನ್ನೋರು", abl: "{N} ಅನ್ನೋರಿಂದ"}]
+      kn-en_latn: [{nom: kondukondavru, gen: kondukondavra, dat: kondukondavrige, acc: kondukondavranna, erg: kondukondavru, abl: kondukondavrinda}, {nom: "{N} annoru", gen: "{N} annora", dat: "{N} annorige", acc: "{N} annoranna", erg: "{N} annoru", abl: "{N} annorinda"}]
+      hi: ["खरीदने वाले", "{N} नाम के व्यक्ति"]
+      hi-en_latn: ["kharidne wale", "{N} naam ke vyakti"]
+  child:
+    m:
+      kin: son
+      en: ["my son", "my son {N}"]
+      kn: [{nom: ನನ್ನ ಮಗ, gen: ನನ್ನ ಮಗನ, dat: ನನ್ನ ಮಗನಿಗೆ, acc: ನನ್ನ ಮಗನನ್ನು, erg: ನನ್ನ ಮಗ, abl: ನನ್ನ ಮಗನಿಂದ}, "ನನ್ನ ಮಗ {N}"]
+      kn-en_mixed: [{nom: ನನ್ನ ಮಗ, gen: ನನ್ನ ಮಗನ, dat: ನನ್ನ ಮಗನಿಗೆ, acc: ನನ್ನ ಮಗನನ್ನು, erg: ನನ್ನ ಮಗ, abl: ನನ್ನ ಮಗನಿಂದ}, "ನನ್ನ ಮಗ {N}"]
+      kn-en_latn: [{nom: nanna maga, gen: nanna magana, dat: nanna maganige, acc: nanna maganna, erg: nanna maga, abl: nanna maganinda}, "nanna maga {N}"]
+      hi: [{nom: मेरा बेटा, gen_m: [मेरे बेटे, " का"], gen_f: [मेरे बेटे, " की"], gen_pl: [मेरे बेटे, " के"], dat: [मेरे बेटे, " को"], acc: [मेरे बेटे, " को"], erg: [मेरे बेटे, " ने"], abl: [मेरे बेटे, " से"]}, "मेरा बेटा {N}"]
+      hi-en_latn: [{nom: mera beta, gen_m: [mere bete, " ka"], gen_f: [mere bete, " ki"], gen_pl: [mere bete, " ke"], dat: [mere bete, " ko"], acc: [mere bete, " ko"], erg: [mere bete, " ne"], abl: [mere bete, " se"]}, "mera beta {N}"]
+    f:
+      kin: daughter
+      en: ["my daughter", "my daughter {N}"]
+      kn: [{nom: ನನ್ನ ಮಗಳು, gen: ನನ್ನ ಮಗಳ, dat: ನನ್ನ ಮಗಳಿಗೆ, acc: ನನ್ನ ಮಗಳನ್ನು, erg: ನನ್ನ ಮಗಳು, abl: ನನ್ನ ಮಗಳಿಂದ}, "ನನ್ನ ಮಗಳು {N}"]
+      kn-en_mixed: [{nom: ನನ್ನ ಮಗಳು, gen: ನನ್ನ ಮಗಳ, dat: ನನ್ನ ಮಗಳಿಗೆ, acc: ನನ್ನ ಮಗಳನ್ನು, erg: ನನ್ನ ಮಗಳು, abl: ನನ್ನ ಮಗಳಿಂದ}, "ನನ್ನ ಮಗಳು {N}"]
+      kn-en_latn: [{nom: nanna magalu, gen: nanna magala, dat: nanna magalige, acc: nanna magalanna, erg: nanna magalu, abl: nanna magalinda}, "nanna magalu {N}"]
+      hi: ["मेरी बेटी", "मेरी बेटी {N}"]
+      hi-en_latn: ["meri beti", "meri beti {N}"]
+
+# Synthetic first names only (no surnames) to avoid resembling real people.
+names:
+  kn_hindu:
+    m: [[Ramesh, ರಮೇಶ್, रमेश], [Suresh, ಸುರೇಶ್, सुरेश], [Manjunath, ಮಂಜುನಾಥ್, मंजुनाथ], [Basavaraj, ಬಸವರಾಜ್, बसवराज], [Nagaraj, ನಾಗರಾಜ್, नागराज], [Shivanna, ಶಿವಣ್ಣ, शिवण्णा], [Prakash, ಪ್ರಕಾಶ್, प्रकाश], [Girish, ಗಿರೀಶ್, गिरीश], [Mahesh, ಮಹೇಶ್, महेश], [Raghu, ರಘು, रघु]]
+    f: [[Lakshmi, ಲಕ್ಷ್ಮಿ, लक्ष्मी], [Kavya, ಕಾವ್ಯ, काव्या], [Shilpa, ಶಿಲ್ಪಾ, शिल्पा], [Gowramma, ಗೌರಮ್ಮ, गौरम्मा], [Savitha, ಸವಿತಾ, सविता], [Deepa, ದೀಪಾ, दीपा], [Rekha, ರೇಖಾ, रेखा], [Sunanda, ಸುನಂದಾ, सुनंदा], [Bhagya, ಭಾಗ್ಯ, भाग्या], [Pavithra, ಪವಿತ್ರಾ, पवित्रा]]
+  muslim:
+    m: [[Imran, ಇಮ್ರಾನ್, इमरान], [Salim, ಸಲೀಂ, सलीम], [Arif, ಆರಿಫ್, आरिफ़], [Javed, ಜಾವೇದ್, जावेद]]
+    f: [[Farhana, ಫರ್ಹಾನಾ, फ़रहाना], [Salma, ಸಲ್ಮಾ, सलमा], [Ayesha, ಆಯೇಷಾ, आयशा], [Nazia, ನಾಜಿಯಾ, नाज़िया]]
+  christian:
+    m: [[Joseph, ಜೋಸೆಫ್, जोसेफ़], [Stephen, ಸ್ಟೀಫನ್, स्टीफ़न], [Francis, ಫ್ರಾನ್ಸಿಸ್, फ़्रांसिस]]
+    f: [[Mary, ಮೇರಿ, मैरी], [Agnes, ಆಗ್ನೆಸ್, एग्नेस], [Flavia, ಫ್ಲೇವಿಯಾ, फ़्लेविया]]
+  hi_hindu:
+    m: [[Rakesh, ರಾಕೇಶ್, राकेश], [Amit, ಅಮಿತ್, अमित], [Sanjay, ಸಂಜಯ್, संजय], [Vikas, ವಿಕಾಸ್, विकास], [Rajesh, ರಾಜೇಶ್, राजेश]]
+    f: [[Sunita, ಸುನೀತಾ, सुनीता], [Neha, ನೇಹಾ, नेहा], [Anjali, ಅಂಜಲಿ, अंजलि], [Kiran, ಕಿರಣ್, किरण], [Pooja, ಪೂಜಾ, पूजा]]
+
+places:   # generic local places; hi also gives the oblique form used before postpositions
+  market: {en: the market, kn: ಮಾರ್ಕೆಟ್, kn-en_mixed: market, kn-en_latn: market, hi: बाज़ार, hi_obl: बाज़ार, hi-en_latn: bazaar, hi-en_latn_obl: bazaar}
+  bus_stand: {en: the bus stand, kn: ಬಸ್ ಸ್ಟ್ಯಾಂಡ್, kn-en_mixed: bus stand, kn-en_latn: bus stand, hi: बस स्टैंड, hi_obl: बस स्टैंड, hi-en_latn: bus stand, hi-en_latn_obl: bus stand}
+  temple: {en: the temple, kn: ದೇವಸ್ಥಾನ, kn-en_mixed: temple, kn-en_latn: devasthaana, hi: मंदिर, hi_obl: मंदिर, hi-en_latn: mandir, hi-en_latn_obl: mandir}
+  our_house: {en: our house, kn: ನಮ್ಮ ಮನೆ, kn-en_mixed: ನಮ್ಮ ಮನೆ, kn-en_latn: namma mane, hi: हमारा घर, hi_obl: हमारे घर, hi-en_latn: hamara ghar, hi-en_latn_obl: hamare ghar}
+  our_field: {en: our field, kn: ನಮ್ಮ ಹೊಲ, kn-en_mixed: ನಮ್ಮ ಹೊಲ, kn-en_latn: namma hola, hi: हमारा खेत, hi_obl: हमारे खेत, hi-en_latn: hamara khet, hi-en_latn_obl: hamare khet}
+  school: {en: the school, kn: ಸ್ಕೂಲ್, kn-en_mixed: school, kn-en_latn: school, hi: स्कूल, hi_obl: स्कूल, hi-en_latn: school, hi-en_latn_obl: school}
+
+# Assets / products / items. "g" is the Hindi grammatical gender (verb agreement).
+items:
+  gold_chain: {asset_type: movable_valuable, g: f, en: [my gold chain, the gold chain], kn: [ನನ್ನ ಚಿನ್ನದ ಸರ, ಚಿನ್ನದ ಸರ], kn-en_mixed: [ನನ್ನ gold chain, gold chain], kn-en_latn: [nanna chinnada sara, chinnada sara], hi: [मेरी सोने की चेन, सोने की चेन], hi-en_latn: [meri sone ki chain, sone ki chain]}
+  mobile_phone: {asset_type: device, g: m, en: [my mobile phone, the phone], kn: [ನನ್ನ ಮೊಬೈಲ್, ಮೊಬೈಲ್], kn-en_mixed: [ನನ್ನ mobile, mobile], kn-en_latn: [nanna mobile, mobile], hi: [मेरा मोबाइल, मोबाइल], hi-en_latn: [mera mobile, mobile]}
+  bike: {asset_type: vehicle, g: f, en: [my bike, the bike], kn: [ನನ್ನ ಬೈಕ್, ಬೈಕ್], kn-en_mixed: [ನನ್ನ bike, bike], kn-en_latn: [nanna bike, bike], hi: [मेरी बाइक, बाइक], hi-en_latn: [meri bike, bike]}
+  washing_machine: {asset_type: product, g: f, en: [a washing machine, the washing machine], kn: [ಒಂದು ವಾಷಿಂಗ್ ಮಷೀನ್, ವಾಷಿಂಗ್ ಮಷೀನ್], kn-en_mixed: [ಒಂದು washing machine, washing machine], kn-en_latn: [ondu washing machine, washing machine], hi: [एक वॉशिंग मशीन, वॉशिंग मशीन], hi-en_latn: [ek washing machine, washing machine]}
+  refrigerator: {asset_type: product, g: m, en: [a refrigerator, the fridge], kn: [ಒಂದು ಫ್ರಿಜ್, ಫ್ರಿಜ್], kn-en_mixed: [ಒಂದು fridge, fridge], kn-en_latn: [ondu fridge, fridge], hi: [एक फ़्रिज, फ़्रिज], hi-en_latn: [ek fridge, fridge]}
+  laptop: {asset_type: product, g: m, en: [a laptop, the laptop], kn: [ಒಂದು ಲ್ಯಾಪ್‌ಟಾಪ್, ಲ್ಯಾಪ್‌ಟಾಪ್], kn-en_mixed: [ಒಂದು laptop, laptop], kn-en_latn: [ondu laptop, laptop], hi: [एक लैपटॉप, लैपटॉप], hi-en_latn: [ek laptop, laptop]}
+  new_phone: {asset_type: product, g: m, en: [a new phone, the phone], kn: [ಒಂದು ಹೊಸ ಮೊಬೈಲ್, ಮೊಬೈಲ್], kn-en_mixed: [ಒಂದು new mobile, mobile], kn-en_latn: [ondu hosa mobile, mobile], hi: [एक नया मोबाइल, मोबाइल], hi-en_latn: [ek naya mobile, mobile]}
+  mixer_grinder: {asset_type: product, g: m, en: [a mixer grinder, the mixer], kn: [ಒಂದು ಮಿಕ್ಸಿ, ಮಿಕ್ಸಿ], kn-en_mixed: [ಒಂದು mixie, mixie], kn-en_latn: [ondu mixie, mixie], hi: [एक मिक्सर, मिक्सर], hi-en_latn: [ek mixer, mixer]}
+  agri_land: {asset_type: agricultural_land, g: f, en: [our family farmland, the land], kn: [ನಮ್ಮ ಮನೆತನದ ಜಮೀನು, ಜಮೀನು], kn-en_mixed: [ನಮ್ಮ family ಜಮೀನು, ಜಮೀನು], kn-en_latn: [namma manetanada jameenu, jameenu], hi: [हमारी पुश्तैनी ज़मीन, ज़मीन], hi-en_latn: [hamari pushtaini zameen, zameen]}
+  house_site: {asset_type: house_site, g: f, en: [our house site, the site], kn: [ನಮ್ಮ ಮನೆ ಸೈಟ್, ಸೈಟ್], kn-en_mixed: [ನಮ್ಮ house site, site], kn-en_latn: [namma mane site, site], hi: [हमारी प्लॉट वाली ज़मीन, प्लॉट], hi-en_latn: [hamari plot wali zameen, plot]}
+  family_house: {asset_type: building, g: m, en: [our family house, the house], kn: [ನಮ್ಮ ಹಳೆ ಮನೆ, ಮನೆ], kn-en_mixed: [ನಮ್ಮ old house, house], kn-en_latn: [namma hale mane, mane], hi: [हमारा पुश्तैनी मकान, मकान], hi-en_latn: [hamara pushtaini makaan, makaan]}
+
+numbers:   # value -> [en, kn, kn_latn, hi, hi_latn]
+  1: [one, ಒಂದು, ondu, एक, ek]
+  2: [two, ಎರಡು, eradu, दो, do]
+  3: [three, ಮೂರು, mooru, तीन, teen]
+  4: [four, ನಾಲ್ಕು, naalku, चार, chaar]
+  5: [five, ಐದು, aidu, पाँच, paanch]
+  6: [six, ಆರು, aaru, छह, chhah]
+  10: [ten, ಹತ್ತು, hattu, दस, das]
+  12: [twelve, ಹನ್ನೆರಡು, hanneradu, बारह, baarah]
+  14: [fourteen, ಹದಿನಾಲ್ಕು, hadinaalku, चौदह, chaudah]
+  15: [fifteen, ಹದಿನೈದು, hadinaidu, पंद्रह, pandrah]
+  18: [eighteen, ಹದಿನೆಂಟು, hadinentu, अठारह, athaarah]
+  20: [twenty, ಇಪ್ಪತ್ತು, ippattu, बीस, bees]
+  25: [twenty-five, ಇಪ್ಪತ್ತೈದು, ippattaidu, पच्चीस, pachchees]
+  30: [thirty, ಮೂವತ್ತು, moovattu, तीस, tees]
+  40: [forty, ನಲವತ್ತು, nalavattu, चालीस, chaalees]
+  45: [forty-five, ನಲವತ್ತೈದು, nalavattaidu, पैंतालीस, paintaalees]
+  50: [fifty, ಐವತ್ತು, aivattu, पचास, pachaas]
+  60: [sixty, ಅರವತ್ತು, aravattu, साठ, saath]
+  75: [seventy-five, ಎಪ್ಪತ್ತೈದು, eppattaidu, पचहत्तर, pachhattar]
+  80: [eighty, ಎಂಬತ್ತು, embattu, अस्सी, assi]
+  90: [ninety, ತೊಂಬತ್ತು, tombattu, नब्बे, nabbe]
+money_units:
+  thousand: [thousand, ಸಾವಿರ, saavira, हज़ार, hazaar]
+  lakh: [lakh, ಲಕ್ಷ, laksha, लाख, lakh]
+  rupees: [rupees, ರೂಪಾಯಿ, rupees, रुपये, rupaye]
+
+months:
+  en: [January, February, March, April, May, June, July, August, September, October, November, December]
+  kn: [ಜನವರಿ, ಫೆಬ್ರವರಿ, ಮಾರ್ಚ್, ಏಪ್ರಿಲ್, ಮೇ, ಜೂನ್, ಜುಲೈ, ಆಗಸ್ಟ್, ಸೆಪ್ಟೆಂಬರ್, ಅಕ್ಟೋಬರ್, ನವೆಂಬರ್, ಡಿಸೆಂಬರ್]
+  hi: [जनवरी, फ़रवरी, मार्च, अप्रैल, मई, जून, जुलाई, अगस्त, सितंबर, अक्टूबर, नवंबर, दिसंबर]
+
+# Festival anchors used for vague dates. Dates are approximate and the
+# resulting TIMEX is always marked approximate=true.  TO_VERIFY against a panchanga.
+festivals:
+  ugadi: {en: Ugadi, kn: ಯುಗಾದಿ, latn: Ugadi, hi: उगादी, dates: {2023: "2023-03-22", 2024: "2024-04-09", 2025: "2025-03-30", 2026: "2026-03-19"}}
+  sankranti: {en: Sankranti, kn: ಸಂಕ್ರಾಂತಿ, latn: Sankranti, hi: संक्रांति, dates: {2023: "2023-01-15", 2024: "2024-01-15", 2025: "2025-01-14", 2026: "2026-01-14"}}
+  holi: {en: Holi, kn: ಹೋಳಿ, latn: Holi, hi: होली, dates: {2023: "2023-03-08", 2024: "2024-03-25", 2025: "2025-03-14", 2026: "2026-03-04"}}
+
+discourse:
+  fillers:
+    en: ["Actually,", "See,", "Umm,", "You know,", "So basically,"]
+    kn: ["ಅಂದ್ರೆ,", "ನೋಡಿ,", "ಏನಾಯ್ತು ಅಂದ್ರೆ,", "ಅದು,"]
+    kn-en_mixed: ["ಅಂದ್ರೆ,", "Actually,", "ನೋಡಿ,", "Basically,"]
+    kn-en_latn: ["Andre,", "Nodi,", "Enaaytu andre,", "Actually,"]
+    hi: ["देखिए,", "मतलब,", "असल में,", "वो क्या है कि,"]
+    hi-en_latn: ["Dekhiye,", "Matlab,", "Actually,", "Woh kya hai na,"]
+  emotion:
+    en: ["I am really scared.", "I don't know what to do.", "I am very tense about all this.", "Please help me."]
+    kn: ["ನನಗೆ ತುಂಬಾ ಭಯ ಆಗ್ತಿದೆ.", "ಏನ್ ಮಾಡ್ಬೇಕು ಅಂತ ಗೊತ್ತಾಗ್ತಿಲ್ಲ.", "ತುಂಬಾ ಟೆನ್ಷನ್ ಆಗಿದೆ.", "ದಯವಿಟ್ಟು ಸಹಾಯ ಮಾಡಿ."]
+    kn-en_mixed: ["ನನಗೆ ತುಂಬಾ tension ಆಗಿದೆ.", "ಏನ್ ಮಾಡ್ಬೇಕು ಅಂತ ಗೊತ್ತಾಗ್ತಿಲ್ಲ.", "Please help ಮಾಡಿ.", "ತುಂಬಾ scared ಆಗಿದೀನಿ."]
+    kn-en_latn: ["Nange tumba bhaya aagtide.", "En maadbeku antha gottaagtilla.", "Tumba tension aagide.", "Please help maadi."]
+    hi: ["मुझे बहुत डर लग रहा है।", "समझ नहीं आ रहा क्या करूँ।", "बहुत टेंशन हो रही है।", "कृपया मेरी मदद कीजिए।"]
+    hi-en_latn: ["Mujhe bahut darr lag raha hai.", "Samajh nahi aa raha kya karun.", "Bahut tension ho rahi hai.", "Please meri help kijiye."]
+  hedges:   # position: pre = before the clause, post = before final punctuation
+    en: [{pre: "I think "}, {pre: "Maybe "}, {pre: "I'm not fully sure, but "}]
+    kn: [{post: " ಅನ್ಸುತ್ತೆ"}, {pre: "ಬಹುಶಃ "}]
+    kn-en_mixed: [{pre: "Maybe "}, {post: " ಅನ್ಸುತ್ತೆ"}]
+    kn-en_latn: [{post: " anstide"}, {pre: "Maybe "}]
+    hi: [{pre: "मुझे लगता है "}, {pre: "शायद "}]
+    hi-en_latn: [{pre: "Mujhe lagta hai "}, {pre: "Shayad "}]
+  flashback:   # introduces an earlier event out of order
+    en: ["Oh, I forgot to say, before all this,", "Actually, earlier,"]
+    kn: ["ಹೇಳೋದು ಮರೆತೆ, ಇದಕ್ಕಿಂತ ಮುಂಚೆ,", "ಅದಕ್ಕೂ ಮುಂಚೆ,"]
+    kn-en_mixed: ["ಹೇಳೋದು ಮರೆತೆ, ಇದಕ್ಕಿಂತ ಮುಂಚೆ,", "Actually ಅದಕ್ಕೂ ಮುಂಚೆ,"]
+    kn-en_latn: ["Heldu marete, idakkinta munche,", "Adakku munche,"]
+    hi: ["बताना भूल गई, इससे पहले,", "असल में उससे पहले,"]
+    hi-en_latn: ["Batana bhool gayi, isse pehle,", "Actually usse pehle,"]
+    hi_m: ["बताना भूल गया, इससे पहले,", "असल में उससे पहले,"]
+    hi-en_latn_m: ["Batana bhool gaya, isse pehle,", "Actually usse pehle,"]
+  closers:
+    en: ["What should I do now?", "Can I do anything about this?", "What are my options?"]
+    kn: ["ಈಗ ನಾನು ಏನು ಮಾಡಬೇಕು?", "ಇದಕ್ಕೆ ಏನಾದ್ರೂ ದಾರಿ ಇದೆಯಾ?"]
+    kn-en_mixed: ["ಈಗ ನಾನು ಏನು ಮಾಡಬೇಕು?", "ಇದಕ್ಕೆ ಏನಾದ್ರೂ solution ಇದೆಯಾ?"]
+    kn-en_latn: ["Eega naanu enu maadbeku?", "Idakke enaadru daari ideya?"]
+    hi: ["अब मुझे क्या करना चाहिए?", "क्या इसका कोई रास्ता है?"]
+    hi-en_latn: ["Ab mujhe kya karna chahiye?", "Iska koi solution hai kya?"]
+
+dialogue:
+  dont_know:
+    en: ["I [don't](NEG) know.", "I'm [not](NEG) sure about that.", "Sorry, I have [no](NEG) idea."]
+    kn: ["[ಗೊತ್ತಿಲ್ಲ](NEG).", "ಅದು ನನಗೆ ಸರಿಯಾಗಿ [ಗೊತ್ತಿಲ್ಲ](NEG)."]
+    kn-en_mixed: ["[ಗೊತ್ತಿಲ್ಲ](NEG).", "ಅದು ನನಗೆ sure [ಇಲ್ಲ](NEG)."]
+    kn-en_latn: ["[Gottilla](NEG).", "Adu nange sariyaagi [gottilla](NEG)."]
+    hi: ["पता [नहीं](NEG)।", "मुझे इसके बारे में ठीक से [नहीं](NEG) पता।"]
+    hi-en_latn: ["Pata [nahi](NEG).", "Mujhe iske baare mein sure [nahi](NEG) hai."]
+  reexplain:
+    en: ["Sorry, I did [not](NEG) understand. Can you ask that again simply?", "What do you mean by that?"]
+    kn: ["ಕ್ಷಮಿಸಿ, ಅರ್ಥ [ಆಗ್ಲಿಲ್ಲ](NEG). ಇನ್ನೊಂದ್ಸಲ ಸುಲಭವಾಗಿ ಕೇಳ್ತೀರಾ?", "ಅಂದ್ರೆ ಏನು?"]
+    kn-en_mixed: ["Sorry, ಅರ್ಥ [ಆಗ್ಲಿಲ್ಲ](NEG). ಇನ್ನೊಂದ್ಸಲ simple ಆಗಿ ಕೇಳ್ತೀರಾ?", "ಅಂದ್ರೆ ಏನು?"]
+    kn-en_latn: ["Sorry, artha [aaglilla](NEG). Innondsala simple aagi keltira?", "Andre enu?"]
+    hi: ["माफ़ कीजिए, समझ [नहीं](NEG) आया। फिर से आसान भाषा में पूछेंगे?", "मतलब क्या?"]
+    hi-en_latn: ["Sorry, samajh [nahi](NEG) aaya. Phir se simple mein poochenge?", "Matlab kya?"]
+  correction:
+    en: ["Sorry, I said that wrong.", "[No](NEG) wait, let me correct that."]
+    kn: ["ಕ್ಷಮಿಸಿ, ತಪ್ಪಾಗಿ ಹೇಳ್ದೆ.", "[ಇಲ್ಲ](NEG) [ಇಲ್ಲ](NEG), ಸರಿಯಾಗಿ ಹೇಳ್ತೀನಿ."]
+    kn-en_mixed: ["Sorry, ತಪ್ಪಾಗಿ ಹೇಳ್ದೆ.", "[ಇಲ್ಲ](NEG) [ಇಲ್ಲ](NEG), correct ಆಗಿ ಹೇಳ್ತೀನಿ."]
+    kn-en_latn: ["Sorry, tappaagi helde.", "[Illa](NEG) [illa](NEG), sariyaagi heltini."]
+    hi: ["माफ़ कीजिए, मैंने गलत बोला।", "[नहीं](NEG) रुकिए, सही बताती हूँ।"]
+    hi_m: ["माफ़ कीजिए, मैंने गलत बोला।", "[नहीं](NEG) रुकिए, सही बताता हूँ।"]
+    hi-en_latn: ["Sorry, maine galat bola.", "[Nahi](NEG) ruko, sahi batati hoon."]
+    hi-en_latn_m: ["Sorry, maine galat bola.", "[Nahi](NEG) ruko, sahi batata hoon."]
+  no_generic:
+    en: "[No](NEG), that is [not](NEG) my situation."
+    kn: "[ಇಲ್ಲ](NEG), ನನ್ನ ಸಮಸ್ಯೆ ಅದು [ಅಲ್ಲ](NEG)."
+    kn-en_mixed: "[ಇಲ್ಲ](NEG), ನನ್ನ problem ಅದು [ಅಲ್ಲ](NEG)."
+    kn-en_latn: "[Illa](NEG), nanna samasye adu [alla](NEG)."
+    hi: "[नहीं](NEG), मेरा मामला वो [नहीं](NEG) है।"
+    hi-en_latn: "[Nahi](NEG), mera case woh [nahi](NEG) hai."
+  reask_prefix:
+    en: "Let me put it simply: "
+    kn: "ಸುಲಭವಾಗಿ ಹೇಳಬೇಕಂದ್ರೆ: "
+    hi: "आसान शब्दों में: "
+  opening_system:
+    en: "Namaskara. Please tell me what happened, in your own words."
+    kn: "ನಮಸ್ಕಾರ. ಏನಾಯಿತು ಅಂತ ನಿಮ್ಮದೇ ಮಾತಿನಲ್ಲಿ ಹೇಳಿ."
+    hi: "नमस्ते। जो हुआ, अपने शब्दों में बताइए।"

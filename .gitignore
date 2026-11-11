@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.cache/
+data/raw/acts/*.pdf
+.pytest_cache/
+*.egg-info/
+dist/
+data/legallisten/

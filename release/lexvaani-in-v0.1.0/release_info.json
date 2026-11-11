@@ -1,0 +1,40 @@
+{
+  "name": "LexVaani-IN",
+  "version": "0.1.0",
+  "counts": {
+    "narratives/train": 2778,
+    "narratives_asr/train": 550,
+    "narratives/dev": 552,
+    "narratives_asr/dev": 110,
+    "narratives/test": 1014,
+    "narratives_asr/test": 1343,
+    "specs/train": 463,
+    "specs/dev": 92,
+    "specs/test": 169,
+    "dialogues/train": 2778,
+    "dialogues/dev": 552,
+    "dialogues/test": 1014,
+    "explanations/train": 4530,
+    "explanations/dev": 990,
+    "explanations/test": 1704,
+    "test_subsets/test_contrastive": 782,
+    "test_subsets/test_asr_noise": 1343,
+    "test_subsets/test_code_mixed": 507,
+    "test_subsets/test_out_of_scope": 113,
+    "test_subsets/test_high_risk": 589,
+    "all_narratives": 4344
+  },
+  "dropped_duplicate_specs": [
+    "spc_0539",
+    "spc_0540",
+    "spc_0573",
+    "spc_0576",
+    "spc_0578",
+    "spc_0580"
+  ],
+  "splits_by_spec": {
+    "test": 169,
+    "train": 463,
+    "dev": 92
+  }
+}

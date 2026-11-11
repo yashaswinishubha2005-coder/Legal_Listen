@@ -1,0 +1,325 @@
+# Consumer & financial domain (part A): defective product, deficiency in service. Provisions TO_VERIFY.
+issues:
+  # ------------------------------------------------------ defective product
+  - issue_id: con.defective_product
+    domain: consumer_financial
+    title: {en: Defective product, kn: ದೋಷಯುಕ್ತ ಉತ್ಪನ್ನ, hi: खराब उत्पाद}
+    plain_summary:
+      en: A product you bought for your own use has a defect, and the seller or manufacturer will not repair, replace or refund it.
+      kn: ಸ್ವಂತ ಬಳಕೆಗೆ ಕೊಂಡ ವಸ್ತುವಿನಲ್ಲಿ ದೋಷ ಇದೆ, ಮಾರಾಟಗಾರ ಅಥವಾ ತಯಾರಕರು ರಿಪೇರಿ, ಬದಲಾವಣೆ ಅಥವಾ ಹಣ ವಾಪಸ್ ಮಾಡುತ್ತಿಲ್ಲ.
+      hi: अपने इस्तेमाल के लिए खरीदे सामान में खराबी है और विक्रेता या निर्माता मरम्मत, बदलाव या पैसे वापस नहीं कर रहा।
+    risk_level: low
+    default_triage: self_help
+    cast:
+      - {slot: SELLER, kind: organization, role: organization, nouns: [company], named: false}
+    value_slots: {ITEM: [washing_machine, refrigerator, laptop, new_phone, mixer_grinder], AMOUNT: [small, medium]}
+    setup:
+      en: I have a complaint about {ITEM} and [the showroom](@SELLER) that sold it.
+      kn: "{ITEM} ಮತ್ತು ಅದನ್ನು ಮಾರಿದ [ಶೋರೂಮ್](@SELLER) ಬಗ್ಗೆ ನನ್ನ ದೂರು ಇದೆ."
+      kn-en_latn: "{ITEM} mattu adanna maarida [showroom](@SELLER) bagge nanna complaint ide."
+      kn-en_mixed: "{ITEM} and ಅದನ್ನು sell ಮಾಡಿದ [showroom](@SELLER) ಬಗ್ಗೆ ನನ್ನ complaint ಇದೆ."
+      hi: "{ITEM} और उसे बेचने वाले [शोरूम](@SELLER) के बारे में मेरी शिकायत है।"
+      hi-en_latn: "{ITEM} aur use bechne wale [showroom](@SELLER) ke baare mein meri complaint hai."
+    elements:
+      - element_id: consumer_purchase
+        critical: true
+        order: 1
+        description: The user bought the goods for consideration for personal (not commercial resale) use.
+        question:
+          en: Did you buy it for your own use, and how much did you pay?
+          kn: ನೀವು ಅದನ್ನು ಸ್ವಂತ ಬಳಕೆಗೆ ಕೊಂಡಿದ್ದಾ, ಎಷ್ಟು ದುಡ್ಡು ಕೊಟ್ಟಿರಿ?
+          hi: क्या आपने इसे अपने इस्तेमाल के लिए खरीदा था, और कितने पैसे दिए?
+        proposition:
+          satisfied: The speaker bought it for home use and paid for it.
+          contradicted: The speaker bought it to resell in a shop.
+        satisfied:
+          en: I bought it for {AMOUNT} for use at home.
+          kn: ಮನೆ ಬಳಕೆಗೆ ಅಂತ {AMOUNT} ಕೊಟ್ಟು ತಗೊಂಡೆ.
+          kn-en_latn: Mane balakege antha {AMOUNT} kottu tagonde.
+          kn-en_mixed: Home use ಗೆ ಅಂತ {AMOUNT} ಕೊಟ್ಟು buy ಮಾಡಿದೆ.
+          hi: मैंने घर के इस्तेमाल के लिए {AMOUNT} में {g:ITEM|m:खरीदा था|f:खरीदी थी}।
+          hi-en_latn: Maine ghar ke use ke liye {AMOUNT} mein {g:ITEM|m:khareeda tha|f:khareedi thi}.
+        contradicted:
+          en: I bought it to resell in my shop.
+          kn: ನನ್ನ ಅಂಗಡಿಯಲ್ಲಿ ಮತ್ತೆ ಮಾರೋಕೆ ಅಂತ ತಗೊಂಡಿದ್ದೆ.
+          kn-en_latn: Nanna angadiyalli matte maaroke antha tagondidde.
+          kn-en_mixed: ನನ್ನ shop ಅಲ್ಲಿ resell ಮಾಡೋಕೆ ಅಂತ buy ಮಾಡಿದ್ದೆ.
+          hi: मैंने अपनी दुकान में दोबारा बेचने के लिए {g:ITEM|m:खरीदा था|f:खरीदी थी}।
+          hi-en_latn: Maine apni dukaan mein dobara bechne ke liye {g:ITEM|m:khareeda tha|f:khareedi thi}.
+      - element_id: defect_present
+        critical: true
+        order: 2
+        date_slot_required: true
+        description: The goods have a defect (fault, imperfection) within the warranty / reasonable period.
+        event_type: product_failure
+        question:
+          en: What exactly is wrong with the product, and when did it start?
+          kn: ವಸ್ತುವಿನಲ್ಲಿ ನಿಖರವಾಗಿ ಏನು ತೊಂದರೆ, ಯಾವಾಗಿಂದ?
+          hi: सामान में ठीक-ठीक क्या खराबी है और कब से?
+        proposition:
+          satisfied: The product stopped working within the warranty period.
+          contradicted: There is no defect; the speaker was using it wrongly.
+        satisfied:
+          en: "{DATE} it [stopped working](TRIG) completely, within the warranty period."
+          kn: "{DATE} ವಾರಂಟಿ ಇರುವಾಗಲೇ ಅದು ಪೂರ್ತಿ [ಕೆಲಸ ಮಾಡೋದು ನಿಲ್ಲಿಸಿತು](TRIG)."
+          kn-en_latn: "{DATE} warranty iruvaagale adu poorti [kelsa maadodu nillisitu](TRIG)."
+          kn-en_mixed: "{DATE} warranty ಇರುವಾಗಲೇ ಅದು full [work ಮಾಡೋದು stop ಆಯ್ತು](TRIG)."
+          hi: "{DATE} वारंटी के अंदर ही वो पूरी तरह {g:ITEM|m:[बंद हो गया](TRIG)|f:[बंद हो गई](TRIG)}।"
+          hi-en_latn: "{DATE} warranty ke andar hi woh poori tarah {g:ITEM|m:[band ho gaya](TRIG)|f:[band ho gayi](TRIG)}."
+        contradicted:
+          en: There is [no](NEG) [defect](TRIG); I was only using it the wrong way.
+          kn: ಅದರಲ್ಲಿ ಯಾವ [ದೋಷನೂ ಇಲ್ಲ](TRIG,NEG), ನಾನೇ ತಪ್ಪಾಗಿ ಬಳಸ್ತಿದ್ದೆ.
+          kn-en_latn: Adaralli yaava [doshanu illa](TRIG,NEG), naane tappaagi balastidde.
+          kn-en_mixed: ಅದರಲ್ಲಿ ಯಾವ [defect ಉ ಇಲ್ಲ](TRIG,NEG), ನಾನೇ wrong ಆಗಿ use ಮಾಡ್ತಿದ್ದೆ.
+          hi: उसमें कोई [खराबी](TRIG) [नहीं](NEG) है, मैं ही उसे गलत तरीके से चला {g:SPK|m:रहा था|f:रही थी}।
+          hi-en_latn: Usmein koi [kharaabi](TRIG) [nahi](NEG) hai, main hi use galat tareeke se chala {g:SPK|m:raha tha|f:rahi thi}.
+      - element_id: manufacturing_defect
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: The defect is a manufacturing defect rather than user damage.
+        question:
+          en: Has a service centre checked it? Did they say it is a manufacturing defect or damage?
+          kn: ಸರ್ವಿಸ್ ಸೆಂಟರ್‌ನವರು ಚೆಕ್ ಮಾಡಿದ್ದಾರಾ? ಮ್ಯಾನುಫ್ಯಾಕ್ಚರಿಂಗ್ ದೋಷ ಅಂದ್ರಾ ಅಥವಾ ಡ್ಯಾಮೇಜ್ ಅಂದ್ರಾ?
+          hi: क्या सर्विस सेंटर ने जाँच की? उन्होंने मैन्युफ़ैक्चरिंग खराबी बताई या नुकसान?
+        proposition:
+          satisfied: The service report says it is a manufacturing defect.
+          contradicted: The service report says the damage happened because it fell.
+        satisfied:
+          en: The service report says it is a manufacturing defect.
+          kn: ಸರ್ವಿಸ್ ರಿಪೋರ್ಟ್ ಪ್ರಕಾರ ಇದು ಮ್ಯಾನುಫ್ಯಾಕ್ಚರಿಂಗ್ ದೋಷ.
+          kn-en_latn: Service report prakaara idu manufacturing dosha.
+          kn-en_mixed: Service report ಪ್ರಕಾರ ಇದು manufacturing defect.
+          hi: सर्विस रिपोर्ट के मुताबिक यह मैन्युफ़ैक्चरिंग की खराबी है।
+          hi-en_latn: Service report ke mutaabik yeh manufacturing defect hai.
+        contradicted:
+          en: The service report says the damage happened because it fell down.
+          kn: ಅದು ಕೆಳಗೆ ಬಿದ್ದಿದ್ದರಿಂದ ಹಾಳಾಗಿದೆ ಅಂತ ಸರ್ವಿಸ್ ರಿಪೋರ್ಟ್ ಹೇಳುತ್ತೆ.
+          kn-en_latn: Adu kelage biddiddarinda haalaagide antha service report helutte.
+          kn-en_mixed: ಅದು fall ಆಗಿದ್ದರಿಂದ damage ಆಗಿದೆ ಅಂತ service report ಹೇಳುತ್ತೆ.
+          hi: सर्विस रिपोर्ट कहती है कि गिरने की वजह से खराब हुआ।
+          hi-en_latn: Service report kehti hai ki girne ki wajah se kharaab hua.
+      - element_id: seller_refused_remedy
+        critical: false
+        order: 3
+        description: The seller / manufacturer refused to repair, replace or refund.
+        event_type: remedy_refusal
+        args: {SELLER: agent}
+        question:
+          en: Did you ask the seller to repair or replace it? What did they say?
+          kn: ರಿಪೇರಿ ಅಥವಾ ಬದಲಾಯಿಸಿ ಕೊಡಿ ಅಂತ ಮಾರಾಟಗಾರರಿಗೆ ಕೇಳಿದ್ರಾ? ಅವರು ಏನು ಹೇಳಿದರು?
+          hi: क्या आपने विक्रेता से मरम्मत या बदलने को कहा? उन्होंने क्या कहा?
+        proposition:
+          satisfied: The showroom refused to repair or replace it.
+          contradicted: The showroom has not refused and promised a replacement.
+        satisfied:
+          en: "[The showroom](@SELLER) [refused](TRIG) to repair or replace it."
+          kn: "[ಶೋರೂಮ್‌ನವರು](@SELLER) ರಿಪೇರಿ ಅಥವಾ ಬದಲಾಯಿಸಿ ಕೊಡೋಕೆ [ನಿರಾಕರಿಸಿದರು](TRIG)."
+          kn-en_latn: "[Showroom avru](@SELLER) repair athava badalaayisi kodoke [niraakarisidru](TRIG)."
+          kn-en_mixed: "[Showroom ಅವರು](@SELLER) repair ಅಥವಾ replace ಮಾಡೋಕೆ [refuse ಮಾಡಿದ್ರು](TRIG)."
+          hi: "[शोरूम वालों](@SELLER) ने उसे ठीक करने या बदलने से [मना कर दिया](TRIG)।"
+          hi-en_latn: "[Showroom walon](@SELLER) ne use theek karne ya badalne se [mana kar diya](TRIG)."
+        contradicted:
+          en: "[The showroom](@SELLER) has [not](NEG) [refused](TRIG) anything and has promised a replacement."
+          kn: "[ಶೋರೂಮ್‌ನವರು](@SELLER) ಏನೂ [ನಿರಾಕರಿಸಿಲ್ಲ](TRIG,NEG), ಬದಲಾಯಿಸಿ ಕೊಡ್ತೀವಿ ಅಂದಿದ್ದಾರೆ."
+          kn-en_latn: "[Showroom avru](@SELLER) enu [niraakarisilla](TRIG,NEG), badalaayisi kodtivi andiddare."
+          kn-en_mixed: "[Showroom ಅವರು](@SELLER) ಏನೂ [refuse ಮಾಡಿಲ್ಲ](TRIG,NEG), replace ಮಾಡ್ತೀವಿ ಅಂದಿದ್ದಾರೆ."
+          hi: "[शोरूम वालों](@SELLER) ने [मना](TRIG) [नहीं](NEG) किया, बदलकर देने का वादा किया है।"
+          hi-en_latn: "[Showroom walon](@SELLER) ne [mana](TRIG) [nahi](NEG) kiya, badalkar dene ka promise kiya hai."
+    evidence:
+      - evidence_id: bill_warranty
+        evidence_type: document
+        supports: [consumer_purchase]
+        held:
+          en: I have the [bill and the warranty card](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಬಿಲ್ ಮತ್ತು ವಾರಂಟಿ ಕಾರ್ಡ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [bill mattu warranty card](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [bill and warranty card](EVD) ಇದೆ.
+          hi: मेरे पास [बिल और वारंटी कार्ड](EVD) है।
+          hi-en_latn: Mere paas [bill aur warranty card](EVD) hai.
+        missing:
+          en: I have lost the [bill](EVD), so I do [not](NEG) have it.
+          kn: ನಾನು [ಬಿಲ್](EVD) ಕಳೆದುಕೊಂಡಿದ್ದೀನಿ, ನನ್ನ ಹತ್ತಿರ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Naanu [bill](EVD) kaledukondiddini, nanna hatra [illa](NEG).
+          kn-en_mixed: ನಾನು [bill](EVD) lose ಮಾಡಿದ್ದೀನಿ, ನನ್ನ ಹತ್ತಿರ [ಇಲ್ಲ](NEG).
+          hi: मेरा [बिल](EVD) खो गया है, मेरे पास [नहीं](NEG) है।
+          hi-en_latn: Mera [bill](EVD) kho gaya hai, mere paas [nahi](NEG) hai.
+    risk_facts:
+      - flag: threat_to_life
+        template:
+          en: It is giving electric shocks, and it is dangerous even to touch it.
+          kn: ಅದರಿಂದ ಕರೆಂಟ್ ಶಾಕ್ ಹೊಡೀತಿದೆ, ಮುಟ್ಟೋಕೂ ಅಪಾಯ.
+          kn-en_latn: Adarinda current shock hodeetide, muttoku apaaya.
+          kn-en_mixed: ಅದರಿಂದ current shock ಹೊಡೀತಿದೆ, touch ಮಾಡೋಕೂ dangerous.
+          hi: उसमें से करंट आ रहा है, छूना भी खतरनाक है।
+          hi-en_latn: Usmein se current aa raha hai, chhoona bhi khatarnaak hai.
+    candidate_provisions:
+      - {provision_id: "CPA:2(7)", title_hint: Consumer (definition)}
+      - {provision_id: "CPA:2(10)", title_hint: Defect (definition)}
+      - {provision_id: "CPA:35", title_hint: Manner in which complaint shall be made}
+      - {provision_id: "CPA:84", title_hint: Liability of product manufacturer}
+      - {provision_id: "CPA:69", title_hint: Limitation period}
+    limitation_notes: A consumer complaint is generally to be filed within two years of the cause of action (CPA s.69). TO_VERIFY.
+    confusable_with: [con.refund_refusal, con.deficiency_in_service]
+    co_occurs_with: [con.refund_refusal]
+
+  # --------------------------------------------------- deficiency in service
+  - issue_id: con.deficiency_in_service
+    domain: consumer_financial
+    title: {en: Deficiency in service, kn: ಸೇವಾ ನ್ಯೂನತೆ, hi: सेवा में कमी}
+    plain_summary:
+      en: You paid for a service, but its quality or performance fell short of what was promised or required.
+      kn: ನೀವು ಹಣ ಕೊಟ್ಟ ಸೇವೆಯ ಗುಣಮಟ್ಟ ಅಥವಾ ನಿರ್ವಹಣೆ ಭರವಸೆ ನೀಡಿದ್ದಕ್ಕಿಂತ ಕಡಿಮೆ ಇದೆ.
+      hi: आपने जिस सेवा के पैसे दिए, उसकी गुणवत्ता या प्रदर्शन वादे या ज़रूरत से कम रहा।
+    risk_level: low
+    default_triage: self_help
+    cast:
+      - {slot: SP, kind: organization, role: organization, nouns: [company], named: false}
+    value_slots: {AMOUNT: [small]}
+    setup:
+      en: I have a complaint against [my internet service provider](@SP).
+      kn: "[ನನ್ನ ಇಂಟರ್ನೆಟ್ ಸರ್ವಿಸ್ ಕಂಪನಿಯ](@SP) ಮೇಲೆ ದೂರು ಇದೆ."
+      kn-en_latn: "[Nanna internet service company](@SP) mele complaint ide."
+      kn-en_mixed: "[ನನ್ನ internet service provider](@SP) ಮೇಲೆ complaint ಇದೆ."
+      hi: "मुझे [अपने इंटरनेट सर्विस प्रोवाइडर](@SP) से शिकायत है।"
+      hi-en_latn: "Mujhe [apne internet service provider](@SP) se complaint hai."
+    elements:
+      - element_id: paid_for_service
+        critical: true
+        order: 1
+        description: The user hired / availed the service for consideration.
+        question:
+          en: Did you pay for this service? Which plan, and how much?
+          kn: ಈ ಸೇವೆಗೆ ನೀವು ಹಣ ಕೊಟ್ಟಿದ್ದೀರಾ? ಯಾವ ಪ್ಲಾನ್, ಎಷ್ಟು?
+          hi: क्या आपने इस सेवा के पैसे दिए? कौन सा प्लान, कितने?
+        proposition:
+          satisfied: The speaker paid in advance for the premium plan.
+          contradicted: The speaker was on a free trial and paid nothing.
+        satisfied:
+          en: I paid {AMOUNT} in advance for the premium plan.
+          kn: ಪ್ರೀಮಿಯಂ ಪ್ಲಾನ್‌ಗೆ ನಾನು ಮುಂಚಿತವಾಗಿ {AMOUNT} ಕಟ್ಟಿದ್ದೀನಿ.
+          kn-en_latn: Premium plan ge naanu munchitavaagi {AMOUNT} kattiddini.
+          kn-en_mixed: Premium plan ಗೆ ನಾನು advance ಆಗಿ {AMOUNT} pay ಮಾಡಿದ್ದೀನಿ.
+          hi: मैंने प्रीमियम प्लान के लिए पहले से {AMOUNT} जमा किए हैं।
+          hi-en_latn: Maine premium plan ke liye pehle se {AMOUNT} pay kiye hain.
+        contradicted:
+          en: I was using a free trial and had [not](NEG) paid anything.
+          kn: ನಾನು ಫ್ರೀ ಟ್ರಯಲ್ ಬಳಸ್ತಿದ್ದೆ, ಏನೂ ದುಡ್ಡು [ಕಟ್ಟಿರಲಿಲ್ಲ](NEG).
+          kn-en_latn: Naanu free trial balastidde, enu duddu [kattiralilla](NEG).
+          kn-en_mixed: ನಾನು free trial use ಮಾಡ್ತಿದ್ದೆ, ಏನೂ pay [ಮಾಡಿರಲಿಲ್ಲ](NEG).
+          hi: मैं फ़्री ट्रायल इस्तेमाल कर {g:SPK|m:रहा था|f:रही थी}, कुछ भी पैसा [नहीं](NEG) दिया था।
+          hi-en_latn: Main free trial use kar {g:SPK|m:raha tha|f:rahi thi}, kuch bhi paisa [nahi](NEG) diya tha.
+      - element_id: service_failure
+        critical: true
+        order: 2
+        date_slot_required: true
+        description: There was a fault / shortcoming in the service.
+        event_type: service_outage
+        question:
+          en: What exactly went wrong with the service, and since when?
+          kn: ಸೇವೆಯಲ್ಲಿ ನಿಖರವಾಗಿ ಏನು ತೊಂದರೆ ಆಯಿತು, ಯಾವಾಗಿಂದ?
+          hi: सेवा में ठीक-ठीक क्या गड़बड़ हुई और कब से?
+        proposition:
+          satisfied: The connection stopped working and has been dead for three weeks.
+          contradicted: There is no outage; the problem was the speaker's own router.
+        satisfied:
+          en: "{DATE} the connection [stopped working](TRIG), and it has been dead for [three weeks](TIMEX:dur_P3W)."
+          kn: "{DATE} ಕನೆಕ್ಷನ್ [ಕೆಲಸ ಮಾಡೋದು ನಿಲ್ಲಿಸಿತು](TRIG), [ಮೂರು ವಾರದಿಂದ](TIMEX:dur_P3W) ಬಂದ್ ಆಗಿದೆ."
+          kn-en_latn: "{DATE} connection [kelsa maadodu nillisitu](TRIG), [mooru vaaradinda](TIMEX:dur_P3W) band aagide."
+          kn-en_mixed: "{DATE} connection [work ಮಾಡೋದು stop ಆಯ್ತು](TRIG), [three weeks](TIMEX:dur_P3W) ಇಂದ dead ಆಗಿದೆ."
+          hi: "{DATE} कनेक्शन [बंद हो गया](TRIG) और [तीन हफ़्ते](TIMEX:dur_P3W) से बंद पड़ा है।"
+          hi-en_latn: "{DATE} connection [band ho gaya](TRIG) aur [teen hafte](TIMEX:dur_P3W) se band pada hai."
+        contradicted:
+          en: There is [no](NEG) [outage](TRIG); the problem was only with my own router.
+          kn: ಸರ್ವಿಸ್‌ನಲ್ಲಿ ಯಾವ [ಸಮಸ್ಯೆಯೂ ಇಲ್ಲ](TRIG,NEG), ನನ್ನ ರೂಟರ್‌ನಲ್ಲೇ ತೊಂದರೆ ಇತ್ತು.
+          kn-en_latn: Service alli yaava [samasyeyu illa](TRIG,NEG), nanna router alle tondre ittu.
+          kn-en_mixed: Service ಅಲ್ಲಿ ಯಾವ [problem ಉ ಇಲ್ಲ](TRIG,NEG), ನನ್ನ router ಅಲ್ಲೇ problem ಇತ್ತು.
+          hi: सर्विस में कोई [दिक्कत](TRIG) [नहीं](NEG) है, गड़बड़ मेरे राउटर में थी।
+          hi-en_latn: Service mein koi [problem](TRIG) [nahi](NEG) hai, gadbad mere router mein thi.
+      - element_id: service_standard_promised
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The contract / plan promised a standard of service that was not met.
+        question:
+          en: Did the plan promise anything specific, such as repair within a fixed time?
+          kn: ಪ್ಲಾನ್‌ನಲ್ಲಿ ನಿಗದಿತ ಸಮಯದಲ್ಲಿ ರಿಪೇರಿ ತರಹ ಏನಾದರೂ ಭರವಸೆ ಇತ್ತಾ?
+          hi: क्या प्लान में तय समय में मरम्मत जैसा कोई वादा था?
+        proposition:
+          satisfied: The plan promised any fault would be fixed within 48 hours.
+          contradicted: The plan did not promise any repair time.
+        satisfied:
+          en: The plan promised that any fault would be fixed within [48 hours](TIMEX:dur_PT48H).
+          kn: ಯಾವುದೇ ತೊಂದರೆ [48 ಗಂಟೆಯೊಳಗೆ](TIMEX:dur_PT48H) ಸರಿ ಮಾಡ್ತೀವಿ ಅಂತ ಪ್ಲಾನ್‌ನಲ್ಲಿ ಹೇಳಿದ್ದರು.
+          kn-en_latn: Yaavude tondre [48 ganteyolage](TIMEX:dur_PT48H) sari maadtivi antha plan alli heliddru.
+          kn-en_mixed: Any problem [48 hours](TIMEX:dur_PT48H) ಒಳಗೆ fix ಮಾಡ್ತೀವಿ ಅಂತ plan ಅಲ್ಲಿ ಹೇಳಿದ್ರು.
+          hi: प्लान में लिखा था कि कोई भी खराबी [48 घंटे](TIMEX:dur_PT48H) में ठीक की जाएगी।
+          hi-en_latn: Plan mein likha tha ki koi bhi kharaabi [48 ghante](TIMEX:dur_PT48H) mein theek ki jaayegi.
+        contradicted:
+          en: The plan did [not](NEG) promise any repair time.
+          kn: ಪ್ಲಾನ್‌ನಲ್ಲಿ ರಿಪೇರಿ ಸಮಯದ ಬಗ್ಗೆ ಏನೂ [ಹೇಳಿಲ್ಲ](NEG).
+          kn-en_latn: Plan alli repair samayada bagge enu [helilla](NEG).
+          kn-en_mixed: Plan ಅಲ್ಲಿ repair time ಬಗ್ಗೆ ಏನೂ [ಹೇಳಿಲ್ಲ](NEG).
+          hi: प्लान में मरम्मत के समय के बारे में कुछ [नहीं](NEG) लिखा था।
+          hi-en_latn: Plan mein repair time ke baare mein kuch [nahi](NEG) likha tha.
+      - element_id: complained_no_resolution
+        critical: false
+        order: 3
+        description: The user complained to the provider but it was not resolved.
+        event_type: provider_complaint
+        args: {SP: recipient}
+        question:
+          en: Have you complained to the company? Did they give a ticket number or fix it?
+          kn: ಕಂಪನಿಗೆ ಕಂಪ್ಲೇಂಟ್ ಮಾಡಿದ್ದೀರಾ? ಟಿಕೆಟ್ ನಂಬರ್ ಕೊಟ್ಟರಾ ಅಥವಾ ಸರಿ ಮಾಡಿದರಾ?
+          hi: क्या आपने कंपनी से शिकायत की? क्या टिकट नंबर दिया या ठीक किया?
+        proposition:
+          satisfied: The speaker complained many times, but the company did nothing.
+          contradicted: The speaker has not complained to the company yet.
+        satisfied:
+          en: I [complained](TRIG) many times, but [the company](@SP) did [nothing](NEG).
+          kn: ನಾನು ತುಂಬಾ ಸಲ [ಕಂಪ್ಲೇಂಟ್ ಮಾಡಿದೆ](TRIG), ಆದರೆ [ಕಂಪನಿಯವರು](@SP) ಏನೂ [ಮಾಡಿಲ್ಲ](NEG).
+          kn-en_latn: Naanu tumba sala [complaint maadide](TRIG), aadre [company avru](@SP) enu [maadilla](NEG).
+          kn-en_mixed: ನಾನು many times [complaint ಮಾಡಿದೆ](TRIG), ಆದ್ರೆ [company ಅವರು](@SP) ಏನೂ [ಮಾಡಿಲ್ಲ](NEG).
+          hi: मैंने कई बार [शिकायत की](TRIG), लेकिन [कंपनी](@SP) ने कुछ [नहीं](NEG) किया।
+          hi-en_latn: Maine kai baar [complaint ki](TRIG), lekin [company](@SP) ne kuch [nahi](NEG) kiya.
+        contradicted:
+          en: I have [not](NEG) [complained](TRIG) to [the company](@SP) yet.
+          kn: ನಾನು ಇನ್ನೂ [ಕಂಪನಿಗೆ](@SP) [ಕಂಪ್ಲೇಂಟ್ ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Naanu innu [company](@SP) ge [complaint maadilla](TRIG,NEG).
+          kn-en_mixed: ನಾನು ಇನ್ನೂ [company](@SP) ಗೆ [complaint ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: मैंने अभी तक [कंपनी](@SP) से [शिकायत](TRIG) [नहीं](NEG) की।
+          hi-en_latn: Maine abhi tak [company](@SP) se [complaint](TRIG) [nahi](NEG) ki.
+    evidence:
+      - evidence_id: ticket_numbers
+        evidence_type: digital_record
+        supports: [complained_no_resolution]
+        held:
+          en: I have all the [complaint ticket numbers](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ ಎಲ್ಲಾ [ಕಂಪ್ಲೇಂಟ್ ಟಿಕೆಟ್ ನಂಬರ್‌ಗಳು](EVD) ಇವೆ.
+          kn-en_latn: Nanna hatra ella [complaint ticket numbers](EVD) ive.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ ಎಲ್ಲಾ [complaint ticket numbers](EVD) ಇವೆ.
+          hi: मेरे पास सारे [शिकायत टिकट नंबर](EVD) हैं।
+          hi-en_latn: Mere paas saare [complaint ticket numbers](EVD) hain.
+        missing:
+          en: I complained only on calls, so I have [no](NEG) [ticket numbers](EVD).
+          kn: ಕಾಲ್‌ನಲ್ಲಿ ಮಾತ್ರ ಹೇಳಿದ್ದೆ, [ಟಿಕೆಟ್ ನಂಬರ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Call alli maatra helidde, [ticket number](EVD) [illa](NEG).
+          kn-en_mixed: Call ಅಲ್ಲಿ ಮಾತ್ರ ಹೇಳಿದ್ದೆ, [ticket number](EVD) [ಇಲ್ಲ](NEG).
+          hi: मैंने सिर्फ़ फ़ोन पर बताया था, कोई [टिकट नंबर](EVD) [नहीं](NEG) है।
+          hi-en_latn: Maine sirf phone par bataya tha, koi [ticket number](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: threat_to_life
+        template:
+          en: The medical alarm for my bedridden mother runs on this connection, and it is [not](NEG) working [right now](TIMEX:now).
+          kn: ಹಾಸಿಗೆ ಹಿಡಿದಿರೋ ನಮ್ಮ ಅಮ್ಮನ ಮೆಡಿಕಲ್ ಅಲಾರ್ಮ್ ಇದೇ ಕನೆಕ್ಷನ್‌ನಲ್ಲಿ ನಡೆಯೋದು, [ಈಗ](TIMEX:now) ಅದು [ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ](NEG).
+          kn-en_latn: Haasige hididiro namma ammana medical alarm ide connection alli nadeyodu, [eega](TIMEX:now) adu [kelsa maadtilla](NEG).
+          kn-en_mixed: Bedridden ಆಗಿರೋ ನಮ್ಮ ಅಮ್ಮನ medical alarm ಇದೇ connection ಅಲ್ಲಿ ನಡೆಯೋದು, [now](TIMEX:now) ಅದು [work ಆಗ್ತಿಲ್ಲ](NEG).
+          hi: मेरी बिस्तर पर पड़ी माँ का मेडिकल अलार्म इसी कनेक्शन पर चलता है, और वो [अभी](TIMEX:now) काम [नहीं](NEG) कर रहा।
+          hi-en_latn: Meri bistar par padi maa ka medical alarm isi connection par chalta hai, aur woh [abhi](TIMEX:now) kaam [nahi](NEG) kar raha.
+    candidate_provisions:
+      - {provision_id: "CPA:2(11)", title_hint: Deficiency (definition)}
+      - {provision_id: "CPA:35", title_hint: Manner in which complaint shall be made}
+      - {provision_id: "CPA:69", title_hint: Limitation period}
+    limitation_notes: A consumer complaint is generally to be filed within two years of the cause of action (CPA s.69). TO_VERIFY.
+    confusable_with: [con.defective_product, con.refund_refusal]
+    co_occurs_with: [con.refund_refusal]

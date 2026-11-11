@@ -1,0 +1,36 @@
+{"id": "ff01", "lang": "en", "text": "My uncle is trying to sell our family land after my father passed away. He never asked me or my sister and says the land is only his.", "issues": ["prop.coheir_sale_without_consent", "prop.inheritance_partition"], "urgent": false}
+{"id": "ff02", "lang": "en", "text": "Yesterday my neighbour slapped me and pushed me during an argument about parking. My lip was bleeding and I went to a clinic.", "issues": ["crim.hurt_assault"], "urgent": false}
+{"id": "ff03", "lang": "en", "text": "A man called saying he was from my bank and that my card would be blocked. He made me scan a QR code and 25,000 rupees went from my account an hour ago.", "issues": ["cyb.upi_payment_fraud"], "urgent": true}
+{"id": "ff04", "lang": "en", "text": "I bought a washing machine three months ago and it stopped working. The shop says the warranty does not cover it and refuses to repair it.", "issues": ["con.defective_product"], "urgent": false}
+{"id": "ff05", "lang": "en", "text": "My husband beats me almost every day and his mother keeps demanding more money from my parents as dowry.", "issues": ["fam.domestic_violence", "fam.dowry_harassment"], "urgent": true}
+{"id": "ff06", "lang": "en", "text": "Someone made a fake Instagram account with my name and photos and is asking my friends for money.", "issues": ["cyb.impersonation"], "urgent": false}
+{"id": "ff07", "lang": "en", "text": "I went to the police station to report that my bike was stolen but the officer refused to register my complaint and sent me back.", "issues": ["crim.police_refusal_fir", "crim.theft"], "urgent": false}
+{"id": "ff08", "lang": "en", "text": "A loan app's recovery agents call me twenty times a day, abuse me and have messaged all my contacts saying I am a fraud.", "issues": ["fin.loan_recovery_harassment"], "urgent": false}
+{"id": "ff09", "lang": "en", "text": "My landlord wants me to vacate the flat in a week without any notice even though I have a rental agreement.", "issues": ["x.out_of_scope"], "urgent": false}
+{"id": "ff10", "lang": "en", "text": "My neighbour built a compound wall two feet inside my plot and refuses to remove it.", "issues": ["prop.encroachment"], "urgent": false}
+{"id": "ff11", "lang": "en", "text": "My ex-boyfriend has morphed my photos into obscene pictures and says he will post them online tonight.", "issues": ["cyb.morphed_intimate_image"], "urgent": true}
+{"id": "ff12", "lang": "en", "text": "I returned a pair of shoes within the return window and the pickup was done, but the shopping app is refusing to give my refund.", "issues": ["con.refund_refusal"], "urgent": false}
+{"id": "ff13", "lang": "kn", "text": "ನಮ್ಮ ಅಪ್ಪ ತೀರಿಕೊಂಡ ಮೇಲೆ ನಮ್ಮ ಚಿಕ್ಕಪ್ಪ ನಮ್ಮ ಕುಟುಂಬದ ಜಮೀನು ನಮಗೆ ಕೇಳದೆ ಮಾರೋಕೆ ನೋಡ್ತಿದ್ದಾರೆ.", "issues": ["prop.coheir_sale_without_consent", "prop.inheritance_partition"], "urgent": false}
+{"id": "ff14", "lang": "kn", "text": "ನಿನ್ನೆ ಪಕ್ಕದ ಮನೆಯವರು ಜಗಳ ಮಾಡಿ ನನಗೆ ಕೋಲಿನಿಂದ ಹೊಡೆದರು, ತಲೆಗೆ ಗಾಯ ಆಯ್ತು.", "issues": ["crim.hurt_assault"], "urgent": false}
+{"id": "ff15", "lang": "kn", "text": "ಬ್ಯಾಂಕ್‌ನವರು ಅಂತ ಒಬ್ಬರು ಕಾಲ್ ಮಾಡಿ ಯುಪಿಐ ಪಿನ್ ಹಾಕೋಕೆ ಹೇಳಿದರು, ಈಗ ತಾನೆ ನನ್ನ ಅಕೌಂಟ್‌ನಿಂದ ಹದಿನೈದು ಸಾವಿರ ಹೋಯ್ತು.", "issues": ["cyb.upi_payment_fraud"], "urgent": true}
+{"id": "ff16", "lang": "kn", "text": "ನನ್ನ ಗಂಡ ದಿನಾ ಕುಡಿದು ಬಂದು ಹೊಡೀತಾರೆ, ಅತ್ತೆ ತವರಿನಿಂದ ಇನ್ನೂ ವರದಕ್ಷಿಣೆ ತರೋಕೆ ಹೇಳ್ತಾರೆ.", "issues": ["fam.domestic_violence", "fam.dowry_harassment"], "urgent": true}
+{"id": "ff17", "lang": "kn", "text": "ಪಕ್ಕದ ಸೈಟ್‌ನವರು ನಮ್ಮ ಜಾಗದಲ್ಲಿ ಎರಡು ಅಡಿ ಒಳಗೆ ಗೋಡೆ ಕಟ್ಟಿದ್ದಾರೆ, ತೆಗೆಯೋಕೆ ಒಪ್ತಿಲ್ಲ.", "issues": ["prop.encroachment"], "urgent": false}
+{"id": "ff18", "lang": "kn", "text": "ಹೊಸ ಫ್ರಿಜ್ ಎರಡು ತಿಂಗಳಲ್ಲೇ ಕೆಲಸ ಮಾಡೋದು ನಿಲ್ಲಿಸಿತು, ಶೋರೂಮ್‌ನವರು ವಾರಂಟಿ ಇದ್ರೂ ಬದಲಾಯಿಸ್ತಿಲ್ಲ.", "issues": ["con.defective_product"], "urgent": false}
+{"id": "ff19", "lang": "kn", "text": "ನನ್ನ ಹೆಸರಲ್ಲಿ ಯಾರೋ ನಕಲಿ ಫೇಸ್‌ಬುಕ್ ಪ್ರೊಫೈಲ್ ಮಾಡಿ ನನ್ನ ಸ್ನೇಹಿತರ ಹತ್ತಿರ ದುಡ್ಡು ಕೇಳ್ತಿದ್ದಾರೆ.", "issues": ["cyb.impersonation"], "urgent": false}
+{"id": "ff20", "lang": "kn", "text": "ನನ್ನ ಗಂಡ ಆರು ತಿಂಗಳಿಂದ ಮನೆ ಖರ್ಚಿಗೆ ದುಡ್ಡು ಕೊಡ್ತಿಲ್ಲ, ನನಗೆ ಯಾವ ಕೆಲಸನೂ ಇಲ್ಲ.", "issues": ["fam.maintenance"], "urgent": false}
+{"id": "ff21", "lang": "kn", "text": "ನನ್ನ ಮೊಬೈಲ್ ಬಸ್‌ನಲ್ಲಿ ಯಾರೋ ಕದ್ದರು, ಪೊಲೀಸ್ ಠಾಣೆಗೆ ಹೋದರೆ ದೂರು ತಗೊಳ್ಳಲಿಲ್ಲ.", "issues": ["crim.theft", "crim.police_refusal_fir"], "urgent": false}
+{"id": "ff22", "lang": "kn", "text": "ನನ್ನ ಪರೀಕ್ಷೆ ಚೆನ್ನಾಗಿ ಆಗಲಿಲ್ಲ, ಓದೋಕೆ ಹೇಗೆ ಪ್ಲಾನ್ ಮಾಡಬೇಕು?", "issues": ["x.non_legal"], "urgent": false}
+{"id": "ff23", "lang": "kn", "text": "ಲೋನ್ ಆಪ್‌ನವರು ದಿನಾ ಕಾಲ್ ಮಾಡಿ ಬೈತಾರೆ, ನನ್ನ ಕಾಂಟ್ಯಾಕ್ಟ್‌ಗಳಿಗೆಲ್ಲಾ ನಾನು ಮೋಸಗಾರ ಅಂತ ಮೆಸೇಜ್ ಕಳಿಸಿದ್ದಾರೆ.", "issues": ["fin.loan_recovery_harassment"], "urgent": false}
+{"id": "ff24", "lang": "kn", "text": "ನಮ್ಮ ದೊಡ್ಡಪ್ಪನ ಮಗ ನಕಲಿ ವಿಲ್ ತೋರಿಸಿ ನಮ್ಮ ಜಮೀನಿನ ಖಾತಾ ತನ್ನ ಹೆಸರಿಗೆ ಮಾಡಿಸಿಕೊಂಡಿದ್ದಾನೆ.", "issues": ["prop.forged_documents"], "urgent": false}
+{"id": "ff25", "lang": "hi", "text": "मेरे पिता की मौत के बाद मेरे चाचा हमारी पुश्तैनी ज़मीन हमसे पूछे बिना बेचने की कोशिश कर रहे हैं।", "issues": ["prop.coheir_sale_without_consent", "prop.inheritance_partition"], "urgent": false}
+{"id": "ff26", "lang": "hi", "text": "कल मेरे पड़ोसी ने झगड़े में मुझे डंडे से मारा, मेरे हाथ में चोट आई है।", "issues": ["crim.hurt_assault"], "urgent": false}
+{"id": "ff27", "lang": "hi", "text": "एक आदमी ने बैंक से होने का बहाना करके फ़ोन किया, क्यूआर कोड स्कैन करवाया और अभी अभी मेरे खाते से तीस हज़ार रुपये कट गए।", "issues": ["cyb.upi_payment_fraud"], "urgent": true}
+{"id": "ff28", "lang": "hi", "text": "मेरे पति रोज़ शराब पीकर मुझे पीटते हैं और सास मायके से और दहेज लाने को कहती है।", "issues": ["fam.domestic_violence", "fam.dowry_harassment"], "urgent": true}
+{"id": "ff29", "lang": "hi", "text": "मैंने ऑनलाइन जूते मँगवाए थे, समय पर वापस भी कर दिए, लेकिन ऐप रिफ़ंड देने से मना कर रहा है।", "issues": ["con.refund_refusal"], "urgent": false}
+{"id": "ff30", "lang": "hi", "text": "मेरे पूर्व पति ने मेरे बेटे को अपने पास रख लिया है और मुझे उससे मिलने नहीं देते।", "issues": ["fam.custody"], "urgent": false}
+{"id": "ff31", "lang": "hi", "text": "किसी ने मेरी तस्वीरें मॉर्फ़ करके अश्लील बना दी हैं और मेरे रिश्तेदारों को भेज रहा है।", "issues": ["cyb.morphed_intimate_image"], "urgent": true}
+{"id": "ff32", "lang": "hi", "text": "मेरे बैंक स्टेटमेंट में तीन ऐसे लेन-देन हैं जो मैंने नहीं किए, कार्ड मेरे पास ही था।", "issues": ["fin.unauthorized_bank_txn"], "urgent": false}
+{"id": "ff33", "lang": "hi", "text": "Mere padosi ne kaha ki agar main gali chhod ke nahi gaya to woh meri taange tod dega, ab main bahut darr gaya hoon.", "issues": ["crim.criminal_intimidation"], "urgent": false}
+{"id": "ff34", "lang": "hi", "text": "Mera broadband teen hafte se band hai, company ko kai baar complaint ki lekin koi theek karne nahi aaya.", "issues": ["con.deficiency_in_service"], "urgent": false}
+{"id": "ff35", "lang": "kn", "text": "Nanna ex colleague dina hosa account inda message maadtaane, block maadidru bidtilla.", "issues": ["cyb.cyberstalking"], "urgent": false}
+{"id": "ff36", "lang": "kn", "text": "Nanna company mooru tingalinda sambala kottilla, HR ge helidru enu maadtilla.", "issues": ["x.out_of_scope"], "urgent": false}

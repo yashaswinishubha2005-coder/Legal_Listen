@@ -1,0 +1,10 @@
+<View>
+  <Header value="For each listed element of the issue, decide: satisfied / contradicted / unknown (guidelines T7)."/>
+  <Text name="text" value="$text"/>
+  <Text name="element" value="$element_description"/>
+    <Choices name="value" toName="element">
+      <Choice value="satisfied"/>
+      <Choice value="contradicted"/>
+      <Choice value="unknown"/>
+    </Choices>
+</View>

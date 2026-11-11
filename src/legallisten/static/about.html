@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1e2a78">
+  <title>How it works · LegalListen</title>
+  <meta name="description" content="How LegalListen turns a spoken legal problem into a grounded consultation and a ready-to-file draft">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234f46e5'/%3E%3Cpath d='M18 44h28M32 14v30M20 24l-6 12h12zM44 24l-6 12h12zM20 24h24' stroke='white' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='14' r='3.5' fill='%23fbbf24'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="about-body">
+<header class="about-nav">
+  <a class="brand" href="/">
+    <span class="logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M18 44h28M32 14v30M20 24l-6 12h12zM44 24l-6 12h12zM20 24h24"/><circle cx="32" cy="14" r="3.5"/></svg></span>
+    <div><strong>LegalListen</strong><span>How it works</span></div>
+  </a>
+  <nav>
+    <button id="theme" class="icon-btn" type="button" aria-label="Toggle dark mode">🌙</button>
+    <a class="btn primary" href="/">Open the app →</a>
+  </nav>
+</header>
+
+<main class="about">
+  <section class="about-hero">
+    <span class="eyebrow">Legal help in the language people actually speak</span>
+    <h1>From a spoken problem to a <em>ready-to-file</em> complaint — in your own language.</h1>
+    <p class="lead">Most people in India never reach a lawyer for their first question. LegalListen does what a good lawyer does in a first meeting: it listens to the story in Kannada, English, Hindi, Kanglish or Hinglish, asks only the questions that matter, separates what is proved from what is only said, finds the exact law from the official text, and writes the first document the person needs.</p>
+  </section>
+
+  <section>
+    <h2>The pipeline</h2>
+    <ol class="pipe">
+      <li><i>🎙</i><b>Listen</b><span>Typing or speech (Gemini speech-to-text or the browser). Code-mixed input like “nanna anna fake documents maadidaane” is normal input, not an error.</span></li>
+      <li><i>🧠</i><b>Understand</b><span>Local NLU (TF-IDF char + word n-grams → logistic regression) plus rules for dates, people, money, negation and danger; an LLM refines it when available.</span></li>
+      <li><i>🧭</i><b>Ask</b><span>A Bayesian policy picks the single most informative next question and stops as soon as the case is clear.</span></li>
+      <li><i>🕸</i><b>Map</b><span>A Legal Case Graph links people, events, evidence, legal requirements and issues — and flags contradictions.</span></li>
+      <li><i>⚖</i><b>Ground</b><span>Sections are chosen by issue and incident date (IPC before 1 July 2024, BNS after) and shown with their <em>verbatim</em> text from India Code PDFs.</span></li>
+      <li><i>✍</i><b>Draft</b><span>A police complaint, bank complaint, consumer complaint, legal notice or legal-aid application — every fact traceable to the user’s own words.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>What makes it different</h2>
+    <div class="diff">
+      <article><span>🔗</span><h3>Every line is traceable</h3><p>Drafts are built only from facts the user stated. Tap any highlighted line to see the exact words and message it came from. Unknown details stay blanks — nothing is invented.</p></article>
+      <article><span>📜</span><h3>No hallucinated law</h3><p>Law text is never written by a model. 2,817 sections are copied word-for-word from 18 official bare-act PDFs, each with its source page. If a section is missing, the app says so.</p></article>
+      <article><span>📅</span><h3>Old law or new law, automatically</h3><p>The incident date decides between IPC / CrPC / Evidence Act and BNS / BNSS / BSA — the switch most people (and many tools) get wrong.</p></article>
+      <article><span>🆘</span><h3>Safety first</h3><p>Danger signals (violence, threats, an imminent land sale, fraud in progress) jump the queue with helplines 112, 181, 1930 and 15100.</p></article>
+      <article><span>🗣</span><h3>Built for how India speaks</h3><p>Kannada and Devanagari script, romanised Kanglish / Hinglish, speech-recognition noise, and negation like “sign maadilla” or “नहीं किया”.</p></article>
+      <article><span>🔒</span><h3>Private by design</h3><p>Case notes are encrypted at rest (Fernet). Accounts are optional; passwords use scrypt; e-mails are stored as keyed hashes. One click deletes everything.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Measured, not claimed</h2>
+    <p class="hint">Simulated consultations on the held-out <b>test split</b> of our LexVaani-IN benchmark (1,014 cases, six language variants), plus 40 hand-written free-form messages.</p>
+    <div class="metrics">
+      <div><b>0.98</b><span>issue F1 — finds the right legal problem</span></div>
+      <div><b>0.969</b><span>provision F1 — cites the right sections</span></div>
+      <div><b>0.996</b><span>urgent-case recall — misses almost no emergency</span></div>
+      <div><b>0.935</b><span>critical-fact recall</span></div>
+      <div><b>2.37</b><span>questions per case on average (fixed questionnaire: 2.74)</span></div>
+      <div><b>40 / 40</b><span>free-form messages routed to the right issue, 0 off-topic questions</span></div>
+    </div>
+  </section>
+
+  <section class="two">
+    <div>
+      <h2>LexVaani-IN, our dataset</h2>
+      <ul class="facts-list">
+        <li><b>4,344</b> narratives across 25 legal issues in 5 domains (property, family, consumer, criminal, cyber / finance)</li>
+        <li><b>6</b> language variants: Kannada, English, Hindi, Kanglish (Latin and mixed script), Hinglish</li>
+        <li><b>2,003</b> speech-recognition-noise versions; <b>4,344</b> lawyer-style dialogues</li>
+        <li><b>7,224</b> provision explanations — 93.5% now carry the official text</li>
+        <li>Contrastive, code-mixed, high-risk and out-of-scope test subsets</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Under the hood</h2>
+      <ul class="facts-list">
+        <li>FastAPI · SQLite · Fernet encryption · strict Content-Security-Policy</li>
+        <li>scikit-learn NLU trained on LexVaani-IN (works fully offline)</li>
+        <li>Google Gemini 2.5 Flash for speech-to-text, follow-up answers and simpler explanations (optional)</li>
+        <li>Vanilla JS front-end, no trackers, no external scripts or fonts</li>
+        <li>Official law corpus parsed from India Code PDFs, with a verification checklist</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <h2>Try it with a real problem</h2>
+    <p>“Someone called pretending to be from my bank and ₹40,000 was taken from my account.”</p>
+    <a class="btn primary big" href="/">Start a consultation →</a>
+    <p class="hint">LegalListen gives legal information, not legal advice. It does not replace a lawyer.</p>
+  </section>
+</main>
+<script src="/static/about.js"></script>
+</body>
+</html>

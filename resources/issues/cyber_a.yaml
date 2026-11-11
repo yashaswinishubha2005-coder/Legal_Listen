@@ -1,0 +1,483 @@
+# Cyber domain (part A): UPI fraud, phishing/account takeover, impersonation. Provisions TO_VERIFY.
+issues:
+  # ------------------------------------------------------------ UPI fraud
+  - issue_id: cyb.upi_payment_fraud
+    domain: cyber
+    title: {en: UPI / payment fraud, kn: ಯುಪಿಐ / ಪಾವತಿ ವಂಚನೆ, hi: यूपीआई / भुगतान धोखाधड़ी}
+    plain_summary:
+      en: Someone tricked you into authorising a digital payment, so money left your account.
+      kn: ಯಾರೋ ಮೋಸದಿಂದ ನಿಮ್ಮಿಂದ ಡಿಜಿಟಲ್ ಪಾವತಿ ಮಾಡಿಸಿ ನಿಮ್ಮ ಖಾತೆಯಿಂದ ದುಡ್ಡು ತೆಗೆದಿದ್ದಾರೆ.
+      hi: किसी ने धोखे से आपसे डिजिटल भुगतान करवाया और आपके खाते से पैसे निकल गए।
+    risk_level: high
+    default_triage: self_help
+    cast:
+      - {slot: RESP, role: respondent, nouns: [caller], named: false}
+      - {slot: ACC, kind: account, role: account, nouns: [upi]}
+      - {slot: HELP, kind: organization, role: organization, nouns: [police], named: false}
+    value_slots: {AMOUNT: [small, medium], IDNUM: [txn]}
+    setup:
+      en: This is about [my UPI account](@ACC).
+      kn: ಇದು [ನನ್ನ ಯುಪಿಐ ಅಕೌಂಟ್](@ACC) ಬಗ್ಗೆ.
+      kn-en_latn: Idu [nanna UPI account](@ACC) bagge.
+      kn-en_mixed: ಇದು [ನನ್ನ UPI account](@ACC) ಬಗ್ಗೆ.
+      hi: यह [मेरे यूपीआई अकाउंट](@ACC) के बारे में है।
+      hi-en_latn: Yeh [mere UPI account](@ACC) ke baare mein hai.
+    elements:
+      - element_id: deceptive_request
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The fraudster deceived the user (false identity / false story) to get the payment authorised.
+        event_type: fraud_call
+        args: {RESP: agent}
+        question:
+          en: Who contacted you and what did they say before the payment?
+          kn: ಪಾವತಿಗೆ ಮುಂಚೆ ಯಾರು ಸಂಪರ್ಕಿಸಿದರು, ಏನು ಹೇಳಿದರು?
+          hi: भुगतान से पहले किसने संपर्क किया और क्या कहा?
+        proposition:
+          satisfied: A caller pretending to be from a courier company asked the speaker to accept a payment request.
+          contradicted: The payment request came from a known shop; nobody called with a story.
+        satisfied:
+          en: "{DATE} {RESP} [called](TRIG) me pretending to be from a courier company and asked me to accept a payment request."
+          kn: "{DATE} ಕೊರಿಯರ್ ಕಂಪನಿಯವರು ಅಂತ ಹೇಳಿಕೊಂಡು {RESP} [ಕಾಲ್ ಮಾಡಿ](TRIG) ಒಂದು ಪೇಮೆಂಟ್ ರಿಕ್ವೆಸ್ಟ್ ಒಪ್ಪಿಕೊಳ್ಳೋಕೆ ಹೇಳಿದರು."
+          kn-en_latn: "{DATE} courier companyavru antha helikondu {RESP} [call maadi](TRIG) ondu payment request oppikolloke helidru."
+          kn-en_mixed: "{DATE} courier company ಅವರು ಅಂತ ಹೇಳಿಕೊಂಡು {RESP} [call ಮಾಡಿ](TRIG) ಒಂದು payment request accept ಮಾಡೋಕೆ ಹೇಳಿದ್ರು."
+          hi: "{DATE} {RESP.erg} कूरियर कंपनी वाला बनकर [फ़ोन किया](TRIG) और एक पेमेंट रिक्वेस्ट मंज़ूर करने को कहा।"
+          hi-en_latn: "{DATE} {RESP.erg} courier company wala bankar [phone kiya](TRIG) aur ek payment request accept karne ko kaha."
+        contradicted:
+          en: The payment request came from a shop I know; [nobody](NEG) [called](TRIG) me with any story.
+          kn: ಆ ಪೇಮೆಂಟ್ ರಿಕ್ವೆಸ್ಟ್ ನನಗೆ ಗೊತ್ತಿರೋ ಅಂಗಡಿಯಿಂದ ಬಂದಿತ್ತು, ಯಾರೂ [ಕಾಲ್ ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Aa payment request nange gottiro angadiyinda banditu, yaaru [call maadilla](TRIG,NEG).
+          kn-en_mixed: ಆ payment request ನನಗೆ ಗೊತ್ತಿರೋ shop ಇಂದ ಬಂದಿತ್ತು, ಯಾರೂ [call ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: वो पेमेंट रिक्वेस्ट मेरी जानी-पहचानी दुकान से आई थी, किसी ने [फ़ोन](TRIG) [नहीं](NEG) किया।
+          hi-en_latn: Woh payment request meri jaani-pehchaani dukaan se aayi thi, kisi ne [phone](TRIG) [nahi](NEG) kiya.
+      - element_id: money_debited
+        critical: true
+        order: 1
+        description: Money was actually debited from the user's account.
+        event_type: debit
+        args: {ACC: patient}
+        question:
+          en: Was money actually deducted from your account? How much?
+          kn: ನಿಮ್ಮ ಖಾತೆಯಿಂದ ನಿಜವಾಗಿ ದುಡ್ಡು ಕಟ್ ಆಯಿತಾ? ಎಷ್ಟು?
+          hi: क्या सच में आपके खाते से पैसे कटे? कितने?
+        proposition:
+          satisfied: Money was debited from the speaker's account after entering the PIN.
+          contradicted: The speaker did not enter the PIN and no money was debited.
+        satisfied:
+          en: As soon as I entered my PIN, {AMOUNT} was [debited](TRIG) from [my account](@ACC).
+          kn: "ಪಿನ್ ಹಾಕಿದ ತಕ್ಷಣ [ನನ್ನ ಅಕೌಂಟ್‌ನಿಂದ](@ACC) {AMOUNT} [ಕಟ್ ಆಯ್ತು](TRIG)."
+          kn-en_latn: "PIN haakida takshana [nanna account](@ACC) inda {AMOUNT} [cut aaytu](TRIG)."
+          kn-en_mixed: "PIN ಹಾಕಿದ ತಕ್ಷಣ [ನನ್ನ account](@ACC) ಇಂದ {AMOUNT} [debit ಆಯ್ತು](TRIG)."
+          hi: "पिन डालते ही [मेरे अकाउंट](@ACC) से {AMOUNT} [कट गए](TRIG)।"
+          hi-en_latn: "PIN daalte hi [mere account](@ACC) se {AMOUNT} [kat gaye](TRIG)."
+        contradicted:
+          en: I did [not](NEG) enter my PIN, so [no](NEG) money was [debited](TRIG).
+          kn: ನಾನು ಪಿನ್ [ಹಾಕಲಿಲ್ಲ](NEG), ಹಾಗಾಗಿ ಯಾವ ದುಡ್ಡೂ [ಕಟ್ ಆಗಲಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Naanu PIN [haakalilla](NEG), haagaagi yaava duddu [cut aagalilla](TRIG,NEG).
+          kn-en_mixed: ನಾನು PIN [ಹಾಕಲಿಲ್ಲ](NEG), so ಯಾವ money ಉ [debit ಆಗಲಿಲ್ಲ](TRIG,NEG).
+          hi: मैंने पिन [नहीं](NEG) डाला, इसलिए कोई पैसा [नहीं](NEG) [कटा](TRIG)।
+          hi-en_latn: Maine PIN [nahi](NEG) daala, isliye koi paisa [nahi](NEG) [kata](TRIG).
+      - element_id: payee_traceable
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The receiving UPI ID / transaction reference is known (needed to freeze funds quickly).
+        question:
+          en: Can you see in your app which UPI ID the money went to, and the transaction number?
+          kn: ದುಡ್ಡು ಯಾವ ಯುಪಿಐ ಐಡಿಗೆ ಹೋಯ್ತು, ಟ್ರಾನ್ಸಾಕ್ಷನ್ ನಂಬರ್ ಏನು ಅಂತ ಆಪ್‌ನಲ್ಲಿ ಕಾಣ್ತಿದೆಯಾ?
+          hi: क्या ऐप में दिख रहा है कि पैसे किस यूपीआई आईडी पर गए और ट्रांज़ैक्शन नंबर क्या है?
+        proposition:
+          satisfied: The app shows the payee UPI ID and the transaction number.
+          contradicted: The app does not show where the money went.
+        satisfied:
+          en: The app shows the UPI ID the money went to, and the transaction number is {IDNUM}.
+          kn: ದುಡ್ಡು ಹೋದ ಯುಪಿಐ ಐಡಿ ಆಪ್‌ನಲ್ಲಿ ಕಾಣ್ತಿದೆ, ಟ್ರಾನ್ಸಾಕ್ಷನ್ ನಂಬರ್ {IDNUM}.
+          kn-en_latn: Duddu hoda UPI ID app alli kaantide, transaction number {IDNUM}.
+          kn-en_mixed: Money ಹೋದ UPI ID app ಅಲ್ಲಿ ಕಾಣ್ತಿದೆ, transaction number {IDNUM}.
+          hi: ऐप में दिख रहा है कि पैसे किस यूपीआई आईडी पर गए, ट्रांज़ैक्शन नंबर {IDNUM} है।
+          hi-en_latn: App mein dikh raha hai ki paise kis UPI ID par gaye, transaction number {IDNUM} hai.
+        contradicted:
+          en: The app does [not](NEG) show where the money went.
+          kn: ದುಡ್ಡು ಎಲ್ಲಿಗೆ ಹೋಯ್ತು ಅಂತ ಆಪ್‌ನಲ್ಲಿ [ಕಾಣ್ತಿಲ್ಲ](NEG).
+          kn-en_latn: Duddu ellige hoytu antha app alli [kaantilla](NEG).
+          kn-en_mixed: Money ಎಲ್ಲಿಗೆ ಹೋಯ್ತು ಅಂತ app ಅಲ್ಲಿ [show ಆಗ್ತಿಲ್ಲ](NEG).
+          hi: ऐप में [नहीं](NEG) दिख रहा कि पैसे कहाँ गए।
+          hi-en_latn: App mein [nahi](NEG) dikh raha ki paise kahan gaye.
+      - element_id: reported_to_cyber
+        critical: false
+        order: 2
+        description: The user reported the fraud on the 1930 helpline / cybercrime portal.
+        event_type: cyber_report
+        args: {HELP: recipient}
+        question:
+          en: Have you reported this on the 1930 cyber helpline or the cybercrime portal?
+          kn: ಇದನ್ನು 1930 ಸೈಬರ್ ಹೆಲ್ಪ್‌ಲೈನ್ ಅಥವಾ ಸೈಬರ್ ಕ್ರೈಂ ಪೋರ್ಟಲ್‌ನಲ್ಲಿ ದೂರು ಕೊಟ್ಟಿದ್ದೀರಾ?
+          hi: क्या आपने इसकी शिकायत 1930 साइबर हेल्पलाइन या साइबर क्राइम पोर्टल पर की है?
+        proposition:
+          satisfied: The speaker reported it on the 1930 helpline the same day.
+          contradicted: The speaker has not reported it anywhere.
+        satisfied:
+          en: I [reported](TRIG) it to [the 1930 cyber helpline](@HELP) the same day.
+          kn: ಅದೇ ದಿನ [1930 ಸೈಬರ್ ಹೆಲ್ಪ್‌ಲೈನ್‌ಗೆ](@HELP) [ದೂರು ಕೊಟ್ಟೆ](TRIG).
+          kn-en_latn: Ade dina [1930 cyber helpline](@HELP) ge [complaint kotte](TRIG).
+          kn-en_mixed: ಅದೇ ದಿನ [1930 cyber helpline](@HELP) ಗೆ [complaint ಕೊಟ್ಟೆ](TRIG).
+          hi: उसी दिन मैंने [1930 साइबर हेल्पलाइन](@HELP) पर [शिकायत की](TRIG)।
+          hi-en_latn: Usi din maine [1930 cyber helpline](@HELP) par [complaint ki](TRIG).
+        contradicted:
+          en: I have [not](NEG) [reported](TRIG) it anywhere yet.
+          kn: ಇನ್ನೂ ಎಲ್ಲೂ [ದೂರು ಕೊಟ್ಟಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Innu ellu [complaint kottilla](TRIG,NEG).
+          kn-en_mixed: ಇನ್ನೂ ಎಲ್ಲೂ [complaint ಕೊಟ್ಟಿಲ್ಲ](TRIG,NEG).
+          hi: मैंने अभी तक कहीं [शिकायत](TRIG) [नहीं](NEG) की।
+          hi-en_latn: Maine abhi tak kahin [complaint](TRIG) [nahi](NEG) ki.
+    evidence:
+      - evidence_id: debit_screenshot
+        evidence_type: screenshot
+        supports: [money_debited]
+        held:
+          en: I took a [screenshot of the debit message](EVD).
+          kn: ನಾನು [ಡೆಬಿಟ್ ಮೆಸೇಜ್ ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) ತೆಗೆದಿದ್ದೀನಿ.
+          kn-en_latn: Naanu [debit message screenshot](EVD) tegediddini.
+          kn-en_mixed: ನಾನು [debit message screenshot](EVD) ತೆಗೆದಿದ್ದೀನಿ.
+          hi: मैंने [डेबिट मैसेज का स्क्रीनशॉट](EVD) ले लिया है।
+          hi-en_latn: Maine [debit message ka screenshot](EVD) le liya hai.
+        missing:
+          en: I deleted the messages in panic, so I have [no](NEG) [screenshots](EVD).
+          kn: ಗಾಬರಿಯಲ್ಲಿ ಮೆಸೇಜ್ ಡಿಲೀಟ್ ಮಾಡಿದೆ, [ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Gaabariyalli message delete maadide, [screenshot](EVD) [illa](NEG).
+          kn-en_mixed: Panic ಅಲ್ಲಿ messages delete ಮಾಡಿದೆ, [screenshot](EVD) [ಇಲ್ಲ](NEG).
+          hi: घबराहट में मैंने मैसेज डिलीट कर दिए, कोई [स्क्रीनशॉट](EVD) [नहीं](NEG) है।
+          hi-en_latn: Ghabrahat mein maine messages delete kar diye, koi [screenshot](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: golden_hour_fraud
+        template:
+          en: All this happened just [an hour ago](TIMEX:hour_ago).
+          kn: ಇದೆಲ್ಲಾ [ಒಂದು ಗಂಟೆ ಹಿಂದೆ](TIMEX:hour_ago) ಆಯ್ತು.
+          kn-en_latn: Idella [ondu gante hinde](TIMEX:hour_ago) aaytu.
+          kn-en_mixed: ಇದೆಲ್ಲಾ [one hour ago](TIMEX:hour_ago) ಆಯ್ತು.
+          hi: यह सब [एक घंटे पहले](TIMEX:hour_ago) हुआ।
+          hi-en_latn: Yeh sab [ek ghante pehle](TIMEX:hour_ago) hua.
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "for the BNS/IPC limb: incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "ITA:66D", title_hint: Punishment for cheating by personation by using computer resource}
+      - {provision_id: "BNS:318(4)", when: {law_regime: [new]}, title_hint: Cheating and dishonestly inducing delivery of property}
+      - {provision_id: "IPC:420", when: {law_regime: [old]}, title_hint: Cheating and dishonestly inducing delivery of property}
+      - {provision_id: "BNSS:173", when: {law_regime: [new]}, title_hint: Information in cognizable cases}
+      - {provision_id: "CrPC:154", when: {law_regime: [old]}, title_hint: Information in cognizable cases}
+    limitation_notes: Report immediately (1930 / cybercrime portal) so funds can be frozen; criminal limitation depends on punishment. TO_VERIFY.
+    confusable_with: [cyb.phishing_account_takeover, fin.unauthorized_bank_txn, crim.cheating]
+    co_occurs_with: [crim.police_refusal_fir, fin.unauthorized_bank_txn]
+
+  # ------------------------------------------------ phishing / takeover
+  - issue_id: cyb.phishing_account_takeover
+    domain: cyber
+    title: {en: Phishing / account takeover, kn: ಫಿಶಿಂಗ್ / ಖಾತೆ ಕಬಳಿಕೆ, hi: फ़िशिंग / अकाउंट पर कब्ज़ा}
+    plain_summary:
+      en: A fake link or message stole your login details and someone took over your account.
+      kn: ನಕಲಿ ಲಿಂಕ್ ಅಥವಾ ಮೆಸೇಜ್ ಮೂಲಕ ನಿಮ್ಮ ಲಾಗಿನ್ ವಿವರ ಕದ್ದು ಯಾರೋ ನಿಮ್ಮ ಖಾತೆ ವಶಕ್ಕೆ ತೆಗೆದುಕೊಂಡಿದ್ದಾರೆ.
+      hi: किसी नकली लिंक या मैसेज से आपकी लॉगिन जानकारी चुराकर किसी ने आपका अकाउंट अपने कब्ज़े में ले लिया।
+    risk_level: high
+    default_triage: self_help
+    cast:
+      - {slot: RESP, role: respondent, nouns: [unknown_person], named: false}
+      - {slot: ACC, kind: account, role: account, nouns: [bank]}
+      - {slot: BANK, kind: organization, role: organization, nouns: [bank], named: false}
+    value_slots: {AMOUNT: [medium, large]}
+    setup:
+      en: Something has happened with [my bank account](@ACC).
+      kn: "[ನನ್ನ ಬ್ಯಾಂಕ್ ಅಕೌಂಟ್](@ACC) ಜೊತೆ ಏನೋ ಆಗಿದೆ."
+      kn-en_latn: "[Nanna bank account](@ACC) jote eno aagide."
+      kn-en_mixed: "[ನನ್ನ bank account](@ACC) ಜೊತೆ ಏನೋ ಆಗಿದೆ."
+      hi: "[मेरे बैंक अकाउंट](@ACC) के साथ कुछ गड़बड़ हुई है।"
+      hi-en_latn: "[Mere bank account](@ACC) ke saath kuch gadbad hui hai."
+    elements:
+      - element_id: phishing_message
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The user received a deceptive link / message impersonating a bank or service.
+        event_type: phishing_message
+        args: {RESP: agent}
+        question:
+          en: Did you get any SMS, email or call with a link before this happened?
+          kn: ಇದು ಆಗೋ ಮುಂಚೆ ನಿಮಗೆ ಲಿಂಕ್ ಇರೋ ಎಸ್‌ಎಂಎಸ್, ಇಮೇಲ್ ಅಥವಾ ಕಾಲ್ ಬಂದಿತ್ತಾ?
+          hi: क्या ऐसा होने से पहले आपको कोई लिंक वाला एसएमएस, ईमेल या कॉल आया था?
+        proposition:
+          satisfied: Someone sent an SMS about KYC expiry with a link.
+          contradicted: The speaker received no message and clicked nothing.
+        satisfied:
+          en: "{DATE} {RESP} [sent](TRIG) me an SMS saying my KYC would expire, with a link to update it."
+          kn: "{DATE} ಕೆವೈಸಿ ಎಕ್ಸ್‌ಪೈರ್ ಆಗುತ್ತೆ ಅಂತ {RESP} ಒಂದು ಲಿಂಕ್ ಇರೋ ಎಸ್‌ಎಂಎಸ್ [ಕಳಿಸಿದರು](TRIG)."
+          kn-en_latn: "{DATE} KYC expire aagutte antha {RESP} ondu link iro SMS [kalisidru](TRIG)."
+          kn-en_mixed: "{DATE} KYC expire ಆಗುತ್ತೆ ಅಂತ {RESP} ಒಂದು link ಇರೋ SMS [send ಮಾಡಿದ್ರು](TRIG)."
+          hi: "{DATE} {RESP.erg} केवाईसी खत्म होने का एक एसएमएस लिंक के साथ [भेजा](TRIG)।"
+          hi-en_latn: "{DATE} {RESP.erg} KYC khatam hone ka ek SMS link ke saath [bheja](TRIG)."
+        contradicted:
+          en: I did [not](NEG) get any message or link, and I [never](NEG) [clicked](TRIG) anything.
+          kn: ನನಗೆ ಯಾವ ಮೆಸೇಜ್ ಅಥವಾ ಲಿಂಕ್ [ಬಂದಿಲ್ಲ](NEG), ನಾನು ಏನೂ [ಕ್ಲಿಕ್ ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Nange yaava message athava link [bandilla](NEG), naanu enu [click maadilla](TRIG,NEG).
+          kn-en_mixed: ನನಗೆ ಯಾವ message ಅಥವಾ link [ಬಂದಿಲ್ಲ](NEG), ನಾನು ಏನೂ [click ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: मुझे कोई मैसेज या लिंक [नहीं](NEG) आया, मैंने कुछ [नहीं](NEG) [क्लिक किया](TRIG)।
+          hi-en_latn: Mujhe koi message ya link [nahi](NEG) aaya, maine kuch [nahi](NEG) [click kiya](TRIG).
+      - element_id: credentials_entered
+        critical: true
+        order: 1
+        description: The user entered credentials / OTP on the fake page.
+        event_type: credential_entry
+        question:
+          en: Did you enter your password, PIN or OTP anywhere after opening the link?
+          kn: ಲಿಂಕ್ ಓಪನ್ ಮಾಡಿದ ಮೇಲೆ ಎಲ್ಲಾದರೂ ಪಾಸ್‌ವರ್ಡ್, ಪಿನ್ ಅಥವಾ ಓಟಿಪಿ ಹಾಕಿದ್ರಾ?
+          hi: क्या लिंक खोलने के बाद आपने कहीं पासवर्ड, पिन या ओटीपी डाला?
+        proposition:
+          satisfied: The speaker entered the net-banking password and OTP on the link.
+          contradicted: The speaker never shared the password or OTP.
+        satisfied:
+          en: I opened the link and [entered](TRIG) my net-banking password and the OTP.
+          kn: ಲಿಂಕ್ ಓಪನ್ ಮಾಡಿ ನೆಟ್ ಬ್ಯಾಂಕಿಂಗ್ ಪಾಸ್‌ವರ್ಡ್ ಮತ್ತು ಓಟಿಪಿ [ಹಾಕಿದೆ](TRIG).
+          kn-en_latn: Link open maadi net banking password mattu OTP [haakide](TRIG).
+          kn-en_mixed: Link open ಮಾಡಿ net banking password and OTP [enter ಮಾಡಿದೆ](TRIG).
+          hi: मैंने लिंक खोलकर नेट बैंकिंग पासवर्ड और ओटीपी [डाल दिया](TRIG)।
+          hi-en_latn: Maine link kholkar net banking password aur OTP [daal diya](TRIG).
+        contradicted:
+          en: I [never](NEG) [shared](TRIG) my password or OTP with anyone.
+          kn: ನಾನು ಯಾರಿಗೂ ಪಾಸ್‌ವರ್ಡ್ ಅಥವಾ ಓಟಿಪಿ [ಕೊಟ್ಟಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Naanu yaarigu password athava OTP [kottilla](TRIG,NEG).
+          kn-en_mixed: ನಾನು ಯಾರಿಗೂ password ಅಥವಾ OTP [share ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: मैंने किसी को पासवर्ड या ओटीपी [नहीं](NEG) [बताया](TRIG)।
+          hi-en_latn: Maine kisi ko password ya OTP [nahi](NEG) [bataya](TRIG).
+      - element_id: unauthorised_access
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: Someone accessed the account without authorisation.
+        event_type: account_takeover
+        args: {RESP: agent, ACC: patient}
+        question:
+          en: Has someone else logged into your account or changed its details?
+          kn: ಬೇರೆ ಯಾರಾದರೂ ನಿಮ್ಮ ಖಾತೆಗೆ ಲಾಗಿನ್ ಆಗಿದ್ದಾರಾ ಅಥವಾ ವಿವರ ಬದಲಾಯಿಸಿದ್ದಾರಾ?
+          hi: क्या किसी और ने आपके अकाउंट में लॉगिन किया या उसकी जानकारी बदली?
+        proposition:
+          satisfied: Someone logged into the account and changed the registered phone number.
+          contradicted: The bank checked; nobody else logged in.
+        satisfied:
+          en: After that {RESP} [logged into](TRIG) [my account](@ACC) and changed the registered phone number.
+          kn: "ಅದಾದ ಮೇಲೆ {RESP} [ನನ್ನ ಅಕೌಂಟ್‌ಗೆ](@ACC) [ಲಾಗಿನ್ ಆಗಿ](TRIG) ಫೋನ್ ನಂಬರ್ ಬದಲಾಯಿಸಿದರು."
+          kn-en_latn: "Adaada mele {RESP} [nanna account](@ACC) ge [login aagi](TRIG) phone number badalaayisidru."
+          kn-en_mixed: "ಅದಾದ ಮೇಲೆ {RESP} [ನನ್ನ account](@ACC) ಗೆ [login ಆಗಿ](TRIG) phone number change ಮಾಡಿದ್ರು."
+          hi: "उसके बाद {RESP.erg} [मेरे अकाउंट](@ACC) में [लॉगिन करके](TRIG) फ़ोन नंबर बदल दिया।"
+          hi-en_latn: "Uske baad {RESP.erg} [mere account](@ACC) mein [login karke](TRIG) phone number badal diya."
+        contradicted:
+          en: "[Nobody](NEG) else has [logged into](TRIG) [my account](@ACC); [the bank](@BANK) checked it."
+          kn: "ಬೇರೆ ಯಾರೂ [ನನ್ನ ಅಕೌಂಟ್‌ಗೆ](@ACC) [ಲಾಗಿನ್ ಆಗಿಲ್ಲ](TRIG,NEG) ಅಂತ [ಬ್ಯಾಂಕ್‌ನವರು](@BANK) ಚೆಕ್ ಮಾಡಿ ಹೇಳಿದರು."
+          kn-en_latn: "Bere yaaru [nanna account](@ACC) ge [login aagilla](TRIG,NEG) antha [bank avru](@BANK) check maadi helidru."
+          kn-en_mixed: "ಬೇರೆ ಯಾರೂ [ನನ್ನ account](@ACC) ಗೆ [login ಆಗಿಲ್ಲ](TRIG,NEG) ಅಂತ [bank ಅವರು](@BANK) check ಮಾಡಿ ಹೇಳಿದ್ರು."
+          hi: "[बैंक](@BANK) ने जाँच करके बताया कि [मेरे अकाउंट](@ACC) में किसी और ने [लॉगिन](TRIG) [नहीं](NEG) किया।"
+          hi-en_latn: "[Bank](@BANK) ne check karke bataya ki [mere account](@ACC) mein kisi aur ne [login](TRIG) [nahi](NEG) kiya."
+      - element_id: money_lost
+        critical: false
+        order: 3
+        description: Money was transferred out of the account.
+        event_type: debit
+        args: {ACC: patient}
+        question:
+          en: Has any money gone out of the account? How much?
+          kn: ಖಾತೆಯಿಂದ ಏನಾದರೂ ದುಡ್ಡು ಹೋಗಿದೆಯಾ? ಎಷ್ಟು?
+          hi: क्या खाते से कोई पैसा गया है? कितना?
+        proposition:
+          satisfied: Money was transferred out of the account.
+          contradicted: No money has left the account.
+        satisfied:
+          en: Then {AMOUNT} was [transferred](TRIG) out of [my account](@ACC).
+          kn: "ಆಮೇಲೆ [ನನ್ನ ಅಕೌಂಟ್‌ನಿಂದ](@ACC) {AMOUNT} [ಟ್ರಾನ್ಸ್‌ಫರ್ ಆಯ್ತು](TRIG)."
+          kn-en_latn: "Aamele [nanna account](@ACC) inda {AMOUNT} [transfer aaytu](TRIG)."
+          kn-en_mixed: "ಆಮೇಲೆ [ನನ್ನ account](@ACC) ಇಂದ {AMOUNT} [transfer ಆಯ್ತು](TRIG)."
+          hi: "फिर [मेरे अकाउंट](@ACC) से {AMOUNT} [ट्रांसफ़र हो गए](TRIG)।"
+          hi-en_latn: "Phir [mere account](@ACC) se {AMOUNT} [transfer ho gaye](TRIG)."
+        contradicted:
+          en: Luckily [no](NEG) money has [gone](TRIG) out of [the account](@ACC).
+          kn: ಅದೃಷ್ಟಕ್ಕೆ [ಅಕೌಂಟ್‌ನಿಂದ](@ACC) ದುಡ್ಡು [ಹೋಗಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Adrushtakke [account](@ACC) inda duddu [hogilla](TRIG,NEG).
+          kn-en_mixed: Luckily [account](@ACC) ಇಂದ money [ಹೋಗಿಲ್ಲ](TRIG,NEG).
+          hi: शुक्र है [अकाउंट](@ACC) से कोई पैसा [नहीं](NEG) [गया](TRIG)।
+          hi-en_latn: Shukr hai [account](@ACC) se koi paisa [nahi](NEG) [gaya](TRIG).
+    evidence:
+      - evidence_id: phishing_sms
+        evidence_type: digital_record
+        supports: [phishing_message]
+        held:
+          en: I still have the [SMS with the fake link](EVD).
+          kn: ಆ [ನಕಲಿ ಲಿಂಕ್ ಇರೋ ಎಸ್‌ಎಂಎಸ್](EVD) ಇನ್ನೂ ನನ್ನ ಫೋನ್‌ನಲ್ಲಿ ಇದೆ.
+          kn-en_latn: Aa [nakali link iro SMS](EVD) innu nanna phone alli ide.
+          kn-en_mixed: ಆ [fake link ಇರೋ SMS](EVD) ಇನ್ನೂ ನನ್ನ phone ಅಲ್ಲಿ ಇದೆ.
+          hi: वो [नकली लिंक वाला एसएमएस](EVD) अभी भी मेरे फ़ोन में है।
+          hi-en_latn: Woh [fake link wala SMS](EVD) abhi bhi mere phone mein hai.
+        missing:
+          en: The [message](EVD) got deleted, so I do [not](NEG) have it.
+          kn: ಆ [ಮೆಸೇಜ್](EVD) ಡಿಲೀಟ್ ಆಗಿದೆ, ನನ್ನ ಹತ್ತಿರ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Aa [message](EVD) delete aagide, nanna hatra [illa](NEG).
+          kn-en_mixed: ಆ [message](EVD) delete ಆಗಿದೆ, ನನ್ನ ಹತ್ತಿರ [ಇಲ್ಲ](NEG).
+          hi: वो [मैसेज](EVD) डिलीट हो गया, मेरे पास [नहीं](NEG) है।
+          hi-en_latn: Woh [message](EVD) delete ho gaya, mere paas [nahi](NEG) hai.
+    risk_facts:
+      - flag: golden_hour_fraud
+        template:
+          en: Money is still going out of [my account](@ACC) [right now](TIMEX:now).
+          kn: "[ಈಗಲೂ](TIMEX:now) [ನನ್ನ ಅಕೌಂಟ್‌ನಿಂದ](@ACC) ದುಡ್ಡು ಹೋಗ್ತಾ ಇದೆ."
+          kn-en_latn: "[Eeglu](TIMEX:now) [nanna account](@ACC) inda duddu hogta ide."
+          kn-en_mixed: "[Right now](TIMEX:now) ಕೂಡ [ನನ್ನ account](@ACC) ಇಂದ money ಹೋಗ್ತಾ ಇದೆ."
+          hi: "[अभी भी](TIMEX:now) [मेरे अकाउंट](@ACC) से पैसे कट रहे हैं।"
+          hi-en_latn: "[Abhi bhi](TIMEX:now) [mere account](@ACC) se paise kat rahe hain."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "for the BNS/IPC limb: incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "ITA:43", title_hint: Penalty and compensation for damage to computer system}
+      - {provision_id: "ITA:66", title_hint: Computer related offences}
+      - {provision_id: "ITA:66C", title_hint: Punishment for identity theft}
+      - {provision_id: "ITA:66D", title_hint: Punishment for cheating by personation by using computer resource}
+      - {provision_id: "BNS:318(4)", when: {law_regime: [new]}, title_hint: Cheating and dishonestly inducing delivery of property}
+      - {provision_id: "IPC:420", when: {law_regime: [old]}, title_hint: Cheating and dishonestly inducing delivery of property}
+    limitation_notes: Inform the bank and 1930 immediately; customer liability for unauthorised transactions depends on how quickly the bank is told (RBI directions, outside this corpus). TO_VERIFY.
+    confusable_with: [cyb.upi_payment_fraud, fin.unauthorized_bank_txn, cyb.impersonation]
+    co_occurs_with: [fin.unauthorized_bank_txn, crim.police_refusal_fir]
+
+  # --------------------------------------------------------- impersonation
+  - issue_id: cyb.impersonation
+    domain: cyber
+    title: {en: Online impersonation, kn: ಆನ್‌ಲೈನ್ ಸೋಗು, hi: ऑनलाइन प्रतिरूपण}
+    plain_summary:
+      en: Someone is pretending to be you online, for example with a fake profile using your name and photos.
+      kn: ಯಾರೋ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಫೋಟೋ ಬಳಸಿ ನಕಲಿ ಪ್ರೊಫೈಲ್ ಮೂಲಕ ನೀವೇ ಅಂತ ನಟಿಸುತ್ತಿದ್ದಾರೆ.
+      hi: कोई ऑनलाइन आपका नाम और फ़ोटो इस्तेमाल करके नकली प्रोफ़ाइल से आप होने का दिखावा कर रहा है।
+    risk_level: medium
+    default_triage: self_help
+    cast:
+      - {slot: RESP, role: respondent, nouns: [unknown_person], named: false}
+    setup:
+      en: "{RESP} is misusing my identity online."
+      kn: "{RESP} ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ನನ್ನ ಗುರುತು ದುರುಪಯೋಗ ಮಾಡ್ತಿದ್ದಾರೆ."
+      kn-en_latn: "{RESP} online alli nanna guruthu durupayoga maadtiddare."
+      kn-en_mixed: "{RESP} online ಅಲ್ಲಿ ನನ್ನ identity misuse ಮಾಡ್ತಿದ್ದಾರೆ."
+      hi: "{RESP.erg} ऑनलाइन मेरी पहचान का गलत इस्तेमाल किया है।"
+      hi-en_latn: "{RESP.erg} online meri pehchaan ka galat istemaal kiya hai."
+    elements:
+      - element_id: fake_profile_created
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: A fake profile / account using the user's identity was created.
+        event_type: fake_profile
+        args: {RESP: agent}
+        question:
+          en: Is there a profile or account using your name or photos that you did not create?
+          kn: ನೀವು ಮಾಡದೇ ಇರೋ, ನಿಮ್ಮ ಹೆಸರು ಅಥವಾ ಫೋಟೋ ಬಳಸಿರೋ ಪ್ರೊಫೈಲ್ ಏನಾದರೂ ಇದೆಯಾ?
+          hi: क्या आपके नाम या फ़ोटो से कोई ऐसी प्रोफ़ाइल है जो आपने नहीं बनाई?
+        proposition:
+          satisfied: Someone created a fake social media profile with the speaker's name and photos.
+          contradicted: The profile is the speaker's own old account.
+        satisfied:
+          en: "{DATE} {RESP} [created](TRIG) a fake social media profile with my name and photos."
+          kn: "{DATE} {RESP} ನನ್ನ ಹೆಸರು, ಫೋಟೋ ಹಾಕಿ ನಕಲಿ ಸೋಶಿಯಲ್ ಮೀಡಿಯಾ ಪ್ರೊಫೈಲ್ [ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          kn-en_latn: "{DATE} {RESP} nanna hesaru, photo haaki nakali social media profile [maadiddare](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} ನನ್ನ name, photos ಹಾಕಿ fake social media profile [create ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          hi: "{DATE} {RESP.erg} मेरे नाम और फ़ोटो से एक नकली सोशल मीडिया प्रोफ़ाइल [बनाई](TRIG)।"
+          hi-en_latn: "{DATE} {RESP.erg} mere naam aur photo se ek fake social media profile [banayi](TRIG)."
+        contradicted:
+          en: The profile is actually my own old account; [nobody](NEG) else [created](TRIG) it.
+          kn: ಆ ಪ್ರೊಫೈಲ್ ನನ್ನದೇ ಹಳೆ ಅಕೌಂಟ್, ಬೇರೆ ಯಾರೂ [ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Aa profile nannade hale account, bere yaaru [maadilla](TRIG,NEG).
+          kn-en_mixed: ಆ profile ನನ್ನದೇ old account, ಬೇರೆ ಯಾರೂ [create ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: वो प्रोफ़ाइल असल में मेरा ही पुराना अकाउंट है, किसी और ने [नहीं](NEG) [बनाई](TRIG)।
+          hi-en_latn: Woh profile asal mein mera hi purana account hai, kisi aur ne [nahi](NEG) [banayi](TRIG).
+      - element_id: used_to_deceive
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: The fake identity was used to deceive others (e.g. ask money in the user's name).
+        event_type: deceptive_messages
+        args: {RESP: agent}
+        question:
+          en: Has that profile contacted your friends or asked anyone for money?
+          kn: ಆ ಪ್ರೊಫೈಲ್‌ನಿಂದ ನಿಮ್ಮ ಫ್ರೆಂಡ್ಸ್‌ಗೆ ಮೆಸೇಜ್ ಬಂದಿದೆಯಾ ಅಥವಾ ಯಾರಿಗಾದರೂ ದುಡ್ಡು ಕೇಳಿದ್ದಾರಾ?
+          hi: क्या उस प्रोफ़ाइल से आपके दोस्तों को मैसेज आए या किसी से पैसे माँगे गए?
+        proposition:
+          satisfied: Using the profile, the impersonator asked the speaker's friends for money.
+          contradicted: The profile has not contacted anyone.
+        satisfied:
+          en: Using that profile, {RESP} [asked](TRIG) my friends for money in my name.
+          kn: "ಆ ಪ್ರೊಫೈಲ್‌ನಿಂದ {RESP} ನನ್ನ ಹೆಸರಲ್ಲಿ ನನ್ನ ಫ್ರೆಂಡ್ಸ್ ಹತ್ತಿರ ದುಡ್ಡು [ಕೇಳಿದ್ದಾರೆ](TRIG)."
+          kn-en_latn: "Aa profile inda {RESP} nanna hesaralli nanna friends hatra duddu [kelidaare](TRIG)."
+          kn-en_mixed: "ಆ profile ಇಂದ {RESP} ನನ್ನ name ಅಲ್ಲಿ ನನ್ನ friends ಹತ್ತಿರ money [ask ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          hi: "उस प्रोफ़ाइल से {RESP.erg} मेरे नाम पर मेरे दोस्तों से पैसे [माँगे](TRIG)।"
+          hi-en_latn: "Us profile se {RESP.erg} mere naam par mere doston se paise [maange](TRIG)."
+        contradicted:
+          en: The profile has [not](NEG) [contacted](TRIG) anyone or asked for anything.
+          kn: ಆ ಪ್ರೊಫೈಲ್‌ನಿಂದ ಯಾರಿಗೂ [ಮೆಸೇಜ್ ಬಂದಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Aa profile inda yaarigu [message bandilla](TRIG,NEG).
+          kn-en_mixed: ಆ profile ಇಂದ ಯಾರಿಗೂ [message ಬಂದಿಲ್ಲ](TRIG,NEG).
+          hi: उस प्रोफ़ाइल से किसी को कोई [मैसेज](TRIG) [नहीं](NEG) आया।
+          hi-en_latn: Us profile se kisi ko koi [message](TRIG) [nahi](NEG) aaya.
+      - element_id: reported_to_platform
+        critical: false
+        order: 3
+        description: The user reported the fake profile to the platform.
+        event_type: platform_report
+        question:
+          en: Have you reported the fake profile to the app or website?
+          kn: ನಕಲಿ ಪ್ರೊಫೈಲ್ ಬಗ್ಗೆ ಆಪ್ ಅಥವಾ ವೆಬ್‌ಸೈಟ್‌ಗೆ ರಿಪೋರ್ಟ್ ಮಾಡಿದ್ದೀರಾ?
+          hi: क्या आपने नकली प्रोफ़ाइल की ऐप या वेबसाइट पर रिपोर्ट की है?
+        proposition:
+          satisfied: The speaker reported the profile, but it is still active.
+          contradicted: The speaker has not reported it yet.
+        satisfied:
+          en: I [reported](TRIG) the fake profile to the app, but it is still active.
+          kn: ನಾನು ಆ ನಕಲಿ ಪ್ರೊಫೈಲ್ ಬಗ್ಗೆ ಆಪ್‌ಗೆ [ರಿಪೋರ್ಟ್ ಮಾಡಿದೆ](TRIG), ಆದರೆ ಇನ್ನೂ ಆಕ್ಟಿವ್ ಇದೆ.
+          kn-en_latn: Naanu aa nakali profile bagge app ge [report maadide](TRIG), aadre innu active ide.
+          kn-en_mixed: ನಾನು ಆ fake profile ಬಗ್ಗೆ app ಗೆ [report ಮಾಡಿದೆ](TRIG), ಆದ್ರೆ ಇನ್ನೂ active ಇದೆ.
+          hi: मैंने उस नकली प्रोफ़ाइल की ऐप पर [रिपोर्ट की](TRIG), लेकिन वो अब भी चालू है।
+          hi-en_latn: Maine us fake profile ki app par [report ki](TRIG), lekin woh ab bhi active hai.
+        contradicted:
+          en: I have [not](NEG) [reported](TRIG) it to the app yet.
+          kn: ಇನ್ನೂ ಆಪ್‌ಗೆ [ರಿಪೋರ್ಟ್ ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Innu app ge [report maadilla](TRIG,NEG).
+          kn-en_mixed: ಇನ್ನೂ app ಗೆ [report ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: मैंने अभी तक ऐप पर [रिपोर्ट](TRIG) [नहीं](NEG) की।
+          hi-en_latn: Maine abhi tak app par [report](TRIG) [nahi](NEG) ki.
+    evidence:
+      - evidence_id: profile_screenshots
+        evidence_type: screenshot
+        supports: [fake_profile_created]
+        held:
+          en: I have [screenshots of the fake profile](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ನಕಲಿ ಪ್ರೊಫೈಲ್‌ನ ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [nakali profile screenshot](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [fake profile screenshots](EVD) ಇವೆ.
+          hi: मेरे पास [नकली प्रोफ़ाइल के स्क्रीनशॉट](EVD) हैं।
+          hi-en_latn: Mere paas [fake profile ke screenshots](EVD) hain.
+        missing:
+          en: The profile was removed before I could take any [screenshots](EVD).
+          kn: "[ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) ತೆಗೆಯೋ ಮುಂಚೆನೇ ಪ್ರೊಫೈಲ್ ಡಿಲೀಟ್ ಆಯ್ತು."
+          kn-en_latn: "[Screenshot](EVD) tegeyo munchene profile delete aaytu."
+          kn-en_mixed: "[Screenshot](EVD) ತೆಗೆಯೋ ಮುಂಚೆನೇ profile delete ಆಯ್ತು."
+          hi: "[स्क्रीनशॉट](EVD) लेने से पहले ही प्रोफ़ाइल डिलीट हो गई।"
+          hi-en_latn: "[Screenshot](EVD) lene se pehle hi profile delete ho gayi."
+    risk_facts:
+      - flag: image_circulation
+        template:
+          en: "{RESP} has started posting my photos with vulgar captions in many groups."
+          kn: "{RESP} ನನ್ನ ಫೋಟೋಗಳನ್ನು ಕೆಟ್ಟ ಕ್ಯಾಪ್ಷನ್ ಜೊತೆ ತುಂಬಾ ಗ್ರೂಪ್‌ಗಳಲ್ಲಿ ಹಾಕ್ತಿದ್ದಾರೆ."
+          kn-en_latn: "{RESP} nanna photogalanna ketta caption jote tumba groupgalalli haaktiddare."
+          kn-en_mixed: "{RESP} ನನ್ನ photos ನ vulgar captions ಜೊತೆ many groups ಅಲ್ಲಿ post ಮಾಡ್ತಿದ್ದಾರೆ."
+          hi: "{RESP.erg} मेरी फ़ोटो गंदे कैप्शन के साथ कई ग्रुप में डालनी शुरू कर दी हैं।"
+          hi-en_latn: "{RESP.erg} meri photos gande caption ke saath kai groups mein daalni shuru kar di hain."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "for the BNS/IPC limb: incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "ITA:66C", title_hint: Punishment for identity theft}
+      - {provision_id: "ITA:66D", title_hint: Punishment for cheating by personation by using computer resource}
+      - {provision_id: "BNS:319(2)", when: {law_regime: [new]}, title_hint: Cheating by personation (punishment)}
+      - {provision_id: "IPC:419", when: {law_regime: [old]}, title_hint: Punishment for cheating by personation}
+    limitation_notes: Report to the platform and the cybercrime portal quickly so content and logs are preserved. TO_VERIFY.
+    confusable_with: [cyb.phishing_account_takeover, cyb.morphed_intimate_image, crim.cheating]
+    co_occurs_with: [crim.cheating, cyb.morphed_intimate_image]

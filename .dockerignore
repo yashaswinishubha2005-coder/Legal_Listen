@@ -1,0 +1,7 @@
+.venv
+.cache
+dist
+.git
+.env
+data/legallisten
+**/__pycache__

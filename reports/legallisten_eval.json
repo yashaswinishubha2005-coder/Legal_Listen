@@ -1,0 +1,594 @@
+{
+ "adaptive": {
+  "n": 1014,
+  "seconds": 127.8,
+  "issue_micro_f1": 0.98,
+  "issue_precision": 0.97,
+  "issue_recall": 0.989,
+  "critical_fact_recall": 0.935,
+  "questions_mean": 2.368,
+  "questions_median": 2.0,
+  "triage_accuracy": 0.98,
+  "urgent_recall": 0.996,
+  "regime_accuracy": 0.987,
+  "provision_precision": 0.961,
+  "provision_recall": 0.989,
+  "provision_f1": 0.969,
+  "graph_valid_rate": 1,
+  "by_variant": {
+   "en": {
+    "issue_exact": 0.923,
+    "questions_mean": 2.26
+   },
+   "hi": {
+    "issue_exact": 0.941,
+    "questions_mean": 2.467
+   },
+   "hi-en_latn": {
+    "issue_exact": 0.935,
+    "questions_mean": 2.172
+   },
+   "kn": {
+    "issue_exact": 0.959,
+    "questions_mean": 2.515
+   },
+   "kn-en_latn": {
+    "issue_exact": 0.964,
+    "questions_mean": 2.337
+   },
+   "kn-en_mixed": {
+    "issue_exact": 0.994,
+    "questions_mean": 2.456
+   }
+  }
+ },
+ "fixed_questionnaire": {
+  "n": 1014,
+  "seconds": 125.4,
+  "issue_micro_f1": 0.98,
+  "issue_precision": 0.97,
+  "issue_recall": 0.989,
+  "critical_fact_recall": 0.935,
+  "questions_mean": 2.743,
+  "questions_median": 2.0,
+  "triage_accuracy": 0.98,
+  "urgent_recall": 0.996,
+  "regime_accuracy": 0.983,
+  "provision_precision": 0.961,
+  "provision_recall": 0.989,
+  "provision_f1": 0.969,
+  "graph_valid_rate": 1,
+  "by_variant": {
+   "en": {
+    "issue_exact": 0.923,
+    "questions_mean": 2.639
+   },
+   "hi": {
+    "issue_exact": 0.941,
+    "questions_mean": 2.763
+   },
+   "hi-en_latn": {
+    "issue_exact": 0.935,
+    "questions_mean": 2.438
+   },
+   "kn": {
+    "issue_exact": 0.959,
+    "questions_mean": 3.136
+   },
+   "kn-en_latn": {
+    "issue_exact": 0.964,
+    "questions_mean": 2.562
+   },
+   "kn-en_mixed": {
+    "issue_exact": 0.994,
+    "questions_mean": 2.917
+   }
+  }
+ },
+ "freeform": {
+  "n": 36,
+  "items": [
+   {
+    "id": "ff01",
+    "lang": "en",
+    "gold": [
+     "prop.coheir_sale_without_consent",
+     "prop.inheritance_partition"
+    ],
+    "hypotheses": [
+     "prop.inheritance_partition",
+     "prop.coheir_sale_without_consent"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff02",
+    "lang": "en",
+    "gold": [
+     "crim.hurt_assault"
+    ],
+    "hypotheses": [
+     "crim.hurt_assault"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff03",
+    "lang": "en",
+    "gold": [
+     "cyb.upi_payment_fraud"
+    ],
+    "hypotheses": [
+     "cyb.upi_payment_fraud"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": [
+     "golden_hour_fraud"
+    ]
+   },
+   {
+    "id": "ff04",
+    "lang": "en",
+    "gold": [
+     "con.defective_product"
+    ],
+    "hypotheses": [
+     "con.defective_product"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff05",
+    "lang": "en",
+    "gold": [
+     "fam.domestic_violence",
+     "fam.dowry_harassment"
+    ],
+    "hypotheses": [
+     "fam.dowry_harassment",
+     "fam.domestic_violence"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": [
+     "ongoing_abuse"
+    ]
+   },
+   {
+    "id": "ff06",
+    "lang": "en",
+    "gold": [
+     "cyb.impersonation"
+    ],
+    "hypotheses": [
+     "cyb.impersonation"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff07",
+    "lang": "en",
+    "gold": [
+     "crim.police_refusal_fir",
+     "crim.theft"
+    ],
+    "hypotheses": [
+     "crim.police_refusal_fir",
+     "crim.theft"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff08",
+    "lang": "en",
+    "gold": [
+     "fin.loan_recovery_harassment"
+    ],
+    "hypotheses": [
+     "fin.loan_recovery_harassment",
+     "crim.cheating"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff09",
+    "lang": "en",
+    "gold": [
+     "x.out_of_scope"
+    ],
+    "hypotheses": [],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff10",
+    "lang": "en",
+    "gold": [
+     "prop.encroachment"
+    ],
+    "hypotheses": [
+     "prop.encroachment"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff11",
+    "lang": "en",
+    "gold": [
+     "cyb.morphed_intimate_image"
+    ],
+    "hypotheses": [
+     "cyb.morphed_intimate_image"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff12",
+    "lang": "en",
+    "gold": [
+     "con.refund_refusal"
+    ],
+    "hypotheses": [
+     "con.refund_refusal"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff13",
+    "lang": "kn",
+    "gold": [
+     "prop.coheir_sale_without_consent",
+     "prop.inheritance_partition"
+    ],
+    "hypotheses": [
+     "prop.coheir_sale_without_consent",
+     "prop.inheritance_partition"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff14",
+    "lang": "kn",
+    "gold": [
+     "crim.hurt_assault"
+    ],
+    "hypotheses": [
+     "crim.hurt_assault"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff15",
+    "lang": "kn",
+    "gold": [
+     "cyb.upi_payment_fraud"
+    ],
+    "hypotheses": [
+     "cyb.upi_payment_fraud"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": [
+     "golden_hour_fraud"
+    ]
+   },
+   {
+    "id": "ff16",
+    "lang": "kn",
+    "gold": [
+     "fam.domestic_violence",
+     "fam.dowry_harassment"
+    ],
+    "hypotheses": [
+     "fam.dowry_harassment",
+     "fam.domestic_violence"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": [
+     "ongoing_abuse"
+    ]
+   },
+   {
+    "id": "ff17",
+    "lang": "kn",
+    "gold": [
+     "prop.encroachment"
+    ],
+    "hypotheses": [
+     "prop.encroachment"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff18",
+    "lang": "kn",
+    "gold": [
+     "con.defective_product"
+    ],
+    "hypotheses": [
+     "con.defective_product"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff19",
+    "lang": "kn",
+    "gold": [
+     "cyb.impersonation"
+    ],
+    "hypotheses": [
+     "cyb.impersonation"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff20",
+    "lang": "kn",
+    "gold": [
+     "fam.maintenance"
+    ],
+    "hypotheses": [
+     "fam.maintenance"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff21",
+    "lang": "kn",
+    "gold": [
+     "crim.police_refusal_fir",
+     "crim.theft"
+    ],
+    "hypotheses": [
+     "crim.theft",
+     "crim.police_refusal_fir"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff22",
+    "lang": "kn",
+    "gold": [
+     "x.non_legal"
+    ],
+    "hypotheses": [],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff23",
+    "lang": "kn",
+    "gold": [
+     "fin.loan_recovery_harassment"
+    ],
+    "hypotheses": [
+     "fin.loan_recovery_harassment",
+     "cyb.cyberstalking",
+     "crim.cheating"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff24",
+    "lang": "kn",
+    "gold": [
+     "prop.forged_documents"
+    ],
+    "hypotheses": [
+     "prop.forged_documents"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff25",
+    "lang": "hi",
+    "gold": [
+     "prop.coheir_sale_without_consent",
+     "prop.inheritance_partition"
+    ],
+    "hypotheses": [
+     "prop.coheir_sale_without_consent"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff26",
+    "lang": "hi",
+    "gold": [
+     "crim.hurt_assault"
+    ],
+    "hypotheses": [
+     "crim.hurt_assault"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff27",
+    "lang": "hi",
+    "gold": [
+     "cyb.upi_payment_fraud"
+    ],
+    "hypotheses": [
+     "cyb.upi_payment_fraud"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": [
+     "golden_hour_fraud"
+    ]
+   },
+   {
+    "id": "ff28",
+    "lang": "hi",
+    "gold": [
+     "fam.domestic_violence",
+     "fam.dowry_harassment"
+    ],
+    "hypotheses": [
+     "fam.domestic_violence",
+     "fam.dowry_harassment"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": [
+     "ongoing_abuse"
+    ]
+   },
+   {
+    "id": "ff29",
+    "lang": "hi",
+    "gold": [
+     "con.refund_refusal"
+    ],
+    "hypotheses": [
+     "con.refund_refusal"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff30",
+    "lang": "hi",
+    "gold": [
+     "fam.custody"
+    ],
+    "hypotheses": [
+     "fam.custody"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff31",
+    "lang": "hi",
+    "gold": [
+     "cyb.morphed_intimate_image"
+    ],
+    "hypotheses": [
+     "cyb.morphed_intimate_image"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff32",
+    "lang": "hi",
+    "gold": [
+     "fin.unauthorized_bank_txn"
+    ],
+    "hypotheses": [
+     "fin.unauthorized_bank_txn"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff33",
+    "lang": "hi",
+    "gold": [
+     "crim.criminal_intimidation"
+    ],
+    "hypotheses": [
+     "crim.criminal_intimidation"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff34",
+    "lang": "hi",
+    "gold": [
+     "con.deficiency_in_service"
+    ],
+    "hypotheses": [
+     "con.deficiency_in_service"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff35",
+    "lang": "kn",
+    "gold": [
+     "cyb.cyberstalking"
+    ],
+    "hypotheses": [
+     "cyb.cyberstalking"
+    ],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   },
+   {
+    "id": "ff36",
+    "lang": "kn",
+    "gold": [
+     "x.out_of_scope"
+    ],
+    "hypotheses": [],
+    "hit@3": true,
+    "top1": true,
+    "risks": []
+   }
+  ],
+  "hit_at_3": 1.0,
+  "top1": 1.0,
+  "urgent_recall": 1.0,
+  "urgent_false_alarms": 0,
+  "hit_at_3_by_lang": {
+   "en": 1.0,
+   "kn": 1.0,
+   "hi": 1.0
+  }
+ }
+}

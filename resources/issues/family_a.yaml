@@ -1,0 +1,448 @@
+# Family domain (part A): divorce, maintenance, custody. Provisions TO_VERIFY.
+issues:
+  # --------------------------------------------------------------- divorce
+  - issue_id: fam.divorce
+    domain: family
+    title: {en: Divorce, kn: ವಿಚ್ಛೇದನ, hi: तलाक}
+    plain_summary:
+      en: Ending a marriage through the family court, either by mutual consent or on a ground such as cruelty or desertion.
+      kn: ಪರಸ್ಪರ ಒಪ್ಪಿಗೆಯಿಂದ ಅಥವಾ ಕ್ರೌರ್ಯ, ತೊರೆದುಹೋಗುವಿಕೆ ಮುಂತಾದ ಕಾರಣಗಳ ಮೇಲೆ ಕುಟುಂಬ ನ್ಯಾಯಾಲಯದ ಮೂಲಕ ಮದುವೆ ಕೊನೆಗೊಳಿಸುವುದು.
+      hi: आपसी सहमति से या क्रूरता, परित्याग जैसे आधार पर फ़ैमिली कोर्ट के ज़रिए शादी खत्म करना।
+    risk_level: medium
+    default_triage: lawyer
+    cast:
+      - {slot: RESP, role: respondent, nouns: [spouse]}
+    setup:
+      en: My marriage with {RESP} is [not](NEG) working.
+      kn: "{RESP.gen} ಜೊತೆ ನನ್ನ ಮದುವೆ ಸರಿ [ಇಲ್ಲ](NEG)."
+      kn-en_latn: "{RESP.gen} jote nanna maduve sari [illa](NEG)."
+      kn-en_mixed: "{RESP.gen} ಜೊತೆ ನನ್ನ marriage ಸರಿ [ಇಲ್ಲ](NEG)."
+      hi: "{RESP.gen_pl} साथ मेरी शादी ठीक [नहीं](NEG) चल रही।"
+      hi-en_latn: "{RESP.gen_pl} saath meri shaadi theek [nahi](NEG) chal rahi."
+    elements:
+      - element_id: valid_marriage
+        critical: true
+        order: 1
+        description: There is a valid marriage between the parties.
+        event_type: marriage
+        question:
+          en: When and how did you get married? Was the marriage registered?
+          kn: ನಿಮ್ಮ ಮದುವೆ ಯಾವಾಗ, ಹೇಗೆ ಆಯಿತು? ರಿಜಿಸ್ಟರ್ ಆಗಿದೆಯಾ?
+          hi: आपकी शादी कब और कैसे हुई? क्या शादी रजिस्टर्ड है?
+        proposition:
+          satisfied: The speaker and the respondent are married.
+          contradicted: The speaker and the respondent never married; they only lived together.
+        satisfied:
+          en: We [got married](TRIG) {DATE}.
+          kn: "{DATE} ನಮ್ಮ [ಮದುವೆ ಆಯ್ತು](TRIG)."
+          kn-en_latn: "{DATE} namma [maduve aaytu](TRIG)."
+          kn-en_mixed: "{DATE} ನಮ್ಮ [marriage ಆಯ್ತು](TRIG)."
+          hi: "{DATE} हमारी [शादी हुई](TRIG) थी।"
+          hi-en_latn: "{DATE} hamari [shaadi hui](TRIG) thi."
+        contradicted:
+          en: We [never](NEG) actually [married](TRIG); we only lived together.
+          kn: ನಮ್ಮ [ಮದುವೆ ಆಗಿಲ್ಲ](TRIG,NEG), ಒಟ್ಟಿಗೆ ಇದ್ವಿ ಅಷ್ಟೇ.
+          kn-en_latn: Namma [maduve aagilla](TRIG,NEG), ottige idvi ashte.
+          kn-en_mixed: ನಮ್ಮ [marriage ಆಗಿಲ್ಲ](TRIG,NEG), together ಇದ್ವಿ ಅಷ್ಟೇ.
+          hi: हमारी [शादी](TRIG) [नहीं](NEG) हुई, हम बस साथ रहते थे।
+          hi-en_latn: Hamari [shaadi](TRIG) [nahi](NEG) hui, hum bas saath rehte the.
+      - element_id: ground_cruelty
+        critical: true
+        order: 2
+        description: The respondent treated the user with cruelty (a ground for contested divorce).
+        question:
+          en: How does your spouse treat you? Is there cruelty, abuse or humiliation?
+          kn: ನಿಮ್ಮ ಸಂಗಾತಿ ನಿಮ್ಮನ್ನು ಹೇಗೆ ನಡೆಸಿಕೊಳ್ತಾರೆ? ಕ್ರೌರ್ಯ, ಕಿರುಕುಳ ಅಥವಾ ಅವಮಾನ ಇದೆಯಾ?
+          hi: आपका जीवनसाथी आपके साथ कैसा बर्ताव करता है? क्या क्रूरता, दुर्व्यवहार या अपमान होता है?
+        proposition:
+          satisfied: The respondent treats the speaker cruelly and humiliates them publicly.
+          contradicted: The respondent does not ill-treat the speaker; they only disagree.
+        satisfied:
+          en: "{RESP} treats me with cruelty and insults me in front of everyone."
+          kn: "{RESP} ನನ್ನನ್ನು ಕ್ರೂರವಾಗಿ ನಡೆಸಿಕೊಳ್ತಾರೆ, ಎಲ್ಲರ ಮುಂದೆ ಅವಮಾನ ಮಾಡ್ತಾರೆ."
+          kn-en_latn: "{RESP} nannanna krooravaagi nadesikoltaare, ellara munde avamaana maadtaare."
+          kn-en_mixed: "{RESP} ನನ್ನನ್ನು cruel ಆಗಿ treat ಮಾಡ್ತಾರೆ, ಎಲ್ಲರ ಮುಂದೆ insult ಮಾಡ್ತಾರೆ."
+          hi: "{RESP} मेरे साथ बहुत बुरा बर्ताव {g:RESP|m:करते|f:करती|n:करते} हैं और सबके सामने बेइज़्ज़ती {g:RESP|m:करते|f:करती|n:करते} हैं।"
+          hi-en_latn: "{RESP} mere saath bahut bura bartaav {g:RESP|m:karte|f:karti|n:karte} hain aur sabke saamne beizzati {g:RESP|m:karte|f:karti|n:karte} hain."
+        contradicted:
+          en: "{RESP} does [not](NEG) ill-treat me; we just have different opinions."
+          kn: "{RESP} ನನಗೆ ಏನೂ ಕಿರುಕುಳ [ಕೊಡಲ್ಲ](NEG), ಅಭಿಪ್ರಾಯ ಬೇರೆ ಅಷ್ಟೇ."
+          kn-en_latn: "{RESP} nange enu kirukula [kodalla](NEG), abhipraaya bere ashte."
+          kn-en_mixed: "{RESP} ನನಗೆ ಏನೂ harassment [ಕೊಡಲ್ಲ](NEG), opinions different ಅಷ್ಟೇ."
+          hi: "{RESP} मुझे परेशान [नहीं](NEG) {g:RESP|m:करते|f:करती|n:करते}, बस हमारी सोच अलग है।"
+          hi-en_latn: "{RESP} mujhe pareshaan [nahi](NEG) {g:RESP|m:karte|f:karti|n:karte}, bas hamari soch alag hai."
+      - element_id: living_separately
+        critical: false
+        order: 3
+        description: The parties are living separately (relevant to desertion / mutual-consent timelines).
+        event_type: separation
+        args: {RESP: agent}
+        question:
+          en: Are you living together now, or separately? Since when?
+          kn: ಈಗ ನೀವು ಒಟ್ಟಿಗೆ ಇದ್ದೀರಾ ಅಥವಾ ಬೇರೆ ಬೇರೆ? ಯಾವಾಗಿಂದ?
+          hi: क्या आप अभी साथ रह रहे हैं या अलग? कब से?
+        proposition:
+          satisfied: The respondent left the house and they live separately.
+          contradicted: They still live together in the same house.
+        satisfied:
+          en: "{DATE} {RESP} [left](TRIG) the house, and we have been living separately since then."
+          kn: "{DATE} {RESP} ಮನೆ [ಬಿಟ್ಟು ಹೋದರು](TRIG), ಅವತ್ತಿಂದ ನಾವು ಬೇರೆ ಬೇರೆ ಇದ್ದೀವಿ."
+          kn-en_latn: "{DATE} {RESP} mane [bittu hodru](TRIG), avattinda naavu bere bere iddivi."
+          kn-en_mixed: "{DATE} {RESP} house [ಬಿಟ್ಟು ಹೋದ್ರು](TRIG), ಅವತ್ತಿಂದ ನಾವು separate ಆಗಿ ಇದ್ದೀವಿ."
+          hi: "{DATE} {RESP} घर {g:RESP|m:[छोड़कर चले गए](TRIG)|f:[छोड़कर चली गईं](TRIG)|n:[छोड़कर चले गए](TRIG)} और तब से हम अलग रह रहे हैं।"
+          hi-en_latn: "{DATE} {RESP} ghar {g:RESP|m:[chhodkar chale gaye](TRIG)|f:[chhodkar chali gayi](TRIG)|n:[chhodkar chale gaye](TRIG)} aur tab se hum alag reh rahe hain."
+        contradicted:
+          en: We are still [living](TRIG) together in the same house.
+          kn: ನಾವು ಇನ್ನೂ ಒಂದೇ ಮನೆಯಲ್ಲಿ ಒಟ್ಟಿಗೆ [ಇದ್ದೀವಿ](TRIG).
+          kn-en_latn: Naavu innu onde maneyalli ottige [iddivi](TRIG).
+          kn-en_mixed: ನಾವು ಇನ್ನೂ same house ಅಲ್ಲಿ together [ಇದ್ದೀವಿ](TRIG).
+          hi: हम अब भी एक ही घर में साथ [रह रहे हैं](TRIG)।
+          hi-en_latn: Hum ab bhi ek hi ghar mein saath [reh rahe hain](TRIG).
+      - element_id: mutual_consent
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: Whether the other spouse also agrees to divorce (decides mutual-consent vs contested route).
+        question:
+          en: Does your spouse also want a divorce, or will they oppose it?
+          kn: ನಿಮ್ಮ ಸಂಗಾತಿಗೂ ಡಿವೋರ್ಸ್ ಬೇಕಾ, ಅಥವಾ ಅವರು ವಿರೋಧಿಸ್ತಾರಾ?
+          hi: क्या आपका जीवनसाथी भी तलाक चाहता है, या वो विरोध करेगा?
+        proposition:
+          satisfied: Both spouses agree to the divorce.
+          contradicted: The respondent does not agree to a divorce.
+        satisfied:
+          en: "{RESP} also wants a divorce; we both agree to separate."
+          kn: "{RESP} ಕೂಡ ಡಿವೋರ್ಸ್ ಬೇಕು ಅಂತಾರೆ, ನಾವಿಬ್ಬರೂ ಒಪ್ಪಿದ್ದೀವಿ."
+          kn-en_latn: "{RESP} kooda divorce beku antaare, naavibbaru oppiddivi."
+          kn-en_mixed: "{RESP} ಕೂಡ divorce ಬೇಕು ಅಂತಾರೆ, ನಾವಿಬ್ಬರೂ agree ಮಾಡಿದ್ದೀವಿ."
+          hi: "{RESP} भी तलाक {g:RESP|m:चाहते|f:चाहती|n:चाहते} हैं, हम दोनों राज़ी हैं।"
+          hi-en_latn: "{RESP} bhi divorce {g:RESP|m:chahte|f:chahti|n:chahte} hain, hum dono raazi hain."
+        contradicted:
+          en: "{RESP} does [not](NEG) want a divorce at all."
+          kn: "{RESP} ಡಿವೋರ್ಸ್‌ಗೆ [ಒಪ್ಪುತ್ತಿಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP} divorce ge [opputtilla](NEG)."
+          kn-en_mixed: "{RESP} divorce ಗೆ [agree ಆಗ್ತಿಲ್ಲ](NEG)."
+          hi: "{RESP} तलाक के लिए बिल्कुल राज़ी [नहीं](NEG) हैं।"
+          hi-en_latn: "{RESP} divorce ke liye bilkul raazi [nahi](NEG) hain."
+    evidence:
+      - evidence_id: marriage_certificate
+        evidence_type: document
+        supports: [valid_marriage]
+        held:
+          en: I have our [marriage certificate](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಮದುವೆ ಸರ್ಟಿಫಿಕೇಟ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [marriage certificate](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [marriage certificate](EVD) ಇದೆ.
+          hi: मेरे पास [शादी का प्रमाणपत्र](EVD) है।
+          hi-en_latn: Mere paas [marriage certificate](EVD) hai.
+        missing:
+          en: We [never](NEG) registered the marriage, so there is [no](NEG) [certificate](EVD).
+          kn: ಮದುವೆ ರಿಜಿಸ್ಟರ್ [ಮಾಡಿಸಿಲ್ಲ](NEG), [ಸರ್ಟಿಫಿಕೇಟ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Maduve register [maadisilla](NEG), [certificate](EVD) [illa](NEG).
+          kn-en_mixed: Marriage register [ಮಾಡಿಸಿಲ್ಲ](NEG), [certificate](EVD) [ಇಲ್ಲ](NEG).
+          hi: शादी रजिस्टर [नहीं](NEG) कराई, कोई [सर्टिफ़िकेट](EVD) [नहीं](NEG) है।
+          hi-en_latn: Shaadi register [nahi](NEG) karayi, koi [certificate](EVD) [nahi](NEG) hai.
+      - evidence_id: abusive_messages
+        evidence_type: chat_message
+        supports: [ground_cruelty]
+        held:
+          en: I have [messages](EVD) in which {RESP.pron} abused me.
+          kn: "{RESP.pron} ನನ್ನನ್ನು ಬೈದ [ಮೆಸೇಜ್‌ಗಳು](EVD) ನನ್ನ ಹತ್ತಿರ ಇವೆ."
+          kn-en_latn: "{RESP.pron} nannanna baida [messages](EVD) nanna hatra ive."
+          kn-en_mixed: "{RESP.pron} ನನ್ನನ್ನು ಬೈದ [messages](EVD) ನನ್ನ ಹತ್ತಿರ ಇವೆ."
+          hi: "मेरे पास वो [मैसेज](EVD) हैं जिनमें {RESP.pron_erg} मुझे गालियाँ दीं।"
+          hi-en_latn: "Mere paas woh [messages](EVD) hain jinmein {RESP.pron_erg} mujhe gaaliyan di."
+        missing:
+          en: It all happened at home, so I have [no](NEG) [proof](EVD).
+          kn: ಎಲ್ಲಾ ಮನೆಯಲ್ಲೇ ಆಗಿದ್ದು, [ಪ್ರೂಫ್](EVD) ಏನೂ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Ella maneyalle aagiddu, [proof](EVD) enu [illa](NEG).
+          kn-en_mixed: ಎಲ್ಲಾ house ಅಲ್ಲೇ ಆಗಿದ್ದು, [proof](EVD) ಏನೂ [ಇಲ್ಲ](NEG).
+          hi: सब घर के अंदर हुआ, कोई [सबूत](EVD) [नहीं](NEG) है।
+          hi-en_latn: Sab ghar ke andar hua, koi [saboot](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: ongoing_abuse
+        template:
+          en: "{RESP} beat me again [last night](TIMEX:last_night), and I am still in the same house."
+          kn: "[ನಿನ್ನೆ ರಾತ್ರಿ](TIMEX:last_night) {RESP} ಮತ್ತೆ ಹೊಡೆದರು, ನಾನು ಇನ್ನೂ ಅದೇ ಮನೆಯಲ್ಲಿ ಇದ್ದೀನಿ."
+          kn-en_latn: "[Ninne raatri](TIMEX:last_night) {RESP} matte hodedru, naanu innu ade maneyalli iddini."
+          kn-en_mixed: "[Last night](TIMEX:last_night) {RESP} ಮತ್ತೆ ಹೊಡೆದ್ರು, ನಾನು ಇನ್ನೂ same house ಅಲ್ಲಿ ಇದ್ದೀನಿ."
+          hi: "[कल रात](TIMEX:last_night) {RESP.erg} फिर मारा और मैं अभी भी उसी घर में हूँ।"
+          hi-en_latn: "[Kal raat](TIMEX:last_night) {RESP.erg} phir maara aur main abhi bhi usi ghar mein hoon."
+    routing_variables:
+      - {name: personal_law, values: [hindu, muslim, christian, interfaith_sma], description: personal law governing the marriage}
+    candidate_provisions:
+      - {provision_id: "HMA:13", when: {personal_law: [hindu]}, title_hint: Divorce}
+      - {provision_id: "HMA:13B", when: {personal_law: [hindu]}, title_hint: Divorce by mutual consent}
+      - {provision_id: "HMA:14", when: {personal_law: [hindu]}, title_hint: No petition for divorce to be presented within one year of marriage}
+      - {provision_id: "SMA:27", when: {personal_law: [interfaith_sma]}, title_hint: Divorce}
+      - {provision_id: "SMA:28", when: {personal_law: [interfaith_sma]}, title_hint: Divorce by mutual consent}
+    limitation_notes: No limitation period as such, but a petition generally cannot be filed within one year of marriage (HMA s.14 / SMA s.29) except in exceptional hardship. Muslim and Christian divorce law is outside this corpus. TO_VERIFY.
+    confusable_with: [fam.maintenance, fam.domestic_violence]
+    co_occurs_with: [fam.custody, fam.maintenance]
+
+  # ----------------------------------------------------------- maintenance
+  - issue_id: fam.maintenance
+    domain: family
+    title: {en: Maintenance, kn: ಜೀವನಾಂಶ, hi: भरण-पोषण}
+    plain_summary:
+      en: A spouse who has enough means but neglects or refuses to support a wife who cannot maintain herself can be ordered to pay monthly maintenance.
+      kn: ಸಾಕಷ್ಟು ಸಂಪಾದನೆ ಇದ್ದರೂ, ತನ್ನನ್ನು ತಾನು ನೋಡಿಕೊಳ್ಳಲಾಗದ ಹೆಂಡತಿಯನ್ನು ನಿರ್ಲಕ್ಷಿಸುವ ಗಂಡನಿಗೆ ಮಾಸಿಕ ಜೀವನಾಂಶ ಕೊಡಲು ಆದೇಶಿಸಬಹುದು.
+      hi: जिस पति के पास साधन हैं लेकिन वो अपना गुज़ारा न कर सकने वाली पत्नी की उपेक्षा करता है, उसे मासिक भरण-पोषण देने का आदेश दिया जा सकता है।
+    risk_level: medium
+    default_triage: lawyer
+    speaker_genders: [female]
+    cast:
+      - {slot: RESP, role: respondent, nouns: [spouse]}
+    setup:
+      en: There are many problems between {RESP} and me.
+      kn: "{RESP} ಮತ್ತು ನನ್ನ ಮಧ್ಯೆ ತುಂಬಾ ಸಮಸ್ಯೆ ಇದೆ."
+      kn-en_latn: "{RESP} mattu nanna madhye tumba samasye ide."
+      kn-en_mixed: "{RESP} ಮತ್ತು ನನ್ನ ಮಧ್ಯೆ ತುಂಬಾ problems ಇವೆ."
+      hi: "{RESP} और मेरे बीच बहुत परेशानियाँ हैं।"
+      hi-en_latn: "{RESP} aur mere beech bahut problems hain."
+    elements:
+      - element_id: neglect_or_refusal
+        critical: true
+        order: 1
+        description: The respondent neglects or refuses to maintain the user.
+        event_type: support_stopped
+        args: {RESP: agent}
+        question:
+          en: Is your husband giving you any money for your expenses now?
+          kn: ನಿಮ್ಮ ಗಂಡ ಈಗ ನಿಮ್ಮ ಖರ್ಚಿಗೆ ಏನಾದರೂ ದುಡ್ಡು ಕೊಡ್ತಿದ್ದಾರಾ?
+          hi: क्या आपके पति अभी आपके खर्च के लिए कोई पैसा दे रहे हैं?
+        proposition:
+          satisfied: The respondent stopped giving money for household expenses.
+          contradicted: The respondent sends money every month.
+        satisfied:
+          en: "{DATE} {RESP} [stopped giving](TRIG) me any money for household expenses."
+          kn: "{DATE} {RESP} ಮನೆ ಖರ್ಚಿಗೆ ದುಡ್ಡು [ಕೊಡೋದು ನಿಲ್ಲಿಸಿದರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP} mane kharchige duddu [kododu nillisidru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} house expenses ಗೆ money [ಕೊಡೋದು stop ಮಾಡಿದ್ರು](TRIG)."
+          hi: "{DATE} {RESP.erg} घर खर्च के पैसे [देना बंद कर दिया](TRIG)।"
+          hi-en_latn: "{DATE} {RESP.erg} ghar kharch ke paise [dena band kar diya](TRIG)."
+        contradicted:
+          en: "{RESP} [sends](TRIG) me money [every month](TIMEX:every_month)."
+          kn: "{RESP} [ಪ್ರತಿ ತಿಂಗಳು](TIMEX:every_month) ದುಡ್ಡು [ಕಳಿಸ್ತಾರೆ](TRIG)."
+          kn-en_latn: "{RESP} [prati tingalu](TIMEX:every_month) duddu [kalistaare](TRIG)."
+          kn-en_mixed: "{RESP} [every month](TIMEX:every_month) money [send ಮಾಡ್ತಾರೆ](TRIG)."
+          hi: "{RESP} [हर महीने](TIMEX:every_month) पैसे {g:RESP|m:[भेजते](TRIG)|f:[भेजती](TRIG)|n:[भेजते](TRIG)} हैं।"
+          hi-en_latn: "{RESP} [har mahine](TIMEX:every_month) paise {g:RESP|m:[bhejte](TRIG)|f:[bhejti](TRIG)|n:[bhejte](TRIG)} hain."
+      - element_id: unable_to_maintain_self
+        critical: true
+        order: 1
+        description: The user is unable to maintain herself.
+        question:
+          en: Do you have any job or income of your own?
+          kn: ನಿಮಗೆ ಸ್ವಂತ ಕೆಲಸ ಅಥವಾ ಆದಾಯ ಏನಾದರೂ ಇದೆಯಾ?
+          hi: क्या आपकी अपनी कोई नौकरी या आमदनी है?
+        proposition:
+          satisfied: The speaker has no job or income of her own.
+          contradicted: The speaker has a well-paid government job.
+        satisfied:
+          en: I have [no](NEG) job or income of my own.
+          kn: ನನಗೆ ಸ್ವಂತ ಕೆಲಸ ಅಥವಾ ಆದಾಯ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Nange swanta kelsa athava aadaaya [illa](NEG).
+          kn-en_mixed: ನನಗೆ own job ಅಥವಾ income [ಇಲ್ಲ](NEG).
+          hi: मेरी अपनी कोई नौकरी या कमाई [नहीं](NEG) है।
+          hi-en_latn: Meri apni koi job ya kamaai [nahi](NEG) hai.
+        contradicted:
+          en: I have a good government job and earn well.
+          kn: ನನಗೆ ಒಳ್ಳೆ ಸರ್ಕಾರಿ ಕೆಲಸ ಇದೆ, ಚೆನ್ನಾಗಿ ಸಂಪಾದನೆ ಇದೆ.
+          kn-en_latn: Nange olle sarkaari kelsa ide, chennaagi sampaadane ide.
+          kn-en_mixed: ನನಗೆ good government job ಇದೆ, salary ಚೆನ್ನಾಗಿದೆ.
+          hi: मेरी अच्छी सरकारी नौकरी है और अच्छी कमाई है।
+          hi-en_latn: Meri achhi sarkari naukri hai aur achhi kamaai hai.
+      - element_id: respondent_has_means
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The respondent has sufficient means.
+        question:
+          en: Does your husband have a job, business or other income? Roughly how much?
+          kn: ನಿಮ್ಮ ಗಂಡನಿಗೆ ಕೆಲಸ, ವ್ಯಾಪಾರ ಅಥವಾ ಬೇರೆ ಆದಾಯ ಇದೆಯಾ? ಸುಮಾರು ಎಷ್ಟು?
+          hi: क्या आपके पति की कोई नौकरी, कारोबार या दूसरी आमदनी है? लगभग कितनी?
+        proposition:
+          satisfied: The respondent earns well and owns a shop.
+          contradicted: The respondent has no work and earns nothing.
+        satisfied:
+          en: "{RESP} earns well; {RESP.pron} has a shop in the town."
+          kn: "{RESP} ಚೆನ್ನಾಗಿ ಸಂಪಾದಿಸ್ತಾರೆ, ಊರಲ್ಲಿ {RESP.pron_dat} ಅಂಗಡಿ ಇದೆ."
+          kn-en_latn: "{RESP} chennaagi sampaadistaare, ooralli {RESP.pron_dat} angadi ide."
+          kn-en_mixed: "{RESP} good ಆಗಿ earn ಮಾಡ್ತಾರೆ, town ಅಲ್ಲಿ {RESP.pron_dat} shop ಇದೆ."
+          hi: "{RESP} अच्छा {g:RESP|m:कमाते|f:कमाती|n:कमाते} हैं, शहर में {RESP.pron_gen_f} दुकान है।"
+          hi-en_latn: "{RESP} achha {g:RESP|m:kamaate|f:kamaati|n:kamaate} hain, shehar mein {RESP.pron_gen_f} dukaan hai."
+        contradicted:
+          en: "{RESP} has [no](NEG) work and earns [nothing](NEG)."
+          kn: "{RESP.dat} ಕೆಲಸ [ಇಲ್ಲ](NEG), ಏನೂ ಸಂಪಾದನೆ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP.dat} kelsa [illa](NEG), enu sampaadane [illa](NEG)."
+          kn-en_mixed: "{RESP.dat} job [ಇಲ್ಲ](NEG), ಏನೂ income [ಇಲ್ಲ](NEG)."
+          hi: "{RESP.dat} कोई काम [नहीं](NEG) है और कोई कमाई [नहीं](NEG) है।"
+          hi-en_latn: "{RESP.dat} koi kaam [nahi](NEG) hai aur koi kamaai [nahi](NEG) hai."
+    evidence:
+      - evidence_id: income_proof
+        evidence_type: document
+        supports: [respondent_has_means]
+        held:
+          en: I have a photo of {RESP.gen} [shop licence](EVD).
+          kn: "{RESP.gen} [ಅಂಗಡಿ ಲೈಸೆನ್ಸ್ ಫೋಟೋ](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ."
+          kn-en_latn: "{RESP.gen} [angadi licence photo](EVD) nanna hatra ide."
+          kn-en_mixed: "{RESP.gen} [shop licence photo](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ."
+          hi: "मेरे पास {RESP.gen_f} [दुकान के लाइसेंस की फ़ोटो](EVD) है।"
+          hi-en_latn: "Mere paas {RESP.gen_f} [dukaan ke licence ki photo](EVD) hai."
+        missing:
+          en: I have [no](NEG) [proof](EVD) of how much {RESP} earns.
+          kn: "{RESP} ಎಷ್ಟು ಸಂಪಾದಿಸ್ತಾರೆ ಅನ್ನೋದಕ್ಕೆ [ಪ್ರೂಫ್](EVD) [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP} eshtu sampaadistaare annodakke [proof](EVD) [illa](NEG)."
+          kn-en_mixed: "{RESP} ಎಷ್ಟು earn ಮಾಡ್ತಾರೆ ಅನ್ನೋದಕ್ಕೆ [proof](EVD) [ಇಲ್ಲ](NEG)."
+          hi: "{RESP} कितना {g:RESP|m:कमाते|f:कमाती|n:कमाते} हैं, इसका कोई [सबूत](EVD) [नहीं](NEG) है।"
+          hi-en_latn: "{RESP} kitna {g:RESP|m:kamaate|f:kamaati|n:kamaate} hain, iska koi [saboot](EVD) [nahi](NEG) hai."
+    risk_facts:
+      - flag: eviction_imminent
+        template:
+          en: "{RESP} has told me to get out of the house by [tomorrow](TIMEX:tomorrow)."
+          kn: "[ನಾಳೆ](TIMEX:tomorrow) ಒಳಗೆ ಮನೆ ಬಿಟ್ಟು ಹೋಗು ಅಂತ {RESP} ಹೇಳಿದ್ದಾರೆ."
+          kn-en_latn: "[Naale](TIMEX:tomorrow) olage mane bittu hogu antha {RESP} heliddare."
+          kn-en_mixed: "[Tomorrow](TIMEX:tomorrow) ಒಳಗೆ house ಬಿಟ್ಟು ಹೋಗು ಅಂತ {RESP} ಹೇಳಿದ್ದಾರೆ."
+          hi: "{RESP.erg} मुझे [कल](TIMEX:tomorrow) तक घर छोड़ने को कहा है।"
+          hi-en_latn: "{RESP.erg} mujhe [kal](TIMEX:tomorrow) tak ghar chhodne ko kaha hai."
+    candidate_provisions:
+      - {provision_id: "BNSS:144", title_hint: "Order for maintenance of wives, children and parents", note: "applies irrespective of religion; verify"}
+      - {provision_id: "PWDV:20", title_hint: Monetary reliefs}
+    limitation_notes: No limitation for a maintenance application; arrears recovery has time limits. TO_VERIFY.
+    confusable_with: [fam.divorce, fam.domestic_violence]
+    co_occurs_with: [fam.domestic_violence, fam.divorce]
+
+  # --------------------------------------------------------------- custody
+  - issue_id: fam.custody
+    domain: family
+    title: {en: Child custody, kn: ಮಗುವಿನ ಪಾಲನೆ, hi: बच्चे की कस्टडी}
+    plain_summary:
+      en: When parents separate, the court decides who keeps a minor child based mainly on the child's welfare.
+      kn: ಪೋಷಕರು ಬೇರೆಯಾದಾಗ, ಮುಖ್ಯವಾಗಿ ಮಗುವಿನ ಹಿತವನ್ನು ನೋಡಿ ಅಪ್ರಾಪ್ತ ಮಗು ಯಾರ ಜೊತೆ ಇರಬೇಕು ಅಂತ ನ್ಯಾಯಾಲಯ ತೀರ್ಮಾನಿಸುತ್ತದೆ.
+      hi: माता-पिता के अलग होने पर कोर्ट मुख्य रूप से बच्चे की भलाई देखकर तय करता है कि नाबालिग बच्चा किसके पास रहेगा।
+    risk_level: medium
+    default_triage: lawyer
+    cast:
+      - {slot: RESP, role: respondent, nouns: [spouse]}
+      - {slot: CHILD, role: other, nouns: [child], pronominal: false}
+    setup:
+      en: "{RESP} and I are separated, and my question is about {CHILD}."
+      kn: "{RESP} ಮತ್ತು ನಾನು ಬೇರೆ ಆಗಿದ್ದೀವಿ, ನನ್ನ ಪ್ರಶ್ನೆ {CHILD.gen} ಬಗ್ಗೆ."
+      kn-en_latn: "{RESP} mattu naanu bere aagiddivi, nanna prashne {CHILD.gen} bagge."
+      kn-en_mixed: "{RESP} ಮತ್ತು ನಾನು separate ಆಗಿದ್ದೀವಿ, ನನ್ನ question {CHILD.gen} ಬಗ್ಗೆ."
+      hi: "{RESP} और मैं अलग हो चुके हैं, मेरा सवाल {CHILD.gen_pl} बारे में है।"
+      hi-en_latn: "{RESP} aur main alag ho chuke hain, mera sawaal {CHILD.gen_pl} baare mein hai."
+    elements:
+      - element_id: child_is_minor
+        critical: true
+        order: 1
+        description: The child is a minor.
+        question:
+          en: How old is the child?
+          kn: ಮಗುವಿಗೆ ಎಷ್ಟು ವಯಸ್ಸು?
+          hi: बच्चे की उम्र कितनी है?
+        proposition:
+          satisfied: The child is small and studies in primary school.
+          contradicted: The child is already an adult and works in the city.
+        satisfied:
+          en: "{CHILD} is still small and studies in primary school."
+          kn: "{CHILD} ಇನ್ನೂ ಚಿಕ್ಕವರು, ಪ್ರೈಮರಿ ಸ್ಕೂಲ್‌ನಲ್ಲಿ {g:CHILD|m:ಓದ್ತಿದ್ದಾನೆ|f:ಓದ್ತಿದ್ದಾಳೆ}."
+          kn-en_latn: "{CHILD} innu chikkavaru, primary school alli {g:CHILD|m:odtiddaane|f:odtiddaale}."
+          kn-en_mixed: "{CHILD} ಇನ್ನೂ small, primary school ಅಲ್ಲಿ {g:CHILD|m:ಓದ್ತಿದ್ದಾನೆ|f:ಓದ್ತಿದ್ದಾಳೆ}."
+          hi: "{CHILD} अभी {g:CHILD|m:छोटा|f:छोटी} है और प्राइमरी स्कूल में {g:CHILD|m:पढ़ता|f:पढ़ती} है।"
+          hi-en_latn: "{CHILD} abhi {g:CHILD|m:chhota|f:chhoti} hai aur primary school mein {g:CHILD|m:padhta|f:padhti} hai."
+        contradicted:
+          en: "{CHILD} is already an adult and works in the city."
+          kn: "{CHILD} ಈಗಾಗಲೇ ದೊಡ್ಡವರು, ಸಿಟಿಯಲ್ಲಿ ಕೆಲಸ ಮಾಡ್ತಾರೆ."
+          kn-en_latn: "{CHILD} eegaagale doddavaru, cityalli kelsa maadtaare."
+          kn-en_mixed: "{CHILD} already adult, city ಅಲ್ಲಿ work ಮಾಡ್ತಾರೆ."
+          hi: "{CHILD} बालिग है और शहर में {g:CHILD|m:नौकरी करता|f:नौकरी करती} है।"
+          hi-en_latn: "{CHILD} baalig hai aur shehar mein naukri {g:CHILD|m:karta|f:karti} hai."
+      - element_id: child_with_respondent
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: The child is currently with the respondent (custody is being withheld).
+        event_type: child_taken
+        args: {RESP: agent, CHILD: patient}
+        question:
+          en: Where is the child living now, and with whom?
+          kn: ಮಗು ಈಗ ಎಲ್ಲಿ, ಯಾರ ಜೊತೆ ಇದೆ?
+          hi: बच्चा अभी कहाँ और किसके साथ रह रहा है?
+        proposition:
+          satisfied: The respondent took the child away to another town.
+          contradicted: The child lives with the speaker.
+        satisfied:
+          en: "{DATE} {RESP} [took](TRIG) {CHILD.acc} away to another town."
+          kn: "{DATE} {RESP} {CHILD.acc} ಬೇರೆ ಊರಿಗೆ [ಕರ್ಕೊಂಡು ಹೋದರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP} {CHILD.acc} bere oorige [karkondu hodru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} {CHILD.acc} another town ಗೆ [ಕರ್ಕೊಂಡು ಹೋದ್ರು](TRIG)."
+          hi: "{DATE} {RESP} {CHILD.acc} दूसरे शहर {g:RESP|m:[ले गए](TRIG)|f:[ले गईं](TRIG)|n:[ले गए](TRIG)}।"
+          hi-en_latn: "{DATE} {RESP} {CHILD.acc} doosre shehar {g:RESP|m:[le gaye](TRIG)|f:[le gayi](TRIG)|n:[le gaye](TRIG)}."
+        contradicted:
+          en: "{CHILD} is [living](TRIG) with me."
+          kn: "{CHILD} ನನ್ನ ಜೊತೆನೇ {g:CHILD|m:[ಇದ್ದಾನೆ](TRIG)|f:[ಇದ್ದಾಳೆ](TRIG)}."
+          kn-en_latn: "{CHILD} nanna jotene {g:CHILD|m:[iddaane](TRIG)|f:[iddaale](TRIG)}."
+          kn-en_mixed: "{CHILD} ನನ್ನ ಜೊತೆನೇ {g:CHILD|m:[ಇದ್ದಾನೆ](TRIG)|f:[ಇದ್ದಾಳೆ](TRIG)}."
+          hi: "{CHILD} मेरे साथ ही {g:CHILD|m:[रहता](TRIG)|f:[रहती](TRIG)} है।"
+          hi-en_latn: "{CHILD} mere saath hi {g:CHILD|m:[rehta](TRIG)|f:[rehti](TRIG)} hai."
+      - element_id: applicant_can_care
+        critical: true
+        order: 1
+        description: The user can provide for the child's welfare.
+        question:
+          en: Are you able to look after the child — time, income, place to stay?
+          kn: ಮಗುವನ್ನು ನೋಡಿಕೊಳ್ಳೋಕೆ ನಿಮಗೆ ಸಮಯ, ಆದಾಯ, ಇರೋಕೆ ಜಾಗ ಇದೆಯಾ?
+          hi: क्या आप बच्चे की देखभाल कर सकते हैं — समय, आमदनी, रहने की जगह?
+        proposition:
+          satisfied: The speaker can look after the child and has a stable job.
+          contradicted: The speaker's work keeps them away so they cannot look after the child.
+        satisfied:
+          en: I can look after {CHILD.acc} well; I have a stable job.
+          kn: "ನಾನು {CHILD.acc} ಚೆನ್ನಾಗಿ ನೋಡ್ಕೊಳ್ಳಬಲ್ಲೆ, ನನಗೆ ಸ್ಥಿರ ಕೆಲಸ ಇದೆ."
+          kn-en_latn: "Naanu {CHILD.acc} chennaagi nodkollaballe, nange sthira kelsa ide."
+          kn-en_mixed: "ನಾನು {CHILD.acc} well ಆಗಿ ನೋಡ್ಕೊಳ್ಳಬಲ್ಲೆ, ನನಗೆ stable job ಇದೆ."
+          hi: "मैं {CHILD.acc} अच्छे से संभाल {g:SPK|m:सकता|f:सकती} हूँ, मेरी पक्की नौकरी है।"
+          hi-en_latn: "Main {CHILD.acc} achhe se sambhaal {g:SPK|m:sakta|f:sakti} hoon, meri pakki naukri hai."
+        contradicted:
+          en: My work keeps me away most days, so I am [not](NEG) able to look after {CHILD.acc} properly.
+          kn: "ಕೆಲಸದಿಂದ ನಾನು ಹೆಚ್ಚು ದಿನ ಹೊರಗೆ ಇರ್ತೀನಿ, {CHILD.acc} ಸರಿಯಾಗಿ ನೋಡ್ಕೊಳ್ಳೋಕೆ [ಆಗಲ್ಲ](NEG)."
+          kn-en_latn: "Kelasadinda naanu hechchu dina horage irtini, {CHILD.acc} sariyaagi nodkolloke [aagalla](NEG)."
+          kn-en_mixed: "Work ಇಂದ ನಾನು most days ಹೊರಗೆ ಇರ್ತೀನಿ, {CHILD.acc} properly ನೋಡ್ಕೊಳ್ಳೋಕೆ [ಆಗಲ್ಲ](NEG)."
+          hi: "काम की वजह से मैं ज़्यादातर बाहर {g:SPK|m:रहता|f:रहती} हूँ, {CHILD.acc} ठीक से [नहीं](NEG) संभाल {g:SPK|m:पाता|f:पाती}।"
+          hi-en_latn: "Kaam ki wajah se main zyaadatar bahar {g:SPK|m:rehta|f:rehti} hoon, {CHILD.acc} theek se [nahi](NEG) sambhaal {g:SPK|m:paata|f:paati}."
+    evidence:
+      - evidence_id: birth_certificate
+        evidence_type: document
+        supports: [child_is_minor]
+        held:
+          en: I have {CHILD.gen} [birth certificate](EVD).
+          kn: "{CHILD.gen} [ಜನನ ಪ್ರಮಾಣಪತ್ರ](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ."
+          kn-en_latn: "{CHILD.gen} [birth certificate](EVD) nanna hatra ide."
+          kn-en_mixed: "{CHILD.gen} [birth certificate](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ."
+          hi: "मेरे पास {CHILD.gen_m} [जन्म प्रमाणपत्र](EVD) है।"
+          hi-en_latn: "Mere paas {CHILD.gen_m} [birth certificate](EVD) hai."
+        missing:
+          en: "{CHILD.gen} [birth certificate](EVD) is [not](NEG) with me."
+          kn: "{CHILD.gen} [ಜನನ ಪ್ರಮಾಣಪತ್ರ](EVD) ನನ್ನ ಹತ್ತಿರ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "{CHILD.gen} [birth certificate](EVD) nanna hatra [illa](NEG)."
+          kn-en_mixed: "{CHILD.gen} [birth certificate](EVD) ನನ್ನ ಹತ್ತಿರ [ಇಲ್ಲ](NEG)."
+          hi: "{CHILD.gen_m} [जन्म प्रमाणपत्र](EVD) मेरे पास [नहीं](NEG) है।"
+          hi-en_latn: "{CHILD.gen_m} [birth certificate](EVD) mere paas [nahi](NEG) hai."
+    risk_facts:
+      - flag: child_removal_imminent
+        template:
+          en: "{RESP} is planning to take {CHILD.acc} abroad [tomorrow](TIMEX:tomorrow) [without](NEG) telling me."
+          kn: "{RESP} [ನಾಳೆ](TIMEX:tomorrow) ನನಗೆ [ಹೇಳದೆ](NEG) {CHILD.acc} ವಿದೇಶಕ್ಕೆ ಕರ್ಕೊಂಡು ಹೋಗೋ ಪ್ಲಾನ್ ಮಾಡಿದ್ದಾರೆ."
+          kn-en_latn: "{RESP} [naale](TIMEX:tomorrow) nange [helade](NEG) {CHILD.acc} videshakke karkondu hogo plan maadiddare."
+          kn-en_mixed: "{RESP} [tomorrow](TIMEX:tomorrow) ನನಗೆ [ಹೇಳದೆ](NEG) {CHILD.acc} abroad ಕರ್ಕೊಂಡು ಹೋಗೋ plan ಮಾಡಿದ್ದಾರೆ."
+          hi: "{RESP} [कल](TIMEX:tomorrow) मुझे [बिना](NEG) बताए {CHILD.acc} विदेश ले जाने की तैयारी में हैं।"
+          hi-en_latn: "{RESP} [kal](TIMEX:tomorrow) mujhe [bina](NEG) bataye {CHILD.acc} videsh le jaane ki taiyaari mein hain."
+    candidate_provisions:
+      - {provision_id: "GWA:7", title_hint: Power of the Court to make order as to guardianship}
+      - {provision_id: "GWA:17", title_hint: Matters to be considered by the Court in appointing guardian}
+      - {provision_id: "GWA:25", title_hint: Title of guardian to custody of ward}
+    limitation_notes: No limitation for a custody petition; interim custody can be sought urgently. Personal-law guardianship statutes are not in this corpus. TO_VERIFY.
+    confusable_with: [fam.divorce]
+    co_occurs_with: [fam.divorce, fam.maintenance]

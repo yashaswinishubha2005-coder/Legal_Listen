@@ -1,0 +1,17 @@
+<View>
+  <Header value="Mark every entity mention of a case participant or value (see guidelines T2)."/>
+  <Labels name="ent" toName="text">
+    <Label value="PERSON"/>
+    <Label value="ORGANIZATION"/>
+    <Label value="LOCATION"/>
+    <Label value="ASSET"/>
+    <Label value="MONEY"/>
+    <Label value="TIME"/>
+    <Label value="ACCOUNT"/>
+    <Label value="IDENTIFIER"/>
+    <Label value="EVIDENCE"/>
+    <Label value="TRIGGER"/><Label value="NEG_CUE"/><Label value="HEDGE_CUE"/>
+  </Labels>
+  <Text name="text" value="$text"/>
+  <Relations><Relation value="COREF"/><Relation value="ARG_agent"/><Relation value="ARG_patient"/><Relation value="ARG_recipient"/><Relation value="ARG_instrument"/><Relation value="ARG_place"/><Relation value="ARG_time"/></Relations>
+</View>

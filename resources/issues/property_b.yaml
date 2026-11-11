@@ -1,0 +1,278 @@
+# Property domain (part B): boundary dispute, forged documents. Provisions TO_VERIFY.
+issues:
+  # -------------------------------------------------------------- boundary
+  - issue_id: prop.boundary_dispute
+    domain: property
+    title: {en: Boundary dispute, kn: ಗಡಿ ವಿವಾದ, hi: सीमा विवाद}
+    plain_summary:
+      en: A disagreement with a neighbour about where the boundary between two pieces of land lies, usually settled by an official survey.
+      kn: ಎರಡು ಜಮೀನುಗಳ ಗಡಿ ಎಲ್ಲಿದೆ ಅನ್ನೋ ಬಗ್ಗೆ ಪಕ್ಕದವರ ಜೊತೆ ಭಿನ್ನಾಭಿಪ್ರಾಯ; ಸಾಮಾನ್ಯವಾಗಿ ಸರ್ಕಾರಿ ಸರ್ವೇ ಮೂಲಕ ಬಗೆಹರಿಯುತ್ತದೆ.
+      hi: पड़ोसी के साथ दो ज़मीनों की सीमा कहाँ है इस पर विवाद, जो आमतौर पर सरकारी सर्वे से सुलझता है।
+    risk_level: low
+    default_triage: self_help
+    cast:
+      - {slot: RESP, role: respondent, nouns: [neighbour]}
+    value_slots: {ITEM: [agri_land, house_site], IDNUM: [survey]}
+    setup:
+      en: There is a boundary problem between {ITEM} and {RESP.gen} land.
+      kn: "{ITEM} ಮತ್ತು {RESP.gen} ಜಮೀನಿನ ಮಧ್ಯೆ ಗಡಿ ಸಮಸ್ಯೆ ಇದೆ."
+      kn-en_latn: "{ITEM} mattu {RESP.gen} jameenina madhye gadi samasye ide."
+      kn-en_mixed: "{ITEM} and {RESP.gen} land ಮಧ್ಯೆ boundary problem ಇದೆ."
+      hi: "{ITEM} और {RESP.gen_f} ज़मीन के बीच सीमा का झगड़ा है।"
+      hi-en_latn: "{ITEM} aur {RESP.gen_f} zameen ke beech boundary ka jhagda hai."
+    elements:
+      - element_id: boundary_marks_moved
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The respondent moved / removed boundary marks.
+        event_type: boundary_marks_moved
+        args: {RESP: agent}
+        question:
+          en: Were the boundary stones or fence moved? Who moved them and when?
+          kn: ಗಡಿ ಕಲ್ಲು ಅಥವಾ ಬೇಲಿ ಸರಿಸಲಾಗಿದೆಯಾ? ಯಾರು, ಯಾವಾಗ?
+          hi: क्या सीमा के पत्थर या बाड़ हटाई गई? किसने और कब?
+        proposition:
+          satisfied: The respondent removed the boundary stones and placed them on the speaker's side.
+          contradicted: The boundary stones are where they were; nobody moved them.
+        satisfied:
+          en: "{DATE} {RESP} [removed](TRIG) the boundary stones and put them on my side."
+          kn: "{DATE} {RESP} ಗಡಿ ಕಲ್ಲುಗಳನ್ನು [ಕಿತ್ತು](TRIG) ನನ್ನ ಕಡೆಗೆ ಹಾಕಿದರು."
+          kn-en_latn: "{DATE} {RESP} gadi kallugalanna [kittu](TRIG) nanna kadege haakidru."
+          kn-en_mixed: "{DATE} {RESP} boundary stones [remove ಮಾಡಿ](TRIG) ನನ್ನ side ಗೆ ಹಾಕಿದ್ರು."
+          hi: "{DATE} {RESP.erg} सीमा के पत्थर [उखाड़कर](TRIG) मेरी तरफ़ लगा दिए।"
+          hi-en_latn: "{DATE} {RESP.erg} boundary ke patthar [ukhaadkar](TRIG) meri taraf laga diye."
+        contradicted:
+          en: The boundary stones are still where they were; [nobody](NEG) [moved](TRIG) them.
+          kn: ಗಡಿ ಕಲ್ಲುಗಳು ಇದ್ದ ಜಾಗದಲ್ಲೇ ಇವೆ, ಯಾರೂ [ಕೀಳಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Gadi kallugalu idda jaagadalle ive, yaaru [keelilla](TRIG,NEG).
+          kn-en_mixed: Boundary stones ಇದ್ದ place ಅಲ್ಲೇ ಇವೆ, ಯಾರೂ [move ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: सीमा के पत्थर अपनी जगह पर ही हैं, किसी ने [नहीं](NEG) [हटाए](TRIG)।
+          hi-en_latn: Boundary ke patthar apni jagah par hi hain, kisi ne [nahi](NEG) [hataaye](TRIG).
+      - element_id: land_identified_in_records
+        critical: true
+        order: 1
+        description: The user's land is identified by survey number and extent in the revenue records.
+        question:
+          en: What is the survey number of your land, and is the extent written in the RTC?
+          kn: ನಿಮ್ಮ ಜಮೀನಿನ ಸರ್ವೇ ನಂಬರ್ ಏನು, ಪಹಣಿಯಲ್ಲಿ ವಿಸ್ತೀರ್ಣ ಬರೆದಿದೆಯಾ?
+          hi: आपकी ज़मीन का सर्वे नंबर क्या है, और क्या आरटीसी में रकबा लिखा है?
+        proposition:
+          satisfied: The land has a survey number and its extent is clear in the records.
+          contradicted: The land was never surveyed and the records do not show its extent.
+        satisfied:
+          en: My land is survey number {IDNUM}, and the extent is clear in the records.
+          kn: ನನ್ನ ಜಮೀನು ಸರ್ವೇ ನಂಬರ್ {IDNUM}, ದಾಖಲೆಯಲ್ಲಿ ವಿಸ್ತೀರ್ಣ ಸ್ಪಷ್ಟವಾಗಿದೆ.
+          kn-en_latn: Nanna jameenu survey number {IDNUM}, daakhaleyalli vistheerna spashtavaagide.
+          kn-en_mixed: ನನ್ನ land survey number {IDNUM}, records ಅಲ್ಲಿ extent clear ಆಗಿದೆ.
+          hi: मेरी ज़मीन का सर्वे नंबर {IDNUM} है और रिकॉर्ड में रकबा साफ़ लिखा है।
+          hi-en_latn: Meri zameen ka survey number {IDNUM} hai aur record mein area saaf likha hai.
+        contradicted:
+          en: The land was [never](NEG) surveyed, and the records do [not](NEG) show the extent.
+          kn: ಜಮೀನಿನ ಸರ್ವೇ ಯಾವತ್ತೂ [ಆಗಿಲ್ಲ](NEG), ದಾಖಲೆಯಲ್ಲಿ ವಿಸ್ತೀರ್ಣ [ಇಲ್ಲ](NEG).
+          kn-en_latn: Jameenina survey yaavattu [aagilla](NEG), daakhaleyalli vistheerna [illa](NEG).
+          kn-en_mixed: Land survey ಯಾವತ್ತೂ [ಆಗಿಲ್ಲ](NEG), records ಅಲ್ಲಿ extent [ಇಲ್ಲ](NEG).
+          hi: ज़मीन का सर्वे कभी [नहीं](NEG) हुआ और रिकॉर्ड में रकबा [नहीं](NEG) लिखा।
+          hi-en_latn: Zameen ka survey kabhi [nahi](NEG) hua aur record mein area [nahi](NEG) likha.
+      - element_id: respondent_claims_strip
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The respondent actually claims the disputed strip as theirs.
+        question:
+          en: Does your neighbour claim that strip of land as theirs?
+          kn: ಆ ಪಟ್ಟಿ ಜಾಗ ತಮ್ಮದು ಅಂತ ಪಕ್ಕದವರು ವಾದ ಮಾಡ್ತಾರಾ?
+          hi: क्या आपका पड़ोसी उस पट्टी ज़मीन को अपनी बताता है?
+        proposition:
+          satisfied: The respondent claims the strip belongs to them.
+          contradicted: The respondent agrees the strip belongs to the speaker; it was a mistake.
+        satisfied:
+          en: "{RESP} claims that the strip belongs to {RESP.pron_acc}."
+          kn: "ಆ ಪಟ್ಟಿ ಜಾಗ ತಮ್ಮದು ಅಂತ {RESP} ವಾದ ಮಾಡ್ತಾರೆ."
+          kn-en_latn: "Aa patti jaaga tammadu antha {RESP} vaada maadtaare."
+          kn-en_mixed: "ಆ strip land ತಮ್ಮದು ಅಂತ {RESP} claim ಮಾಡ್ತಾರೆ."
+          hi: "{RESP} {g:RESP|m:कहते|f:कहती|n:कहते} हैं कि वो पट्टी ज़मीन {RESP.pron_gen_f} है।"
+          hi-en_latn: "{RESP} {g:RESP|m:kehte|f:kehti|n:kehte} hain ki woh patti zameen {RESP.pron_gen_f} hai."
+        contradicted:
+          en: "{RESP} agrees the strip is mine; it was an honest mistake."
+          kn: "ಆ ಪಟ್ಟಿ ನನ್ನದು ಅಂತ {RESP} ಒಪ್ಪಿದ್ದಾರೆ, ಅದು [ಗೊತ್ತಿಲ್ಲದೆ](NEG) ಆದ ತಪ್ಪು."
+          kn-en_latn: "Aa patti nannadu antha {RESP} oppiddare, adu [gottillade](NEG) aada tappu."
+          kn-en_mixed: "ಆ strip ನನ್ನದು ಅಂತ {RESP} agree ಮಾಡಿದ್ದಾರೆ, ಅದು honest mistake."
+          hi: "{RESP} {g:RESP|m:मानते|f:मानती|n:मानते} हैं कि वो पट्टी मेरी है, वो बस एक भूल थी।"
+          hi-en_latn: "{RESP} {g:RESP|m:maante|f:maanti|n:maante} hain ki woh patti meri hai, woh bas ek galti thi."
+    evidence:
+      - evidence_id: survey_sketch
+        evidence_type: document
+        supports: [land_identified_in_records]
+        held:
+          en: I have the [survey sketch and RTC](EVD) for my land.
+          kn: ನನ್ನ ಜಮೀನಿನ [ಸರ್ವೇ ನಕ್ಷೆ ಮತ್ತು ಪಹಣಿ](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          kn-en_latn: Nanna jameenina [survey nakshe mattu pahani](EVD) nanna hatra ide.
+          kn-en_mixed: ನನ್ನ land ದು [survey sketch and RTC](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          hi: मेरे पास अपनी ज़मीन का [सर्वे नक्शा और आरटीसी](EVD) है।
+          hi-en_latn: Mere paas apni zameen ka [survey naqsha aur RTC](EVD) hai.
+        missing:
+          en: I do [not](NEG) have the [survey sketch](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಸರ್ವೇ ನಕ್ಷೆ](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Nanna hatra [survey nakshe](EVD) [illa](NEG).
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [survey sketch](EVD) [ಇಲ್ಲ](NEG).
+          hi: मेरे पास [सर्वे नक्शा](EVD) [नहीं](NEG) है।
+          hi-en_latn: Mere paas [survey naqsha](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: imminent_violence
+        template:
+          en: "{RESP} came with an axe and said {RESP.pron} will attack me if I step on that strip."
+          kn: "ಆ ಪಟ್ಟಿಗೆ ಕಾಲಿಟ್ಟರೆ ಕೊಡಲಿಯಿಂದ ಹೊಡೀತೀನಿ ಅಂತ {RESP} ಕೊಡಲಿ ಹಿಡಿದುಕೊಂಡು ಬಂದರು."
+          kn-en_latn: "Aa pattige kaalittre kodaliyinda hoditini antha {RESP} kodali hididukondu bandru."
+          kn-en_mixed: "ಆ strip ಗೆ ಕಾಲಿಟ್ರೆ axe ಇಂದ ಹೊಡೀತೀನಿ ಅಂತ {RESP} axe ಹಿಡಿದುಕೊಂಡು ಬಂದ್ರು."
+          hi: "{RESP} कुल्हाड़ी लेकर {g:RESP|m:आए|f:आईं|n:आए} और कहा कि उस पट्टी पर पैर रखा तो हमला कर {g:RESP|m:देंगे|f:देंगी|n:देंगे}।"
+          hi-en_latn: "{RESP} kulhaadi lekar {g:RESP|m:aaye|f:aayi|n:aaye} aur kaha ki us patti par pair rakha to hamla kar {g:RESP|m:denge|f:dengi|n:denge}."
+    candidate_provisions:
+      - {provision_id: "KLRA:TBD-boundary", title_hint: "Karnataka Land Revenue Act: provisions on survey and boundary marks", note: "section number deliberately NOT assigned; identify from the parsed Act"}
+      - {provision_id: "SRA:34", title_hint: Discretion of court as to declaration of status or right}
+      - {provision_id: "SRA:38", title_hint: Perpetual injunction when granted}
+    limitation_notes: Apply to the Tahsildar / survey department for measurement first; civil suits for declaration have limitation periods under the Limitation Act. TO_VERIFY.
+    confusable_with: [prop.encroachment]
+    co_occurs_with: [prop.encroachment, crim.hurt_assault]
+
+  # ------------------------------------------------------- forged documents
+  - issue_id: prop.forged_documents
+    domain: property
+    title: {en: Forged property documents, kn: ನಕಲಿ ಆಸ್ತಿ ದಾಖಲೆ, hi: जाली संपत्ति दस्तावेज़}
+    plain_summary:
+      en: Someone made a false document (such as a will or sale deed) and used it as genuine to claim property.
+      kn: ಯಾರೋ ವಿಲ್ ಅಥವಾ ಸೇಲ್ ಡೀಡ್ ತರಹದ ನಕಲಿ ದಾಖಲೆ ಮಾಡಿ, ಅದನ್ನು ನಿಜವೆಂದು ಬಳಸಿ ಆಸ್ತಿ ಹಕ್ಕು ಕೇಳಿದ್ದಾರೆ.
+      hi: किसी ने वसीयत या सेल डीड जैसा जाली दस्तावेज़ बनाकर उसे असली बताकर संपत्ति पर दावा किया।
+    risk_level: high
+    default_triage: lawyer
+    cast:
+      - {slot: RESP, role: respondent, nouns: [cousin, brother, paternal_uncle]}
+    value_slots: {ITEM: [agri_land, house_site]}
+    setup:
+      en: There is a problem with the papers of {ITEM}.
+      kn: "{ITEM} ದಾಖಲೆಗಳ ಬಗ್ಗೆ ಸಮಸ್ಯೆ ಆಗಿದೆ."
+      kn-en_latn: "{ITEM} daakhalegala bagge samasye aagide."
+      kn-en_mixed: "{ITEM} documents ಬಗ್ಗೆ problem ಆಗಿದೆ."
+      hi: "{ITEM.obl} के कागज़ों में गड़बड़ी है।"
+      hi-en_latn: "{ITEM.obl} ke papers mein gadbad hai."
+    elements:
+      - element_id: false_document_made
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The respondent made a false document.
+        event_type: forgery
+        args: {RESP: agent}
+        question:
+          en: What document do you think is fake — a will, sale deed, gift deed? Who made it?
+          kn: ಯಾವ ದಾಖಲೆ ನಕಲಿ ಅಂತ ನಿಮಗೆ ಅನ್ಸುತ್ತೆ — ವಿಲ್, ಸೇಲ್ ಡೀಡ್, ದಾನಪತ್ರ? ಯಾರು ಮಾಡಿದ್ದು?
+          hi: आपको कौन सा दस्तावेज़ जाली लगता है — वसीयत, सेल डीड, दानपत्र? किसने बनाया?
+        proposition:
+          satisfied: The respondent made a fake will showing the land was given to them.
+          contradicted: The will is genuine; nobody made it up.
+        satisfied:
+          en: "{DATE} {RESP} [made](TRIG) a fake will showing that the land was given to {RESP.pron_acc}."
+          kn: "{DATE} {RESP} ಜಮೀನು ತಮಗೆ ಕೊಟ್ಟಿದ್ದಾರೆ ಅಂತ ನಕಲಿ ವಿಲ್ [ಮಾಡಿಸಿದರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP} jameenu tamage kottiddaare antha nakali will [maadisidru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} land ತಮಗೆ ಕೊಟ್ಟಿದ್ದಾರೆ ಅಂತ fake will [ಮಾಡಿಸಿದ್ರು](TRIG)."
+          hi: "{DATE} {RESP.erg} एक नकली वसीयत [बनवाई](TRIG) कि ज़मीन {RESP.pron_dat} दी गई थी।"
+          hi-en_latn: "{DATE} {RESP.erg} ek nakli will [banwaayi](TRIG) ki zameen {RESP.pron_dat} di gayi thi."
+        contradicted:
+          en: The will is genuine; it was [not](NEG) [made](TRIG) up by anyone.
+          kn: ಆ ವಿಲ್ ನಿಜವಾದದ್ದು, ಯಾರೂ [ಸೃಷ್ಟಿಸಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Aa will nijavaaddu, yaaru [srushtisilla](TRIG,NEG).
+          kn-en_mixed: ಆ will genuine, ಯಾರೂ [create ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: वो वसीयत असली है, किसी ने [नहीं](NEG) [बनाई](TRIG)।
+          hi-en_latn: Woh will asli hai, kisi ne [nahi](NEG) [banayi](TRIG).
+      - element_id: signature_forged
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The signature / thumb impression on the document is not genuine.
+        question:
+          en: Is the signature or thumb impression on that document genuine?
+          kn: ಆ ದಾಖಲೆಯಲ್ಲಿರೋ ಸಹಿ ಅಥವಾ ಹೆಬ್ಬೆಟ್ಟು ನಿಜವಾದದ್ದಾ?
+          hi: क्या उस दस्तावेज़ पर दस्तख़त या अँगूठे का निशान असली है?
+        proposition:
+          satisfied: The signature on the document is forged.
+          contradicted: The signature looks genuine.
+        satisfied:
+          en: The signature on it is [not](NEG) genuine; it was forged.
+          kn: ಅದರಲ್ಲಿರೋ ಸಹಿ ನಿಜವಾದದ್ದು [ಅಲ್ಲ](NEG), ನಕಲಿ ಸಹಿ.
+          kn-en_latn: Adalliro sahi nijavaaddu [alla](NEG), nakali sahi.
+          kn-en_mixed: ಅದರಲ್ಲಿರೋ signature genuine [ಅಲ್ಲ](NEG), fake signature.
+          hi: उस पर किए गए दस्तख़त असली [नहीं](NEG) हैं, नकली हैं।
+          hi-en_latn: Us par kiye gaye sign asli [nahi](NEG) hain, nakli hain.
+        contradicted:
+          en: The signature on it does look genuine.
+          kn: ಅದರಲ್ಲಿರೋ ಸಹಿ ನಿಜವಾದದ್ದೇ ತರ ಕಾಣ್ತಿದೆ.
+          kn-en_latn: Adalliro sahi nijavaadde thara kaantide.
+          kn-en_mixed: ಅದರಲ್ಲಿರೋ signature genuine ತರ ಕಾಣ್ತಿದೆ.
+          hi: उस पर दस्तख़त असली ही लगते हैं।
+          hi-en_latn: Us par sign asli hi lagte hain.
+      - element_id: used_as_genuine
+        critical: true
+        order: 2
+        description: The respondent used the false document as genuine (e.g. to change revenue records).
+        event_type: khata_change
+        args: {RESP: agent}
+        question:
+          en: Has that document been used anywhere — to change the khata, RTC, or to sell?
+          kn: ಆ ದಾಖಲೆಯನ್ನು ಎಲ್ಲಾದರೂ ಬಳಸಿದ್ದಾರಾ — ಖಾತಾ, ಪಹಣಿ ಬದಲಾಯಿಸೋಕೆ ಅಥವಾ ಮಾರೋಕೆ?
+          hi: क्या उस दस्तावेज़ का कहीं इस्तेमाल हुआ है — खाता, आरटीसी बदलवाने या बेचने में?
+        proposition:
+          satisfied: The respondent used the will to change the khata into their name.
+          contradicted: The respondent has not used it anywhere yet.
+        satisfied:
+          en: "{DATE} {RESP} [used](TRIG) that will to change the khata into {RESP.pron_gen} name."
+          kn: "{DATE} {RESP} ಆ ವಿಲ್ ಬಳಸಿ ಖಾತಾ ತಮ್ಮ ಹೆಸರಿಗೆ [ಬದಲಾಯಿಸಿಕೊಂಡರು](TRIG)."
+          kn-en_latn: "{DATE} {RESP} aa will balasi khata tamma hesarige [badalaayisikondru](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} ಆ will use ಮಾಡಿ khata ತಮ್ಮ name ಗೆ [change ಮಾಡ್ಕೊಂಡ್ರು](TRIG)."
+          hi: "{DATE} {RESP.erg} उस वसीयत से खाता अपने नाम [करवा लिया](TRIG)।"
+          hi-en_latn: "{DATE} {RESP.erg} us will se khata apne naam [karwa liya](TRIG)."
+        contradicted:
+          en: "{RESP} has [not](NEG) [used](TRIG) it anywhere yet."
+          kn: "{RESP} ಅದನ್ನು ಇನ್ನೂ ಎಲ್ಲೂ [ಬಳಸಿಲ್ಲ](TRIG,NEG)."
+          kn-en_latn: "{RESP} adanna innu ellu [balasilla](TRIG,NEG)."
+          kn-en_mixed: "{RESP} ಅದನ್ನು ಇನ್ನೂ ಎಲ್ಲೂ [use ಮಾಡಿಲ್ಲ](TRIG,NEG)."
+          hi: "{RESP.erg} उसे अभी तक कहीं [इस्तेमाल](TRIG) [नहीं](NEG) किया।"
+          hi-en_latn: "{RESP.erg} use abhi tak kahin [use](TRIG) [nahi](NEG) kiya."
+    evidence:
+      - evidence_id: forged_copy
+        evidence_type: document
+        supports: [false_document_made]
+        held:
+          en: I have a [copy of the fake will](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ನಕಲಿ ವಿಲ್‌ನ ಕಾಪಿ](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [nakali will copy](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [fake will copy](EVD) ಇದೆ.
+          hi: मेरे पास [नकली वसीयत की कॉपी](EVD) है।
+          hi-en_latn: Mere paas [nakli will ki copy](EVD) hai.
+        missing:
+          en: I have [not](NEG) been able to get a [copy of that will](EVD).
+          kn: ಆ [ವಿಲ್‌ನ ಕಾಪಿ](EVD) ನನಗೆ [ಸಿಕ್ಕಿಲ್ಲ](NEG).
+          kn-en_latn: Aa [will copy](EVD) nange [sikkilla](NEG).
+          kn-en_mixed: ಆ [will copy](EVD) ನನಗೆ [ಸಿಕ್ಕಿಲ್ಲ](NEG).
+          hi: उस [वसीयत की कॉपी](EVD) मुझे [नहीं](NEG) मिली।
+          hi-en_latn: Us [will ki copy](EVD) mujhe [nahi](NEG) mili.
+    risk_facts:
+      - flag: imminent_property_transfer
+        template:
+          en: "{RESP} is trying to sell {ITEM} using these papers [this week](TIMEX:this_week)."
+          kn: "{RESP} ಈ ಪೇಪರ್ ಇಟ್ಟುಕೊಂಡು [ಈ ವಾರ](TIMEX:this_week) {ITEM} ಮಾರೋಕೆ ನೋಡ್ತಿದ್ದಾರೆ."
+          kn-en_latn: "{RESP} ee paper ittukondu [ee vaara](TIMEX:this_week) {ITEM} maaroke nodtiddare."
+          kn-en_mixed: "{RESP} ಈ papers ಇಟ್ಟುಕೊಂಡು [this week](TIMEX:this_week) {ITEM} sell ಮಾಡೋಕೆ try ಮಾಡ್ತಿದ್ದಾರೆ."
+          hi: "{RESP} इन कागज़ों से [इसी हफ़्ते](TIMEX:this_week) {ITEM} बेचने की कोशिश में हैं।"
+          hi-en_latn: "{RESP} in papers se [isi hafte](TIMEX:this_week) {ITEM} bechne ki koshish mein hain."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "BNS:336", when: {law_regime: [new]}, title_hint: Forgery}
+      - {provision_id: "BNS:338", when: {law_regime: [new]}, title_hint: "Forgery of valuable security, will, etc."}
+      - {provision_id: "BNS:340", when: {law_regime: [new]}, title_hint: Forged document or electronic record and using it as genuine}
+      - {provision_id: "IPC:467", when: {law_regime: [old]}, title_hint: "Forgery of valuable security, will, etc."}
+      - {provision_id: "IPC:471", when: {law_regime: [old]}, title_hint: Using as genuine a forged document or electronic record}
+      - {provision_id: "SRA:31", title_hint: When cancellation may be ordered}
+    limitation_notes: Criminal limitation depends on punishment; cancellation of an instrument generally within three years of knowledge (Limitation Act). TO_VERIFY.
+    confusable_with: [prop.coheir_sale_without_consent, prop.inheritance_partition]
+    co_occurs_with: [prop.inheritance_partition, crim.police_refusal_fir]

@@ -1,0 +1,237 @@
+{
+  "schema": {
+    "specs": 730,
+    "narratives": 4380,
+    "asr": 2009,
+    "dialogues": 4380
+  },
+  "alignment": {
+    "spans_checked_in_clean_narratives": 68787,
+    "misaligned": 0
+  },
+  "langid_accuracy": {
+    "en": 1.0,
+    "kn": 1.0,
+    "hi": 1.0,
+    "kn-en_latn": 1.0,
+    "kn-en_mixed": 1.0,
+    "hi-en_latn": 1.0
+  },
+  "cmi": {
+    "en": {
+      "mean": 0.04,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 6.67
+    },
+    "kn": {
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "hi": {
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "kn-en_latn": {
+      "mean": 15.49,
+      "median": 13.79,
+      "min": 0.0,
+      "max": 36.67
+    },
+    "kn-en_mixed": {
+      "mean": 32.44,
+      "median": 32.89,
+      "min": 0.0,
+      "max": 50.0
+    },
+    "hi-en_latn": {
+      "mean": 14.22,
+      "median": 13.66,
+      "min": 0.0,
+      "max": 34.69
+    }
+  },
+  "near_duplicates": {
+    "pairs_compared": 57366,
+    "threshold": 0.9,
+    "pairs_over_threshold": 21,
+    "mean_jaccard_word3": 0.205,
+    "examples": [
+      [
+        "spc_0507_en",
+        "spc_0539_en",
+        1.0
+      ],
+      [
+        "spc_0508_en",
+        "spc_0540_en",
+        1.0
+      ],
+      [
+        "spc_0508_kn",
+        "spc_0540_kn",
+        1.0
+      ],
+      [
+        "spc_0508_hi",
+        "spc_0540_hi",
+        1.0
+      ],
+      [
+        "spc_0508_kn-en_latn",
+        "spc_0540_kn-en_latn",
+        1.0
+      ],
+      [
+        "spc_0508_kn-en_mixed",
+        "spc_0540_kn-en_mixed",
+        1.0
+      ],
+      [
+        "spc_0508_hi-en_latn",
+        "spc_0540_hi-en_latn",
+        1.0
+      ],
+      [
+        "spc_0541_en",
+        "spc_0573_en",
+        1.0
+      ],
+      [
+        "spc_0544_en",
+        "spc_0576_en",
+        1.0
+      ],
+      [
+        "spc_0546_en",
+        "spc_0578_en",
+        1.0
+      ]
+    ]
+  },
+  "crosslingual_label_consistency": {
+    "specs": 730,
+    "consistent": 730,
+    "inconsistent_examples": [],
+    "embedding_and_backtranslation_check": "not run: needs LaBSE / IndicTrans2 downloads (see qc/external.py)"
+  },
+  "citation_validity": {
+    "basis": "corpus",
+    "gold_citations": 14448,
+    "valid_against_basis": 13512,
+    "found_in_parsed_corpus": 10584,
+    "registry_size": 79,
+    "corpus_sections": 2747,
+    "verified_by_human": 0
+  },
+  "label_leakage": {
+    "samples": 4380,
+    "statute_or_section_mentions": 0,
+    "legal_term_hits_by_term": {
+      "ancestral_property": 54,
+      "cruelty_498a": 24,
+      "hurt": 3
+    },
+    "examples": [
+      [
+        "spc_0104_en",
+        "hurt",
+        "hurt"
+      ],
+      [
+        "spc_0109_en",
+        "hurt",
+        "hurt"
+      ],
+      [
+        "spc_0112_en",
+        "hurt",
+        "hurt"
+      ],
+      [
+        "spc_0301_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0302_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0304_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0305_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0306_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0307_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0307b_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0308_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0309_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0310_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0312_en",
+        "cruelty_498a",
+        "cruelty"
+      ],
+      [
+        "spc_0313_en",
+        "cruelty_498a",
+        "cruelty"
+      ]
+    ]
+  },
+  "dialogues": {
+    "dialogues": 4380,
+    "decision_points": 13446,
+    "clarification_labels": {
+      "new_fact": 13446,
+      "reexplain_request": 1613,
+      "correction": 436
+    },
+    "mean_final_completeness": 0.925
+  },
+  "llm_judge": {
+    "status": "not run",
+    "reason": "requires GEN/JUDGE API keys; code in src/lexvaani/llm/judge.py, prompts/judge_v1.md"
+  },
+  "human_annotation": {
+    "status": "pending",
+    "subset_exported": "annotation/labelstudio/tasks_double.json (>=15%, 2 annotators each)",
+    "iaa": "to be computed with `python -m lexvaani.annotation.iaa` once annotations exist"
+  },
+  "failures": []
+}

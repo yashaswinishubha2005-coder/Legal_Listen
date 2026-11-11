@@ -1,0 +1,279 @@
+# Cyber domain (part B): cyberstalking, morphed / intimate image misuse. Provisions TO_VERIFY.
+issues:
+  # ---------------------------------------------------------- cyberstalking
+  - issue_id: cyb.cyberstalking
+    domain: cyber
+    title: {en: Cyberstalking, kn: ಸೈಬರ್ ಹಿಂಬಾಲಿಕೆ, hi: साइबर स्टॉकिंग}
+    plain_summary:
+      en: A man repeatedly contacts or monitors a woman online despite her clearly showing disinterest.
+      kn: ಮಹಿಳೆ ಸ್ಪಷ್ಟವಾಗಿ ಬೇಡ ಅಂದರೂ ಒಬ್ಬ ಪುರುಷ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಪದೇ ಪದೇ ಸಂಪರ್ಕಿಸುವುದು ಅಥವಾ ಗಮನಿಸುವುದು.
+      hi: महिला के साफ़ मना करने के बावजूद कोई पुरुष बार-बार ऑनलाइन संपर्क करे या उस पर नज़र रखे।
+    risk_level: high
+    default_triage: self_help
+    speaker_genders: [female]
+    cast:
+      - {slot: RESP, role: respondent, nouns: [ex_partner, colleague], genders: [male]}
+    setup:
+      en: "{RESP} will [not](NEG) leave me alone."
+      kn: "{RESP} ನನ್ನನ್ನು ಸುಮ್ಮನೆ [ಬಿಡ್ತಿಲ್ಲ](NEG)."
+      kn-en_latn: "{RESP} nannanna summane [bidtilla](NEG)."
+      kn-en_mixed: "{RESP} ನನ್ನನ್ನು alone [ಬಿಡ್ತಿಲ್ಲ](NEG)."
+      hi: "{RESP} मेरा पीछा [नहीं](NEG) छोड़ {g:RESP|m:रहे|f:रही|n:रहे}।"
+      hi-en_latn: "{RESP} mera peecha [nahi](NEG) chhod {g:RESP|m:rahe|f:rahi|n:rahe}."
+    elements:
+      - element_id: repeated_contact
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The respondent repeatedly contacts / follows the user.
+        event_type: repeated_messaging
+        args: {RESP: agent}
+        question:
+          en: How often does he contact you, and through what — calls, messages, social media?
+          kn: ಅವರು ಎಷ್ಟು ಸಲ, ಯಾವುದರ ಮೂಲಕ ಸಂಪರ್ಕಿಸ್ತಾರೆ — ಕಾಲ್, ಮೆಸೇಜ್, ಸೋಶಿಯಲ್ ಮೀಡಿಯಾ?
+          hi: वो कितनी बार और किस तरह संपर्क करते हैं — कॉल, मैसेज, सोशल मीडिया?
+        proposition:
+          satisfied: The respondent started messaging and does it every day from new numbers.
+          contradicted: The respondent messaged only once and never again.
+        satisfied:
+          en: "{DATE} {RESP} started [messaging](TRIG) me, and keeps doing it [every day](TIMEX:every_day) from new numbers."
+          kn: "{DATE} {RESP} [ಮೆಸೇಜ್ ಮಾಡೋಕೆ ಶುರು ಮಾಡಿದರು](TRIG), [ಪ್ರತಿ ದಿನ](TIMEX:every_day) ಹೊಸ ನಂಬರ್‌ಗಳಿಂದ ಮಾಡ್ತಾರೆ."
+          kn-en_latn: "{DATE} {RESP} [message maadoke shuru maadidru](TRIG), [prati dina](TIMEX:every_day) hosa numbergalinda maadtaare."
+          kn-en_mixed: "{DATE} {RESP} [message ಮಾಡೋಕೆ start ಮಾಡಿದ್ರು](TRIG), [every day](TIMEX:every_day) new numbers ಇಂದ ಮಾಡ್ತಾರೆ."
+          hi: "{DATE} {RESP.erg} [मैसेज करना शुरू किया](TRIG), और [हर दिन](TIMEX:every_day) नए नंबरों से {g:RESP|m:करते|f:करती|n:करते} हैं।"
+          hi-en_latn: "{DATE} {RESP.erg} [message karna shuru kiya](TRIG), aur [har din](TIMEX:every_day) naye numbers se {g:RESP|m:karte|f:karti|n:karte} hain."
+        contradicted:
+          en: "{RESP} [messaged](TRIG) only once and [never](NEG) again."
+          kn: "{RESP} ಒಂದೇ ಸಲ [ಮೆಸೇಜ್ ಮಾಡಿದ್ದು](TRIG), ಮತ್ತೆ [ಮಾಡಿಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP} onde sala [message maadiddu](TRIG), matte [maadilla](NEG)."
+          kn-en_mixed: "{RESP} ಒಂದೇ ಸಲ [message ಮಾಡಿದ್ದು](TRIG), ಮತ್ತೆ [ಮಾಡಿಲ್ಲ](NEG)."
+          hi: "{RESP.erg} सिर्फ़ एक बार [मैसेज किया](TRIG), फिर कभी [नहीं](NEG)।"
+          hi-en_latn: "{RESP.erg} sirf ek baar [message kiya](TRIG), phir kabhi [nahi](NEG)."
+      - element_id: despite_disinterest
+        critical: true
+        order: 1
+        description: The user clearly indicated disinterest.
+        question:
+          en: Have you clearly told him to stop contacting you?
+          kn: ಸಂಪರ್ಕಿಸೋದು ನಿಲ್ಲಿಸಿ ಅಂತ ನೀವು ಅವರಿಗೆ ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿದ್ದೀರಾ?
+          hi: क्या आपने उन्हें साफ़ कहा है कि संपर्क करना बंद करें?
+        proposition:
+          satisfied: The speaker clearly told the respondent to stop, but he does not listen.
+          contradicted: The speaker has not told him to stop and sometimes replies.
+        satisfied:
+          en: I have clearly told {RESP.acc} to stop, but {RESP.pron} does [not](NEG) listen.
+          kn: "ನಿಲ್ಲಿಸಿ ಅಂತ {RESP.dat} ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿದೀನಿ, ಆದರೆ {RESP.pron} [ಕೇಳ್ತಿಲ್ಲ](NEG)."
+          kn-en_latn: "Nillisi antha {RESP.dat} spashtavaagi helidini, aadre {RESP.pron} [keltilla](NEG)."
+          kn-en_mixed: "Stop ಮಾಡಿ ಅಂತ {RESP.dat} clear ಆಗಿ ಹೇಳಿದೀನಿ, ಆದ್ರೆ {RESP.pron} [ಕೇಳ್ತಿಲ್ಲ](NEG)."
+          hi: "मैंने {RESP.dat} साफ़ मना किया है, फिर भी {RESP.pron} [नहीं](NEG) {g:RESP|m:मानते|f:मानती|n:मानते}।"
+          hi-en_latn: "Maine {RESP.dat} saaf mana kiya hai, phir bhi {RESP.pron} [nahi](NEG) {g:RESP|m:maante|f:maanti|n:maante}."
+        contradicted:
+          en: I have [not](NEG) told {RESP.acc} to stop; I reply sometimes.
+          kn: "ನಿಲ್ಲಿಸಿ ಅಂತ ನಾನು {RESP.dat} [ಹೇಳಿಲ್ಲ](NEG), ಆಗಾಗ ರಿಪ್ಲೈ ಮಾಡ್ತೀನಿ."
+          kn-en_latn: "Nillisi antha naanu {RESP.dat} [helilla](NEG), aagaaga reply maadtini."
+          kn-en_mixed: "Stop ಮಾಡಿ ಅಂತ ನಾನು {RESP.dat} [ಹೇಳಿಲ್ಲ](NEG), sometimes reply ಮಾಡ್ತೀನಿ."
+          hi: "मैंने {RESP.dat} रुकने को [नहीं](NEG) कहा, कभी-कभी जवाब भी {g:SPK|m:देता|f:देती} हूँ।"
+          hi-en_latn: "Maine {RESP.dat} rukne ko [nahi](NEG) kaha, kabhi-kabhi reply bhi {g:SPK|m:deta|f:deti} hoon."
+      - element_id: monitoring_online
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The respondent monitors the user's online activity / location.
+        question:
+          en: Does he seem to know where you go or what you do online?
+          kn: ನೀವು ಎಲ್ಲಿಗೆ ಹೋಗ್ತೀರಿ, ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಏನು ಮಾಡ್ತೀರಿ ಅಂತ ಅವರಿಗೆ ಗೊತ್ತಿರೋ ತರ ಇದೆಯಾ?
+          hi: क्या उन्हें पता रहता है कि आप कहाँ जाती हैं या ऑनलाइन क्या करती हैं?
+        proposition:
+          satisfied: The respondent comments on every place the speaker visits, tracking her online.
+          contradicted: The respondent has no way of knowing where the speaker goes.
+        satisfied:
+          en: "{RESP} comments on every place I visit, so {RESP.pron} is tracking my location online."
+          kn: "ನಾನು ಹೋಗೋ ಪ್ರತಿ ಜಾಗದ ಬಗ್ಗೆ {RESP} ಕಾಮೆಂಟ್ ಮಾಡ್ತಾರೆ, ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ನನ್ನ ಲೊಕೇಶನ್ ಟ್ರ್ಯಾಕ್ ಮಾಡ್ತಿದ್ದಾರೆ."
+          kn-en_latn: "Naanu hogo prati jaagada bagge {RESP} comment maadtaare, online alli nanna location track maadtiddare."
+          kn-en_mixed: "ನಾನು ಹೋಗೋ every place ಬಗ್ಗೆ {RESP} comment ಮಾಡ್ತಾರೆ, online ಅಲ್ಲಿ ನನ್ನ location track ಮಾಡ್ತಿದ್ದಾರೆ."
+          hi: "मैं जहाँ भी {g:SPK|m:जाता|f:जाती} हूँ, {RESP} उस पर कमेंट {g:RESP|m:करते|f:करती|n:करते} हैं, यानी ऑनलाइन मेरी लोकेशन ट्रैक कर {g:RESP|m:रहे|f:रही|n:रहे} हैं।"
+          hi-en_latn: "Main jahan bhi {g:SPK|m:jaata|f:jaati} hoon, {RESP} us par comment {g:RESP|m:karte|f:karti|n:karte} hain, yaani online meri location track kar {g:RESP|m:rahe|f:rahi|n:rahe} hain."
+        contradicted:
+          en: "{RESP} has [no](NEG) way of knowing where I go."
+          kn: "ನಾನು ಎಲ್ಲಿಗೆ ಹೋಗ್ತೀನಿ ಅಂತ {RESP.dat} ಗೊತ್ತಾಗೋಕೆ ಸಾಧ್ಯನೇ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "Naanu ellige hogtini antha {RESP.dat} gottaagoke saadhyane [illa](NEG)."
+          kn-en_mixed: "ನಾನು ಎಲ್ಲಿಗೆ ಹೋಗ್ತೀನಿ ಅಂತ {RESP.dat} ಗೊತ್ತಾಗೋಕೆ chance ಏ [ಇಲ್ಲ](NEG)."
+          hi: "{RESP.dat} पता चलने का कोई तरीका [नहीं](NEG) है कि मैं कहाँ {g:SPK|m:जाता|f:जाती} हूँ।"
+          hi-en_latn: "{RESP.dat} pata chalne ka koi tareeka [nahi](NEG) hai ki main kahan {g:SPK|m:jaata|f:jaati} hoon."
+    evidence:
+      - evidence_id: message_screenshots
+        evidence_type: screenshot
+        supports: [repeated_contact]
+        held:
+          en: I have [screenshots of all the messages](EVD).
+          kn: ಎಲ್ಲಾ [ಮೆಸೇಜ್‌ಗಳ ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          kn-en_latn: Ella [messagegala screenshot](EVD) nanna hatra ide.
+          kn-en_mixed: ಎಲ್ಲಾ [messages screenshots](EVD) ನನ್ನ ಹತ್ತಿರ ಇವೆ.
+          hi: मेरे पास [सारे मैसेज के स्क्रीनशॉट](EVD) हैं।
+          hi-en_latn: Mere paas [saare messages ke screenshots](EVD) hain.
+        missing:
+          en: I blocked and deleted everything, so I have [no](NEG) [screenshots](EVD).
+          kn: ಎಲ್ಲಾ ಬ್ಲಾಕ್ ಮಾಡಿ ಡಿಲೀಟ್ ಮಾಡಿದೆ, [ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Ella block maadi delete maadide, [screenshot](EVD) [illa](NEG).
+          kn-en_mixed: ಎಲ್ಲಾ block ಮಾಡಿ delete ಮಾಡಿದೆ, [screenshots](EVD) [ಇಲ್ಲ](NEG).
+          hi: मैंने सब ब्लॉक करके डिलीट कर दिया, कोई [स्क्रीनशॉट](EVD) [नहीं](NEG) है।
+          hi-en_latn: Maine sab block karke delete kar diya, koi [screenshot](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: imminent_violence
+        template:
+          en: "{RESP} sent a message that {RESP.pron} is waiting outside my hostel [tonight](TIMEX:tonight)."
+          kn: "[ಇವತ್ತು ರಾತ್ರಿ](TIMEX:tonight) ನನ್ನ ಹಾಸ್ಟೆಲ್ ಹೊರಗೆ ಕಾಯ್ತಿದ್ದೀನಿ ಅಂತ {RESP} ಮೆಸೇಜ್ ಮಾಡಿದ್ದಾರೆ."
+          kn-en_latn: "[Ivattu raatri](TIMEX:tonight) nanna hostel horage kaaytiddini antha {RESP} message maadiddare."
+          kn-en_mixed: "[Tonight](TIMEX:tonight) ನನ್ನ hostel outside ಕಾಯ್ತಿದ್ದೀನಿ ಅಂತ {RESP} message ಮಾಡಿದ್ದಾರೆ."
+          hi: "{RESP.erg} मैसेज किया है कि [आज रात](TIMEX:tonight) मेरे हॉस्टल के बाहर इंतज़ार कर {g:RESP|m:रहे|f:रही|n:रहे} हैं।"
+          hi-en_latn: "{RESP.erg} message kiya hai ki [aaj raat](TIMEX:tonight) mere hostel ke bahar intezaar kar {g:RESP|m:rahe|f:rahi|n:rahe} hain."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "BNS:78", when: {law_regime: [new]}, title_hint: Stalking}
+      - {provision_id: "IPC:354D", when: {law_regime: [old]}, title_hint: Stalking}
+      - {provision_id: "BNS:351(2)", when: {law_regime: [new], risk: [imminent_violence]}, title_hint: Criminal intimidation (punishment)}
+    limitation_notes: Preserve messages and numbers; report on the cybercrime portal. Criminal limitation depends on punishment. TO_VERIFY.
+    confusable_with: [crim.criminal_intimidation, cyb.morphed_intimate_image]
+    co_occurs_with: [cyb.morphed_intimate_image, crim.criminal_intimidation]
+
+  # ----------------------------------------------- morphed / intimate images
+  - issue_id: cyb.morphed_intimate_image
+    domain: cyber
+    title: {en: Morphed / intimate image misuse, kn: ಮಾರ್ಫ್ / ಖಾಸಗಿ ಚಿತ್ರ ದುರುಪಯೋಗ, hi: मॉर्फ़्ड / निजी तस्वीरों का दुरुपयोग}
+    plain_summary:
+      en: Someone created, edited or shared obscene or private images of you without your consent, or threatens to.
+      kn: ನಿಮ್ಮ ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ಯಾರೋ ನಿಮ್ಮ ಅಶ್ಲೀಲ ಅಥವಾ ಖಾಸಗಿ ಚಿತ್ರ ಮಾಡಿದ್ದಾರೆ, ಎಡಿಟ್ ಮಾಡಿದ್ದಾರೆ, ಹಂಚಿದ್ದಾರೆ ಅಥವಾ ಹಂಚುತ್ತೇವೆ ಅಂತ ಬೆದರಿಸ್ತಿದ್ದಾರೆ.
+      hi: किसी ने आपकी सहमति के बिना आपकी अश्लील या निजी तस्वीरें बनाईं, एडिट कीं, फैलाईं या फैलाने की धमकी दे रहा है।
+    risk_level: high
+    default_triage: urgent
+    speaker_genders: [female]
+    cast:
+      - {slot: RESP, role: respondent, nouns: [ex_partner, unknown_person], genders: [male]}
+    setup:
+      en: This is very hard for me to say; it is about my photos.
+      kn: ಇದನ್ನು ಹೇಳೋಕೆ ತುಂಬಾ ಕಷ್ಟ ಆಗ್ತಿದೆ, ಇದು ನನ್ನ ಫೋಟೋಗಳ ಬಗ್ಗೆ.
+      kn-en_latn: Idanna heloke tumba kashta aagtide, idu nanna photogala bagge.
+      kn-en_mixed: ಇದನ್ನು ಹೇಳೋಕೆ ತುಂಬಾ hard ಆಗ್ತಿದೆ, ಇದು ನನ್ನ photos ಬಗ್ಗೆ.
+      hi: यह बताना मेरे लिए बहुत मुश्किल है, बात मेरी फ़ोटो की है।
+      hi-en_latn: Yeh batana mere liye bahut mushkil hai, baat meri photos ki hai.
+    elements:
+      - element_id: image_morphed
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: An obscene / private image of the user was created or morphed.
+        event_type: image_morphing
+        args: {RESP: agent}
+        question:
+          en: Was your photo edited or was a private picture taken without your knowledge?
+          kn: ನಿಮ್ಮ ಫೋಟೋ ಎಡಿಟ್ ಮಾಡಲಾಗಿದೆಯಾ ಅಥವಾ ನಿಮಗೆ ಗೊತ್ತಿಲ್ಲದೆ ಖಾಸಗಿ ಫೋಟೋ ತೆಗೆದಿದ್ದಾರಾ?
+          hi: क्या आपकी फ़ोटो एडिट की गई या आपकी जानकारी के बिना कोई निजी तस्वीर ली गई?
+        proposition:
+          satisfied: The respondent morphed the speaker's photo onto an obscene picture.
+          contradicted: The photo is not edited; it is an ordinary photo.
+        satisfied:
+          en: "{DATE} {RESP} [morphed](TRIG) my photo onto an obscene picture."
+          kn: "{DATE} {RESP} ನನ್ನ ಫೋಟೋವನ್ನು ಅಶ್ಲೀಲ ಚಿತ್ರಕ್ಕೆ [ಮಾರ್ಫ್ ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          kn-en_latn: "{DATE} {RESP} nanna photovanna ashleela chitrakke [morph maadiddare](TRIG)."
+          kn-en_mixed: "{DATE} {RESP} ನನ್ನ photo ನ obscene picture ಗೆ [morph ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          hi: "{DATE} {RESP.erg} मेरी फ़ोटो को एक अश्लील तस्वीर में [मॉर्फ़ कर दिया](TRIG)।"
+          hi-en_latn: "{DATE} {RESP.erg} meri photo ko ek ashleel tasveer mein [morph kar diya](TRIG)."
+        contradicted:
+          en: The photo is [not](NEG) [edited](TRIG); it is just an ordinary photo of me.
+          kn: ಆ ಫೋಟೋ [ಎಡಿಟ್ ಆಗಿಲ್ಲ](TRIG,NEG), ಅದು ನನ್ನ ಸಾಮಾನ್ಯ ಫೋಟೋ.
+          kn-en_latn: Aa photo [edit aagilla](TRIG,NEG), adu nanna saamaanya photo.
+          kn-en_mixed: ಆ photo [edit ಆಗಿಲ್ಲ](TRIG,NEG), ಅದು ನನ್ನ normal photo.
+          hi: वो फ़ोटो [एडिट](TRIG) [नहीं](NEG) की गई, वो मेरी आम फ़ोटो है।
+          hi-en_latn: Woh photo [edit](TRIG) [nahi](NEG) ki gayi, woh meri normal photo hai.
+      - element_id: shared_with_others
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: The image was published / transmitted to others.
+        event_type: image_sharing
+        args: {RESP: agent}
+        question:
+          en: Has the picture been sent to anyone or posted anywhere, as far as you know?
+          kn: ನಿಮಗೆ ಗೊತ್ತಿರೋ ಮಟ್ಟಿಗೆ ಆ ಫೋಟೋ ಯಾರಿಗಾದರೂ ಕಳಿಸಿದ್ದಾರಾ ಅಥವಾ ಎಲ್ಲಾದರೂ ಹಾಕಿದ್ದಾರಾ?
+          hi: आपकी जानकारी में क्या वो तस्वीर किसी को भेजी गई या कहीं डाली गई?
+        proposition:
+          satisfied: The respondent sent the picture to the speaker's relatives on WhatsApp.
+          contradicted: The respondent has not shared it with anyone so far.
+        satisfied:
+          en: "{RESP} [sent](TRIG) that picture to my relatives on WhatsApp."
+          kn: "{RESP} ಆ ಫೋಟೋವನ್ನು ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ನಮ್ಮ ಸಂಬಂಧಿಕರಿಗೆ [ಕಳಿಸಿದ್ದಾರೆ](TRIG)."
+          kn-en_latn: "{RESP} aa photovanna WhatsApp alli namma sambandhikarige [kalisiddare](TRIG)."
+          kn-en_mixed: "{RESP} ಆ photo ನ WhatsApp ಅಲ್ಲಿ ನಮ್ಮ relatives ಗೆ [send ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          hi: "{RESP.erg} वो तस्वीर व्हाट्सऐप पर मेरे रिश्तेदारों को [भेज दी](TRIG)।"
+          hi-en_latn: "{RESP.erg} woh tasveer WhatsApp par mere rishtedaaron ko [bhej di](TRIG)."
+        contradicted:
+          en: "{RESP} has [not](NEG) [shared](TRIG) it with anyone so far."
+          kn: "{RESP} ಇಲ್ಲಿವರೆಗೂ ಅದನ್ನು ಯಾರಿಗೂ [ಕಳಿಸಿಲ್ಲ](TRIG,NEG)."
+          kn-en_latn: "{RESP} illivaregu adanna yaarigu [kalisilla](TRIG,NEG)."
+          kn-en_mixed: "{RESP} ಇಲ್ಲಿವರೆಗೂ ಅದನ್ನು ಯಾರಿಗೂ [share ಮಾಡಿಲ್ಲ](TRIG,NEG)."
+          hi: "{RESP.erg} अब तक उसे किसी को [नहीं](NEG) [भेजा](TRIG)।"
+          hi-en_latn: "{RESP.erg} ab tak use kisi ko [nahi](NEG) [bheja](TRIG)."
+      - element_id: without_consent
+        critical: true
+        order: 1
+        description: The user did not consent to the image being made or shared.
+        question:
+          en: Did you ever agree to that photo being used or shared?
+          kn: ಆ ಫೋಟೋ ಬಳಸೋಕೆ ಅಥವಾ ಹಂಚೋಕೆ ನೀವು ಯಾವತ್ತಾದರೂ ಒಪ್ಪಿಗೆ ಕೊಟ್ಟಿದ್ರಾ?
+          hi: क्या आपने कभी उस फ़ोटो के इस्तेमाल या शेयर करने की सहमति दी थी?
+        proposition:
+          satisfied: The speaker never agreed to the photos being used this way.
+          contradicted: The speaker had agreed that the respondent could post that photo.
+        satisfied:
+          en: I [never](NEG) agreed to any of my photos being used like this.
+          kn: ನನ್ನ ಫೋಟೋಗಳನ್ನು ಹೀಗೆ ಬಳಸೋಕೆ ನಾನು ಯಾವತ್ತೂ [ಒಪ್ಪಿಲ್ಲ](NEG).
+          kn-en_latn: Nanna photogalanna heege balasoke naanu yaavattu [oppilla](NEG).
+          kn-en_mixed: ನನ್ನ photos ನ ಹೀಗೆ use ಮಾಡೋಕೆ ನಾನು ಯಾವತ್ತೂ [agree ಮಾಡಿಲ್ಲ](NEG).
+          hi: मैंने अपनी तस्वीरों को ऐसे इस्तेमाल करने की कभी इजाज़त [नहीं](NEG) दी।
+          hi-en_latn: Maine apni photos ko aise use karne ki kabhi permission [nahi](NEG) di.
+        contradicted:
+          en: I had myself agreed that {RESP} could post that photo.
+          kn: "ಆ ಫೋಟೋ ಹಾಕೋಕೆ {RESP.dat} ನಾನೇ ಒಪ್ಪಿಗೆ ಕೊಟ್ಟಿದ್ದೆ."
+          kn-en_latn: "Aa photo haakoke {RESP.dat} naane oppige kottidde."
+          kn-en_mixed: "ಆ photo post ಮಾಡೋಕೆ {RESP.dat} ನಾನೇ permission ಕೊಟ್ಟಿದ್ದೆ."
+          hi: "उस फ़ोटो को डालने की इजाज़त मैंने खुद {RESP.dat} दी थी।"
+          hi-en_latn: "Us photo ko daalne ki permission maine khud {RESP.dat} di thi."
+    evidence:
+      - evidence_id: forward_screenshot
+        evidence_type: screenshot
+        supports: [shared_with_others]
+        held:
+          en: I have a [screenshot of the forwarded message](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಫಾರ್ವರ್ಡ್ ಆದ ಮೆಸೇಜ್‌ನ ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [forward aada message screenshot](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [forwarded message screenshot](EVD) ಇದೆ.
+          hi: मेरे पास [फ़ॉरवर्ड हुए मैसेज का स्क्रीनशॉट](EVD) है।
+          hi-en_latn: Mere paas [forward hue message ka screenshot](EVD) hai.
+        missing:
+          en: I have [no](NEG) [screenshot](EVD) of it.
+          kn: ಅದರ [ಸ್ಕ್ರೀನ್‌ಶಾಟ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Adara [screenshot](EVD) [illa](NEG).
+          kn-en_mixed: ಅದರ [screenshot](EVD) [ಇಲ್ಲ](NEG).
+          hi: उसका कोई [स्क्रीनशॉट](EVD) [नहीं](NEG) है।
+          hi-en_latn: Uska koi [screenshot](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: image_circulation
+        template:
+          en: "{RESP} said {RESP.pron} will post it publicly [tonight](TIMEX:tonight) if I do [not](NEG) pay."
+          kn: "ದುಡ್ಡು [ಕೊಡದಿದ್ರೆ](NEG) [ಇವತ್ತು ರಾತ್ರಿ](TIMEX:tonight) ಎಲ್ಲರಿಗೂ ಹಾಕ್ತೀನಿ ಅಂತ {RESP} ಹೇಳಿದ್ದಾರೆ."
+          kn-en_latn: "Duddu [kodadidre](NEG) [ivattu raatri](TIMEX:tonight) ellarigu haaktini antha {RESP} heliddare."
+          kn-en_mixed: "Money [ಕೊಡದಿದ್ರೆ](NEG) [tonight](TIMEX:tonight) ಎಲ್ಲರಿಗೂ post ಮಾಡ್ತೀನಿ ಅಂತ {RESP} ಹೇಳಿದ್ದಾರೆ."
+          hi: "{RESP.erg} कहा है कि पैसे [नहीं](NEG) दिए तो [आज रात](TIMEX:tonight) सबके सामने डाल {g:RESP|m:देंगे|f:देंगी|n:देंगे}।"
+          hi-en_latn: "{RESP.erg} kaha hai ki paise [nahi](NEG) diye to [aaj raat](TIMEX:tonight) sabke saamne daal {g:RESP|m:denge|f:dengi|n:denge}."
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "for the BNS/IPC limb: incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "ITA:66E", title_hint: Punishment for violation of privacy}
+      - {provision_id: "ITA:67", title_hint: Punishment for publishing or transmitting obscene material in electronic form}
+      - {provision_id: "ITA:67A", title_hint: Punishment for publishing or transmitting material containing sexually explicit act in electronic form}
+      - {provision_id: "BNS:79", when: {law_regime: [new]}, title_hint: "Word, gesture or act intended to insult the modesty of a woman"}
+      - {provision_id: "IPC:509", when: {law_regime: [old]}, title_hint: "Word, gesture or act intended to insult the modesty of a woman"}
+    limitation_notes: Report immediately on the cybercrime portal (women/child category) and ask the platform to take content down. TO_VERIFY.
+    confusable_with: [cyb.cyberstalking, cyb.impersonation]
+    co_occurs_with: [cyb.cyberstalking, crim.criminal_intimidation]

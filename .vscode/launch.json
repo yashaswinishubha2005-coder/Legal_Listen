@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "LegalListen website (http://localhost:8000)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["legallisten.app:app", "--host", "127.0.0.1", "--port", "8000"],
+      "envFile": "${workspaceFolder}/.env",
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUTF8": "1"},
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true
+    },
+    {
+      "name": "LexVaani-IN: rebuild whole dataset",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "lexvaani.pipeline",
+      "args": ["all"],
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUTF8": "1"},
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "LexVaani-IN: dataset baselines",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "eval.baselines",
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUTF8": "1"},
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "LegalListen: evaluate on test split",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "eval.legallisten_eval",
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUTF8": "1"},
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "LegalListen: retrain offline NLU",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "legallisten.nlu.train",
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUTF8": "1"},
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

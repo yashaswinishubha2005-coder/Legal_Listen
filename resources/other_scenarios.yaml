@@ -1,0 +1,223 @@
+# Out-of-scope (legal, but not one of the 25 library issues -> route to a lawyer)
+# and non-legal scenarios. Same markup as the issue library. Native review needed.
+
+out_of_scope:
+  - id: oos.tenant_eviction
+    gloss: Landlord demanding the tenant vacate without notice (tenancy law; not in library).
+    cast: [{slot: RESP, nouns: [neighbour], named: false}]
+    has_date: true
+    event_type: eviction_demand
+    propositions:
+      - The speaker is a tenant.
+      - The house owner told the speaker to vacate within a week without notice.
+      - The speaker has a rental agreement.
+    sentences:
+      en: ["I live in a rented house.", "{DATE} [the house owner](@RESP) [told](TRIG) me to vacate within a week, [without](NEG) any written notice.", "I have a rental agreement."]
+      kn: ["ನಾನು ಬಾಡಿಗೆ ಮನೆಯಲ್ಲಿ ಇದ್ದೀನಿ.", "{DATE} [ಮನೆ ಓನರ್](@RESP) ಒಂದು ವಾರದಲ್ಲಿ ಖಾಲಿ ಮಾಡಿ ಅಂತ [ಹೇಳಿದರು](TRIG), ಯಾವ ಲಿಖಿತ ನೋಟೀಸ್ ಕೂಡ [ಕೊಟ್ಟಿಲ್ಲ](NEG).", "ನನ್ನ ಹತ್ತಿರ ರೆಂಟಲ್ ಅಗ್ರಿಮೆಂಟ್ ಇದೆ."]
+      kn-en_latn: ["Naanu baadige maneyalli iddini.", "{DATE} [mane owner](@RESP) ondu vaaradalli khaali maadi antha [helidru](TRIG), yaava written notice kooda [kottilla](NEG).", "Nanna hatra rental agreement ide."]
+      kn-en_mixed: ["ನಾನು rented house ಅಲ್ಲಿ ಇದ್ದೀನಿ.", "{DATE} [house owner](@RESP) one week ಅಲ್ಲಿ vacate ಮಾಡಿ ಅಂತ [ಹೇಳಿದ್ರು](TRIG), ಯಾವ written notice ಕೂಡ [ಕೊಟ್ಟಿಲ್ಲ](NEG).", "ನನ್ನ ಹತ್ತಿರ rental agreement ಇದೆ."]
+      hi: ["मैं किराए के मकान में {g:SPK|m:रहता|f:रहती} हूँ।", "{DATE} [मकान मालिक](@RESP) ने एक हफ़्ते में घर खाली करने को [कहा](TRIG), कोई लिखित नोटिस [नहीं](NEG) दिया।", "मेरे पास किराए का एग्रीमेंट है।"]
+      hi-en_latn: ["Main rent ke ghar mein {g:SPK|m:rehta|f:rehti} hoon.", "{DATE} [makaan maalik](@RESP) ne ek hafte mein ghar khaali karne ko [kaha](TRIG), koi written notice [nahi](NEG) diya.", "Mere paas rent agreement hai."]
+  - id: oos.unpaid_wages
+    gloss: Employer has not paid salary (labour law; not in library).
+    cast: [{slot: ORG, kind: organization, nouns: [company]}]
+    value_slots: {AMOUNT: [small, medium]}
+    has_date: false
+    propositions:
+      - The speaker works in a garment factory.
+      - The employer has not paid the salary for three months.
+      - The pending salary is the stated amount.
+    sentences:
+      en: ["I work in [a garment factory](@ORG).", "[They](@ORG:pron) have [not](NEG) paid my salary for three months.", "In total {AMOUNT} is pending."]
+      kn: ["ನಾನು [ಗಾರ್ಮೆಂಟ್ ಫ್ಯಾಕ್ಟರಿಯಲ್ಲಿ](@ORG) ಕೆಲಸ ಮಾಡ್ತೀನಿ.", "ಮೂರು ತಿಂಗಳಿಂದ ನನ್ನ ಸಂಬಳ [ಕೊಟ್ಟಿಲ್ಲ](NEG).", "ಒಟ್ಟು {AMOUNT} ಬಾಕಿ ಇದೆ."]
+      kn-en_latn: ["Naanu [garment factory](@ORG) alli kelsa maadtini.", "Mooru tingalinda nanna sambala [kottilla](NEG).", "Ottu {AMOUNT} baaki ide."]
+      kn-en_mixed: ["ನಾನು [garment factory](@ORG) ಅಲ್ಲಿ work ಮಾಡ್ತೀನಿ.", "Three months ಇಂದ ನನ್ನ salary [ಕೊಟ್ಟಿಲ್ಲ](NEG).", "Total {AMOUNT} pending ಇದೆ."]
+      hi: ["मैं [एक गारमेंट फ़ैक्टरी](@ORG) में काम {g:SPK|m:करता|f:करती} हूँ।", "तीन महीने से मेरी तनख्वाह [नहीं](NEG) दी गई।", "कुल {AMOUNT} बाकी हैं।"]
+      hi-en_latn: ["Main [ek garment factory](@ORG) mein kaam {g:SPK|m:karta|f:karti} hoon.", "Teen mahine se meri salary [nahi](NEG) di gayi.", "Total {AMOUNT} baaki hain."]
+  - id: oos.cheque_bounce
+    gloss: A cheque given to the user bounced (negotiable instruments law; not in library).
+    cast: [{slot: RESP, nouns: [friend, acquaintance]}, {slot: ORG, kind: organization, nouns: [bank]}]
+    value_slots: {AMOUNT: [medium, large]}
+    has_date: true
+    event_type: cheque_dishonour
+    propositions:
+      - The respondent gave the speaker a cheque for the stated amount.
+      - The cheque bounced.
+    sentences:
+      en: ["{RESP} gave me a cheque for {AMOUNT}.", "{DATE} [the bank](@ORG) [returned](TRIG) the cheque saying insufficient funds."]
+      kn: ["{RESP} ನನಗೆ {AMOUNT} ಚೆಕ್ ಕೊಟ್ಟಿದ್ದರು.", "{DATE} ಅಕೌಂಟ್‌ನಲ್ಲಿ ದುಡ್ಡು [ಇಲ್ಲ](NEG) ಅಂತ [ಬ್ಯಾಂಕ್](@ORG) ಚೆಕ್ [ವಾಪಸ್ ಕಳಿಸಿತು](TRIG)."]
+      kn-en_latn: ["{RESP} nange {AMOUNT} cheque kottiddru.", "{DATE} account alli duddu [illa](NEG) antha [bank](@ORG) cheque [vaapas kalisitu](TRIG)."]
+      kn-en_mixed: ["{RESP} ನನಗೆ {AMOUNT} cheque ಕೊಟ್ಟಿದ್ರು.", "{DATE} insufficient funds ಅಂತ [bank](@ORG) cheque [return ಮಾಡಿತು](TRIG)."]
+      hi: ["{RESP.erg} मुझे {AMOUNT} का चेक दिया था।", "{DATE} खाते में पैसे कम होने की वजह से [बैंक](@ORG) ने चेक [लौटा दिया](TRIG)।"]
+      hi-en_latn: ["{RESP.erg} mujhe {AMOUNT} ka cheque diya tha.", "{DATE} account mein paise kam hone ki wajah se [bank](@ORG) ne cheque [lauta diya](TRIG)."]
+  - id: oos.motor_accident
+    gloss: Road accident and insurance claim (motor vehicles law; not in library).
+    cast: []
+    has_date: true
+    event_type: road_accident
+    propositions:
+      - A car hit the speaker's two-wheeler.
+      - The speaker wants to claim insurance.
+    sentences:
+      en: ["{DATE} a car [hit](TRIG) my two-wheeler at a signal.", "My leg was fractured and I want to claim insurance."]
+      kn: ["{DATE} ಸಿಗ್ನಲ್ ಹತ್ತಿರ ಒಂದು ಕಾರು ನನ್ನ ಗಾಡಿಗೆ [ಗುದ್ದಿತು](TRIG).", "ನನ್ನ ಕಾಲು ಮುರಿದಿದೆ, ಇನ್ಶೂರೆನ್ಸ್ ಕ್ಲೈಮ್ ಮಾಡಬೇಕು."]
+      kn-en_latn: ["{DATE} signal hatra ondu car nanna gaadige [guddhitu](TRIG).", "Nanna kaalu muridide, insurance claim maadbeku."]
+      kn-en_mixed: ["{DATE} signal ಹತ್ತಿರ ಒಂದು car ನನ್ನ bike ಗೆ [hit ಮಾಡಿತು](TRIG).", "ನನ್ನ leg fracture ಆಗಿದೆ, insurance claim ಮಾಡಬೇಕು."]
+      hi: ["{DATE} सिग्नल पर एक कार ने मेरी स्कूटी को [टक्कर मारी](TRIG)।", "मेरा पैर टूट गया है और मुझे इंश्योरेंस क्लेम करना है।"]
+      hi-en_latn: ["{DATE} signal par ek car ne meri scooty ko [takkar maari](TRIG).", "Mera pair toot gaya hai aur mujhe insurance claim karna hai."]
+  - id: oos.rti_no_reply
+    gloss: Government office not replying to an RTI application (RTI law; not in library).
+    cast: [{slot: ORG, kind: organization, nouns: [govt_office]}]
+    has_date: true
+    event_type: rti_filed
+    propositions:
+      - The speaker filed an RTI application with the taluk office.
+      - No reply has been received.
+    sentences:
+      en: ["{DATE} I [filed](TRIG) an RTI application at [the taluk office](@ORG).", "There has been [no](NEG) reply at all."]
+      kn: ["{DATE} [ತಾಲೂಕು ಆಫೀಸ್‌ಗೆ](@ORG) ಆರ್‌ಟಿಐ ಅರ್ಜಿ [ಹಾಕಿದೆ](TRIG).", "ಇಲ್ಲಿವರೆಗೂ ಯಾವ ಉತ್ತರನೂ [ಬಂದಿಲ್ಲ](NEG)."]
+      kn-en_latn: ["{DATE} [taluk office](@ORG) ge RTI arji [haakide](TRIG).", "Illivaregu yaava uttaranu [bandilla](NEG)."]
+      kn-en_mixed: ["{DATE} [taluk office](@ORG) ಗೆ RTI application [ಹಾಕಿದೆ](TRIG).", "ಇಲ್ಲಿವರೆಗೂ ಯಾವ reply ಉ [ಬಂದಿಲ್ಲ](NEG)."]
+      hi: ["{DATE} मैंने [तहसील ऑफ़िस](@ORG) में आरटीआई आवेदन [दिया](TRIG)।", "अब तक कोई जवाब [नहीं](NEG) आया।"]
+      hi-en_latn: ["{DATE} maine [tehsil office](@ORG) mein RTI application [di](TRIG).", "Ab tak koi reply [nahi](NEG) aaya."]
+  - id: oos.wrongful_termination
+    gloss: Dismissed from a private job without notice (employment law; not in library).
+    cast: [{slot: ORG, kind: organization, nouns: [company]}]
+    has_date: true
+    event_type: termination
+    propositions:
+      - The company dismissed the speaker without notice.
+      - The speaker worked there for four years.
+    sentences:
+      en: ["I worked in [a private company](@ORG) for four years.", "{DATE} [they](@ORG:pron) [removed](TRIG) me from the job [without](NEG) any notice."]
+      kn: ["ನಾನು ನಾಲ್ಕು ವರ್ಷ [ಒಂದು ಪ್ರೈವೇಟ್ ಕಂಪನಿಯಲ್ಲಿ](@ORG) ಕೆಲಸ ಮಾಡಿದೆ.", "{DATE} ಯಾವ ನೋಟೀಸ್ [ಕೊಡದೆ](NEG) ಕೆಲಸದಿಂದ [ತೆಗೆದುಹಾಕಿದರು](TRIG)."]
+      kn-en_latn: ["Naanu naalku varsha [ondu private companyalli](@ORG) kelsa maadide.", "{DATE} yaava notice [kodade](NEG) kelsadinda [tegeduhaakidru](TRIG)."]
+      kn-en_mixed: ["ನಾನು four years [ಒಂದು private company](@ORG) ಅಲ್ಲಿ work ಮಾಡಿದೆ.", "{DATE} ಯಾವ notice [ಕೊಡದೆ](NEG) job ಇಂದ [remove ಮಾಡಿದ್ರು](TRIG)."]
+      hi: ["मैंने चार साल [एक प्राइवेट कंपनी](@ORG) में काम किया।", "{DATE} [बिना](NEG) किसी नोटिस के मुझे नौकरी से [निकाल दिया](TRIG)।"]
+      hi-en_latn: ["Maine chaar saal [ek private company](@ORG) mein kaam kiya.", "{DATE} [bina](NEG) kisi notice ke mujhe naukri se [nikaal diya](TRIG)."]
+  - id: oos.pension_delay
+    gloss: Government pension not credited (service/pension rules; not in library).
+    cast: [{slot: ORG, kind: organization, nouns: [govt_office]}]
+    has_date: false
+    propositions:
+      - The speaker is a retired government employee.
+      - The pension has not been credited for some months.
+    sentences:
+      en: ["I am a retired government employee.", "My pension has [not](NEG) come for the last few months.", "[The pension office](@ORG) keeps telling me to come back later."]
+      kn: ["ನಾನು ರಿಟೈರ್ಡ್ ಸರ್ಕಾರಿ ನೌಕರ.", "ಕೆಲವು ತಿಂಗಳಿಂದ ನನ್ನ ಪಿಂಚಣಿ [ಬಂದಿಲ್ಲ](NEG).", "[ಪಿಂಚಣಿ ಆಫೀಸ್‌ನಲ್ಲಿ](@ORG) ಮತ್ತೆ ಬನ್ನಿ ಅಂತಾರೆ ಅಷ್ಟೇ."]
+      kn-en_latn: ["Naanu retired sarkaari naukara.", "Kelavu tingalinda nanna pinchani [bandilla](NEG).", "[Pension office](@ORG) alli matte banni antaare ashte."]
+      kn-en_mixed: ["ನಾನು retired government employee.", "ಕೆಲವು months ಇಂದ ನನ್ನ pension [ಬಂದಿಲ್ಲ](NEG).", "[Pension office](@ORG) ಅಲ್ಲಿ ಮತ್ತೆ ಬನ್ನಿ ಅಂತಾರೆ ಅಷ್ಟೇ."]
+      hi: ["मैं एक रिटायर्ड सरकारी कर्मचारी हूँ।", "पिछले कुछ महीनों से मेरी पेंशन [नहीं](NEG) आई।", "[पेंशन दफ़्तर](@ORG) वाले बस बाद में आने को कहते हैं।"]
+      hi-en_latn: ["Main ek retired sarkari employee hoon.", "Pichhle kuch mahino se meri pension [nahi](NEG) aayi.", "[Pension office](@ORG) wale bas baad mein aane ko kehte hain."]
+  - id: oos.adoption_query
+    gloss: Wants to adopt a child (adoption law; not in library).
+    cast: []
+    has_date: false
+    propositions:
+      - The speaker's family wants to adopt a child.
+      - They want to know the process.
+    sentences:
+      en: ["We want to adopt a child.", "We do [not](NEG) know the proper process."]
+      kn: ["ನಾವು ಒಂದು ಮಗುವನ್ನು ದತ್ತು ತಗೋಬೇಕು ಅಂತಿದ್ದೀವಿ.", "ಸರಿಯಾದ ಪ್ರಕ್ರಿಯೆ ನಮಗೆ [ಗೊತ್ತಿಲ್ಲ](NEG)."]
+      kn-en_latn: ["Naavu ondu maguvanna dattu tagobeku antiddivi.", "Sariyaada process namage [gottilla](NEG)."]
+      kn-en_mixed: ["ನಾವು ಒಂದು child ನ adopt ಮಾಡಬೇಕು ಅಂತಿದ್ದೀವಿ.", "Correct process ನಮಗೆ [ಗೊತ್ತಿಲ್ಲ](NEG)."]
+      hi: ["हम एक बच्चा गोद लेना चाहते हैं।", "हमें सही प्रक्रिया [नहीं](NEG) पता।"]
+      hi-en_latn: ["Hum ek bachcha god lena chahte hain.", "Humein sahi process [nahi](NEG) pata."]
+
+non_legal:
+  - id: nl.exam_stress
+    gloss: Exam stress.
+    cast: []
+    has_date: false
+    propositions: [The speaker is stressed about exams., The speaker cannot sleep well.]
+    sentences:
+      en: ["My exams are coming and I am very stressed.", "I am [not](NEG) able to sleep properly."]
+      kn: ["ನನ್ನ ಎಕ್ಸಾಮ್ ಹತ್ತಿರ ಬರ್ತಿದೆ, ತುಂಬಾ ಟೆನ್ಷನ್ ಆಗಿದೆ.", "ಸರಿಯಾಗಿ ನಿದ್ದೆ [ಬರ್ತಿಲ್ಲ](NEG)."]
+      kn-en_latn: ["Nanna exam hattira bartide, tumba tension aagide.", "Sariyaagi nidde [bartilla](NEG)."]
+      kn-en_mixed: ["ನನ್ನ exams ಹತ್ತಿರ ಬರ್ತಿದೆ, ತುಂಬಾ stress ಆಗಿದೆ.", "ಸರಿಯಾಗಿ sleep [ಬರ್ತಿಲ್ಲ](NEG)."]
+      hi: ["मेरे एग्ज़ाम आने वाले हैं और बहुत तनाव है।", "ठीक से नींद [नहीं](NEG) आ रही।"]
+      hi-en_latn: ["Mere exams aane wale hain aur bahut stress hai.", "Theek se neend [nahi](NEG) aa rahi."]
+  - id: nl.friend_quarrel
+    gloss: Minor quarrel with a friend, no legal angle.
+    cast: [{slot: RESP, nouns: [friend]}]
+    has_date: false
+    propositions: [The speaker had a small argument with a friend., The friend is not talking to the speaker.]
+    sentences:
+      en: ["{RESP} and I had a small argument about a cricket match.", "Now {RESP.pron} is [not](NEG) talking to me and I feel bad."]
+      kn: ["{RESP} ಮತ್ತು ನನಗೆ ಕ್ರಿಕೆಟ್ ಮ್ಯಾಚ್ ಬಗ್ಗೆ ಸಣ್ಣ ಜಗಳ ಆಯ್ತು.", "{RESP.pron} ನನ್ನ ಜೊತೆ [ಮಾತಾಡ್ತಿಲ್ಲ](NEG), ಬೇಜಾರಾಗಿದೆ."]
+      kn-en_latn: ["{RESP} mattu nange cricket match bagge sanna jagala aaytu.", "{RESP.pron} nanna jote [maataadtilla](NEG), bejaaraagide."]
+      kn-en_mixed: ["{RESP} ಮತ್ತು ನನಗೆ cricket match ಬಗ್ಗೆ small fight ಆಯ್ತು.", "{RESP.pron} ನನ್ನ ಜೊತೆ [talk ಮಾಡ್ತಿಲ್ಲ](NEG), sad ಆಗಿದೆ."]
+      hi: ["{RESP} और मेरी क्रिकेट मैच को लेकर छोटी सी बहस हो गई।", "{RESP.pron} मुझसे बात [नहीं](NEG) कर {g:RESP|m:रहे|f:रही|n:रहे} और मुझे बुरा लग रहा है।"]
+      hi-en_latn: ["{RESP} aur meri cricket match ko lekar chhoti si behes ho gayi.", "{RESP.pron} mujhse baat [nahi](NEG) kar {g:RESP|m:rahe|f:rahi|n:rahe} aur mujhe bura lag raha hai."]
+  - id: nl.job_interview
+    gloss: Nervous about a job interview.
+    cast: []
+    has_date: false
+    propositions: [The speaker has a job interview soon., The speaker wants tips.]
+    sentences:
+      en: ["I have a job interview at a bank soon.", "Can you give me some tips to prepare?"]
+      kn: ["ಸದ್ಯದಲ್ಲೇ ಒಂದು ಬ್ಯಾಂಕ್ ಕೆಲಸದ ಇಂಟರ್ವ್ಯೂ ಇದೆ.", "ತಯಾರಿ ಮಾಡೋಕೆ ಏನಾದ್ರೂ ಟಿಪ್ಸ್ ಕೊಡ್ತೀರಾ?"]
+      kn-en_latn: ["Sadyadalle ondu bank kelsada interview ide.", "Tayaari maadoke enaadru tips kodtira?"]
+      kn-en_mixed: ["Soon ಒಂದು bank job interview ಇದೆ.", "Prepare ಮಾಡೋಕೆ ಏನಾದ್ರೂ tips ಕೊಡ್ತೀರಾ?"]
+      hi: ["जल्द ही एक बैंक की नौकरी का इंटरव्यू है।", "तैयारी के लिए कुछ टिप्स देंगे?"]
+      hi-en_latn: ["Jald hi ek bank ki job ka interview hai.", "Taiyaari ke liye kuch tips denge?"]
+  - id: nl.diet
+    gloss: Wants diet advice.
+    cast: []
+    has_date: false
+    propositions: [The speaker wants to lose weight., The speaker wants a diet plan.]
+    sentences:
+      en: ["I want to lose some weight.", "What kind of food should I eat?"]
+      kn: ["ನಾನು ಸ್ವಲ್ಪ ತೂಕ ಇಳಿಸಬೇಕು.", "ಯಾವ ತರಹದ ಊಟ ಮಾಡಬೇಕು?"]
+      kn-en_latn: ["Naanu swalpa tooka ilisabeku.", "Yaava tharahada oota maadbeku?"]
+      kn-en_mixed: ["ನಾನು ಸ್ವಲ್ಪ weight lose ಮಾಡಬೇಕು.", "ಯಾವ type food ತಿನ್ನಬೇಕು?"]
+      hi: ["मुझे थोड़ा वज़न कम करना है।", "मुझे किस तरह का खाना खाना चाहिए?"]
+      hi-en_latn: ["Mujhe thoda weight kam karna hai.", "Mujhe kis tarah ka khaana khaana chahiye?"]
+  - id: nl.phone_slow
+    gloss: Phone is slow.
+    cast: []
+    has_date: false
+    propositions: [The speaker's phone has become very slow.]
+    sentences:
+      en: ["My phone has become very slow.", "Apps are [not](NEG) opening quickly."]
+      kn: ["ನನ್ನ ಫೋನ್ ತುಂಬಾ ಸ್ಲೋ ಆಗಿದೆ.", "ಆಪ್‌ಗಳು ಬೇಗ [ಓಪನ್ ಆಗ್ತಿಲ್ಲ](NEG)."]
+      kn-en_latn: ["Nanna phone tumba slow aagide.", "Apps bega [open aagtilla](NEG)."]
+      kn-en_mixed: ["ನನ್ನ phone ತುಂಬಾ slow ಆಗಿದೆ.", "Apps fast ಆಗಿ [open ಆಗ್ತಿಲ್ಲ](NEG)."]
+      hi: ["मेरा फ़ोन बहुत स्लो हो गया है।", "ऐप जल्दी [नहीं](NEG) खुलते।"]
+      hi-en_latn: ["Mera phone bahut slow ho gaya hai.", "Apps jaldi [nahi](NEG) khulte."]
+  - id: nl.college_choice
+    gloss: Choosing a college course.
+    cast: []
+    has_date: false
+    propositions: [The speaker is choosing between two courses.]
+    sentences:
+      en: ["I finished PUC and I am confused between engineering and B.Com.", "Which one has better scope?"]
+      kn: ["ನಾನು ಪಿಯುಸಿ ಮುಗಿಸಿದೆ, ಎಂಜಿನಿಯರಿಂಗ್ ಮತ್ತು ಬಿ.ಕಾಂ ಮಧ್ಯೆ ಗೊಂದಲ ಆಗಿದೆ.", "ಯಾವುದಕ್ಕೆ ಒಳ್ಳೆ ಸ್ಕೋಪ್ ಇದೆ?"]
+      kn-en_latn: ["Naanu PUC mugiside, engineering mattu B.Com madhye gondala aagide.", "Yaavudakke olle scope ide?"]
+      kn-en_mixed: ["ನಾನು PUC finish ಮಾಡಿದೆ, engineering and B.Com ಮಧ್ಯೆ confusion ಆಗಿದೆ.", "ಯಾವುದಕ್ಕೆ better scope ಇದೆ?"]
+      hi: ["मैंने बारहवीं पूरी की है और इंजीनियरिंग और बी.कॉम के बीच उलझन में हूँ।", "किसमें ज़्यादा स्कोप है?"]
+      hi-en_latn: ["Maine 12th poori ki hai aur engineering aur B.Com ke beech confused hoon.", "Kismein zyada scope hai?"]
+  - id: nl.wedding_planning
+    gloss: Planning a sibling's wedding.
+    cast: [{slot: RESP, nouns: [brother]}]
+    has_date: false
+    propositions: [The speaker is planning the brother's wedding on a budget.]
+    sentences:
+      en: ["I am planning the wedding of {RESP}.", "How can we manage everything within a small budget?"]
+      kn: ["{RESP.gen} ಮದುವೆ ಪ್ಲಾನ್ ಮಾಡ್ತಿದ್ದೀನಿ.", "ಕಡಿಮೆ ಬಜೆಟ್‌ನಲ್ಲಿ ಎಲ್ಲಾ ಹೇಗೆ ಮ್ಯಾನೇಜ್ ಮಾಡೋದು?"]
+      kn-en_latn: ["{RESP.gen} maduve plan maadtiddini.", "Kadime budget alli ella hege manage maadodu?"]
+      kn-en_mixed: ["{RESP.gen} wedding plan ಮಾಡ್ತಿದ್ದೀನಿ.", "Low budget ಅಲ್ಲಿ ಎಲ್ಲಾ ಹೇಗೆ manage ಮಾಡೋದು?"]
+      hi: ["मैं {RESP.gen_f} शादी की तैयारी कर {g:SPK|m:रहा|f:रही} हूँ।", "कम बजट में सब कैसे संभालें?"]
+      hi-en_latn: ["Main {RESP.gen_f} shaadi ki planning kar {g:SPK|m:raha|f:rahi} hoon.", "Kam budget mein sab kaise manage karein?"]
+  - id: nl.lonely_after_move
+    gloss: Feeling lonely after moving to a new city.
+    cast: []
+    has_date: false
+    propositions: [The speaker moved to a new city for work and feels lonely.]
+    sentences:
+      en: ["I moved to a new city for work.", "I do [not](NEG) know anyone here and I feel lonely."]
+      kn: ["ಕೆಲಸಕ್ಕಾಗಿ ಹೊಸ ಊರಿಗೆ ಬಂದೆ.", "ಇಲ್ಲಿ ನನಗೆ ಯಾರೂ [ಗೊತ್ತಿಲ್ಲ](NEG), ಒಂಟಿ ಅನ್ನಿಸ್ತಿದೆ."]
+      kn-en_latn: ["Kelasakkaagi hosa oorige bande.", "Illi nange yaaru [gottilla](NEG), onti annistide."]
+      kn-en_mixed: ["Work ಗೋಸ್ಕರ new city ಗೆ ಬಂದೆ.", "ಇಲ್ಲಿ ನನಗೆ ಯಾರೂ [ಗೊತ್ತಿಲ್ಲ](NEG), lonely ಅನ್ನಿಸ್ತಿದೆ."]
+      hi: ["मैं काम के लिए नए शहर {g:SPK|m:आया|f:आई} हूँ।", "यहाँ मैं किसी को [नहीं](NEG) {g:SPK|m:जानता|f:जानती} और अकेलापन लगता है।"]
+      hi-en_latn: ["Main kaam ke liye naye shehar {g:SPK|m:aaya|f:aayi} hoon.", "Yahan main kisi ko [nahi](NEG) {g:SPK|m:jaanta|f:jaanti} aur akelapan lagta hai."]

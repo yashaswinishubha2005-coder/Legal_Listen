@@ -1,0 +1,9 @@
+<View>
+  <Text name="context" value="$previous_turns"/>
+  <Text name="turn" value="$user_turn"/>
+    <Choices name="label" toName="turn">
+      <Choice value="new_fact"/>
+      <Choice value="correction"/>
+      <Choice value="reexplain_request"/>
+    </Choices>
+</View>

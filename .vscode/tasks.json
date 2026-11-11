@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "Setup (Windows)", "type": "shell", "command": ".\\setup.bat", "problemMatcher": []},
+    {"label": "Setup (Mac/Linux)", "type": "shell", "command": "bash setup.sh", "problemMatcher": []},
+    {"label": "Run website (Windows)", "type": "shell", "command": ".\\run.bat", "problemMatcher": [], "isBackground": true},
+    {"label": "Run website (Mac/Linux)", "type": "shell", "command": "bash run.sh", "problemMatcher": [], "isBackground": true},
+    {"label": "Run all tests (Windows)", "type": "shell", "command": ".\\.venv\\Scripts\\python -m pytest -q", "problemMatcher": []},
+    {"label": "Run all tests (Mac/Linux)", "type": "shell", "command": ".venv/bin/python -m pytest -q", "problemMatcher": []}
+  ]
+}

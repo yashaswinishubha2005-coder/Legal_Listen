@@ -1,0 +1,331 @@
+# LegalListen practical guidance (v0.1). General preliminary information, NOT legal advice.
+# Every entry is TO_VERIFY by a lawyer and a native speaker (kn / hi) before real-world use.
+# Helpline numbers / portals are public national services; re-check before deployment.
+
+authorities:
+  emergency_112: {en: "Emergency Response (police / ambulance): call 112", kn: "ತುರ್ತು ಸಹಾಯ (ಪೊಲೀಸ್ / ಆಂಬುಲೆನ್ಸ್): 112 ಗೆ ಕರೆ ಮಾಡಿ", hi: "आपातकालीन सहायता (पुलिस / एम्बुलेंस): 112 पर कॉल करें"}
+  women_181: {en: "Women Helpline: 181", kn: "ಮಹಿಳಾ ಸಹಾಯವಾಣಿ: 181", hi: "महिला हेल्पलाइन: 181"}
+  cyber_1930: {en: "Cyber fraud helpline 1930 and https://cybercrime.gov.in", kn: "ಸೈಬರ್ ವಂಚನೆ ಸಹಾಯವಾಣಿ 1930 ಮತ್ತು https://cybercrime.gov.in", hi: "साइबर धोखाधड़ी हेल्पलाइन 1930 और https://cybercrime.gov.in"}
+  child_1098: {en: "Child Helpline: 1098", kn: "ಮಕ್ಕಳ ಸಹಾಯವಾಣಿ: 1098", hi: "चाइल्ड हेल्पलाइन: 1098"}
+  telemanas_14416: {en: "Tele-MANAS mental health support (free, 24x7): 14416", kn: "ಟೆಲಿ-ಮನಸ್ ಮಾನಸಿಕ ಆರೋಗ್ಯ ಸಹಾಯ (ಉಚಿತ, 24x7): 14416", hi: "टेली-मानस मानसिक स्वास्थ्य सहायता (निःशुल्क, 24x7): 14416"}
+  legal_aid_15100: {en: "Free legal aid: NALSA helpline 15100 / your District Legal Services Authority", kn: "ಉಚಿತ ಕಾನೂನು ನೆರವು: ನಾಲ್ಸಾ ಸಹಾಯವಾಣಿ 15100 / ಜಿಲ್ಲಾ ಕಾನೂನು ಸೇವಾ ಪ್ರಾಧಿಕಾರ", hi: "निःशुल्क कानूनी सहायता: नालसा हेल्पलाइन 15100 / जिला विधिक सेवा प्राधिकरण"}
+  police_station: {en: "Local police station (you may ask for a copy of your complaint / FIR)", kn: "ಸ್ಥಳೀಯ ಪೊಲೀಸ್ ಠಾಣೆ (ನಿಮ್ಮ ದೂರು / ಎಫ್‌ಐಆರ್ ಪ್ರತಿ ಕೇಳಬಹುದು)", hi: "स्थानीय पुलिस थाना (अपनी शिकायत / एफ़आईआर की कॉपी माँग सकते हैं)"}
+  sp_office: {en: "Superintendent of Police / Commissioner's office (if the police station does not act)", kn: "ಪೊಲೀಸ್ ವರಿಷ್ಠಾಧಿಕಾರಿ / ಆಯುಕ್ತರ ಕಚೇರಿ (ಠಾಣೆಯಲ್ಲಿ ಕ್ರಮ ಆಗದಿದ್ದರೆ)", hi: "पुलिस अधीक्षक / कमिश्नर कार्यालय (अगर थाना कार्रवाई न करे)"}
+  magistrate: {en: "Jurisdictional Magistrate's court", kn: "ವ್ಯಾಪ್ತಿಯ ಮ್ಯಾಜಿಸ್ಟ್ರೇಟ್ ನ್ಯಾಯಾಲಯ", hi: "क्षेत्र का मजिस्ट्रेट न्यायालय"}
+  protection_officer: {en: "Protection Officer (Women and Child Development department) / Magistrate", kn: "ರಕ್ಷಣಾ ಅಧಿಕಾರಿ (ಮಹಿಳಾ ಮತ್ತು ಮಕ್ಕಳ ಅಭಿವೃದ್ಧಿ ಇಲಾಖೆ) / ಮ್ಯಾಜಿಸ್ಟ್ರೇಟ್", hi: "संरक्षण अधिकारी (महिला एवं बाल विकास विभाग) / मजिस्ट्रेट"}
+  family_court: {en: "Family Court (or the District Court where there is no Family Court)", kn: "ಕೌಟುಂಬಿಕ ನ್ಯಾಯಾಲಯ (ಇಲ್ಲದಿದ್ದರೆ ಜಿಲ್ಲಾ ನ್ಯಾಯಾಲಯ)", hi: "पारिवारिक न्यायालय (न हो तो जिला न्यायालय)"}
+  civil_court: {en: "Civil court with jurisdiction over the property", kn: "ಆಸ್ತಿ ಇರುವ ವ್ಯಾಪ್ತಿಯ ಸಿವಿಲ್ ನ್ಯಾಯಾಲಯ", hi: "संपत्ति वाले क्षेत्र का दीवानी न्यायालय"}
+  revenue_office: {en: "Tahsildar / revenue office and the survey department (land records, boundary survey)", kn: "ತಹಶೀಲ್ದಾರ್ / ಕಂದಾಯ ಕಚೇರಿ ಮತ್ತು ಭೂಮಾಪನ ಇಲಾಖೆ (ಭೂ ದಾಖಲೆ, ಗಡಿ ಅಳತೆ)", hi: "तहसीलदार / राजस्व कार्यालय और भूमि सर्वेक्षण विभाग (भूमि रिकॉर्ड, सीमा नाप)"}
+  sub_registrar: {en: "Sub-Registrar's office (to check registered documents / encumbrance)", kn: "ಉಪ ನೋಂದಣಾಧಿಕಾರಿ ಕಚೇರಿ (ನೋಂದಾಯಿತ ದಾಖಲೆ / ಋಣಭಾರ ಪರಿಶೀಲನೆ)", hi: "उप-पंजीयक कार्यालय (पंजीकृत दस्तावेज़ / भार प्रमाणपत्र जाँचने के लिए)"}
+  consumer_commission: {en: "District Consumer Disputes Redressal Commission (online filing: https://edaakhil.nic.in)", kn: "ಜಿಲ್ಲಾ ಗ್ರಾಹಕ ವ್ಯಾಜ್ಯ ಪರಿಹಾರ ಆಯೋಗ (ಆನ್‌ಲೈನ್: https://edaakhil.nic.in)", hi: "जिला उपभोक्ता विवाद प्रतितोष आयोग (ऑनलाइन: https://edaakhil.nic.in)"}
+  consumer_helpline: {en: "National Consumer Helpline: 1915", kn: "ರಾಷ್ಟ್ರೀಯ ಗ್ರಾಹಕ ಸಹಾಯವಾಣಿ: 1915", hi: "राष्ट्रीय उपभोक्ता हेल्पलाइन: 1915"}
+  bank_grievance: {en: "Your bank's branch / grievance officer (complain in writing, keep the reference number)", kn: "ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಶಾಖೆ / ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿ (ಲಿಖಿತ ದೂರು, ರೆಫರೆನ್ಸ್ ನಂಬರ್ ಇಟ್ಟುಕೊಳ್ಳಿ)", hi: "आपकी बैंक शाखा / शिकायत अधिकारी (लिखित शिकायत, रेफ़रेंस नंबर रखें)"}
+  rbi_ombudsman: {en: "RBI Ombudsman, if the bank does not resolve it: https://cms.rbi.org.in", kn: "ಬ್ಯಾಂಕ್ ಪರಿಹರಿಸದಿದ್ದರೆ ಆರ್‌ಬಿಐ ಓಂಬುಡ್ಸ್‌ಮನ್: https://cms.rbi.org.in", hi: "बैंक हल न करे तो आरबीआई लोकपाल: https://cms.rbi.org.in"}
+  platform_grievance: {en: "The platform's grievance officer / in-app report option", kn: "ಆ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್‌ನ ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿ / ಆಪ್‌ನ ರಿಪೋರ್ಟ್ ಆಯ್ಕೆ", hi: "प्लेटफ़ॉर्म का शिकायत अधिकारी / ऐप में रिपोर्ट विकल्प"}
+  lawyer: {en: "A qualified lawyer (free legal aid is available if you are eligible)", kn: "ಅರ್ಹ ವಕೀಲರು (ಅರ್ಹರಾಗಿದ್ದರೆ ಉಚಿತ ಕಾನೂನು ನೆರವು ಲಭ್ಯ)", hi: "योग्य वकील (पात्र होने पर निःशुल्क कानूनी सहायता उपलब्ध)"}
+
+# Shown with the matching risk flag, before anything else.
+risk_alerts:
+  imminent_violence: {authorities: [emergency_112, police_station], en: "You may be in danger soon. If you feel unsafe, move to a safe place and call 112 now.", kn: "ನಿಮಗೆ ಬೇಗ ಅಪಾಯ ಆಗಬಹುದು. ಅಸುರಕ್ಷಿತ ಅನಿಸಿದರೆ ಸುರಕ್ಷಿತ ಜಾಗಕ್ಕೆ ಹೋಗಿ, ಈಗಲೇ 112 ಗೆ ಕರೆ ಮಾಡಿ.", hi: "आपको जल्द खतरा हो सकता है। असुरक्षित लगे तो सुरक्षित जगह जाएँ और अभी 112 पर कॉल करें।"}
+  ongoing_abuse: {authorities: [emergency_112, women_181, protection_officer], en: "The abuse seems to be continuing. Your safety comes first: 112 (emergency) and 181 (women helpline) can help right away.", kn: "ದೌರ್ಜನ್ಯ ಮುಂದುವರಿಯುತ್ತಿರುವಂತಿದೆ. ನಿಮ್ಮ ಸುರಕ್ಷತೆ ಮೊದಲು: 112 (ತುರ್ತು) ಮತ್ತು 181 (ಮಹಿಳಾ ಸಹಾಯವಾಣಿ) ತಕ್ಷಣ ಸಹಾಯ ಮಾಡಬಹುದು.", hi: "हिंसा जारी लगती है। आपकी सुरक्षा सबसे पहले: 112 (आपातकाल) और 181 (महिला हेल्पलाइन) तुरंत मदद कर सकते हैं।"}
+  threat_to_life: {authorities: [emergency_112, police_station], en: "This may be a threat to life. Please call 112 or go to the nearest police station immediately.", kn: "ಇದು ಜೀವಕ್ಕೆ ಅಪಾಯ ಆಗಿರಬಹುದು. ದಯವಿಟ್ಟು ತಕ್ಷಣ 112 ಗೆ ಕರೆ ಮಾಡಿ ಅಥವಾ ಹತ್ತಿರದ ಪೊಲೀಸ್ ಠಾಣೆಗೆ ಹೋಗಿ.", hi: "यह जान का खतरा हो सकता है। कृपया तुरंत 112 पर कॉल करें या नज़दीकी थाने जाएँ।"}
+  self_harm: {authorities: [telemanas_14416, emergency_112], en: "I am sorry you are going through this. You are not alone. Please talk to someone now: Tele-MANAS 14416 (free, 24x7), or 112 in an emergency.", kn: "ನೀವು ಇದನ್ನು ಅನುಭವಿಸುತ್ತಿರುವುದಕ್ಕೆ ಬೇಸರವಾಗಿದೆ. ನೀವು ಒಬ್ಬಂಟಿ ಅಲ್ಲ. ದಯವಿಟ್ಟು ಈಗಲೇ ಮಾತನಾಡಿ: ಟೆಲಿ-ಮನಸ್ 14416 (ಉಚಿತ, 24x7), ತುರ್ತು ಇದ್ದರೆ 112.", hi: "मुझे दुख है कि आप इससे गुज़र रहे हैं। आप अकेले नहीं हैं। कृपया अभी बात करें: टेली-मानस 14416 (निःशुल्क, 24x7), आपात स्थिति में 112।"}
+  minor_involved: {authorities: [child_1098], en: "A child is involved. Child Helpline 1098 can help.", kn: "ಇದರಲ್ಲಿ ಮಗು ಇದೆ. ಮಕ್ಕಳ ಸಹಾಯವಾಣಿ 1098 ಸಹಾಯ ಮಾಡಬಹುದು.", hi: "इसमें बच्चा शामिल है। चाइल्ड हेल्पलाइन 1098 मदद कर सकती है।"}
+  image_circulation: {authorities: [cyber_1930, women_181, platform_grievance], en: "Images may be spreading. Report at https://cybercrime.gov.in (or 1930) and to the platform right away; do not delete the evidence.", kn: "ಚಿತ್ರಗಳು ಹರಡುತ್ತಿರಬಹುದು. ತಕ್ಷಣ https://cybercrime.gov.in (ಅಥವಾ 1930) ಮತ್ತು ಆ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್‌ಗೆ ರಿಪೋರ್ಟ್ ಮಾಡಿ; ಸಾಕ್ಷ್ಯ ಅಳಿಸಬೇಡಿ.", hi: "तस्वीरें फैल रही हो सकती हैं। तुरंत https://cybercrime.gov.in (या 1930) और प्लेटफ़ॉर्म पर रिपोर्ट करें; सबूत डिलीट न करें।"}
+  golden_hour_fraud: {authorities: [cyber_1930, bank_grievance], en: "Time matters: call 1930 and your bank NOW. Reporting quickly gives the best chance of freezing the money.", kn: "ಸಮಯ ಮುಖ್ಯ: ಈಗಲೇ 1930 ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ಕರೆ ಮಾಡಿ. ಬೇಗ ತಿಳಿಸಿದರೆ ಹಣ ತಡೆಹಿಡಿಯುವ ಸಾಧ್ಯತೆ ಹೆಚ್ಚು.", hi: "समय बहुत ज़रूरी है: अभी 1930 और अपने बैंक को कॉल करें। जल्दी बताने से पैसा रोकने की संभावना सबसे ज़्यादा होती है।"}
+  imminent_property_transfer: {authorities: [lawyer, sub_registrar, civil_court], en: "A sale or transfer may happen soon. Speak to a lawyer urgently about stopping it (for example, asking a court for an interim order).", kn: "ಬೇಗ ಮಾರಾಟ / ವರ್ಗಾವಣೆ ಆಗಬಹುದು. ಅದನ್ನು ತಡೆಯುವ ಬಗ್ಗೆ (ಉದಾ: ನ್ಯಾಯಾಲಯದಿಂದ ಮಧ್ಯಂತರ ಆದೇಶ) ತುರ್ತಾಗಿ ವಕೀಲರನ್ನು ಸಂಪರ್ಕಿಸಿ.", hi: "जल्द ही बिक्री / हस्तांतरण हो सकता है। इसे रोकने के बारे में (जैसे अदालत से अंतरिम आदेश) तुरंत वकील से बात करें।"}
+  eviction_imminent: {authorities: [women_181, protection_officer, legal_aid_15100], en: "You may be forced out of your home soon. Contact free legal aid (15100) or the Protection Officer urgently.", kn: "ನಿಮ್ಮನ್ನು ಬೇಗ ಮನೆಯಿಂದ ಹೊರಹಾಕಬಹುದು. ತುರ್ತಾಗಿ ಉಚಿತ ಕಾನೂನು ನೆರವು (15100) ಅಥವಾ ರಕ್ಷಣಾ ಅಧಿಕಾರಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.", hi: "आपको जल्द घर से निकाला जा सकता है। तुरंत निःशुल्क कानूनी सहायता (15100) या संरक्षण अधिकारी से संपर्क करें।"}
+  limitation_near_expiry: {authorities: [lawyer, legal_aid_15100], en: "A time limit for filing may be close to running out. Please consult a lawyer soon.", kn: "ದೂರು / ಅರ್ಜಿ ಸಲ್ಲಿಸುವ ಕಾಲಮಿತಿ ಮುಗಿಯುವ ಹಂತದಲ್ಲಿರಬಹುದು. ಬೇಗ ವಕೀಲರನ್ನು ಸಂಪರ್ಕಿಸಿ.", hi: "दाखिल करने की समय-सीमा खत्म होने वाली हो सकती है। जल्द वकील से सलाह लें।"}
+  evidence_at_risk: {authorities: [police_station], en: "Some evidence may be lost soon (for example CCTV recordings). Ask for it to be preserved quickly.", kn: "ಕೆಲವು ಸಾಕ್ಷ್ಯ ಬೇಗ ಹೋಗಬಹುದು (ಉದಾ: ಸಿಸಿಟಿವಿ). ಅದನ್ನು ಬೇಗ ಉಳಿಸಲು ಕೇಳಿ.", hi: "कुछ सबूत जल्द मिट सकते हैं (जैसे सीसीटीवी)। उसे जल्दी सुरक्षित करवाने को कहें।"}
+  child_removal_imminent: {authorities: [lawyer, family_court, child_1098], en: "The child may be taken away soon. Speak to a lawyer urgently about an interim custody order.", kn: "ಮಗುವನ್ನು ಬೇಗ ಕರೆದೊಯ್ಯಬಹುದು. ಮಧ್ಯಂತರ ಪಾಲನೆ ಆದೇಶದ ಬಗ್ಗೆ ತುರ್ತಾಗಿ ವಕೀಲರನ್ನು ಸಂಪರ್ಕಿಸಿ.", hi: "बच्चे को जल्द ले जाया जा सकता है। अंतरिम कस्टडी आदेश के बारे में तुरंत वकील से बात करें।"}
+
+# Risk keyword cues (lower-cased substring match). Complements the trained classifier.
+risk_keywords:
+  imminent_violence: ["come back and", "will come back", "will kill", "will beat", ಮತ್ತೆ ಬರ್ತೀನಿ, ಮತ್ತೆ ಬರ್ತೀನಿ ಅಂದ, "phir aaunga", फिर आऊँगा, "फिर आएगा"]
+  ongoing_abuse: ["beat me again", "still in the same house", "beats me every", ಈಗಲೂ ಹೊಡೆ, "eegalu hode", अब भी मारते, "abhi bhi maarte", रोज़ मारते]
+  threat_to_life: ["kill me", "kill you", "burn me", "set fire", "electric shock", ಸಾಯಿಸ್ತೀನಿ, ಕೊಲ್ತೀನಿ, ಸುಡ್ತೀವಿ, ಕರೆಂಟ್ ಹೊಡೆ, "saayistini", "kolteeni", जान से मार, जला देंगे, करंट, "jaan se maar", "jala denge"]
+  self_harm: ["end my life", "kill myself", "no point in living", "suicide", ಸಾಯೋಣ ಅನ್ಸುತ್ತೆ, ಬದುಕೋದೇ ಬೇಡ, ಆತ್ಮಹತ್ಯೆ, "badukode beda", जान दे दूँ, जीने का कोई मतलब नहीं, आत्महत्या, "jaan de doon", "jeene ka koi matlab"]
+  image_circulation: ["post it", "share the photos", "viral", "upload my photo", ಫೋಟೋ ಹಾಕ್ತೀನಿ, ವೈರಲ್, फ़ोटो डाल देगा, वायरल, "photo daal dega"]
+  golden_hour_fraud: ["hour ago", "just now", "few minutes ago", "an hour back", ಗಂಟೆ ಹಿಂದೆ, ಈಗ ತಾನೆ, "gante hinde", घंटे पहले, अभी अभी, "ghante pehle", "abhi abhi"]
+  imminent_property_transfer: ["registration is fixed", "sell it next week", "selling tomorrow", ನಾಳೆ ರಿಜಿಸ್ಟ್ರೇಷನ್, ಮುಂದಿನ ವಾರ ಮಾರ, कल रजिस्ट्री, अगले हफ़्ते बेच, "kal registry", "agle hafte bech"]
+  eviction_imminent: ["get out of the house", "thrown out", "leave the house by", ಮನೆ ಬಿಟ್ಟು ಹೋಗು, ಹೊರಗೆ ಹಾಕ್ತೀನಿ, घर से निकाल, घर छोड़, "ghar se nikaal", "ghar chhod"]
+  limitation_near_expiry: ["almost two years", "nearly two years", ಸುಮಾರು ಎರಡು ವರ್ಷ, लगभग दो साल, "lagbhag do saal"]
+  child_removal_imminent: ["take her to dubai", "take him to dubai", "take my child abroad", "take the child away", ಮಗುವನ್ನು ಕರೆದುಕೊಂಡು ಹೋಗ್ತೀನಿ, बच्चे को ले जाएगा, "bachche ko le jayega"]
+  minor_involved: ["my child", "my son", "my daughter", ನನ್ನ ಮಗ, ನನ್ನ ಮಗಳು, मेरा बेटा, मेरी बेटी]
+
+domains:
+  criminal:
+    steps:
+      - {en: "Write down what happened, with dates, times and places, while you remember it clearly.", kn: "ನೆನಪಿರುವಾಗಲೇ ಏನಾಯಿತು ಎಂದು ದಿನಾಂಕ, ಸಮಯ ಮತ್ತು ಸ್ಥಳದೊಂದಿಗೆ ಬರೆದಿಡಿ.", hi: "जो हुआ उसे तारीख, समय और जगह के साथ अभी लिख लें, जब तक अच्छी तरह याद है।"}
+      - {en: "You can give a written complaint at the police station and ask for a copy / acknowledgement.", kn: "ಪೊಲೀಸ್ ಠಾಣೆಯಲ್ಲಿ ಲಿಖಿತ ದೂರು ಕೊಟ್ಟು ಅದರ ಪ್ರತಿ / ಸ್ವೀಕೃತಿ ಕೇಳಬಹುದು.", hi: "आप थाने में लिखित शिकायत देकर उसकी कॉपी / पावती माँग सकते हैं।"}
+    authorities: [police_station, sp_office, magistrate, legal_aid_15100]
+  family:
+    steps:
+      - {en: "Keep copies of your marriage and identity documents, and any messages or photos, in a safe place.", kn: "ಮದುವೆ ಮತ್ತು ಗುರುತಿನ ದಾಖಲೆಗಳು, ಮೆಸೇಜ್ / ಫೋಟೋಗಳ ಪ್ರತಿಗಳನ್ನು ಸುರಕ್ಷಿತ ಜಾಗದಲ್ಲಿ ಇಡಿ.", hi: "शादी और पहचान के कागज़ों, मैसेज या फ़ोटो की कॉपी सुरक्षित जगह रखें।"}
+      - {en: "Family cases depend a lot on your personal facts; a lawyer or free legal aid can tell you which remedy fits.", kn: "ಕುಟುಂಬ ಪ್ರಕರಣಗಳು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ವಿಷಯಗಳ ಮೇಲೆ ತುಂಬಾ ಅವಲಂಬಿತ; ಯಾವ ಪರಿಹಾರ ಸೂಕ್ತ ಎಂದು ವಕೀಲರು ಅಥವಾ ಉಚಿತ ಕಾನೂನು ನೆರವು ಹೇಳಬಹುದು.", hi: "पारिवारिक मामले आपकी निजी परिस्थितियों पर बहुत निर्भर करते हैं; कौन-सा उपाय सही है यह वकील या निःशुल्क कानूनी सहायता बता सकती है।"}
+    authorities: [family_court, protection_officer, women_181, legal_aid_15100]
+  property:
+    steps:
+      - {en: "Collect the land records (RTC / pahani, khata, mutation), sale deeds and the encumbrance certificate.", kn: "ಭೂ ದಾಖಲೆಗಳು (ಪಹಣಿ / ಆರ್‌ಟಿಸಿ, ಖಾತಾ, ಮ್ಯುಟೇಷನ್), ಕ್ರಯಪತ್ರ ಮತ್ತು ಋಣಭಾರ ಪ್ರಮಾಣಪತ್ರ ಸಂಗ್ರಹಿಸಿ.", hi: "भूमि रिकॉर्ड (आरटीसी / पहाणी, खाता, म्यूटेशन), बैनामे और भार प्रमाणपत्र इकट्ठा करें।"}
+      - {en: "Check at the Sub-Registrar's office whether any document about the property has been registered.", kn: "ಆಸ್ತಿಯ ಬಗ್ಗೆ ಯಾವುದಾದರೂ ದಾಖಲೆ ನೋಂದಣಿ ಆಗಿದೆಯಾ ಎಂದು ಉಪ ನೋಂದಣಾಧಿಕಾರಿ ಕಚೇರಿಯಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.", hi: "उप-पंजीयक कार्यालय में जाँचें कि संपत्ति का कोई दस्तावेज़ पंजीकृत तो नहीं हुआ।"}
+    authorities: [revenue_office, sub_registrar, civil_court, lawyer]
+  cyber:
+    steps:
+      - {en: "Do not delete anything: take screenshots of messages, profiles, links and transaction details.", kn: "ಏನನ್ನೂ ಅಳಿಸಬೇಡಿ: ಮೆಸೇಜ್, ಪ್ರೊಫೈಲ್, ಲಿಂಕ್ ಮತ್ತು ವಹಿವಾಟು ವಿವರಗಳ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದುಕೊಳ್ಳಿ.", hi: "कुछ भी डिलीट न करें: मैसेज, प्रोफ़ाइल, लिंक और लेन-देन के स्क्रीनशॉट ले लें।"}
+      - {en: "Report at https://cybercrime.gov.in or call 1930, and note the acknowledgement number.", kn: "https://cybercrime.gov.in ನಲ್ಲಿ ರಿಪೋರ್ಟ್ ಮಾಡಿ ಅಥವಾ 1930 ಗೆ ಕರೆ ಮಾಡಿ, ಸ್ವೀಕೃತಿ ಸಂಖ್ಯೆ ಬರೆದಿಡಿ.", hi: "https://cybercrime.gov.in पर रिपोर्ट करें या 1930 पर कॉल करें, और पावती संख्या लिख लें।"}
+      - {en: "Change your passwords and turn on two-step verification on your accounts.", kn: "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ, ಅಕೌಂಟ್‌ಗಳಲ್ಲಿ ಎರಡು-ಹಂತದ ಪರಿಶೀಲನೆ ಆನ್ ಮಾಡಿ.", hi: "अपने पासवर्ड बदलें और अकाउंट में टू-स्टेप वेरिफ़िकेशन चालू करें।"}
+    authorities: [cyber_1930, police_station, platform_grievance]
+  consumer_financial:
+    steps:
+      - {en: "Complain in writing to the seller / service provider / bank first and keep the reply or reference number.", kn: "ಮೊದಲು ಮಾರಾಟಗಾರ / ಸೇವಾದಾರ / ಬ್ಯಾಂಕ್‌ಗೆ ಲಿಖಿತ ದೂರು ಕೊಟ್ಟು ಉತ್ತರ ಅಥವಾ ರೆಫರೆನ್ಸ್ ನಂಬರ್ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "पहले विक्रेता / सेवा प्रदाता / बैंक को लिखित शिकायत दें और जवाब या रेफ़रेंस नंबर रखें।"}
+      - {en: "If it is not resolved, you can approach the National Consumer Helpline (1915) and the District Consumer Commission.", kn: "ಪರಿಹಾರ ಆಗದಿದ್ದರೆ ರಾಷ್ಟ್ರೀಯ ಗ್ರಾಹಕ ಸಹಾಯವಾಣಿ (1915) ಮತ್ತು ಜಿಲ್ಲಾ ಗ್ರಾಹಕ ಆಯೋಗವನ್ನು ಸಂಪರ್ಕಿಸಬಹುದು.", hi: "हल न हो तो राष्ट्रीय उपभोक्ता हेल्पलाइन (1915) और जिला उपभोक्ता आयोग जा सकते हैं।"}
+    authorities: [consumer_helpline, consumer_commission, bank_grievance, rbi_ombudsman]
+
+# Per issue: how the law may help (hedged), one extra step, a hypothetical example for
+# re-explanation, and extra keywords (lower-case substring match).
+issues:
+  crim.hurt_assault:
+    help: {en: "Causing hurt is an offence. A police complaint can start a case, and a medical record of the injury is important proof.", kn: "ನೋವು / ಗಾಯ ಮಾಡುವುದು ಅಪರಾಧ. ಪೊಲೀಸ್ ದೂರಿನಿಂದ ಪ್ರಕರಣ ಶುರುವಾಗಬಹುದು; ಗಾಯದ ವೈದ್ಯಕೀಯ ದಾಖಲೆ ಮುಖ್ಯ ಸಾಕ್ಷ್ಯ.", hi: "चोट पहुँचाना अपराध है। पुलिस शिकायत से मामला शुरू हो सकता है, और चोट का मेडिकल रिकॉर्ड अहम सबूत है।"}
+    step: {en: "Get the injury examined at a government hospital and keep the medical report.", kn: "ಸರ್ಕಾರಿ ಆಸ್ಪತ್ರೆಯಲ್ಲಿ ಗಾಯ ಪರೀಕ್ಷಿಸಿ ವೈದ್ಯಕೀಯ ವರದಿ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "सरकारी अस्पताल में चोट की जाँच करवाएँ और मेडिकल रिपोर्ट रखें।"}
+    example: {en: "For example: if a neighbour slaps someone during a quarrel and they get a cut, that can be 'hurt' even if the injury is small.", kn: "ಉದಾಹರಣೆ: ಜಗಳದಲ್ಲಿ ನೆರೆಯವರು ಯಾರಿಗಾದರೂ ಹೊಡೆದು ಸಣ್ಣ ಗಾಯ ಆದರೂ ಅದು 'ನೋವು ಉಂಟುಮಾಡುವುದು' ಆಗಬಹುದು.", hi: "उदाहरण: झगड़े में पड़ोसी किसी को थप्पड़ मारे और छोटी-सी चोट भी लगे, तो वह 'चोट पहुँचाना' हो सकता है।"}
+    keywords: [assault, slapped, punched, attacked, ಹೊಡೆದ, ಗಾಯ, hodedru, gaaya, मारा, पीटा, चोट, "maara", "peeta"]
+  crim.criminal_intimidation:
+    help: {en: "Threatening to harm a person, their reputation or property to frighten them can be an offence; a complaint and any recording of the threat help.", kn: "ಹೆದರಿಸಲು ವ್ಯಕ್ತಿ, ಮಾನ ಅಥವಾ ಆಸ್ತಿಗೆ ಹಾನಿ ಮಾಡುವ ಬೆದರಿಕೆ ಹಾಕುವುದು ಅಪರಾಧ ಆಗಬಹುದು; ದೂರು ಮತ್ತು ಬೆದರಿಕೆಯ ರೆಕಾರ್ಡಿಂಗ್ ಸಹಾಯ ಮಾಡುತ್ತವೆ.", hi: "डराने के लिए किसी को, उसकी इज़्ज़त या संपत्ति को नुकसान की धमकी देना अपराध हो सकता है; शिकायत और धमकी की रिकॉर्डिंग मदद करती है।"}
+    step: {en: "Save any recording, message or the names of people who heard the threat.", kn: "ಬೆದರಿಕೆಯ ರೆಕಾರ್ಡಿಂಗ್, ಮೆಸೇಜ್ ಅಥವಾ ಕೇಳಿಸಿಕೊಂಡವರ ಹೆಸರು ಉಳಿಸಿಕೊಳ್ಳಿ.", hi: "धमकी की रिकॉर्डिंग, मैसेज या सुनने वालों के नाम सँभाल कर रखें।"}
+    example: {en: "For example: someone saying 'leave this street or I will break your legs' to scare a person can be criminal intimidation.", kn: "ಉದಾಹರಣೆ: 'ಈ ಬೀದಿ ಬಿಟ್ಟು ಹೋಗು, ಇಲ್ಲದಿದ್ರೆ ಕಾಲು ಮುರೀತೀನಿ' ಎಂದು ಹೆದರಿಸುವುದು ಕ್ರಿಮಿನಲ್ ಬೆದರಿಕೆ ಆಗಬಹುದು.", hi: "उदाहरण: डराने के लिए 'यह गली छोड़ दो वरना टाँगें तोड़ दूँगा' कहना आपराधिक धमकी हो सकती है।"}
+    keywords: ["threatened to kill", "threatened to beat", "threatened to harm", "threatened me", "warned me", "will kill", ಬೆದರಿಕೆ, ಬೆದರಿಸಿದ, bedarike, धमकी, धमकाया, "dhamkaaya"]
+  crim.theft:
+    help: {en: "Taking someone's movable property dishonestly without consent is theft; a police complaint (FIR) helps in tracing it and for insurance.", kn: "ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ಅಪ್ರಾಮಾಣಿಕವಾಗಿ ಚರ ಆಸ್ತಿ ತೆಗೆದುಕೊಳ್ಳುವುದು ಕಳ್ಳತನ; ಪೊಲೀಸ್ ದೂರು (ಎಫ್‌ಐಆರ್) ಪತ್ತೆಗೆ ಮತ್ತು ವಿಮೆಗೆ ಸಹಾಯಕ.", hi: "बिना सहमति के बेईमानी से चल संपत्ति ले जाना चोरी है; पुलिस शिकायत (एफ़आईआर) उसे ढूँढने और बीमे में मदद करती है।"}
+    step: {en: "Keep the purchase bill or photos of the item and ask nearby shops about CCTV quickly.", kn: "ವಸ್ತುವಿನ ಬಿಲ್ / ಫೋಟೋ ಇಟ್ಟುಕೊಳ್ಳಿ; ಹತ್ತಿರದ ಅಂಗಡಿಗಳ ಸಿಸಿಟಿವಿ ಬಗ್ಗೆ ಬೇಗ ಕೇಳಿ.", hi: "सामान का बिल या फ़ोटो रखें और आसपास की दुकानों से सीसीटीवी के बारे में जल्दी पूछें।"}
+    example: {en: "For example: if someone takes a phone from a bag on a bus without the owner knowing, that is theft.", kn: "ಉದಾಹರಣೆ: ಬಸ್ಸಿನಲ್ಲಿ ಮಾಲೀಕರಿಗೆ ಗೊತ್ತಿಲ್ಲದೆ ಬ್ಯಾಗಿನಿಂದ ಫೋನ್ ತೆಗೆದುಕೊಂಡರೆ ಅದು ಕಳ್ಳತನ.", hi: "उदाहरण: बस में मालिक को पता चले बिना बैग से फ़ोन निकाल लेना चोरी है।"}
+    keywords: [stolen, theft, snatched, ಕಳ್ಳತನ, ಕದ್ದ, kalla, चोरी, चुरा, "chori"]
+  crim.cheating:
+    help: {en: "Getting money or property from someone by deceiving them can be cheating; the police can register a case, and payment records are key proof.", kn: "ಮೋಸ ಮಾಡಿ ಹಣ / ಆಸ್ತಿ ಪಡೆಯುವುದು ವಂಚನೆ ಆಗಬಹುದು; ಪೊಲೀಸರು ಪ್ರಕರಣ ದಾಖಲಿಸಬಹುದು, ಪಾವತಿ ದಾಖಲೆ ಮುಖ್ಯ ಸಾಕ್ಷ್ಯ.", hi: "धोखा देकर पैसा या संपत्ति लेना छल (धोखाधड़ी) हो सकता है; पुलिस मामला दर्ज कर सकती है, और भुगतान के रिकॉर्ड अहम सबूत हैं।"}
+    step: {en: "Collect payment proofs, chats and the person's phone number / address.", kn: "ಪಾವತಿ ಪುರಾವೆ, ಚಾಟ್‌ಗಳು ಮತ್ತು ಆ ವ್ಯಕ್ತಿಯ ಫೋನ್ ನಂಬರ್ / ವಿಳಾಸ ಸಂಗ್ರಹಿಸಿ.", hi: "भुगतान के सबूत, चैट और उस व्यक्ति का फ़ोन नंबर / पता इकट्ठा करें।"}
+    example: {en: "For example: someone takes money promising a government job, never meant to arrange it, and disappears.", kn: "ಉದಾಹರಣೆ: ಸರ್ಕಾರಿ ಕೆಲಸ ಕೊಡಿಸ್ತೀನಿ ಎಂದು ಹಣ ತಗೊಂಡು, ಕೊಡಿಸುವ ಉದ್ದೇಶವೇ ಇಲ್ಲದೆ ಕಾಣೆಯಾಗುವುದು.", hi: "उदाहरण: कोई सरकारी नौकरी का वादा कर पैसे ले, नौकरी दिलाने का इरादा ही न हो, और गायब हो जाए।"}
+    keywords: [cheated, fraud, "took money", "false promise", ಮೋಸ, ವಂಚನೆ, mosa, धोखा, ठगी, "dhokha", "thagi"]
+  crim.police_refusal_fir:
+    help: {en: "For serious (cognizable) offences the police are generally required to register information; if they refuse, you can approach the Superintendent of Police and then the Magistrate.", kn: "ಗಂಭೀರ (ಸಂಜ್ಞೇಯ) ಅಪರಾಧಗಳಲ್ಲಿ ಪೊಲೀಸರು ಸಾಮಾನ್ಯವಾಗಿ ಮಾಹಿತಿ ದಾಖಲಿಸಬೇಕು; ನಿರಾಕರಿಸಿದರೆ ಎಸ್‌ಪಿ ಮತ್ತು ನಂತರ ಮ್ಯಾಜಿಸ್ಟ್ರೇಟ್ ಬಳಿ ಹೋಗಬಹುದು.", hi: "गंभीर (संज्ञेय) अपराधों में पुलिस को सामान्यतः सूचना दर्ज करनी होती है; मना करे तो पुलिस अधीक्षक और फिर मजिस्ट्रेट के पास जा सकते हैं।"}
+    step: {en: "Send your complaint in writing (post / email) to the SP and keep proof of sending.", kn: "ನಿಮ್ಮ ದೂರನ್ನು ಲಿಖಿತವಾಗಿ (ಅಂಚೆ / ಇಮೇಲ್) ಎಸ್‌ಪಿಗೆ ಕಳಿಸಿ, ಕಳಿಸಿದ ಪುರಾವೆ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "अपनी शिकायत लिखित में (डाक / ईमेल) पुलिस अधीक्षक को भेजें और भेजने का सबूत रखें।"}
+    example: {en: "For example: a person reports a theft, but the station officer says 'go away, we won't write anything'.", kn: "ಉದಾಹರಣೆ: ಕಳ್ಳತನದ ಬಗ್ಗೆ ಹೇಳಿದಾಗ ಠಾಣಾಧಿಕಾರಿ 'ಹೋಗಿ, ಏನೂ ಬರೆಯೋದಿಲ್ಲ' ಎನ್ನುವುದು.", hi: "उदाहरण: कोई चोरी की शिकायत करे और थाना अधिकारी कहे 'जाओ, हम कुछ नहीं लिखेंगे'।"}
+    keywords: ["refused to register", "not taking my complaint", "did not file fir", ದೂರು ತಗೊಳ್ಳಲಿಲ್ಲ, ಎಫ್‌ಐಆರ್ ಮಾಡಲಿಲ್ಲ, "dooru tagolalilla", रिपोर्ट नहीं लिखी, एफ़आईआर नहीं, "report nahi likhi"]
+  fam.divorce:
+    help: {en: "Divorce is granted by a court on grounds set by your marriage law (such as cruelty), or by mutual consent; the right law depends on how the marriage took place.", kn: "ನಿಮ್ಮ ಮದುವೆಗೆ ಅನ್ವಯಿಸುವ ಕಾನೂನಿನ ಆಧಾರಗಳ (ಉದಾ: ಕ್ರೌರ್ಯ) ಮೇಲೆ ಅಥವಾ ಪರಸ್ಪರ ಒಪ್ಪಿಗೆಯಿಂದ ನ್ಯಾಯಾಲಯ ವಿಚ್ಛೇದನ ನೀಡುತ್ತದೆ; ಯಾವ ಕಾನೂನು ಎಂಬುದು ಮದುವೆ ಹೇಗೆ ಆಯಿತು ಎಂಬುದರ ಮೇಲೆ.", hi: "तलाक अदालत आपके विवाह-कानून के आधारों (जैसे क्रूरता) पर या आपसी सहमति से देती है; कौन-सा कानून लागू होगा यह शादी कैसे हुई इस पर निर्भर है।"}
+    step: {en: "Keep the marriage certificate / invitation and any proof of cruelty or separation.", kn: "ಮದುವೆ ಪ್ರಮಾಣಪತ್ರ / ಆಮಂತ್ರಣ ಮತ್ತು ಕ್ರೌರ್ಯ / ಬೇರೆ ಇರುವ ಪುರಾವೆ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "शादी का प्रमाणपत्र / कार्ड और क्रूरता या अलग रहने के सबूत रखें।"}
+    example: {en: "For example: a spouse who constantly humiliates and threatens the other can give a ground of cruelty.", kn: "ಉದಾಹರಣೆ: ಸಂಗಾತಿ ನಿರಂತರವಾಗಿ ಅವಮಾನಿಸಿ ಬೆದರಿಸುತ್ತಿದ್ದರೆ ಅದು ಕ್ರೌರ್ಯದ ಆಧಾರ ಆಗಬಹುದು.", hi: "उदाहरण: अगर जीवनसाथी लगातार अपमान करे और धमकाए, तो यह क्रूरता का आधार बन सकता है।"}
+    keywords: [divorce, separate, "end the marriage", ಡಿವೋರ್ಸ್, ವಿಚ್ಛೇದನ, divorce, तलाक, "talaak"]
+  fam.maintenance:
+    help: {en: "A wife, children or parents who cannot support themselves may ask a court for regular maintenance from a person who has the means and neglects them.", kn: "ತಮ್ಮನ್ನು ತಾವು ನೋಡಿಕೊಳ್ಳಲಾಗದ ಪತ್ನಿ, ಮಕ್ಕಳು ಅಥವಾ ಪೋಷಕರು, ಸಾಮರ್ಥ್ಯವಿದ್ದೂ ನಿರ್ಲಕ್ಷಿಸುವ ವ್ಯಕ್ತಿಯಿಂದ ನಿಯಮಿತ ಜೀವನಾಂಶ ಕೇಳಿ ನ್ಯಾಯಾಲಯಕ್ಕೆ ಹೋಗಬಹುದು.", hi: "जो पत्नी, बच्चे या माता-पिता अपना खर्च नहीं उठा सकते, वे सक्षम होकर भी उपेक्षा करने वाले व्यक्ति से नियमित भरण-पोषण के लिए अदालत जा सकते हैं।"}
+    step: {en: "Note your monthly expenses and anything showing the other person's income (salary, shop, property).", kn: "ನಿಮ್ಮ ತಿಂಗಳ ಖರ್ಚು ಮತ್ತು ಅವರ ಆದಾಯ ತೋರಿಸುವ ವಿವರ (ಸಂಬಳ, ಅಂಗಡಿ, ಆಸ್ತಿ) ಬರೆದಿಡಿ.", hi: "अपना महीने का खर्च और दूसरे व्यक्ति की आमदनी के सबूत (वेतन, दुकान, संपत्ति) लिख लें।"}
+    example: {en: "For example: a husband with a steady job stops sending any money to his wife who has no income.", kn: "ಉದಾಹರಣೆ: ಸ್ಥಿರ ಕೆಲಸ ಇರುವ ಗಂಡ ಆದಾಯ ಇಲ್ಲದ ಪತ್ನಿಗೆ ಹಣ ಕೊಡುವುದನ್ನೇ ನಿಲ್ಲಿಸುವುದು.", hi: "उदाहरण: पक्की नौकरी वाला पति बिना आमदनी वाली पत्नी को पैसे भेजना बंद कर दे।"}
+    keywords: [maintenance, "household expenses", "not giving money", ಜೀವನಾಂಶ, ಖರ್ಚಿಗೆ, "kharchige", गुज़ारा, खर्चा, "kharcha"]
+  fam.custody:
+    help: {en: "Courts decide custody and guardianship of a minor child mainly by what is in the child's welfare.", kn: "ಅಪ್ರಾಪ್ತ ಮಗುವಿನ ಪಾಲನೆ / ಪೋಷಕತ್ವವನ್ನು ನ್ಯಾಯಾಲಯ ಮುಖ್ಯವಾಗಿ ಮಗುವಿನ ಹಿತದ ಆಧಾರದ ಮೇಲೆ ನಿರ್ಧರಿಸುತ್ತದೆ.", hi: "नाबालिग बच्चे की कस्टडी और संरक्षकता अदालत मुख्य रूप से बच्चे के कल्याण को देखकर तय करती है।"}
+    step: {en: "Keep the child's birth certificate and school records, and note how you have been caring for the child.", kn: "ಮಗುವಿನ ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಶಾಲಾ ದಾಖಲೆ ಇಟ್ಟುಕೊಳ್ಳಿ; ನೀವು ಮಗುವನ್ನು ಹೇಗೆ ನೋಡಿಕೊಂಡಿದ್ದೀರಿ ಎಂದು ಬರೆದಿಡಿ.", hi: "बच्चे का जन्म प्रमाणपत्र और स्कूल रिकॉर्ड रखें, और आप बच्चे की देखभाल कैसे करते आए हैं यह लिख लें।"}
+    example: {en: "For example: after separation, a father keeps the 5-year-old and does not let the mother meet the child.", kn: "ಉದಾಹರಣೆ: ಬೇರೆಯಾದ ನಂತರ ತಂದೆ 5 ವರ್ಷದ ಮಗುವನ್ನು ಇಟ್ಟುಕೊಂಡು ತಾಯಿಗೆ ಭೇಟಿ ಮಾಡಲು ಬಿಡದಿರುವುದು.", hi: "उदाहरण: अलग होने के बाद पिता 5 साल के बच्चे को रख ले और माँ को मिलने न दे।"}
+    keywords: [custody, "my child", "took my son", "took my daughter", ಮಗುವನ್ನು, ಮಗನನ್ನು, ಮಗಳನ್ನು, कस्टडी, बच्चे को, "bachche ko"]
+  fam.domestic_violence:
+    help: {en: "A woman facing abuse in a domestic relationship can ask the Magistrate (through a Protection Officer or directly) for protection, residence, monetary and other orders.", kn: "ಕೌಟುಂಬಿಕ ಸಂಬಂಧದಲ್ಲಿ ದೌರ್ಜನ್ಯ ಎದುರಿಸುವ ಮಹಿಳೆ ರಕ್ಷಣಾ ಅಧಿಕಾರಿ ಮೂಲಕ ಅಥವಾ ನೇರವಾಗಿ ಮ್ಯಾಜಿಸ್ಟ್ರೇಟ್ ಬಳಿ ರಕ್ಷಣೆ, ವಾಸ, ಹಣಕಾಸು ಇತ್ಯಾದಿ ಆದೇಶ ಕೇಳಬಹುದು.", hi: "घरेलू रिश्ते में हिंसा झेल रही महिला संरक्षण अधिकारी के ज़रिए या सीधे मजिस्ट्रेट से संरक्षण, निवास, आर्थिक और अन्य आदेश माँग सकती है।"}
+    step: {en: "Keep photos of injuries, medical records and messages; tell a trusted person what is happening.", kn: "ಗಾಯದ ಫೋಟೋ, ವೈದ್ಯಕೀಯ ದಾಖಲೆ, ಮೆಸೇಜ್ ಇಟ್ಟುಕೊಳ್ಳಿ; ನಂಬಿಕಸ್ಥರಿಗೆ ಏನಾಗುತ್ತಿದೆ ಎಂದು ತಿಳಿಸಿ.", hi: "चोट की फ़ोटो, मेडिकल रिकॉर्ड और मैसेज रखें; किसी भरोसेमंद व्यक्ति को बताएँ कि क्या हो रहा है।"}
+    example: {en: "For example: a husband who hits his wife and stops her from using her own salary — physical and economic abuse.", kn: "ಉದಾಹರಣೆ: ಗಂಡ ಪತ್ನಿಗೆ ಹೊಡೆಯುವುದು ಮತ್ತು ಅವಳ ಸಂಬಳ ಬಳಸಲು ಬಿಡದಿರುವುದು — ದೈಹಿಕ ಮತ್ತು ಆರ್ಥಿಕ ದೌರ್ಜನ್ಯ.", hi: "उदाहरण: पति का पत्नी को मारना और उसकी अपनी तनख्वाह इस्तेमाल न करने देना — शारीरिक और आर्थिक हिंसा।"}
+    keywords: ["beats me", "my husband hit", "mother-in-law", ಗಂಡ ಹೊಡೆ, ಅತ್ತೆ, "ganda hode", पति मारता, सास, "pati maarta", "saas"]
+  fam.dowry_harassment:
+    help: {en: "Giving, taking or demanding dowry is an offence, and harassing a woman for dowry can be the offence of cruelty.", kn: "ವರದಕ್ಷಿಣೆ ಕೊಡುವುದು, ತಗೊಳ್ಳುವುದು ಅಥವಾ ಕೇಳುವುದು ಅಪರಾಧ; ವರದಕ್ಷಿಣೆಗಾಗಿ ಕಿರುಕುಳ ಕ್ರೌರ್ಯದ ಅಪರಾಧ ಆಗಬಹುದು.", hi: "दहेज देना, लेना या माँगना अपराध है, और दहेज के लिए महिला को सताना क्रूरता का अपराध हो सकता है।"}
+    step: {en: "Write down each demand (date, who, what) and keep recordings or messages.", kn: "ಪ್ರತಿ ಬೇಡಿಕೆಯನ್ನು (ದಿನಾಂಕ, ಯಾರು, ಏನು) ಬರೆದಿಡಿ, ರೆಕಾರ್ಡಿಂಗ್ / ಮೆಸೇಜ್ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "हर माँग (तारीख, किसने, क्या) लिख लें और रिकॉर्डिंग या मैसेज रखें।"}
+    example: {en: "For example: in-laws taunting and locking out a bride because her parents did not give a car after the wedding.", kn: "ಉದಾಹರಣೆ: ಮದುವೆಯ ನಂತರ ತವರಿನವರು ಕಾರು ಕೊಡಲಿಲ್ಲ ಎಂದು ಅತ್ತೆ ಮನೆಯವರು ಸೊಸೆಯನ್ನು ಹಂಗಿಸಿ ಹೊರಗೆ ಹಾಕುವುದು.", hi: "उदाहरण: शादी के बाद मायके वालों ने कार नहीं दी, इसलिए ससुराल वाले बहू को ताने दें और घर से बाहर कर दें।"}
+    keywords: [dowry, ವರದಕ್ಷಿಣೆ, varadakshine, दहेज, "dahej"]
+  prop.inheritance_partition:
+    help: {en: "Legal heirs may claim their share in family property and ask for partition; which succession law applies depends on the family's religion / personal law.", kn: "ಕಾನೂನುಬದ್ಧ ವಾರಸುದಾರರು ಕುಟುಂಬದ ಆಸ್ತಿಯಲ್ಲಿ ಪಾಲು ಕೇಳಿ ವಿಭಾಗಕ್ಕೆ ಅರ್ಜಿ ಹಾಕಬಹುದು; ಯಾವ ವಾರಸು ಕಾನೂನು ಅನ್ವಯ ಎಂಬುದು ಕುಟುಂಬದ ವೈಯಕ್ತಿಕ ಕಾನೂನಿನ ಮೇಲೆ.", hi: "कानूनी वारिस पारिवारिक संपत्ति में अपना हिस्सा और बँटवारा माँग सकते हैं; कौन-सा उत्तराधिकार कानून लागू होगा यह परिवार के निजी कानून पर निर्भर है।"}
+    step: {en: "Get the family tree (legal heir / succession details) and the death certificate of the owner.", kn: "ವಂಶವೃಕ್ಷ (ವಾರಸುದಾರರ ವಿವರ) ಮತ್ತು ಮಾಲೀಕರ ಮರಣ ಪ್ರಮಾಣಪತ್ರ ಪಡೆಯಿರಿ.", hi: "वंशवृक्ष (वारिसों का विवरण) और मालिक का मृत्यु प्रमाणपत्र प्राप्त करें।"}
+    example: {en: "For example: after the father dies, his brother keeps all the farmland and refuses the daughter any share.", kn: "ಉದಾಹರಣೆ: ತಂದೆ ತೀರಿಕೊಂಡ ನಂತರ ಅವರ ತಮ್ಮ ಎಲ್ಲಾ ಜಮೀನು ಇಟ್ಟುಕೊಂಡು ಮಗಳಿಗೆ ಪಾಲು ಕೊಡದಿರುವುದು.", hi: "उदाहरण: पिता की मृत्यु के बाद उनका भाई सारी ज़मीन रख ले और बेटी को कोई हिस्सा न दे।"}
+    keywords: [inheritance, "my share", partition, "father passed away", "father died", ಪಾಲು, ವಾರಸು, ತಂದೆ ತೀರಿಕೊಂಡ, "appa teerikonda", हिस्सा, वारिस, बँटवारा, "pita ki maut", "papa guzar"]
+  prop.encroachment:
+    help: {en: "An owner whose land is occupied without right may seek to recover possession and an injunction through the civil court; criminal trespass may also be reported.", kn: "ಹಕ್ಕಿಲ್ಲದೆ ಜಮೀನು ಆಕ್ರಮಿಸಿದರೆ ಮಾಲೀಕರು ಸಿವಿಲ್ ನ್ಯಾಯಾಲಯದ ಮೂಲಕ ಸ್ವಾಧೀನ ಮರಳಿ ಪಡೆಯಲು ಮತ್ತು ತಡೆಯಾಜ್ಞೆಗೆ ಕೇಳಬಹುದು; ಅಪರಾಧಿಕ ಅತಿಕ್ರಮದ ದೂರೂ ಕೊಡಬಹುದು.", hi: "बिना अधिकार ज़मीन पर कब्ज़ा हो तो मालिक दीवानी अदालत से कब्ज़ा वापस और निषेधाज्ञा माँग सकता है; आपराधिक अतिचार की शिकायत भी हो सकती है।"}
+    step: {en: "Apply for an official survey of your land and keep photos of the construction with dates.", kn: "ನಿಮ್ಮ ಜಮೀನಿನ ಅಧಿಕೃತ ಅಳತೆಗೆ ಅರ್ಜಿ ಹಾಕಿ; ಕಟ್ಟಡದ ಫೋಟೋಗಳನ್ನು ದಿನಾಂಕದೊಂದಿಗೆ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "अपनी ज़मीन की आधिकारिक नाप के लिए आवेदन करें और निर्माण की फ़ोटो तारीख के साथ रखें।"}
+    example: {en: "For example: a neighbour builds a wall two feet inside someone's plot and refuses to remove it.", kn: "ಉದಾಹರಣೆ: ನೆರೆಯವರು ಯಾರದೋ ನಿವೇಶನದ ಒಳಗೆ ಎರಡು ಅಡಿ ಗೋಡೆ ಕಟ್ಟಿ ತೆಗೆಯಲು ಒಪ್ಪದಿರುವುದು.", hi: "उदाहरण: पड़ोसी किसी के प्लॉट में दो फ़ुट अंदर दीवार बना ले और हटाने से मना करे।"}
+    keywords: [encroach, occupied, "built a wall", "built on my land", ಒತ್ತುವರಿ, ಆಕ್ರಮಿಸಿ, ottuvari, कब्ज़ा, अतिक्रमण, "kabza"]
+  prop.coheir_sale_without_consent:
+    help: {en: "A co-owner generally cannot sell more than their own share; a co-heir may challenge a sale of joint property made without their consent.", kn: "ಸಹ ಮಾಲೀಕರು ಸಾಮಾನ್ಯವಾಗಿ ತಮ್ಮ ಪಾಲಿಗಿಂತ ಹೆಚ್ಚು ಮಾರುವಂತಿಲ್ಲ; ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ಜಂಟಿ ಆಸ್ತಿ ಮಾರಿದರೆ ಸಹ ವಾರಸುದಾರರು ಪ್ರಶ್ನಿಸಬಹುದು.", hi: "सह-मालिक सामान्यतः अपने हिस्से से ज़्यादा नहीं बेच सकता; बिना सहमति संयुक्त संपत्ति बेचने को सह-वारिस चुनौती दे सकता है।"}
+    step: {en: "Get a certified copy of any sale deed and an encumbrance certificate from the Sub-Registrar.", kn: "ಉಪ ನೋಂದಣಾಧಿಕಾರಿಯಿಂದ ಕ್ರಯಪತ್ರದ ದೃಢೀಕೃತ ಪ್ರತಿ ಮತ್ತು ಋಣಭಾರ ಪ್ರಮಾಣಪತ್ರ ಪಡೆಯಿರಿ.", hi: "उप-पंजीयक से बैनामे की प्रमाणित प्रति और भार प्रमाणपत्र लें।"}
+    example: {en: "For example: an uncle sells the whole family land to a buyer although his nephews also own shares.", kn: "ಉದಾಹರಣೆ: ಸೋದರಳಿಯರಿಗೂ ಪಾಲು ಇದ್ದರೂ ಚಿಕ್ಕಪ್ಪ ಇಡೀ ಕುಟುಂಬದ ಜಮೀನನ್ನು ಖರೀದಿದಾರರಿಗೆ ಮಾರುವುದು.", hi: "उदाहरण: भतीजों का भी हिस्सा होने पर चाचा पूरी पारिवारिक ज़मीन किसी खरीदार को बेच दे।"}
+    keywords: ["selling the land", "sell the land", "sold the land", "without my consent", ಮಾರ್ತಿದ್ದಾರೆ, ಮಾರಿದ್ದಾರೆ, ಮಾರೋಕೆ, "maartiddare", बेच रहे, बेच दी, बेचने, "bech rahe", "bech di"]
+  prop.boundary_dispute:
+    help: {en: "Boundary disputes are usually settled by an official survey from the revenue / survey department; the civil court can decide if it is still disputed.", kn: "ಗಡಿ ವಿವಾದಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಕಂದಾಯ / ಭೂಮಾಪನ ಇಲಾಖೆಯ ಅಧಿಕೃತ ಅಳತೆಯಿಂದ ಬಗೆಹರಿಯುತ್ತವೆ; ವಿವಾದ ಮುಂದುವರಿದರೆ ಸಿವಿಲ್ ನ್ಯಾಯಾಲಯ ನಿರ್ಧರಿಸಬಹುದು.", hi: "सीमा विवाद आमतौर पर राजस्व / सर्वेक्षण विभाग की आधिकारिक नाप से सुलझते हैं; विवाद बना रहे तो दीवानी अदालत फ़ैसला कर सकती है।"}
+    step: {en: "Apply to the survey department for measurement and ask for the survey sketch (tippani / hissa sketch).", kn: "ಅಳತೆಗಾಗಿ ಭೂಮಾಪನ ಇಲಾಖೆಗೆ ಅರ್ಜಿ ಹಾಕಿ, ಸರ್ವೇ ಸ್ಕೆಚ್ (ಟಿಪ್ಪಣಿ / ಹಿಸ್ಸಾ ಸ್ಕೆಚ್) ಕೇಳಿ.", hi: "नाप के लिए सर्वेक्षण विभाग में आवेदन करें और सर्वे नक्शा माँगें।"}
+    example: {en: "For example: the stones marking the edge between two farms are moved overnight by one neighbour.", kn: "ಉದಾಹರಣೆ: ಎರಡು ಹೊಲಗಳ ನಡುವಿನ ಗಡಿ ಕಲ್ಲುಗಳನ್ನು ಒಬ್ಬ ನೆರೆಯವರು ರಾತ್ರೋರಾತ್ರಿ ಸರಿಸುವುದು.", hi: "उदाहरण: दो खेतों के बीच सीमा के पत्थर एक पड़ोसी रातों-रात खिसका दे।"}
+    keywords: [boundary, "boundary stones", survey, ಗಡಿ, ಗಡಿ ಕಲ್ಲು, "gadi kallu", सीमा, मेड़, "sarhad"]
+  prop.forged_documents:
+    help: {en: "Making or using a forged document (such as a fake will or deed) is an offence; a civil court can also cancel such a document.", kn: "ಖೋಟಾ ದಾಖಲೆ (ನಕಲಿ ವಿಲ್ / ಪತ್ರ) ಮಾಡುವುದು ಅಥವಾ ಬಳಸುವುದು ಅಪರಾಧ; ಸಿವಿಲ್ ನ್ಯಾಯಾಲಯ ಅಂತಹ ದಾಖಲೆ ರದ್ದುಗೊಳಿಸಬಹುದು.", hi: "जाली दस्तावेज़ (नकली वसीयत या बैनामा) बनाना या इस्तेमाल करना अपराध है; दीवानी अदालत ऐसे दस्तावेज़ को रद्द भी कर सकती है।"}
+    step: {en: "Get certified copies of the disputed document and documents with the genuine signature for comparison.", kn: "ವಿವಾದಿತ ದಾಖಲೆಯ ದೃಢೀಕೃತ ಪ್ರತಿ ಮತ್ತು ಹೋಲಿಕೆಗೆ ನಿಜವಾದ ಸಹಿ ಇರುವ ದಾಖಲೆಗಳನ್ನು ಪಡೆಯಿರಿ.", hi: "विवादित दस्तावेज़ की प्रमाणित प्रति और तुलना के लिए असली दस्तख़त वाले दस्तावेज़ प्राप्त करें।"}
+    example: {en: "For example: a cousin produces a 'will' with a copied signature to transfer the khata to his name.", kn: "ಉದಾಹರಣೆ: ಖಾತಾ ತನ್ನ ಹೆಸರಿಗೆ ಮಾಡಿಕೊಳ್ಳಲು ನಕಲು ಸಹಿಯ 'ವಿಲ್' ತೋರಿಸುವ ದಾಯಾದಿ.", hi: "उदाहरण: एक चचेरा भाई खाता अपने नाम करवाने के लिए नकली दस्तख़त वाली 'वसीयत' पेश करे।"}
+    keywords: [forged, "fake will", "fake document", "fake signature", ನಕಲಿ ವಿಲ್, ನಕಲಿ ಸಹಿ, ನಕಲಿ ದಾಖಲೆ, "nakali", नकली वसीयत, जाली, "naqli", "jaali"]
+  cyb.upi_payment_fraud:
+    help: {en: "Being tricked into a digital payment can be cheating and an IT Act offence; reporting at once to 1930 / cybercrime.gov.in and the bank may help freeze the money.", kn: "ಮೋಸದಿಂದ ಡಿಜಿಟಲ್ ಪಾವತಿ ಮಾಡಿಸುವುದು ವಂಚನೆ ಮತ್ತು ಐಟಿ ಕಾಯ್ದೆಯ ಅಪರಾಧ ಆಗಬಹುದು; ತಕ್ಷಣ 1930 / cybercrime.gov.in ಮತ್ತು ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿದರೆ ಹಣ ತಡೆಹಿಡಿಯಬಹುದು.", hi: "धोखे से डिजिटल भुगतान करवाना छल और आईटी कानून का अपराध हो सकता है; तुरंत 1930 / cybercrime.gov.in और बैंक को बताने से पैसा रुक सकता है।"}
+    step: {en: "Keep the UPI transaction ID, the payee UPI ID / number and screenshots of the call or chat.", kn: "ಯುಪಿಐ ವಹಿವಾಟು ಐಡಿ, ಹಣ ಹೋದ ಯುಪಿಐ ಐಡಿ / ನಂಬರ್ ಮತ್ತು ಕರೆ / ಚಾಟ್ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "यूपीआई ट्रांज़ैक्शन आईडी, पाने वाले की यूपीआई आईडी / नंबर और कॉल या चैट के स्क्रीनशॉट रखें।"}
+    example: {en: "For example: a caller claiming to be from the bank asks a person to 'enter your PIN to receive a refund', and money goes out.", kn: "ಉದಾಹರಣೆ: ಬ್ಯಾಂಕಿನವರು ಎಂದು ಹೇಳಿ 'ರಿಫಂಡ್ ಪಡೆಯಲು ಪಿನ್ ಹಾಕಿ' ಎನ್ನುವ ಕರೆ, ಆಮೇಲೆ ಹಣ ಹೋಗುವುದು.", hi: "उदाहरण: बैंक से होने का दावा करने वाला कॉलर 'रिफ़ंड पाने के लिए पिन डालें' कहे, और पैसा कट जाए।"}
+    keywords: [upi, phonepe, "google pay", gpay, paytm, "scan the qr", ಯುಪಿಐ, ಕ್ಯೂಆರ್, यूपीआई, क्यूआर]
+  cyb.phishing_account_takeover:
+    help: {en: "Using a fake link to steal passwords or take over an account is an IT Act offence; report it, secure the account and inform the bank immediately.", kn: "ನಕಲಿ ಲಿಂಕ್ ಮೂಲಕ ಪಾಸ್‌ವರ್ಡ್ ಕದ್ದು ಅಕೌಂಟ್ ವಶಪಡಿಸಿಕೊಳ್ಳುವುದು ಐಟಿ ಕಾಯ್ದೆಯ ಅಪರಾಧ; ರಿಪೋರ್ಟ್ ಮಾಡಿ, ಅಕೌಂಟ್ ಸುರಕ್ಷಿತಗೊಳಿಸಿ, ತಕ್ಷಣ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ.", hi: "नकली लिंक से पासवर्ड चुराकर अकाउंट पर कब्ज़ा करना आईटी कानून का अपराध है; रिपोर्ट करें, अकाउंट सुरक्षित करें और तुरंत बैंक को बताएँ।"}
+    step: {en: "Do not click the link again; keep the SMS / email with the link as evidence.", kn: "ಲಿಂಕ್ ಮತ್ತೆ ಒತ್ತಬೇಡಿ; ಲಿಂಕ್ ಇರುವ ಎಸ್‌ಎಂಎಸ್ / ಇಮೇಲ್ ಸಾಕ್ಷ್ಯವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "लिंक दोबारा न खोलें; लिंक वाला एसएमएस / ईमेल सबूत के तौर पर रखें।"}
+    example: {en: "For example: an SMS says 'your KYC expires today, click here', the page asks for the net-banking password, and the account is then emptied.", kn: "ಉದಾಹರಣೆ: 'ಇವತ್ತು ಕೆವೈಸಿ ಮುಗಿಯುತ್ತೆ, ಇಲ್ಲಿ ಒತ್ತಿ' ಎಂಬ ಎಸ್‌ಎಂಎಸ್, ಪುಟ ನೆಟ್-ಬ್ಯಾಂಕಿಂಗ್ ಪಾಸ್‌ವರ್ಡ್ ಕೇಳುತ್ತದೆ, ಆಮೇಲೆ ಅಕೌಂಟ್ ಖಾಲಿ.", hi: "उदाहरण: 'आज आपका केवाईसी खत्म, यहाँ क्लिक करें' वाला एसएमएस, पेज नेट-बैंकिंग पासवर्ड माँगे, और फिर खाता खाली।"}
+    keywords: [phishing, "clicked a link", "kyc link", hacked, otp, ಲಿಂಕ್, ಹ್ಯಾಕ್, ಒಟಿಪಿ, लिंक, हैक, ओटीपी]
+  cyb.impersonation:
+    help: {en: "Creating a fake profile in someone's name to deceive others can be an offence of identity theft / cheating by personation; platforms must act on reports.", kn: "ಬೇರೆಯವರ ಹೆಸರಲ್ಲಿ ನಕಲಿ ಪ್ರೊಫೈಲ್ ಮಾಡಿ ಮೋಸ ಮಾಡುವುದು ಗುರುತು ಕಳ್ಳತನ / ವೇಷಧಾರಿ ವಂಚನೆಯ ಅಪರಾಧ ಆಗಬಹುದು; ರಿಪೋರ್ಟ್ ಮೇಲೆ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಕ್ರಮ ಕೈಗೊಳ್ಳಬೇಕು.", hi: "किसी के नाम से नकली प्रोफ़ाइल बनाकर दूसरों को धोखा देना पहचान की चोरी / प्रतिरूपण द्वारा छल का अपराध हो सकता है; रिपोर्ट पर प्लेटफ़ॉर्म को कार्रवाई करनी होती है।"}
+    step: {en: "Ask friends not to pay or reply; collect the profile link and screenshots.", kn: "ಹಣ ಕೊಡಬೇಡಿ / ಉತ್ತರಿಸಬೇಡಿ ಎಂದು ಸ್ನೇಹಿತರಿಗೆ ತಿಳಿಸಿ; ಪ್ರೊಫೈಲ್ ಲಿಂಕ್ ಮತ್ತು ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಸಂಗ್ರಹಿಸಿ.", hi: "दोस्तों से कहें कि पैसे न दें या जवाब न दें; प्रोफ़ाइल लिंक और स्क्रीनशॉट इकट्ठा करें।"}
+    example: {en: "For example: someone copies a teacher's photos into a new account and messages her students asking for money.", kn: "ಉದಾಹರಣೆ: ಒಬ್ಬ ಶಿಕ್ಷಕಿಯ ಫೋಟೋ ಬಳಸಿ ಹೊಸ ಅಕೌಂಟ್ ಮಾಡಿ ಅವರ ವಿದ್ಯಾರ್ಥಿಗಳಿಂದ ಹಣ ಕೇಳುವುದು.", hi: "उदाहरण: कोई एक शिक्षिका की फ़ोटो से नया अकाउंट बनाकर उनके छात्रों से पैसे माँगे।"}
+    keywords: ["fake profile", "fake account", "in my name", impersonat, ನಕಲಿ ಪ್ರೊಫೈಲ್, ನಕಲಿ ಅಕೌಂಟ್, नकली प्रोफ़ाइल, फ़ेक अकाउंट, "fake id"]
+  cyb.cyberstalking:
+    help: {en: "Repeatedly contacting or monitoring a woman online despite her clear disinterest can be the offence of stalking.", kn: "ಮಹಿಳೆ ಸ್ಪಷ್ಟವಾಗಿ ಬೇಡ ಎಂದರೂ ಪದೇ ಪದೇ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಸಂಪರ್ಕಿಸುವುದು ಅಥವಾ ನಿಗಾ ಇಡುವುದು ಹಿಂಬಾಲಿಕೆಯ ಅಪರಾಧ ಆಗಬಹುದು.", hi: "महिला के साफ़ मना करने के बावजूद बार-बार ऑनलाइन संपर्क करना या निगरानी करना पीछा करने (स्टॉकिंग) का अपराध हो सकता है।"}
+    step: {en: "Keep screenshots with dates; block and report the accounts after saving the evidence.", kn: "ದಿನಾಂಕ ಸಹಿತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಇಟ್ಟುಕೊಳ್ಳಿ; ಸಾಕ್ಷ್ಯ ಉಳಿಸಿದ ನಂತರ ಅಕೌಂಟ್‌ಗಳನ್ನು ಬ್ಲಾಕ್ ಮಾಡಿ ರಿಪೋರ್ಟ್ ಮಾಡಿ.", hi: "तारीख वाले स्क्रीनशॉट रखें; सबूत सँभालने के बाद अकाउंट ब्लॉक और रिपोर्ट करें।"}
+    example: {en: "For example: a former colleague keeps messaging a woman from new accounts every day after she blocked him.", kn: "ಉದಾಹರಣೆ: ಬ್ಲಾಕ್ ಮಾಡಿದ ನಂತರವೂ ಹಳೆಯ ಸಹೋದ್ಯೋಗಿ ಹೊಸ ಅಕೌಂಟ್‌ಗಳಿಂದ ದಿನಾ ಮೆಸೇಜ್ ಮಾಡುವುದು.", hi: "उदाहरण: ब्लॉक करने के बाद भी पुराना सहकर्मी रोज़ नए अकाउंट से महिला को मैसेज करता रहे।"}
+    keywords: [stalking, "keeps messaging", "follows me", "new accounts", ಹಿಂಬಾಲಿಸ, ದಿನಾ ಮೆಸೇಜ್, पीछा, रोज़ मैसेज, "roz message"]
+  cyb.morphed_intimate_image:
+    help: {en: "Creating or sharing morphed / intimate images without consent is a serious offence; the platform and police can be asked to take the content down quickly.", kn: "ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ಮಾರ್ಫ್ / ಖಾಸಗಿ ಚಿತ್ರ ಮಾಡುವುದು ಅಥವಾ ಹಂಚುವುದು ಗಂಭೀರ ಅಪರಾಧ; ಅದನ್ನು ಬೇಗ ತೆಗೆಸಲು ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಮತ್ತು ಪೊಲೀಸರನ್ನು ಕೇಳಬಹುದು.", hi: "बिना सहमति मॉर्फ़्ड / निजी तस्वीरें बनाना या फैलाना गंभीर अपराध है; उन्हें जल्दी हटवाने के लिए प्लेटफ़ॉर्म और पुलिस से कहा जा सकता है।"}
+    step: {en: "Save links and screenshots (do not forward the images), then report on cybercrime.gov.in (women / child section).", kn: "ಲಿಂಕ್ ಮತ್ತು ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಉಳಿಸಿ (ಚಿತ್ರ ಫಾರ್ವರ್ಡ್ ಮಾಡಬೇಡಿ), ನಂತರ cybercrime.gov.in ನಲ್ಲಿ (ಮಹಿಳೆ / ಮಕ್ಕಳ ವಿಭಾಗ) ರಿಪೋರ್ಟ್ ಮಾಡಿ.", hi: "लिंक और स्क्रीनशॉट सँभालें (तस्वीरें फ़ॉरवर्ड न करें), फिर cybercrime.gov.in (महिला / बाल अनुभाग) पर रिपोर्ट करें।"}
+    example: {en: "For example: someone puts a woman's face on an obscene picture and sends it to her relatives.", kn: "ಉದಾಹರಣೆ: ಒಬ್ಬ ಮಹಿಳೆಯ ಮುಖವನ್ನು ಅಶ್ಲೀಲ ಚಿತ್ರಕ್ಕೆ ಜೋಡಿಸಿ ಅವರ ಸಂಬಂಧಿಕರಿಗೆ ಕಳಿಸುವುದು.", hi: "उदाहरण: कोई एक महिला का चेहरा अश्लील तस्वीर पर लगाकर उसके रिश्तेदारों को भेज दे।"}
+    keywords: [morphed, "private photos", "nude", obscene, ಮಾರ್ಫ್, ಅಶ್ಲೀಲ, ಖಾಸಗಿ ಫೋಟೋ, मॉर्फ़, अश्लील, निजी फ़ोटो]
+  con.defective_product:
+    help: {en: "A consumer who buys a defective product can complain to the District Consumer Commission for replacement, refund or compensation.", kn: "ದೋಷಯುಕ್ತ ವಸ್ತು ಖರೀದಿಸಿದ ಗ್ರಾಹಕರು ಬದಲಿ, ಹಣ ವಾಪಸ್ ಅಥವಾ ಪರಿಹಾರಕ್ಕಾಗಿ ಜಿಲ್ಲಾ ಗ್ರಾಹಕ ಆಯೋಗಕ್ಕೆ ದೂರು ಕೊಡಬಹುದು.", hi: "खराब सामान खरीदने वाला उपभोक्ता बदलाव, पैसे वापसी या मुआवज़े के लिए जिला उपभोक्ता आयोग में शिकायत कर सकता है।"}
+    step: {en: "Keep the bill, warranty card, service job sheets and photos of the defect.", kn: "ಬಿಲ್, ವಾರಂಟಿ ಕಾರ್ಡ್, ಸರ್ವಿಸ್ ಜಾಬ್ ಶೀಟ್ ಮತ್ತು ದೋಷದ ಫೋಟೋ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "बिल, वारंटी कार्ड, सर्विस जॉब शीट और खराबी की फ़ोटो रखें।"}
+    example: {en: "For example: a new refrigerator stops cooling within two months and the showroom refuses to replace it.", kn: "ಉದಾಹರಣೆ: ಹೊಸ ಫ್ರಿಜ್ ಎರಡು ತಿಂಗಳಲ್ಲೇ ತಣ್ಣಗಾಗುವುದು ನಿಲ್ಲಿಸಿ, ಶೋರೂಮ್ ಬದಲಾಯಿಸಲು ನಿರಾಕರಿಸುವುದು.", hi: "उदाहरण: नया फ़्रिज दो महीने में ठंडा करना बंद कर दे और शोरूम बदलने से मना करे।"}
+    keywords: [defective, "stopped working", warranty, ದೋಷ, ವಾರಂಟಿ, ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ, खराब, वारंटी, "kaam nahi kar raha"]
+  con.deficiency_in_service:
+    help: {en: "If a paid service falls short of what was promised, a consumer can seek compensation or proper service through the consumer commission.", kn: "ಹಣ ಕೊಟ್ಟ ಸೇವೆ ಭರವಸೆಗಿಂತ ಕಡಿಮೆ ಇದ್ದರೆ ಗ್ರಾಹಕರು ಗ್ರಾಹಕ ಆಯೋಗದ ಮೂಲಕ ಪರಿಹಾರ ಅಥವಾ ಸರಿಯಾದ ಸೇವೆ ಕೇಳಬಹುದು.", hi: "पैसे देकर ली गई सेवा वादे से कम हो तो उपभोक्ता आयोग के ज़रिए मुआवज़ा या ठीक सेवा माँग सकते हैं।"}
+    step: {en: "Note complaint ticket numbers and dates of each failure.", kn: "ದೂರು ಟಿಕೆಟ್ ನಂಬರ್‌ಗಳು ಮತ್ತು ಪ್ರತಿ ವೈಫಲ್ಯದ ದಿನಾಂಕ ಬರೆದಿಡಿ.", hi: "शिकायत टिकट नंबर और हर खराबी की तारीख लिख लें।"}
+    example: {en: "For example: a broadband plan promises 100 Mbps but the internet is down for three weeks and nobody fixes it.", kn: "ಉದಾಹರಣೆ: 100 Mbps ಭರವಸೆಯ ಬ್ರಾಡ್‌ಬ್ಯಾಂಡ್ ಮೂರು ವಾರ ಬಂದ್ ಆಗಿದ್ದು ಯಾರೂ ಸರಿಪಡಿಸದಿರುವುದು.", hi: "उदाहरण: 100 Mbps का वादा करने वाला ब्रॉडबैंड तीन हफ़्ते बंद रहे और कोई ठीक न करे।"}
+    keywords: ["poor service", "service not provided", "internet down", ಸೇವೆ, ಸರ್ವಿಸ್ ಸರಿ ಇಲ್ಲ, सेवा, सर्विस खराब]
+  fin.unauthorized_bank_txn:
+    help: {en: "For transactions you did not make, reporting quickly to the bank matters a lot under RBI rules on customer liability; if the bank does not resolve it, the RBI Ombudsman can be approached.", kn: "ನೀವು ಮಾಡದ ವಹಿವಾಟುಗಳ ಬಗ್ಗೆ ಬೇಗ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸುವುದು ಆರ್‌ಬಿಐ ಗ್ರಾಹಕ ಹೊಣೆಗಾರಿಕೆ ನಿಯಮಗಳಲ್ಲಿ ತುಂಬಾ ಮುಖ್ಯ; ಬ್ಯಾಂಕ್ ಪರಿಹರಿಸದಿದ್ದರೆ ಆರ್‌ಬಿಐ ಓಂಬುಡ್ಸ್‌ಮನ್ ಬಳಿ ಹೋಗಬಹುದು.", hi: "जो लेन-देन आपने नहीं किए, उनकी जल्दी बैंक को सूचना देना आरबीआई के ग्राहक दायित्व नियमों में बहुत अहम है; बैंक हल न करे तो आरबीआई लोकपाल के पास जा सकते हैं।"}
+    step: {en: "Block the card / account, and get the complaint reference number from the bank in writing.", kn: "ಕಾರ್ಡ್ / ಅಕೌಂಟ್ ಬ್ಲಾಕ್ ಮಾಡಿ, ಬ್ಯಾಂಕ್‌ನಿಂದ ಲಿಖಿತ ದೂರು ರೆಫರೆನ್ಸ್ ನಂಬರ್ ಪಡೆಯಿರಿ.", hi: "कार्ड / खाता ब्लॉक करें और बैंक से लिखित शिकायत रेफ़रेंस नंबर लें।"}
+    example: {en: "For example: three card payments appear on a statement that the customer never made, while the card was with them.", kn: "ಉದಾಹರಣೆ: ಕಾರ್ಡ್ ತಮ್ಮ ಹತ್ತಿರವೇ ಇದ್ದರೂ ಗ್ರಾಹಕರು ಮಾಡದ ಮೂರು ಪಾವತಿಗಳು ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ನಲ್ಲಿ ಕಾಣುವುದು.", hi: "उदाहरण: कार्ड ग्राहक के पास होते हुए भी स्टेटमेंट में तीन ऐसे भुगतान दिखें जो उसने कभी नहीं किए।"}
+    keywords: ["did not make", "unauthorised", "unauthorized", "money deducted", "debited without", ನಾನು ಮಾಡಿಲ್ಲ, ಹಣ ಕಟ್, मैंने नहीं किया, पैसे कट, "paise kat"]
+  con.refund_refusal:
+    help: {en: "If a seller refuses a refund that its own return policy allowed, that may be an unfair trade practice / deficiency, and you can complain to the consumer commission.", kn: "ತಮ್ಮದೇ ರಿಟರ್ನ್ ನೀತಿ ಅನುಮತಿಸಿದ ಹಣ ವಾಪಸ್ಸನ್ನು ಮಾರಾಟಗಾರ ನಿರಾಕರಿಸಿದರೆ ಅದು ಅನ್ಯಾಯದ ವ್ಯಾಪಾರ ಪದ್ಧತಿ / ಸೇವಾ ಕೊರತೆ ಆಗಬಹುದು; ಗ್ರಾಹಕ ಆಯೋಗಕ್ಕೆ ದೂರು ಕೊಡಬಹುದು.", hi: "अगर विक्रेता अपनी ही रिटर्न नीति के तहत बनने वाला रिफ़ंड न दे, तो यह अनुचित व्यापार व्यवहार / सेवा में कमी हो सकती है, और आप उपभोक्ता आयोग में शिकायत कर सकते हैं।"}
+    step: {en: "Keep the order details, return policy screenshot and the pickup / return confirmation.", kn: "ಆರ್ಡರ್ ವಿವರ, ರಿಟರ್ನ್ ನೀತಿಯ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಮತ್ತು ಪಿಕಪ್ / ರಿಟರ್ನ್ ದೃಢೀಕರಣ ಇಟ್ಟುಕೊಳ್ಳಿ.", hi: "ऑर्डर का विवरण, रिटर्न नीति का स्क्रीनशॉट और पिकअप / रिटर्न की पुष्टि रखें।"}
+    example: {en: "For example: a shoe is returned within the 10-day window, the pickup is confirmed, but the app keeps saying 'refund not possible'.", kn: "ಉದಾಹರಣೆ: 10 ದಿನದೊಳಗೆ ಶೂ ವಾಪಸ್ ಕೊಟ್ಟು ಪಿಕಪ್ ದೃಢಪಟ್ಟರೂ ಆಪ್ 'ರಿಫಂಡ್ ಸಾಧ್ಯವಿಲ್ಲ' ಎನ್ನುವುದು.", hi: "उदाहरण: 10 दिन के अंदर जूता लौटाया, पिकअप की पुष्टि हुई, फिर भी ऐप कहे 'रिफ़ंड संभव नहीं'।"}
+    keywords: [refund, returned, "return policy", ರಿಫಂಡ್, ವಾಪಸ್, रिफ़ंड, रिफंड, वापसी, "refund nahi"]
+  fin.loan_recovery_harassment:
+    help: {en: "Recovery agents may not threaten, abuse or shame borrowers; such conduct can be reported to the lender, the RBI (for regulated lenders) and the police.", kn: "ವಸೂಲಿ ಏಜೆಂಟರು ಸಾಲಗಾರರನ್ನು ಬೆದರಿಸುವಂತಿಲ್ಲ, ಬೈಯುವಂತಿಲ್ಲ ಅಥವಾ ಅವಮಾನಿಸುವಂತಿಲ್ಲ; ಇದನ್ನು ಸಾಲದಾತ, ಆರ್‌ಬಿಐ (ನಿಯಂತ್ರಿತ ಸಂಸ್ಥೆಗಳಿಗೆ) ಮತ್ತು ಪೊಲೀಸರಿಗೆ ತಿಳಿಸಬಹುದು.", hi: "रिकवरी एजेंट कर्ज़दार को धमका, गाली दे या बदनाम नहीं कर सकते; ऐसे व्यवहार की शिकायत कर्ज़दाता, आरबीआई (नियंत्रित संस्थाओं के लिए) और पुलिस से की जा सकती है।"}
+    step: {en: "Record calls / save messages and check whether the app's lender is RBI-registered (https://sachet.rbi.org.in to report).", kn: "ಕರೆ ರೆಕಾರ್ಡ್ / ಮೆಸೇಜ್ ಉಳಿಸಿ; ಆಪ್‌ನ ಸಾಲದಾತ ಆರ್‌ಬಿಐ ನೋಂದಾಯಿತವೇ ಪರಿಶೀಲಿಸಿ (ರಿಪೋರ್ಟ್: https://sachet.rbi.org.in).", hi: "कॉल रिकॉर्ड / मैसेज सँभालें और देखें कि ऐप का कर्ज़दाता आरबीआई में पंजीकृत है या नहीं (रिपोर्ट: https://sachet.rbi.org.in)।"}
+    example: {en: "For example: after one missed EMI, agents message the borrower's whole contact list calling him a thief.", kn: "ಉದಾಹರಣೆ: ಒಂದು ಇಎಂಐ ತಪ್ಪಿದ ನಂತರ ಏಜೆಂಟರು ಸಾಲಗಾರನ ಎಲ್ಲಾ ಕಾಂಟ್ಯಾಕ್ಟ್‌ಗಳಿಗೆ ಅವನನ್ನು ಕಳ್ಳ ಎಂದು ಮೆಸೇಜ್ ಮಾಡುವುದು.", hi: "उदाहरण: एक ईएमआई छूटने पर एजेंट कर्ज़दार की पूरी कॉन्टैक्ट लिस्ट को उसे चोर बताकर मैसेज करें।"}
+    keywords: ["loan app", "recovery agent", "recovery calls", emi, ಲೋನ್ ಆಪ್, ವಸೂಲಿ, ಇಎಂಐ, लोन ऐप, रिकवरी, ईएमआई]
+
+out_of_scope:
+  help: {en: "This looks like a legal problem outside the five areas I am trained on. Please consult a lawyer or free legal aid (NALSA helpline 15100 / District Legal Services Authority).", kn: "ಇದು ನಾನು ತರಬೇತಿ ಪಡೆದ ಐದು ಕ್ಷೇತ್ರಗಳ ಹೊರಗಿನ ಕಾನೂನು ಸಮಸ್ಯೆಯಂತಿದೆ. ದಯವಿಟ್ಟು ವಕೀಲರು ಅಥವಾ ಉಚಿತ ಕಾನೂನು ನೆರವನ್ನು (ನಾಲ್ಸಾ 15100 / ಜಿಲ್ಲಾ ಕಾನೂನು ಸೇವಾ ಪ್ರಾಧಿಕಾರ) ಸಂಪರ್ಕಿಸಿ.", hi: "यह उन पाँच क्षेत्रों से बाहर की कानूनी समस्या लगती है जिन पर मैं प्रशिक्षित हूँ। कृपया वकील या निःशुल्क कानूनी सहायता (नालसा 15100 / जिला विधिक सेवा प्राधिकरण) से संपर्क करें।"}
+non_legal:
+  help: {en: "This does not seem to be a legal problem. If there is a legal side to it (a threat, money taken, property, abuse), please tell me about that part.", kn: "ಇದು ಕಾನೂನು ಸಮಸ್ಯೆ ಅಲ್ಲ ಎನಿಸುತ್ತದೆ. ಇದರಲ್ಲಿ ಕಾನೂನಿನ ಭಾಗ (ಬೆದರಿಕೆ, ಹಣ, ಆಸ್ತಿ, ದೌರ್ಜನ್ಯ) ಇದ್ದರೆ ಅದರ ಬಗ್ಗೆ ಹೇಳಿ.", hi: "यह कानूनी समस्या नहीं लगती। अगर इसमें कोई कानूनी पहलू (धमकी, पैसे, संपत्ति, हिंसा) हो, तो उसके बारे में बताएँ।"}
+
+# Co-occurrence cues for offline issue detection: the issue is suggested when at least one word from
+# EVERY group appears (lower-case substring match). Complements the trained classifier on free text.
+combos:
+  prop.coheir_sale_without_consent:
+    - [[sell, selling, sold, sale, ಮಾರ, maar, बेच, bech, बिक], [land, property, site, house, plot, ಜಮೀನು, ಆಸ್ತಿ, ಸೈಟ್, ಮನೆ, jameenu, aasti, ज़मीन, जमीन, संपत्ति, मकान, zameen, jameen, plot]]
+  prop.inheritance_partition:
+    - [[father, "dad ", appa, ಅಪ್ಪ, ತಂದೆ, पिता, पापा, papa, grandfather, ತಾತ, दादा], [died, "passed away", expired, death, ತೀರಿ, ಸತ್ತ, ನಿಧನ, गुज़र, मृत्यु, "गुजर", "teeri", "guzar"]]
+    - [[share, ಪಾಲು, paalu, हिस्सा, hissa], [land, property, house, ಜಮೀನು, ಆಸ್ತಿ, ಮನೆ, ज़मीन, जमीन, संपत्ति, मकान]]
+  prop.encroachment:
+    - [[built, constructed, occupied, "put up", ಕಟ್ಟಿ, ಒತ್ತುವರಿ, बना, कब्ज़ा, kabza], [my land, my plot, my site, "on our land", ನಮ್ಮ ಜಮೀನು, ನಮ್ಮ ಸೈಟ್, मेरी ज़मीन, मेरे प्लॉट, हमारी ज़मीन]]
+  prop.forged_documents:
+    - [[fake, forged, false, ನಕಲಿ, ಖೋಟಾ, नकली, जाली, nakli, naqli], [will, deed, document, signature, papers, ವಿಲ್, ಪತ್ರ, ದಾಖಲೆ, ಸಹಿ, वसीयत, दस्तावेज़, कागज़, दस्तख़त, हस्ताक्षर]]
+  crim.hurt_assault:
+    - [[hit, beat, slapped, punched, attacked, kicked, ಹೊಡೆ, ಹೊಡ್ದ, hode, मारा, पीटा, maara, peeta], [me, my, ನನಗೆ, ನನ್ನ, मुझे, मेरे, mujhe, nange]]
+  crim.cheating:
+    - [[job, visa, "abroad", नौकरी, विदेश, ಕೆಲಸ ಕೊಡಿಸ, ನೌಕರಿ, ವಿದೇಶ, naukri], [took, "taken", ले लिए, लिए, ತಗೊಂಡ, "le liye", "liye"], [rupees, lakh, money, रुपये, लाख, पैसे, ಹಣ, ದುಡ್ಡು, ಲಕ್ಷ, paise]]
+    - [[took, paid, gave, ಕೊಟ್ಟೆ, ಕೊಟ್ಟಿದ್ದೆ, दिए, दिया, "le liye"], [promise, "job", "visa", "loan", "double", ಕೆಲಸ, ಮಾತು ಕೊಟ್ಟ, वादा, नौकरी, "naukri"], [money, rupees, lakh, ₹, ದುಡ್ಡು, ಹಣ, ರೂಪಾಯಿ, पैसे, रुपये, लाख, paise]]
+  cyb.upi_payment_fraud:
+    - [[upi, qr, "phonepe", "gpay", "google pay", paytm, ಯುಪಿಐ, यूपीआई, pin, ಪಿನ್, पिन], [money, rupees, ₹, debited, went, ಹಣ, ದುಡ್ಡು, पैसे, कट, gaya, hoytu]]
+    - [[called, call, ಕಾಲ್, कॉल, फ़ोन], [bank, ಬ್ಯಾಂಕ್, बैंक], [money, rupees, ₹, debited, ಹಣ, ದುಡ್ಡು, पैसे, कट]]
+  cyb.phishing_account_takeover:
+    - [[link, sms, email, ಲಿಂಕ್, लिंक], [password, otp, kyc, "net banking", login, ಪಾಸ್‌ವರ್ಡ್, ಒಟಿಪಿ, पासवर्ड, ओटीपी]]
+  fin.unauthorized_bank_txn:
+    - [[transaction, debit, deducted, withdrawn, ವಹಿವಾಟು, ಕಟ್, लेन-देन, कट, निकाल], ["did not", "didn't", "never", "not mine", ಮಾಡಿಲ್ಲ, नहीं किया, "nahi kiya"]]
+  fam.domestic_violence:
+    - [[husband, "in-law", "in-laws", ಗಂಡ, ಅತ್ತೆ, ಮಾವ, पति, सास, ससुर, saas, ganda, pati], [beat, hit, abuse, slap, torture, ಹೊಡೆ, ಹಿಂಸೆ, ಕಿರುಕುಳ, मार, पीट, हिंसा, maar, hode]]
+  fam.dowry_harassment:
+    - [["in-law", "in-laws", husband, ಅತ್ತೆ, ಗಂಡ, ससुराल, सास, पति, sasural, saas], [demand, demanding, asking, ಕೇಳ್ತಾರೆ, ತರೋಕೆ, माँग, मांग, लाने, "maang"], [car, gold, lakh, cash, money, ಚಿನ್ನ, ಲಕ್ಷ, ಹಣ, कार, सोना, लाख, पैसे, "paise"]]
+    - [[dowry, ವರದಕ್ಷಿಣೆ, दहेज, dahej], [ask, demand, want, more, ಕೇಳ, माँग, मांग, maang]]
+  fam.maintenance:
+    - [[husband, wife, ಗಂಡ, ಹೆಂಡತಿ, पति, पत्नी, pati, ganda], ["no money", "not giving money", "stopped giving", "doesn't give", ಖರ್ಚಿಗೆ, ದುಡ್ಡು ಕೊಡ್ತಿಲ್ಲ, पैसे नहीं, खर्चा नहीं, kharcha]]
+  fam.custody:
+    - [[child, son, daughter, kid, ಮಗು, ಮಗ, ಮಗಳು, बच्चा, बच्चे, बेटा, बेटे, बेटी, bachcha, beta, beti], ["took my son", "took my daughter", "took the child", "took our", "taken our", "won't let", "not allowing", "does not allow", "not letting", "custody", "kept the child", "keeps the child", ಕರೆದುಕೊಂಡು ಹೋದ, ಬಿಡ್ತಿಲ್ಲ, ಭೇಟಿ ಮಾಡೋಕೆ, ಇಟ್ಟುಕೊಂಡಿದ್ದಾರೆ, ले गए, ले गई, ले गया, रख लिया, मिलने नहीं, "milne nahi", "rakh liya", custody]]
+  fam.divorce:
+    - [[divorce, ಡಿವೋರ್ಸ್, ವಿಚ್ಛೇದನ, तलाक, "talaq", "talak", "end the marriage", "end my marriage"]]
+  cyb.morphed_intimate_image:
+    - [[photo, photos, picture, image, video, ಫೋಟೋ, ವಿಡಿಯೋ, फ़ोटो, फोटो, तस्वीर, वीडियो], [morph, nude, obscene, private, intimate, ಅಶ್ಲೀಲ, ಮಾರ್ಫ್, अश्लील, निजी, गंदी, मॉर्फ]]
+  cyb.impersonation:
+    - [[fake, ನಕಲಿ, नकली, फ़ेक], [profile, account, id, ಪ್ರೊಫೈಲ್, ಅಕೌಂಟ್, प्रोफ़ाइल, अकाउंट, आईडी]]
+  cyb.cyberstalking:
+    - [[messages, messaging, calls, following, stalking, ಮೆಸೇಜ್, ಹಿಂಬಾಲಿಸ, मैसेज, पीछा], [every day, daily, again and again, "new account", "new number", ದಿನಾ, ಪದೇ ಪದೇ, रोज़, बार-बार, "roz"]]
+  crim.criminal_intimidation:
+    - [[threat, threaten, warned], [kill, harm, beat, hurt, "break your", "break my", "see you", "finish", acid, life, ಸಾಯಿಸ, ಕೊಲ್ಲ, ಹೊಡೀತ, ಜೀವ, जान, मार, तोड़, "jaan", "maar"]]
+    - [["will kill", "kill me", "kill you", "break your legs", ಬೆದರಿಕೆ, ಬೆದರಿಸ, ಸಾಯಿಸ್ತೀನಿ, धमकी, धमका, "जान से", dhamki]]
+  crim.theft:
+    - [[stole, stolen, theft, snatched, "took my", missing, ಕದ್ದ, ಕಳ್ಳತನ, ಕಳುವು, चोरी, चुरा, छीन, chori], [phone, chain, gold, bike, money, wallet, bag, ಫೋನ್, ಸರ, ಚಿನ್ನ, ಬೈಕ್, फ़ोन, चेन, सोना, बाइक, पर्स]]
+  crim.police_refusal_fir:
+    - [[police, ಪೊಲೀಸ್, ಠಾಣೆ, पुलिस, थाना, थाने], [refused, "not register", "didn't register", "not taking", "sent me back", ನಿರಾಕರಿಸ, ತಗೊಳ್ಳಲಿಲ್ಲ, ಬರೆಯಲಿಲ್ಲ, मना, नहीं लिखी, दर्ज नहीं, "nahi likhi"]]
+  con.defective_product:
+    - [["stopped working", "not working", defective, ಕೆಲಸ ಮಾಡೋದು ನಿಲ್ಲಿಸ, ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ, ಹಾಳಾ, खराब, "बंद हो", "काम नहीं", "kaam nahi"], [shop, store, showroom, warranty, company, seller, ಅಂಗಡಿ, ಶೋರೂಮ್, ವಾರಂಟಿ, दुकान, शोरूम, वारंटी, कंपनी]]
+    - [[bought, purchased, ತಗೊಂಡೆ, ಖರೀದಿ, खरीदा, खरीदी, "liya"], [stopped working, defect, broken, not working, damaged, ಹಾಳಾ, ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ, ದೋಷ, खराब, बंद हो गया, काम नहीं]]
+  con.refund_refusal:
+    - [[refund, ರಿಫಂಡ್, रिफ़ंड, रिफंड, "paise wapas", "money back"]]
+  con.deficiency_in_service:
+    - [[courier, parcel, ಕೊರಿಯರ್, ಪಾರ್ಸೆಲ್, कूरियर, कोरियर, पार्सल, "flight", "airline", "insurance claim", "repair service"]]
+    - [[service, internet, broadband, courier, airline, insurance, ಸರ್ವಿಸ್, ಸೇವೆ, ಇಂಟರ್ನೆಟ್, सेवा, सर्विस, इंटरनेट], [not working, poor, failed, "no response", ಸರಿ ಇಲ್ಲ, ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ, खराब, बंद, "not resolved"]]
+  fin.loan_recovery_harassment:
+    - [[loan, emi, ಲೋನ್, ಸಾಲ, लोन, कर्ज़, "karz"], [calls, abuse, threat, harass, contacts, shame, ಕಾಲ್, ಬೈಯ, ಕಿರುಕುಳ, कॉल, गाली, धमकी, परेशान]]
+
+# Risk co-occurrence cues: every group must match (word-start match).
+risk_combos:
+  child_removal_imminent:
+    - [[take, taking, "take her", "take him", ಕರೆದುಕೊಂಡು, ಕರ್ಕೊಂಡು, ले जा, ले जाएगी, ले जाएगा, "le jayegi", "le jayega"], [abroad, dubai, "another country", "foreign", "next week", tomorrow, ವಿದೇಶ, ದುಬೈ, ಮುಂದಿನ ವಾರ, ನಾಳೆ, विदेश, दुबई, "अगले हफ़्ते", "कल", "videsh"], [child, son, daughter, kid, year-old, ಮಗು, ಮಗ, ಮಗಳು, बच्चा, बच्चे, बेटा, बेटी, बेटे, "bachcha", "beti", "beta"]]
+  imminent_property_transfer:
+    - [[registration, register, sale deed, sell, selling, ರಿಜಿಸ್ಟ್ರೇಷನ್, ನೋಂದಣಿ, ಮಾರ, ರಿಜಿಸ್ಟರ್, रजिस्ट्री, रजिस्ट्रेशन, बेच, registry, bech, maar], [tomorrow, next week, "this week", "in two days", ನಾಳೆ, ಮುಂದಿನ ವಾರ, ಈ ವಾರ, कल, अगले हफ़्ते, अगले हफ्ते, इस हफ़्ते, naale, "mundina vaara", "agle hafte", "kal"]]
+  imminent_violence:
+    - [["come back", "will come", "will beat", "will hit", ಬರ್ತೀನಿ, ಹೊಡೀತೀನಿ, आऊँगा, मारूँगा, "aaunga", "maarunga"], [tonight, tomorrow, "today", ಇವತ್ತು, ನಾಳೆ, ರಾತ್ರಿ, आज, कल, रात, "aaj", "raat"]]
+  golden_hour_fraud:
+    - [[money, rupees, debited, "went from", ಹಣ, ದುಡ್ಡು, पैसे, "paise", "duddu"], ["minutes ago", "hour ago", "just now", "today", ಈಗ ತಾನೆ, ಗಂಟೆ, ಇವತ್ತು, अभी, घंटे, आज, "abhi", "ghante"]]
+  eviction_imminent:
+    - [["leave the house", "get out", "throw me out", "thrown out", vacate, ಮನೆ ಬಿಟ್ಟು, ಹೊರಗೆ ಹಾಕ, घर छोड़, घर से निकाल, "ghar chhod", "ghar se nikal"], [tomorrow, today, tonight, "by sunday", "this week", ನಾಳೆ, ಇವತ್ತು, कल, आज, "kal", "aaj"]]
+  ongoing_abuse:
+    - [[beat, beats, hit, hits, abuse, ಹೊಡೀತಾರೆ, ಹೊಡೆಯುತ್ತಾರೆ, ಹೊಡೀತಾನೆ, ಹಿಂಸೆ, पीटते, पीटता, मारते, मारता, "maarte", "peet", "hodeetaare"], ["every day", daily, "almost every", "again and again", "every night", ದಿನಾ, ಪ್ರತಿ ದಿನ, ಪದೇ ಪದೇ, रोज़, रोज, हर दिन, बार-बार, "roz", "dina", "har din"]]
+  self_harm:
+    - [["end my life", "kill myself", "don't want to live", "no reason to live", ಸಾಯ್ತೀನಿ, ಬದುಕೋಕೆ ಇಷ್ಟ ಇಲ್ಲ, मर जाऊँगी, मर जाऊँगा, जीना नहीं, "mar jaungi", "jeena nahi"]]
+
+# Anchor words: an issue is only considered if at least one of its anchors appears in what the client has said.
+# (Stops e.g. "unauthorised sale of land" from raising a *bank* issue.) Latin words of 5+ letters also match
+# longer forms (document → documentation); Kannada / Devanagari anchors match the start of a word.
+anchors:
+  _property: &property [land, farmland, property, properties, house, plot, site, flat, ancestral, inherit, khata, pahani, rtc, survey, acre, farm, field, agricultural, estate, ಜಮೀನು, ಜಮೀನಿನ, ಆಸ್ತಿ, ಮನೆ, ಸೈಟ್, ಹೊಲ, ಖಾತಾ, ಪಹಣಿ, ज़मीन, जमीन, संपत्ति, जायदाद, मकान, प्लॉट, खेत, खसरा, zameen, jameen, aasti, hola, makaan, ghar]
+  crim.hurt_assault: [hit, beat, attack, assault, slap, punch, kick, pushed, injur, wound, hurt, stab, fracture, ಹೊಡೆ, ಹೊಡ, ಹಲ್ಲೆ, ಗಾಯ, ಒದ್ದ, मार, पीट, चोट, हमला, थप्पड़, "maar*", "peet*", chot, "hode*", gaaya, thappad, "injur*"]
+  crim.criminal_intimidation: [threat, kill, "see you", "break your", "finish you", ಬೆದರಿ, ಸಾಯಿಸ, ಕೊಲ್ತ, ಕೊಲ್ಲ, धमकी, धमका, "जान से", "मार दूँगा", "मार देंगे", dhamki, "bedari*", "maar dunga", frighten, scare, "troubl*", ಹೆದರಿಸ, ಮುರೀತ, ಕಾಲು ಮುರಿ, डरा, तोड़ दूँगा, तोड़ देगा, "tod dega", "tod dunga", "maar dega", "taange", "hedaris*", "murithini"]
+  crim.theft: [stole, stolen, theft, steal, snatch, missing, robbed, ಕದ್ದ, ಕಳ್ಳ, ಕಳುವು, ಕಳವು, चोरी, चुरा, छीन, chori, "chura*", "kadd*", "kall*", "took it", taken, chain, bike, phone, wallet, purse, "not returned", ಸರ, ಬೈಕ್, ಮೊಬೈಲ್, ತಗೊಂಡು ಹೋದ, चेन, बाइक, मोबाइल, पर्स, "le gaya", "tagondu"]
+  crim.cheating: [cheat, fraud, promise, lied, "took money", "took my money", swindle, "job", visa, ಮೋಸ, ವಂಚನೆ, ನಂಬಿಸಿ, ಕೆಲಸ ಕೊಡಿಸ, ನೌಕರಿ, धोखा, ठग, वादा, नौकरी, "के नाम पर", विदेश, "dhokha", mosa, "thag*", vaada, naukri, "maatu kott*", kelsa, "kodistini", ಮಾತು ಕೊಟ್ಟ, ಕೆಲಸ, "duddu", ದುಡ್ಡು, "believing", "paise liye", ಮಾತು ನಂಬಿ, ನಂಬಿ, "nambi", भरोसा, "bharosa"]
+  crim.police_refusal_fir: [police, fir, station, ಪೊಲೀಸ್, ಠಾಣೆ, पुलिस, थाना, थाने, "thane", "thana"]
+  fam.divorce: [divorce, "end the marriage", "end my marriage", ಡಿವೋರ್ಸ್, ವಿಚ್ಛೇದನ, तलाक, talaq, talak, "divorce*", marriage, married, cruelty, ಮದುವೆ, ಕ್ರೌರ್ಯ, शादी, विवाह, shaadi, maduve, "separat*"]
+  fam.maintenance: [husband, wife, spouse, maintenance, alimony, ಗಂಡ, ಹೆಂಡತಿ, ಪತ್ನಿ, ಜೀವನಾಂಶ, पति, पत्नी, गुज़ारा, भरण, खर्चा, pati, patni, ganda, hendati, kharcha]
+  fam.custody: [child, children, son, daughter, kid, custody, baby, ಮಗು, ಮಕ್ಕಳ, ಮಗ, ಮಗಳ, ಮಗನ, बच्चा, बच्चे, बच्ची, बेटा, बेटी, बेटे, bachcha, bachche, beta, beti, maga, magalu]
+  fam.domestic_violence: [husband, "in-law", "in-laws", "mother-in-law", "father-in-law", ಗಂಡ, ಅತ್ತೆ, ಮಾವ, ಮೈದುನ, पति, सास, ससुर, ससुराल, देवर, ननद, saas, sasur, sasural, pati, ganda, atte]
+  fam.dowry_harassment: [dowry, "in-law", "in-laws", demand, ವರದಕ್ಷಿಣೆ, ಅತ್ತೆ, ತವರಿನಿಂದ, दहेज, ससुराल, सास, मायके, dahej, varadakshine, sasural]
+  prop.inheritance_partition: *property
+  prop.encroachment: *property
+  prop.coheir_sale_without_consent: *property
+  prop.boundary_dispute: [boundary, fence, *property]
+  prop.forged_documents: [will, deed, document, signature, papers, records, ದಾಖಲೆ, ಸಹಿ, ವಿಲ್, ಪತ್ರ, वसीयत, दस्तावेज़, दस्तख़त, हस्ताक्षर, कागज़, कागज, बैनामा, vasiyat, kagaz, *property]
+  cyb.upi_payment_fraud: [upi, "qr", phonepe, gpay, "google pay", paytm, "scan", ಯುಪಿಐ, ಕ್ಯೂಆರ್, यूपीआई, क्यूआर, "स्कैन"]
+  cyb.phishing_account_takeover: [link, sms, otp, password, kyc, hack, email, "net banking", ಲಿಂಕ್, ಒಟಿಪಿ, ಪಾಸ್‌ವರ್ಡ್, ಹ್ಯಾಕ್, लिंक, ओटीपी, पासवर्ड, हैक, केवाईसी]
+  cyb.impersonation: [profile, "fake account", "fake id", instagram, facebook, ಪ್ರೊಫೈಲ್, ಅಕೌಂಟ್, प्रोफ़ाइल, प्रोफाइल, अकाउंट, "फ़ेक", "fake account"]
+  cyb.cyberstalking: [message, messaging, calls, online, following, stalk, block, ಮೆಸೇಜ್, ಹಿಂಬಾಲಿಸ, ಬ್ಲಾಕ್, मैसेज, पीछा, ब्लॉक, "message*", "peecha"]
+  cyb.morphed_intimate_image: [photo, picture, image, video, morph, nude, obscene, ಫೋಟೋ, ವಿಡಿಯೋ, ಮಾರ್ಫ್, ಅಶ್ಲೀಲ, फ़ोटो, फोटो, तस्वीर, वीडियो, मॉर्फ, अश्लील]
+  con.defective_product: [bought, product, warranty, showroom, purchased, defect, shop, store, laptop, phone, fridge, refrigerator, "washing machine", "tv", mixer, machine, "stopped working", ತಗೊಂಡೆ, ಖರೀದಿ, ವಾರಂಟಿ, ಶೋರೂಮ್, ಅಂಗಡಿ, ಮಷೀನ್, ಫ್ರಿಜ್, ಮೊಬೈಲ್, ಕೆಲಸ ಮಾಡೋದು ನಿಲ್ಲಿಸ, खरीदा, खरीदी, वारंटी, शोरूम, दुकान, मशीन, फ़्रिज, "kharid*", tagonde, "warranty"]
+  con.deficiency_in_service: [service, internet, broadband, courier, parcel, flight, insurance, airline, ಸರ್ವಿಸ್, ಸೇವೆ, ಕೊರಿಯರ್, ಪಾರ್ಸೆಲ್, ಇಂಟರ್ನೆಟ್, सेवा, सर्विस, कूरियर, पार्सल, इंटरनेट, ब्रॉडबैंड]
+  fin.unauthorized_bank_txn: [bank, "account", atm, card, debit, statement, withdraw, "transaction", ಬ್ಯಾಂಕ್, ಖಾತೆ, ಅಕೌಂಟ್, ಕಾರ್ಡ್, ಎಟಿಎಂ, बैंक, खाते, अकाउंट, कार्ड, एटीएम, "लेन-देन"]
+  con.refund_refusal: [refund, return, order, ordered, ರಿಫಂಡ್, ವಾಪಸ್, ಆರ್ಡರ್, रिफ़ंड, रिफंड, वापस, ऑर्डर, "मँगवा"]
+  fin.loan_recovery_harassment: [loan, emi, recovery, lender, ಲೋನ್, ಸಾಲ, ಇಎಂಐ, लोन, कर्ज़, क़र्ज़, ईएमआई, karz, "recovery"]
+
+# Shown when the client's words point to a legal area but not yet to one problem: "Which is closest?"
+domain_choices:
+  property: [prop.forged_documents, prop.coheir_sale_without_consent, prop.inheritance_partition, prop.encroachment, prop.boundary_dispute]
+  family: [fam.domestic_violence, fam.dowry_harassment, fam.maintenance, fam.custody, fam.divorce]
+  criminal: [crim.hurt_assault, crim.criminal_intimidation, crim.theft, crim.cheating, crim.police_refusal_fir]
+  cyber: [cyb.upi_payment_fraud, cyb.phishing_account_takeover, cyb.impersonation, cyb.cyberstalking, cyb.morphed_intimate_image]
+  consumer_financial: [con.defective_product, con.deficiency_in_service, con.refund_refusal, fin.unauthorized_bank_txn, fin.loan_recovery_harassment]

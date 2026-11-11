@@ -1,0 +1,486 @@
+# Consumer & financial domain (part B): unauthorised bank transaction, refund refusal,
+# loan-recovery harassment. Provisions TO_VERIFY.
+issues:
+  # ------------------------------------------- unauthorised bank transaction
+  - issue_id: fin.unauthorized_bank_txn
+    domain: consumer_financial
+    title: {en: Unauthorised bank transaction, kn: ಅನಧಿಕೃತ ಬ್ಯಾಂಕ್ ವ್ಯವಹಾರ, hi: अनधिकृत बैंक लेन-देन}
+    plain_summary:
+      en: Money left your bank account through transactions you did not make or authorise.
+      kn: ನೀವು ಮಾಡದ ಅಥವಾ ಅನುಮತಿಸದ ವ್ಯವಹಾರಗಳ ಮೂಲಕ ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಖಾತೆಯಿಂದ ಹಣ ಹೋಗಿದೆ.
+      hi: आपके बैंक खाते से ऐसे लेन-देन से पैसे निकले जो आपने न किए न मंज़ूर किए।
+    risk_level: high
+    default_triage: self_help
+    cast:
+      - {slot: ACC, kind: account, role: account, nouns: [bank]}
+      - {slot: BANK, kind: organization, role: organization, nouns: [bank], named: false}
+    value_slots: {AMOUNT: [medium, large]}
+    setup:
+      en: I have a question about [my bank account](@ACC) statement.
+      kn: "[ನನ್ನ ಬ್ಯಾಂಕ್ ಅಕೌಂಟ್](@ACC) ಸ್ಟೇಟ್‌ಮೆಂಟ್ ಬಗ್ಗೆ ಒಂದು ಪ್ರಶ್ನೆ ಇದೆ."
+      kn-en_latn: "[Nanna bank account](@ACC) statement bagge ondu prashne ide."
+      kn-en_mixed: "[ನನ್ನ bank account](@ACC) statement ಬಗ್ಗೆ ಒಂದು question ಇದೆ."
+      hi: "[मेरे बैंक अकाउंट](@ACC) की स्टेटमेंट को लेकर एक सवाल है।"
+      hi-en_latn: "[Mere bank account](@ACC) ki statement ko lekar ek sawaal hai."
+    elements:
+      - element_id: txn_not_authorised
+        critical: true
+        order: 1
+        description: The transactions were not made or authorised by the user.
+        question:
+          en: Did you make or approve these transactions in any way?
+          kn: ಈ ವ್ಯವಹಾರಗಳನ್ನು ನೀವು ಯಾವುದಾದರೂ ರೀತಿಯಲ್ಲಿ ಮಾಡಿದ್ರಾ ಅಥವಾ ಒಪ್ಪಿಗೆ ಕೊಟ್ಟಿದ್ರಾ?
+          hi: क्या आपने ये लेन-देन किसी भी तरह किए या मंज़ूर किए?
+        proposition:
+          satisfied: Money went out through card payments the speaker never made.
+          contradicted: The speaker had made the payments and forgotten.
+        satisfied:
+          en: "{AMOUNT} went out of [my account](@ACC) through card payments that I [never](NEG) made."
+          kn: "ನಾನು [ಮಾಡದೇ](NEG) ಇರೋ ಕಾರ್ಡ್ ಪೇಮೆಂಟ್‌ಗಳ ಮೂಲಕ [ನನ್ನ ಅಕೌಂಟ್‌ನಿಂದ](@ACC) {AMOUNT} ಹೋಗಿದೆ."
+          kn-en_latn: "Naanu [maadade](NEG) iro card paymentgala moolaka [nanna account](@ACC) inda {AMOUNT} hogide."
+          kn-en_mixed: "ನಾನು [ಮಾಡದೇ](NEG) ಇರೋ card payments ಮೂಲಕ [ನನ್ನ account](@ACC) ಇಂದ {AMOUNT} ಹೋಗಿದೆ."
+          hi: "ऐसे कार्ड पेमेंट से [मेरे अकाउंट](@ACC) से {AMOUNT} निकल गए जो मैंने कभी [नहीं](NEG) किए।"
+          hi-en_latn: "Aise card payments se [mere account](@ACC) se {AMOUNT} nikal gaye jo maine kabhi [nahi](NEG) kiye."
+        contradicted:
+          en: Later I realised I had made those card payments myself and forgotten.
+          kn: ಆ ಕಾರ್ಡ್ ಪೇಮೆಂಟ್ ನಾನೇ ಮಾಡಿ ಮರೆತಿದ್ದೆ ಅಂತ ಆಮೇಲೆ ಗೊತ್ತಾಯ್ತು.
+          kn-en_latn: Aa card payment naane maadi maretidde antha aamele gottaaytu.
+          kn-en_mixed: ಆ card payment ನಾನೇ ಮಾಡಿ ಮರೆತಿದ್ದೆ ಅಂತ ಆಮೇಲೆ realise ಆಯ್ತು.
+          hi: बाद में समझ आया कि वो कार्ड पेमेंट मैंने ही किए थे और भूल {g:SPK|m:गया था|f:गई थी}।
+          hi-en_latn: Baad mein samajh aaya ki woh card payment maine hi kiye the aur bhool {g:SPK|m:gaya tha|f:gayi thi}.
+      - element_id: reported_to_bank
+        critical: true
+        order: 2
+        date_slot_required: true
+        description: The user informed the bank promptly (relevant to the customer's liability).
+        event_type: bank_report
+        args: {BANK: recipient}
+        question:
+          en: When did you inform the bank about these transactions?
+          kn: ಈ ವ್ಯವಹಾರಗಳ ಬಗ್ಗೆ ಬ್ಯಾಂಕ್‌ಗೆ ಯಾವಾಗ ತಿಳಿಸಿದ್ರಿ?
+          hi: आपने बैंक को इन लेन-देन के बारे में कब बताया?
+        proposition:
+          satisfied: The speaker informed the bank as soon as they saw the messages.
+          contradicted: The speaker has not informed the bank yet.
+        satisfied:
+          en: I [informed](TRIG) [the bank](@BANK) {DATE}, as soon as I saw the messages.
+          kn: "ಮೆಸೇಜ್ ನೋಡಿದ ತಕ್ಷಣ {DATE} [ಬ್ಯಾಂಕ್‌ಗೆ](@BANK) [ತಿಳಿಸಿದೆ](TRIG)."
+          kn-en_latn: "Message nodida takshana {DATE} [bank](@BANK) ge [tiliside](TRIG)."
+          kn-en_mixed: "Messages ನೋಡಿದ ತಕ್ಷಣ {DATE} [bank](@BANK) ಗೆ [inform ಮಾಡಿದೆ](TRIG)."
+          hi: "मैसेज देखते ही {DATE} मैंने [बैंक](@BANK) को [बता दिया](TRIG)।"
+          hi-en_latn: "Message dekhte hi {DATE} maine [bank](@BANK) ko [bata diya](TRIG)."
+        contradicted:
+          en: I have [not](NEG) [informed](TRIG) [the bank](@BANK) yet.
+          kn: ನಾನು ಇನ್ನೂ [ಬ್ಯಾಂಕ್‌ಗೆ](@BANK) [ತಿಳಿಸಿಲ್ಲ](TRIG,NEG).
+          kn-en_latn: Naanu innu [bank](@BANK) ge [tilisilla](TRIG,NEG).
+          kn-en_mixed: ನಾನು ಇನ್ನೂ [bank](@BANK) ಗೆ [inform ಮಾಡಿಲ್ಲ](TRIG,NEG).
+          hi: मैंने अभी तक [बैंक](@BANK) को [नहीं](NEG) [बताया](TRIG)।
+          hi-en_latn: Maine abhi tak [bank](@BANK) ko [nahi](NEG) [bataya](TRIG).
+      - element_id: no_customer_negligence
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The user did not share card details / OTP (no negligence on the customer's part).
+        question:
+          en: Did you share your card number, PIN or OTP with anyone, even on a call?
+          kn: ನಿಮ್ಮ ಕಾರ್ಡ್ ನಂಬರ್, ಪಿನ್ ಅಥವಾ ಓಟಿಪಿ ಯಾರಿಗಾದರೂ, ಕಾಲ್‌ನಲ್ಲಾದರೂ ಹೇಳಿದ್ರಾ?
+          hi: क्या आपने अपना कार्ड नंबर, पिन या ओटीपी किसी को, फ़ोन पर भी, बताया?
+        proposition:
+          satisfied: The speaker never shared card details or OTP.
+          contradicted: The speaker read out the OTP on a call claiming to be from the bank.
+        satisfied:
+          en: I [never](NEG) shared my card details or OTP with anyone.
+          kn: ನಾನು ಕಾರ್ಡ್ ಡೀಟೇಲ್ಸ್ ಅಥವಾ ಓಟಿಪಿ ಯಾರಿಗೂ [ಕೊಟ್ಟಿಲ್ಲ](NEG).
+          kn-en_latn: Naanu card details athava OTP yaarigu [kottilla](NEG).
+          kn-en_mixed: ನಾನು card details ಅಥವಾ OTP ಯಾರಿಗೂ [share ಮಾಡಿಲ್ಲ](NEG).
+          hi: मैंने कभी किसी को कार्ड की डिटेल या ओटीपी [नहीं](NEG) दिया।
+          hi-en_latn: Maine kabhi kisi ko card details ya OTP [nahi](NEG) diya.
+        contradicted:
+          en: I had read out the OTP on a call that claimed to be from the bank.
+          kn: ಬ್ಯಾಂಕ್‌ನಿಂದ ಅಂತ ಬಂದ ಒಂದು ಕಾಲ್‌ನಲ್ಲಿ ನಾನು ಓಟಿಪಿ ಹೇಳಿಬಿಟ್ಟಿದ್ದೆ.
+          kn-en_latn: Bank inda antha banda ondu call alli naanu OTP helibittidde.
+          kn-en_mixed: Bank ಇಂದ ಅಂತ ಬಂದ ಒಂದು call ಅಲ್ಲಿ ನಾನು OTP ಹೇಳಿಬಿಟ್ಟಿದ್ದೆ.
+          hi: बैंक के नाम से आए एक कॉल पर मैंने ओटीपी बता दिया था।
+          hi-en_latn: Bank ke naam se aaye ek call par maine OTP bata diya tha.
+      - element_id: bank_refused_reversal
+        critical: false
+        order: 3
+        description: The bank refused to reverse / credit the amount.
+        event_type: reversal_refusal
+        args: {BANK: agent}
+        question:
+          en: What has the bank said — will they reverse the amount?
+          kn: ಬ್ಯಾಂಕ್‌ನವರು ಏನು ಹೇಳಿದರು — ದುಡ್ಡು ವಾಪಸ್ ಹಾಕ್ತಾರಾ?
+          hi: बैंक ने क्या कहा — क्या वो पैसे वापस डालेंगे?
+        proposition:
+          satisfied: The bank refused to reverse the amount.
+          contradicted: The bank has not refused; the case is under review.
+        satisfied:
+          en: "[The bank](@BANK) [refused](TRIG) to reverse the amount."
+          kn: "[ಬ್ಯಾಂಕ್‌ನವರು](@BANK) ದುಡ್ಡು ವಾಪಸ್ ಹಾಕೋಕೆ [ನಿರಾಕರಿಸಿದರು](TRIG)."
+          kn-en_latn: "[Bank avru](@BANK) duddu vaapas haakoke [niraakarisidru](TRIG)."
+          kn-en_mixed: "[Bank ಅವರು](@BANK) money reverse ಮಾಡೋಕೆ [refuse ಮಾಡಿದ್ರು](TRIG)."
+          hi: "[बैंक](@BANK) ने पैसे वापस डालने से [मना कर दिया](TRIG)।"
+          hi-en_latn: "[Bank](@BANK) ne paise waapas daalne se [mana kar diya](TRIG)."
+        contradicted:
+          en: "[The bank](@BANK) has [not](NEG) [refused](TRIG); the case is under review."
+          kn: "[ಬ್ಯಾಂಕ್‌ನವರು](@BANK) [ನಿರಾಕರಿಸಿಲ್ಲ](TRIG,NEG), ಕೇಸ್ ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ."
+          kn-en_latn: "[Bank avru](@BANK) [niraakarisilla](TRIG,NEG), case parisheelaneyallide."
+          kn-en_mixed: "[Bank ಅವರು](@BANK) [refuse ಮಾಡಿಲ್ಲ](TRIG,NEG), case review ಅಲ್ಲಿದೆ."
+          hi: "[बैंक](@BANK) ने [मना](TRIG) [नहीं](NEG) किया, मामला जाँच में है।"
+          hi-en_latn: "[Bank](@BANK) ne [mana](TRIG) [nahi](NEG) kiya, case review mein hai."
+    evidence:
+      - evidence_id: statement_sms
+        evidence_type: digital_record
+        supports: [txn_not_authorised]
+        held:
+          en: I have the [bank statement and the debit SMSes](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್ ಮತ್ತು ಡೆಬಿಟ್ ಎಸ್‌ಎಂಎಸ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [bank statement mattu debit SMS](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [bank statement and debit SMS](EVD) ಇದೆ.
+          hi: मेरे पास [बैंक स्टेटमेंट और डेबिट एसएमएस](EVD) हैं।
+          hi-en_latn: Mere paas [bank statement aur debit SMS](EVD) hain.
+        missing:
+          en: I have [not](NEG) yet taken the [bank statement](EVD).
+          kn: ನಾನು ಇನ್ನೂ [ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್](EVD) [ತಗೊಂಡಿಲ್ಲ](NEG).
+          kn-en_latn: Naanu innu [bank statement](EVD) [tagondilla](NEG).
+          kn-en_mixed: ನಾನು ಇನ್ನೂ [bank statement](EVD) [ತಗೊಂಡಿಲ್ಲ](NEG).
+          hi: मैंने अभी तक [बैंक स्टेटमेंट](EVD) [नहीं](NEG) निकाला।
+          hi-en_latn: Maine abhi tak [bank statement](EVD) [nahi](NEG) nikala.
+      - evidence_id: complaint_reference
+        evidence_type: official_receipt
+        supports: [reported_to_bank]
+        held:
+          en: "[The bank](@BANK) gave me a [complaint reference number](EVD)."
+          kn: "[ಬ್ಯಾಂಕ್‌ನವರು](@BANK) [ಕಂಪ್ಲೇಂಟ್ ರೆಫರೆನ್ಸ್ ನಂಬರ್](EVD) ಕೊಟ್ಟಿದ್ದಾರೆ."
+          kn-en_latn: "[Bank avru](@BANK) [complaint reference number](EVD) kottiddare."
+          kn-en_mixed: "[Bank ಅವರು](@BANK) [complaint reference number](EVD) ಕೊಟ್ಟಿದ್ದಾರೆ."
+          hi: "[बैंक](@BANK) ने मुझे [शिकायत का रेफ़रेंस नंबर](EVD) दिया है।"
+          hi-en_latn: "[Bank](@BANK) ne mujhe [complaint reference number](EVD) diya hai."
+        missing:
+          en: I told [them](@BANK:pron) only on the phone, so I have [no](NEG) [reference number](EVD).
+          kn: ಫೋನ್‌ನಲ್ಲಿ ಮಾತ್ರ ಹೇಳಿದ್ದೆ, [ರೆಫರೆನ್ಸ್ ನಂಬರ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Phone alli maatra helidde, [reference number](EVD) [illa](NEG).
+          kn-en_mixed: Phone ಅಲ್ಲಿ ಮಾತ್ರ ಹೇಳಿದ್ದೆ, [reference number](EVD) [ಇಲ್ಲ](NEG).
+          hi: मैंने सिर्फ़ फ़ोन पर बताया था, कोई [रेफ़रेंस नंबर](EVD) [नहीं](NEG) है।
+          hi-en_latn: Maine sirf phone par bataya tha, koi [reference number](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: golden_hour_fraud
+        template:
+          en: The payments are still going on [right now](TIMEX:now).
+          kn: "[ಈಗಲೂ](TIMEX:now) ಪೇಮೆಂಟ್ ಆಗ್ತಾನೇ ಇದೆ."
+          kn-en_latn: "[Eeglu](TIMEX:now) payment aagtaane ide."
+          kn-en_mixed: "[Right now](TIMEX:now) ಕೂಡ payments ಆಗ್ತಾನೇ ಇದೆ."
+          hi: "[अभी भी](TIMEX:now) पेमेंट होते जा रहे हैं।"
+          hi-en_latn: "[Abhi bhi](TIMEX:now) payments hote jaa rahe hain."
+    candidate_provisions:
+      - {provision_id: "CPA:2(11)", title_hint: Deficiency (definition), note: banking is a service; verify applicability}
+      - {provision_id: "CPA:35", title_hint: Manner in which complaint shall be made}
+      - {provision_id: "ITA:43", title_hint: Penalty and compensation for damage to computer system}
+      - {provision_id: "ITA:66C", title_hint: Punishment for identity theft}
+    limitation_notes: Customer liability depends on how quickly the bank is informed (RBI directions on limited liability, outside this corpus). TO_VERIFY.
+    confusable_with: [cyb.upi_payment_fraud, cyb.phishing_account_takeover]
+    co_occurs_with: [cyb.phishing_account_takeover, cyb.upi_payment_fraud]
+
+  # -------------------------------------------------------- refund refusal
+  - issue_id: con.refund_refusal
+    domain: consumer_financial
+    title: {en: Refund refusal, kn: ಹಣ ವಾಪಸ್ ನಿರಾಕರಣೆ, hi: रिफ़ंड से इनकार}
+    plain_summary:
+      en: A seller refuses to refund money for a returned product despite its own return policy.
+      kn: ತನ್ನದೇ ರಿಟರ್ನ್ ನೀತಿ ಇದ್ದರೂ ವಾಪಸ್ ಕೊಟ್ಟ ವಸ್ತುವಿಗೆ ಮಾರಾಟಗಾರರು ಹಣ ವಾಪಸ್ ಕೊಡ್ತಿಲ್ಲ.
+      hi: अपनी ही रिटर्न पॉलिसी के बावजूद विक्रेता लौटाए गए सामान के पैसे वापस नहीं कर रहा।
+    risk_level: low
+    default_triage: self_help
+    cast:
+      - {slot: SELLER, kind: organization, role: organization, nouns: [platform], named: false}
+    value_slots: {ITEM: [new_phone, laptop, mixer_grinder], AMOUNT: [small, medium]}
+    setup:
+      en: I ordered {ITEM} from [an online shopping app](@SELLER).
+      kn: "ನಾನು [ಒಂದು ಆನ್‌ಲೈನ್ ಶಾಪಿಂಗ್ ಆಪ್‌ನಲ್ಲಿ](@SELLER) {ITEM} ಆರ್ಡರ್ ಮಾಡಿದ್ದೆ."
+      kn-en_latn: "Naanu [ondu online shopping app](@SELLER) alli {ITEM} order maadidde."
+      kn-en_mixed: "ನಾನು [ಒಂದು online shopping app](@SELLER) ಅಲ್ಲಿ {ITEM} order ಮಾಡಿದ್ದೆ."
+      hi: "मैंने [एक ऑनलाइन शॉपिंग ऐप](@SELLER) से {ITEM} ऑर्डर {g:ITEM|m:किया था|f:की थी}।"
+      hi-en_latn: "Maine [ek online shopping app](@SELLER) se {ITEM} order {g:ITEM|m:kiya tha|f:ki thi}."
+    elements:
+      - element_id: paid
+        critical: true
+        order: 1
+        description: The user paid for the order.
+        question:
+          en: Did you pay online, or was it cash on delivery?
+          kn: ನೀವು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಕಟ್ಟಿದ್ರಾ, ಅಥವಾ ಕ್ಯಾಶ್ ಆನ್ ಡೆಲಿವರಿನಾ?
+          hi: आपने ऑनलाइन भुगतान किया या कैश ऑन डिलीवरी था?
+        proposition:
+          satisfied: The speaker paid online while ordering.
+          contradicted: It was cash on delivery and nothing was paid.
+        satisfied:
+          en: I paid {AMOUNT} online at the time of ordering.
+          kn: ಆರ್ಡರ್ ಮಾಡುವಾಗಲೇ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ {AMOUNT} ಕಟ್ಟಿದ್ದೆ.
+          kn-en_latn: Order maaduvaagale online alli {AMOUNT} kattidde.
+          kn-en_mixed: Order ಮಾಡುವಾಗಲೇ online ಅಲ್ಲಿ {AMOUNT} pay ಮಾಡಿದ್ದೆ.
+          hi: ऑर्डर करते समय ही मैंने ऑनलाइन {AMOUNT} दे दिए थे।
+          hi-en_latn: Order karte time hi maine online {AMOUNT} de diye the.
+        contradicted:
+          en: It was cash on delivery, and I had [not](NEG) paid anything.
+          kn: ಅದು ಕ್ಯಾಶ್ ಆನ್ ಡೆಲಿವರಿ, ನಾನು ಏನೂ [ಕಟ್ಟಿರಲಿಲ್ಲ](NEG).
+          kn-en_latn: Adu cash on delivery, naanu enu [kattiralilla](NEG).
+          kn-en_mixed: ಅದು cash on delivery, ನಾನು ಏನೂ pay [ಮಾಡಿರಲಿಲ್ಲ](NEG).
+          hi: वो कैश ऑन डिलीवरी था, मैंने कुछ [नहीं](NEG) दिया था।
+          hi-en_latn: Woh cash on delivery tha, maine kuch [nahi](NEG) diya tha.
+      - element_id: return_eligible
+        critical: true
+        may_be_unknown: true
+        order: 1
+        description: The product was returnable under the seller's stated policy.
+        question:
+          en: Did the product page or policy say it could be returned? Within how many days?
+          kn: ಪ್ರಾಡಕ್ಟ್ ಪೇಜ್ ಅಥವಾ ಪಾಲಿಸಿಯಲ್ಲಿ ವಾಪಸ್ ಕೊಡಬಹುದು ಅಂತ ಇತ್ತಾ? ಎಷ್ಟು ದಿನದೊಳಗೆ?
+          hi: क्या प्रोडक्ट पेज या पॉलिसी में लिखा था कि वापस कर सकते हैं? कितने दिन में?
+        proposition:
+          satisfied: The product page said it could be returned within seven days.
+          contradicted: The product page said it was non-returnable.
+        satisfied:
+          en: The product page clearly said it can be returned within [seven days](TIMEX:dur_P7D).
+          kn: "[ಏಳು ದಿನದೊಳಗೆ](TIMEX:dur_P7D) ವಾಪಸ್ ಕೊಡಬಹುದು ಅಂತ ಪ್ರಾಡಕ್ಟ್ ಪೇಜ್‌ನಲ್ಲಿ ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿತ್ತು."
+          kn-en_latn: "[Elu dinadolage](TIMEX:dur_P7D) vaapas kodabahudu antha product page alli spashtavaagi helittu."
+          kn-en_mixed: "[Seven days](TIMEX:dur_P7D) ಒಳಗೆ return ಮಾಡಬಹುದು ಅಂತ product page ಅಲ್ಲಿ clear ಆಗಿ ಇತ್ತು."
+          hi: "प्रोडक्ट पेज पर साफ़ लिखा था कि [सात दिन](TIMEX:dur_P7D) में वापस कर सकते हैं।"
+          hi-en_latn: "Product page par saaf likha tha ki [saat din](TIMEX:dur_P7D) mein return kar sakte hain."
+        contradicted:
+          en: The product page said it is [non-returnable](NEG).
+          kn: ಪ್ರಾಡಕ್ಟ್ ಪೇಜ್‌ನಲ್ಲಿ ವಾಪಸ್ ಕೊಡೋಕೆ [ಆಗಲ್ಲ](NEG) ಅಂತ ಇತ್ತು.
+          kn-en_latn: Product page alli vaapas kodoke [aagalla](NEG) antha ittu.
+          kn-en_mixed: Product page ಅಲ್ಲಿ [non-returnable](NEG) ಅಂತ ಇತ್ತು.
+          hi: प्रोडक्ट पेज पर लिखा था कि यह वापस [नहीं](NEG) होगा।
+          hi-en_latn: Product page par likha tha ki yeh return [nahi](NEG) hoga.
+      - element_id: returned_in_time
+        critical: true
+        order: 2
+        date_slot_required: true
+        description: The user returned the product within the return window.
+        event_type: product_return
+        args: {SELLER: recipient}
+        question:
+          en: Did you return the product? When was it picked up?
+          kn: ನೀವು ವಸ್ತು ವಾಪಸ್ ಕಳಿಸಿದ್ರಾ? ಯಾವಾಗ ಪಿಕಪ್ ಆಯ್ತು?
+          hi: क्या आपने सामान वापस किया? पिकअप कब हुआ?
+        proposition:
+          satisfied: The speaker returned the damaged product and the pickup was done.
+          contradicted: The speaker has not returned it.
+        satisfied:
+          en: "{DATE} I [returned](TRIG) it because it was damaged, and the pickup was done."
+          kn: "{DATE} ಅದು ಡ್ಯಾಮೇಜ್ ಆಗಿದ್ದರಿಂದ [ವಾಪಸ್ ಕಳಿಸಿದೆ](TRIG), ಪಿಕಪ್ ಕೂಡ ಆಯ್ತು."
+          kn-en_latn: "{DATE} adu damage aagiddarinda [vaapas kaliside](TRIG), pickup kooda aaytu."
+          kn-en_mixed: "{DATE} ಅದು damage ಆಗಿದ್ದರಿಂದ [return ಮಾಡಿದೆ](TRIG), pickup ಕೂಡ ಆಯ್ತು."
+          hi: "{DATE} खराब निकलने पर मैंने उसे [वापस कर दिया](TRIG), पिकअप भी हो गया।"
+          hi-en_latn: "{DATE} kharaab nikalne par maine use [return kar diya](TRIG), pickup bhi ho gaya."
+        contradicted:
+          en: I have [not](NEG) [returned](TRIG) it; it is still with me.
+          kn: ನಾನು ಅದನ್ನು [ವಾಪಸ್ ಕಳಿಸಿಲ್ಲ](TRIG,NEG), ಇನ್ನೂ ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          kn-en_latn: Naanu adanna [vaapas kalisilla](TRIG,NEG), innu nanna hatra ide.
+          kn-en_mixed: ನಾನು ಅದನ್ನು [return ಮಾಡಿಲ್ಲ](TRIG,NEG), ಇನ್ನೂ ನನ್ನ ಹತ್ತಿರ ಇದೆ.
+          hi: मैंने उसे [वापस](TRIG) [नहीं](NEG) किया, वो अभी भी मेरे पास है।
+          hi-en_latn: Maine use [return](TRIG) [nahi](NEG) kiya, woh abhi bhi mere paas hai.
+      - element_id: refund_refused
+        critical: true
+        order: 3
+        description: The seller refused / failed to refund.
+        event_type: refund_refusal
+        args: {SELLER: agent}
+        question:
+          en: What did the app say about the refund?
+          kn: ರಿಫಂಡ್ ಬಗ್ಗೆ ಆಪ್‌ನವರು ಏನು ಹೇಳಿದರು?
+          hi: रिफ़ंड के बारे में ऐप ने क्या कहा?
+        proposition:
+          satisfied: The app refused to refund the money.
+          contradicted: The app has not refused; the refund is being processed.
+        satisfied:
+          en: But [the app](@SELLER) [refused](TRIG) to refund the money.
+          kn: ಆದರೆ [ಆಪ್‌ನವರು](@SELLER) ದುಡ್ಡು ವಾಪಸ್ ಕೊಡೋಕೆ [ನಿರಾಕರಿಸಿದರು](TRIG).
+          kn-en_latn: Aadre [app avru](@SELLER) duddu vaapas kodoke [niraakarisidru](TRIG).
+          kn-en_mixed: ಆದ್ರೆ [app ಅವರು](@SELLER) refund ಕೊಡೋಕೆ [refuse ಮಾಡಿದ್ರು](TRIG).
+          hi: लेकिन [ऐप](@SELLER) ने पैसे लौटाने से [मना कर दिया](TRIG)।
+          hi-en_latn: Lekin [app](@SELLER) ne refund dene se [mana kar diya](TRIG).
+        contradicted:
+          en: "[The app](@SELLER) has [not](NEG) [refused](TRIG); the refund is being processed."
+          kn: "[ಆಪ್‌ನವರು](@SELLER) [ನಿರಾಕರಿಸಿಲ್ಲ](TRIG,NEG), ರಿಫಂಡ್ ಪ್ರೋಸೆಸ್ ಆಗ್ತಿದೆ."
+          kn-en_latn: "[App avru](@SELLER) [niraakarisilla](TRIG,NEG), refund process aagtide."
+          kn-en_mixed: "[App ಅವರು](@SELLER) [refuse ಮಾಡಿಲ್ಲ](TRIG,NEG), refund process ಆಗ್ತಿದೆ."
+          hi: "[ऐप](@SELLER) ने [मना](TRIG) [नहीं](NEG) किया, रिफ़ंड प्रोसेस हो रहा है।"
+          hi-en_latn: "[App](@SELLER) ne [mana](TRIG) [nahi](NEG) kiya, refund process ho raha hai."
+    evidence:
+      - evidence_id: return_confirmation
+        evidence_type: digital_record
+        supports: [returned_in_time]
+        held:
+          en: I have the [order details and the return pickup confirmation](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಆರ್ಡರ್ ಡೀಟೇಲ್ಸ್ ಮತ್ತು ರಿಟರ್ನ್ ಪಿಕಪ್ ಕನ್ಫರ್ಮೇಷನ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [order details mattu return pickup confirmation](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [order details and return pickup confirmation](EVD) ಇದೆ.
+          hi: मेरे पास [ऑर्डर की डिटेल और रिटर्न पिकअप का कन्फ़र्मेशन](EVD) है।
+          hi-en_latn: Mere paas [order details aur return pickup confirmation](EVD) hai.
+        missing:
+          en: The pickup person did [not](NEG) give me any [receipt](EVD).
+          kn: ಪಿಕಪ್‌ಗೆ ಬಂದವರು ಯಾವ [ರಸೀದಿನೂ](EVD) [ಕೊಡಲಿಲ್ಲ](NEG).
+          kn-en_latn: Pickup ge bandavru yaava [receiptu](EVD) [kodalilla](NEG).
+          kn-en_mixed: Pickup ಗೆ ಬಂದವರು ಯಾವ [receipt](EVD) ಉ [ಕೊಡಲಿಲ್ಲ](NEG).
+          hi: पिकअप वाले ने कोई [रसीद](EVD) [नहीं](NEG) दी।
+          hi-en_latn: Pickup wale ne koi [receipt](EVD) [nahi](NEG) di.
+    risk_facts:
+      - flag: limitation_near_expiry
+        template:
+          en: It has been almost [two years](TIMEX:dur_P2Y) since then, and I heard there is a time limit for complaints.
+          kn: ಅದಾಗಿ ಹೆಚ್ಚು ಕಡಿಮೆ [ಎರಡು ವರ್ಷ](TIMEX:dur_P2Y) ಆಯ್ತು, ದೂರು ಕೊಡೋಕೆ ಸಮಯದ ಮಿತಿ ಇದೆ ಅಂತ ಕೇಳಿದೆ.
+          kn-en_latn: Adaagi hechchu kadime [eradu varsha](TIMEX:dur_P2Y) aaytu, dooru kodoke samayada miti ide antha kelide.
+          kn-en_mixed: ಅದಾಗಿ almost [two years](TIMEX:dur_P2Y) ಆಯ್ತು, complaint ಗೆ time limit ಇದೆ ಅಂತ ಕೇಳಿದೆ.
+          hi: उसे लगभग [दो साल](TIMEX:dur_P2Y) हो गए हैं, और सुना है शिकायत की समय सीमा होती है।
+          hi-en_latn: Use lagbhag [do saal](TIMEX:dur_P2Y) ho gaye hain, aur suna hai complaint ki time limit hoti hai.
+    candidate_provisions:
+      - {provision_id: "CPA:2(47)", title_hint: Unfair trade practice (definition)}
+      - {provision_id: "CPA:2(11)", title_hint: Deficiency (definition)}
+      - {provision_id: "CPA:35", title_hint: Manner in which complaint shall be made}
+      - {provision_id: "CPA:69", title_hint: Limitation period}
+    limitation_notes: A consumer complaint is generally to be filed within two years of the cause of action (CPA s.69). E-commerce rules are outside this corpus. TO_VERIFY.
+    confusable_with: [con.defective_product, con.deficiency_in_service]
+    co_occurs_with: [con.defective_product, con.deficiency_in_service]
+
+  # ------------------------------------------ loan-recovery harassment
+  - issue_id: fin.loan_recovery_harassment
+    domain: consumer_financial
+    title: {en: Loan-recovery harassment, kn: ಸಾಲ ವಸೂಲಿ ಕಿರುಕುಳ, hi: लोन वसूली उत्पीड़न}
+    plain_summary:
+      en: A lender or its recovery agents use threats, abuse or public shaming to collect a loan.
+      kn: ಸಾಲ ವಸೂಲಿಗೆ ಸಾಲದಾತರು ಅಥವಾ ಅವರ ಏಜೆಂಟ್‌ಗಳು ಬೆದರಿಕೆ, ಬೈಗುಳ ಅಥವಾ ಸಾರ್ವಜನಿಕ ಅವಮಾನ ಬಳಸುತ್ತಿದ್ದಾರೆ.
+      hi: कर्ज़ वसूलने के लिए लोन देने वाला या उसके एजेंट धमकी, गाली या सबके सामने बेइज़्ज़ती कर रहे हैं।
+    risk_level: high
+    default_triage: self_help
+    cast:
+      - {slot: RESP, role: respondent, nouns: [recovery_agent], named: false, affiliated_with: LENDER}
+      - {slot: LENDER, kind: organization, role: organization, nouns: [lender], named: false}
+    setup:
+      en: I took a small loan from [a loan app](@LENDER).
+      kn: ನಾನು [ಒಂದು ಲೋನ್ ಆಪ್‌ನಿಂದ](@LENDER) ಸಣ್ಣ ಸಾಲ ತಗೊಂಡಿದ್ದೆ.
+      kn-en_latn: Naanu [ondu loan app](@LENDER) inda sanna saala tagondidde.
+      kn-en_mixed: ನಾನು [ಒಂದು loan app](@LENDER) ಇಂದ small loan ತಗೊಂಡಿದ್ದೆ.
+      hi: मैंने [एक लोन ऐप](@LENDER) से छोटा सा लोन लिया था।
+      hi-en_latn: Maine [ek loan app](@LENDER) se chhota sa loan liya tha.
+    elements:
+      - element_id: harassing_calls
+        critical: true
+        order: 1
+        date_slot_required: true
+        description: The agent harasses / abuses the user to recover the loan.
+        event_type: harassment_calls
+        args: {RESP: agent}
+        question:
+          en: How do the recovery people contact you, and what do they say?
+          kn: ವಸೂಲಿಯವರು ನಿಮ್ಮನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸ್ತಾರೆ, ಏನು ಹೇಳ್ತಾರೆ?
+          hi: वसूली वाले आपसे कैसे संपर्क करते हैं और क्या कहते हैं?
+        proposition:
+          satisfied: The recovery agent calls every day and abuses the speaker.
+          contradicted: The agent has not harassed; there was one polite reminder.
+        satisfied:
+          en: "{DATE} {RESP} started [calling](TRIG) me [every day](TIMEX:every_day) and abusing me."
+          kn: "{DATE} {RESP} [ಪ್ರತಿ ದಿನ](TIMEX:every_day) [ಕಾಲ್ ಮಾಡಿ](TRIG) ಬೈಯೋಕೆ ಶುರು ಮಾಡಿದರು."
+          kn-en_latn: "{DATE} {RESP} [prati dina](TIMEX:every_day) [call maadi](TRIG) baiyoke shuru maadidru."
+          kn-en_mixed: "{DATE} {RESP} [every day](TIMEX:every_day) [call ಮಾಡಿ](TRIG) abuse ಮಾಡೋಕೆ start ಮಾಡಿದ್ರು."
+          hi: "{DATE} {RESP.erg} [हर दिन](TIMEX:every_day) [फ़ोन करके](TRIG) गालियाँ देना शुरू कर दिया।"
+          hi-en_latn: "{DATE} {RESP.erg} [har din](TIMEX:every_day) [phone karke](TRIG) gaaliyan dena shuru kar diya."
+        contradicted:
+          en: "{RESP} has [not](NEG) [harassed](TRIG) me; there was only one polite reminder."
+          kn: "{RESP} ನನಗೆ [ಕಿರುಕುಳ ಕೊಟ್ಟಿಲ್ಲ](TRIG,NEG), ಒಂದೇ ಸಲ ಗೌರವವಾಗಿ ನೆನಪಿಸಿದರು."
+          kn-en_latn: "{RESP} nange [kirukula kottilla](TRIG,NEG), onde sala gauravavaagi nenapisidru."
+          kn-en_mixed: "{RESP} ನನಗೆ [harass ಮಾಡಿಲ್ಲ](TRIG,NEG), ಒಂದೇ ಸಲ politely remind ಮಾಡಿದ್ರು."
+          hi: "{RESP.erg} मुझे [परेशान](TRIG) [नहीं](NEG) किया, बस एक बार शिष्टता से याद दिलाया।"
+          hi-en_latn: "{RESP.erg} mujhe [pareshaan](TRIG) [nahi](NEG) kiya, bas ek baar politely yaad dilaaya."
+      - element_id: public_shaming
+        critical: true
+        may_be_unknown: true
+        order: 2
+        description: The agent contacted the user's contacts / shamed the user publicly.
+        event_type: contact_shaming
+        args: {RESP: agent}
+        question:
+          en: Have they contacted your friends, family or colleagues about the loan?
+          kn: ಸಾಲದ ಬಗ್ಗೆ ಅವರು ನಿಮ್ಮ ಫ್ರೆಂಡ್ಸ್, ಮನೆಯವರು ಅಥವಾ ಸಹೋದ್ಯೋಗಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿದ್ದಾರಾ?
+          hi: क्या उन्होंने लोन के बारे में आपके दोस्तों, परिवार या साथ काम करने वालों से संपर्क किया?
+        proposition:
+          satisfied: The agent messaged everyone in the speaker's contact list calling them a cheat.
+          contradicted: The agent has not contacted anyone else.
+        satisfied:
+          en: "{RESP} [messaged](TRIG) everyone in my contact list saying I am a cheat."
+          kn: "{RESP} ನನ್ನ ಕಾಂಟ್ಯಾಕ್ಟ್ ಲಿಸ್ಟ್‌ನಲ್ಲಿರೋ ಎಲ್ಲರಿಗೂ ನಾನು {g:SPK|m:ಮೋಸಗಾರ|f:ಮೋಸಗಾತಿ} ಅಂತ [ಮೆಸೇಜ್ ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          kn-en_latn: "{RESP} nanna contact list alliro ellarigu naanu {g:SPK|m:mosagaara|f:mosagaati} antha [message maadiddare](TRIG)."
+          kn-en_mixed: "{RESP} ನನ್ನ contact list ಅಲ್ಲಿರೋ ಎಲ್ಲರಿಗೂ ನಾನು cheater ಅಂತ [message ಮಾಡಿದ್ದಾರೆ](TRIG)."
+          hi: "{RESP.erg} मेरी कॉन्टैक्ट लिस्ट में सबको [मैसेज किया](TRIG) कि मैं धोखेबाज़ हूँ।"
+          hi-en_latn: "{RESP.erg} meri contact list mein sabko [message kiya](TRIG) ki main dhokebaaz hoon."
+        contradicted:
+          en: "{RESP} has [not](NEG) [contacted](TRIG) anyone else about my loan."
+          kn: "{RESP} ನನ್ನ ಸಾಲದ ಬಗ್ಗೆ ಬೇರೆ ಯಾರಿಗೂ [ಮೆಸೇಜ್ ಮಾಡಿಲ್ಲ](TRIG,NEG)."
+          kn-en_latn: "{RESP} nanna saalada bagge bere yaarigu [message maadilla](TRIG,NEG)."
+          kn-en_mixed: "{RESP} ನನ್ನ loan ಬಗ್ಗೆ ಬೇರೆ ಯಾರಿಗೂ [message ಮಾಡಿಲ್ಲ](TRIG,NEG)."
+          hi: "{RESP.erg} मेरे लोन के बारे में किसी और से [संपर्क](TRIG) [नहीं](NEG) किया।"
+          hi-en_latn: "{RESP.erg} mere loan ke baare mein kisi aur se [contact](TRIG) [nahi](NEG) kiya."
+      - element_id: acting_for_lender
+        critical: false
+        order: 1
+        description: The caller acts on behalf of the lender (relevant to the lender's responsibility).
+        question:
+          en: Did the caller say which company they are calling for?
+          kn: ಯಾವ ಕಂಪನಿ ಕಡೆಯಿಂದ ಕಾಲ್ ಮಾಡ್ತಿದ್ದೀವಿ ಅಂತ ಅವರು ಹೇಳಿದರಾ?
+          hi: क्या फ़ोन करने वाले ने बताया कि वो किस कंपनी की तरफ़ से हैं?
+        proposition:
+          satisfied: The agent said they are calling on behalf of the loan app.
+          contradicted: The agent has nothing to do with the loan app.
+        satisfied:
+          en: "{RESP} said {RESP.pron} is calling on behalf of [the loan app](@LENDER)."
+          kn: "{RESP} [ಲೋನ್ ಆಪ್](@LENDER) ಕಡೆಯಿಂದ ಕಾಲ್ ಮಾಡ್ತಿದ್ದೀನಿ ಅಂತ ಹೇಳಿದರು."
+          kn-en_latn: "{RESP} [loan app](@LENDER) kadeyinda call maadtiddini antha helidru."
+          kn-en_mixed: "{RESP} [loan app](@LENDER) ಕಡೆಯಿಂದ call ಮಾಡ್ತಿದ್ದೀನಿ ಅಂತ ಹೇಳಿದ್ರು."
+          hi: "{RESP.erg} कहा कि {RESP.pron} [लोन ऐप](@LENDER) की तरफ़ से फ़ोन कर {g:RESP|m:रहे|f:रही|n:रहे} हैं।"
+          hi-en_latn: "{RESP.erg} kaha ki {RESP.pron} [loan app](@LENDER) ki taraf se phone kar {g:RESP|m:rahe|f:rahi|n:rahe} hain."
+        contradicted:
+          en: "{RESP} has [nothing](NEG) to do with [the loan app](@LENDER)."
+          kn: "{RESP.dat} [ಲೋನ್ ಆಪ್](@LENDER) ಜೊತೆ ಯಾವ ಸಂಬಂಧನೂ [ಇಲ್ಲ](NEG)."
+          kn-en_latn: "{RESP.dat} [loan app](@LENDER) jote yaava sambandhanu [illa](NEG)."
+          kn-en_mixed: "{RESP.dat} [loan app](@LENDER) ಜೊತೆ ಯಾವ connection ಉ [ಇಲ್ಲ](NEG)."
+          hi: "{RESP.gen_m} [लोन ऐप](@LENDER) से कोई लेना-देना [नहीं](NEG) है।"
+          hi-en_latn: "{RESP.gen_m} [loan app](@LENDER) se koi lena-dena [nahi](NEG) hai."
+    evidence:
+      - evidence_id: call_recordings
+        evidence_type: call_recording
+        supports: [harassing_calls]
+        held:
+          en: I have [recordings of the abusive calls](EVD).
+          kn: ನನ್ನ ಹತ್ತಿರ [ಬೈದ ಕಾಲ್‌ಗಳ ರೆಕಾರ್ಡಿಂಗ್](EVD) ಇದೆ.
+          kn-en_latn: Nanna hatra [baida callgala recording](EVD) ide.
+          kn-en_mixed: ನನ್ನ ಹತ್ತಿರ [abusive calls recordings](EVD) ಇವೆ.
+          hi: मेरे पास [गाली वाले कॉल की रिकॉर्डिंग](EVD) है।
+          hi-en_latn: Mere paas [gaali wale calls ki recording](EVD) hai.
+        missing:
+          en: My phone does [not](NEG) record calls, so I have [no](NEG) [recordings](EVD).
+          kn: ನನ್ನ ಫೋನ್‌ನಲ್ಲಿ ಕಾಲ್ ರೆಕಾರ್ಡ್ [ಆಗಲ್ಲ](NEG), [ರೆಕಾರ್ಡಿಂಗ್](EVD) [ಇಲ್ಲ](NEG).
+          kn-en_latn: Nanna phone alli call record [aagalla](NEG), [recording](EVD) [illa](NEG).
+          kn-en_mixed: ನನ್ನ phone ಅಲ್ಲಿ call record [ಆಗಲ್ಲ](NEG), [recording](EVD) [ಇಲ್ಲ](NEG).
+          hi: मेरे फ़ोन में कॉल रिकॉर्ड [नहीं](NEG) होती, कोई [रिकॉर्डिंग](EVD) [नहीं](NEG) है।
+          hi-en_latn: Mere phone mein call record [nahi](NEG) hoti, koi [recording](EVD) [nahi](NEG) hai.
+    risk_facts:
+      - flag: self_harm
+        template:
+          en: I feel so ashamed that I feel like ending my life.
+          kn: ತುಂಬಾ ಅವಮಾನ ಆಗಿದೆ, ಜೀವ ಕಳೆದುಕೊಳ್ಳೋಣ ಅನ್ನಿಸ್ತಿದೆ.
+          kn-en_latn: Tumba avamaana aagide, jeeva kaledukollona annistide.
+          kn-en_mixed: ತುಂಬಾ shame ಆಗಿದೆ, life end ಮಾಡ್ಕೊಳ್ಳೋಣ ಅನ್ನಿಸ್ತಿದೆ.
+          hi: इतनी शर्मिंदगी हो रही है कि जान देने का मन करता है।
+          hi-en_latn: Itni sharmindagi ho rahi hai ki jaan dene ka mann karta hai.
+    routing_variables:
+      - {name: law_regime, values: [old, new], description: "incident before / on-or-after 2024-07-01"}
+    candidate_provisions:
+      - {provision_id: "BNS:351(2)", when: {law_regime: [new]}, title_hint: Criminal intimidation (punishment)}
+      - {provision_id: "BNS:356(2)", when: {law_regime: [new]}, title_hint: Defamation (punishment)}
+      - {provision_id: "IPC:506", when: {law_regime: [old]}, title_hint: Punishment for criminal intimidation}
+      - {provision_id: "IPC:500", when: {law_regime: [old]}, title_hint: Punishment for defamation}
+    limitation_notes: RBI fair-practices directions on recovery agents and digital lending are outside this corpus. TO_VERIFY.
+    confusable_with: [crim.criminal_intimidation, cyb.cyberstalking]
+    co_occurs_with: [crim.criminal_intimidation, crim.police_refusal_fir]

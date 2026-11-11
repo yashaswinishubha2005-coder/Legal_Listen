@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1e2a78">
+  <title>Sign in · LegalListen</title>
+  <meta name="description" content="Sign in to LegalListen — lawyer-like legal guidance in Kannada, English and Hindi">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%231e2a78'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M18 44h28M32 14v30M20 24l-6 12h12zM44 24l-6 12h12zM20 24h24' stroke='white' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='14' r='3.5' fill='%23fbbf24'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="auth-body">
+<div class="auth">
+  <!-- ============================================================ brand panel -->
+  <section class="auth-hero" aria-hidden="false">
+    <div class="auth-hero-top">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M18 44h28M32 14v30M20 24l-6 12h12zM44 24l-6 12h12zM20 24h24"/><circle cx="32" cy="14" r="3.5"/></svg></span>
+      <strong>LegalListen</strong>
+    </div>
+    <h1 data-i18n="a_headline">Your legal problem, heard in your language.</h1>
+    <p class="auth-lead" data-i18n="a_lead">Speak or type in Kannada, English or Hindi. LegalListen listens like a lawyer, asks only what matters, maps your case, shows the exact law from India Code, and drafts your complaint.</p>
+
+    <div class="auth-demo" aria-hidden="true">
+      <div class="demo-bubble user" data-i18n="a_demo_user">My brother made fake papers and took our father's land.</div>
+      <div class="demo-bubble bot" data-i18n="a_demo_bot">I'm sorry. Did you sign any document for this land?</div>
+      <div class="demo-chips"><span data-i18n="a_demo_no">No, I never signed</span><span data-i18n="a_demo_dk">I don't know</span></div>
+      <div class="demo-card"><b>⚖ BNS 338</b><span data-i18n="a_demo_law">Forgery of valuable security, will, etc. — official text, page 104</span></div>
+    </div>
+
+    <ul class="auth-stats">
+      <li><b>25</b><span data-i18n="a_s1">legal problems understood</span></li>
+      <li><b>2,817</b><span data-i18n="a_s2">sections of law from official PDFs</span></li>
+      <li><b>3</b><span data-i18n="a_s3">languages + Kanglish, Hinglish</span></li>
+    </ul>
+    <a class="auth-about" href="/about" data-i18n="a_how">How LegalListen works →</a>
+  </section>
+
+  <!-- ============================================================ form -->
+  <main class="auth-main">
+    <div class="auth-tools">
+      <div class="seg lang-seg" role="group" aria-label="Language">
+        <button type="button" data-lang="kn">ಕನ್ನಡ</button><button type="button" data-lang="en">English</button><button type="button" data-lang="hi">हिन्दी</button>
+      </div>
+      <button id="theme" class="icon-btn" type="button" aria-label="Toggle dark mode">🌙</button>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-tabs" role="tablist">
+        <button type="button" role="tab" id="tab-in" class="active" aria-selected="true" data-i18n="a_signin">Sign in</button>
+        <button type="button" role="tab" id="tab-up" aria-selected="false" data-i18n="a_signup">Create account</button>
+      </div>
+      <h2 id="form-title" data-i18n="a_welcome">Welcome back</h2>
+      <p class="hint" id="form-sub" data-i18n="a_welcome_sub">Sign in to see your consultations on any device.</p>
+
+      <form id="auth-form" novalidate autocomplete="on">
+        <label class="field" id="f-name" hidden>
+          <span data-i18n="a_name">Your name</span>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="80">
+        </label>
+        <label class="field">
+          <span data-i18n="a_email">E-mail</span>
+          <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" inputmode="email">
+        </label>
+        <label class="field">
+          <span data-i18n="a_password">Password</span>
+          <div class="pw-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="200">
+            <button type="button" id="pw-toggle" class="pw-toggle" aria-label="Show password">👁</button>
+          </div>
+        </label>
+        <div class="pw-meter" id="pw-meter" hidden><i></i><span id="pw-text"></span></div>
+        <div class="auth-error" id="auth-error" role="alert" hidden></div>
+        <button type="submit" class="btn primary big block" id="submit"><span data-i18n="a_signin">Sign in</span></button>
+      </form>
+
+      <div class="auth-or"><span data-i18n="a_or">or</span></div>
+      <button type="button" class="btn big block ghost-strong" id="guest">👤 <span data-i18n="a_guest">Continue as guest</span></button>
+      <p class="hint center" data-i18n="a_guest_note">As a guest, your consultations are saved only on this device.</p>
+
+      <ul class="auth-trust">
+        <li>🔒 <span data-i18n="a_t1">Your notes are encrypted. Passwords are never stored — only a secure hash.</span></li>
+        <li>🗑 <span data-i18n="a_t2">Delete your account and every consultation at any time.</span></li>
+        <li>⚖ <span data-i18n="a_t3">Legal information, not legal advice. In an emergency call 112.</span></li>
+      </ul>
+    </div>
+  </main>
+</div>
+<script src="/static/i18n.js"></script>
+<script src="/static/login.js"></script>
+</body>
+</html>
